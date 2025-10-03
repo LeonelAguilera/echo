@@ -1,0 +1,12 @@
+# vsim -f hds_args.tmp -no_autoacc -foreign "hdsInit /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll" -pli ""/sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll"" 
+# Start time: 19:16:04 on Oct 02,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.vertical_bar_display_generator(behav)#1
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+add wave sim:/vertical_bar_display_generator/*
+force -freeze sim:/vertical_bar_display_generator/h_count(0) 0 0, 1 {0 ns} -r 1ns
