@@ -154,19 +154,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/point_computation"
 )
 (vvPair
 variable "date"
-value "10/05/25"
+value "10/06/25"
 )
 (vvPair
 variable "day"
-value "Sun"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Sunday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "05"
+value "06"
 )
 (vvPair
 variable "entity_name"
@@ -194,7 +194,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/05/25"
+value "10/06/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -206,7 +206,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:36:50"
+value "22:06:28"
 )
 (vvPair
 variable "group"
@@ -314,7 +314,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "13:36:50"
+value "22:06:28"
 )
 (vvPair
 variable "unit"
@@ -1038,7 +1038,7 @@ lang 11
 decl (Decl
 n "v_count"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 3
 suid 11,0
 )
@@ -1047,8 +1047,8 @@ uid 162,0
 va (VaSet
 font "courier,8,0"
 )
-xt "116000,3600,135500,4500"
-st "v_count        : unsigned(10 DOWNTO 0)"
+xt "116000,3600,135000,4500"
+st "v_count        : unsigned(9 DOWNTO 0)"
 )
 )
 *23 (Grouping
@@ -1472,7 +1472,7 @@ decl (Decl
 n "x_component"
 t "UNSIGNED"
 b "(10 DOWNTO 0)"
-o 12
+o 19
 suid 21,0
 )
 declText (MLText
@@ -1491,7 +1491,7 @@ decl (Decl
 n "y_component"
 t "UNSIGNED"
 b "(9 DOWNTO 0)"
-o 13
+o 20
 suid 22,0
 )
 declText (MLText
@@ -1510,7 +1510,7 @@ decl (Decl
 n "radius"
 t "UNSIGNED"
 b "(7 DOWNTO 0)"
-o 14
+o 16
 suid 24,0
 )
 declText (MLText
@@ -1529,7 +1529,7 @@ decl (Decl
 n "theta"
 t "SIGNED"
 b "(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)"
-o 15
+o 18
 suid 26,0
 )
 declText (MLText
@@ -1537,8 +1537,8 @@ uid 544,0
 va (VaSet
 font "courier,8,0"
 )
-xt "116000,18000,168000,18900"
-st "SIGNAL theta          : SIGNED(MAX(INTEGER(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude)))), 8) DOWNTO 0)"
+xt "116000,18000,171000,18900"
+st "SIGNAL theta          : SIGNED(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)"
 )
 )
 *42 (Blk
@@ -1607,8 +1607,7 @@ major_radius    = 84     ( INTEGER )
 angle_amplitude = 270    ( INTEGER )  
 center_angle    = 90     ( INTEGER )  
 tap_width       = 24     ( INTEGER )  
-tap_height      = 48     ( INTEGER )  
-"
+tap_height      = 48     ( INTEGER )  "
 )
 header ""
 )
@@ -1672,7 +1671,7 @@ lang 11
 decl (Decl
 n "done"
 t "std_logic"
-o 16
+o 12
 suid 33,0
 )
 declText (MLText
@@ -1852,7 +1851,7 @@ lang 11
 decl (Decl
 n "next_point"
 t "std_logic"
-o 17
+o 14
 suid 35,0
 )
 declText (MLText
@@ -1926,7 +1925,7 @@ decl (Decl
 n "din1"
 t "UNSIGNED"
 b "(7 DOWNTO 0)"
-o 18
+o 13
 suid 1,0
 )
 )
@@ -1990,7 +1989,7 @@ lang 11
 decl (Decl
 n "din0"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 3
 suid 2,0
 )
@@ -2057,7 +2056,7 @@ m 1
 decl (Decl
 n "fout"
 t "std_logic"
-o 19
+o 17
 suid 3,0
 )
 )
@@ -2390,7 +2389,7 @@ decl (Decl
 n "dout"
 t "UNSIGNED"
 b "(7 DOWNTO 0)"
-o 18
+o 13
 suid 1,0
 )
 )
@@ -2536,7 +2535,7 @@ decl (Decl
 n "dout"
 t "UNSIGNED"
 b "(7 DOWNTO 0)"
-o 18
+o 13
 suid 36,0
 )
 declText (MLText
@@ -2555,7 +2554,7 @@ decl (Decl
 n "point_selector"
 t "std_logic_vector"
 b "(1 DOWNTO 0)"
-o 20
+o 15
 suid 41,0
 )
 declText (MLText
@@ -2573,7 +2572,7 @@ lang 11
 decl (Decl
 n "reset"
 t "std_logic"
-o 19
+o 17
 suid 42,0
 )
 declText (MLText
@@ -3016,8 +3015,8 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "-5000,40100,3500,41000"
-st "v_count : (10:0)"
+xt "-5000,40100,3000,41000"
+st "v_count : (9:0)"
 blo "-5000,40800"
 tm "WireNameMgr"
 )
@@ -3581,11 +3580,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "-20053,-11958,81372,44768"
+viewArea "-19882,-5075,56098,37421"
 cachedDiagramExtent "-7000,0,168000,51000"
 hasePageBreakOrigin 1
-pageBreakOrigin "-76000,0"
-lastUid 2409,0
+pageBreakOrigin "-7000,0"
+lastUid 2488,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -4715,7 +4714,7 @@ lang 11
 decl (Decl
 n "v_count"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 3
 suid 11,0
 )
@@ -4842,7 +4841,7 @@ decl (Decl
 n "x_component"
 t "UNSIGNED"
 b "(10 DOWNTO 0)"
-o 12
+o 19
 suid 21,0
 )
 )
@@ -4856,7 +4855,7 @@ decl (Decl
 n "y_component"
 t "UNSIGNED"
 b "(9 DOWNTO 0)"
-o 13
+o 20
 suid 22,0
 )
 )
@@ -4870,7 +4869,7 @@ decl (Decl
 n "radius"
 t "UNSIGNED"
 b "(7 DOWNTO 0)"
-o 14
+o 16
 suid 24,0
 )
 )
@@ -4884,7 +4883,7 @@ decl (Decl
 n "theta"
 t "SIGNED"
 b "(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)"
-o 15
+o 18
 suid 26,0
 )
 )
@@ -4897,7 +4896,7 @@ m 4
 decl (Decl
 n "done"
 t "std_logic"
-o 16
+o 12
 suid 33,0
 )
 )
@@ -4910,7 +4909,7 @@ m 4
 decl (Decl
 n "next_point"
 t "std_logic"
-o 17
+o 14
 suid 35,0
 )
 )
@@ -4924,7 +4923,7 @@ decl (Decl
 n "dout"
 t "UNSIGNED"
 b "(7 DOWNTO 0)"
-o 18
+o 13
 suid 36,0
 )
 )
@@ -4938,7 +4937,7 @@ decl (Decl
 n "point_selector"
 t "std_logic_vector"
 b "(1 DOWNTO 0)"
-o 20
+o 15
 suid 41,0
 )
 )
@@ -4951,7 +4950,7 @@ m 4
 decl (Decl
 n "reset"
 t "std_logic"
-o 19
+o 17
 suid 42,0
 )
 )

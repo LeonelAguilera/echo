@@ -228,19 +228,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer"
 )
 (vvPair
 variable "date"
-value "10/05/25"
+value "10/06/25"
 )
 (vvPair
 variable "day"
-value "Sun"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Sunday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "05"
+value "06"
 )
 (vvPair
 variable "entity_name"
@@ -268,7 +268,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/05/25"
+value "10/06/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -280,7 +280,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "11:06:15"
+value "22:05:25"
 )
 (vvPair
 variable "group"
@@ -388,7 +388,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "11:06:15"
+value "22:05:25"
 )
 (vvPair
 variable "unit"
@@ -481,8 +481,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,2500,122500,3400"
-st "Ax         : unsigned(10 DOWNTO 0)
-"
+st "Ax         : unsigned(10 DOWNTO 0)"
 )
 )
 *3 (PortIoIn
@@ -547,8 +546,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,3400,122000,4300"
-st "Ay         : unsigned(9 DOWNTO 0)
-"
+st "Ay         : unsigned(9 DOWNTO 0)"
 )
 )
 *5 (PortIoIn
@@ -613,8 +611,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,4300,122500,5200"
-st "Bx         : unsigned(10 DOWNTO 0)
-"
+st "Bx         : unsigned(10 DOWNTO 0)"
 )
 )
 *7 (PortIoIn
@@ -679,8 +676,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,5200,122000,6100"
-st "By         : unsigned(9 DOWNTO 0)
-"
+st "By         : unsigned(9 DOWNTO 0)"
 )
 )
 *9 (PortIoIn
@@ -745,8 +741,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,6100,122500,7000"
-st "Cx         : unsigned(10 DOWNTO 0)
-"
+st "Cx         : unsigned(10 DOWNTO 0)"
 )
 )
 *11 (PortIoIn
@@ -811,8 +806,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,7000,122000,7900"
-st "Cy         : unsigned(9 DOWNTO 0)
-"
+st "Cy         : unsigned(9 DOWNTO 0)"
 )
 )
 *13 (PortIoIn
@@ -877,8 +871,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,7900,122500,8800"
-st "Dx         : unsigned(10 DOWNTO 0)
-"
+st "Dx         : unsigned(10 DOWNTO 0)"
 )
 )
 *15 (PortIoIn
@@ -943,8 +936,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,8800,122000,9700"
-st "Dy         : unsigned(9 DOWNTO 0)
-"
+st "Dy         : unsigned(9 DOWNTO 0)"
 )
 )
 *17 (PortIoIn
@@ -999,7 +991,7 @@ lang 11
 decl (Decl
 n "h_count"
 t "unsigned"
-b "(11 DOWNTO 0)"
+b "(10 DOWNTO 0)"
 o 9
 suid 9,0
 )
@@ -1009,8 +1001,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,9700,122500,10600"
-st "h_count    : unsigned(11 DOWNTO 0)
-"
+st "h_count    : unsigned(10 DOWNTO 0)"
 )
 )
 *19 (PortIoIn
@@ -1065,7 +1056,7 @@ lang 11
 decl (Decl
 n "v_count"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 10
 suid 10,0
 )
@@ -1074,9 +1065,8 @@ uid 148,0
 va (VaSet
 font "courier,8,0"
 )
-xt "105000,10600,122500,11500"
-st "v_count    : unsigned(10 DOWNTO 0)
-"
+xt "105000,10600,122000,11500"
+st "v_count    : unsigned(9 DOWNTO 0)"
 )
 )
 *21 (PortIoOut
@@ -1140,8 +1130,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,11500,126000,12400"
-st "wiper_b    : std_logic_vector(7 DOWNTO 0)
-"
+st "wiper_b    : std_logic_vector(7 DOWNTO 0)"
 )
 )
 *23 (PortIoOut
@@ -1205,8 +1194,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,12400,126000,13300"
-st "wiper_g    : std_logic_vector(7 DOWNTO 0)
-"
+st "wiper_g    : std_logic_vector(7 DOWNTO 0)"
 )
 )
 *25 (PortIoOut
@@ -1269,8 +1257,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,13300,116500,14200"
-st "wiper_mask : std_logic
-"
+st "wiper_mask : std_logic"
 )
 )
 *27 (PortIoOut
@@ -1334,8 +1321,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,14200,126000,15100"
-st "wiper_r    : std_logic_vector(7 DOWNTO 0)
-"
+st "wiper_r    : std_logic_vector(7 DOWNTO 0)"
 )
 )
 *29 (Grouping
@@ -6501,8 +6487,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,16000,126000,16900"
-st "SIGNAL area       : UNSIGNED(20 DOWNTO 0)
-"
+st "SIGNAL area       : UNSIGNED(20 DOWNTO 0)"
 )
 )
 *200 (Net
@@ -6521,8 +6506,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,16900,126000,17800"
-st "SIGNAL area1      : UNSIGNED(20 DOWNTO 0)
-"
+st "SIGNAL area1      : UNSIGNED(20 DOWNTO 0)"
 )
 )
 *201 (Net
@@ -6541,8 +6525,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,17800,126000,18700"
-st "SIGNAL area2      : UNSIGNED(20 DOWNTO 0)
-"
+st "SIGNAL area2      : UNSIGNED(20 DOWNTO 0)"
 )
 )
 *202 (Net
@@ -6561,8 +6544,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,18700,126000,19600"
-st "SIGNAL area3      : UNSIGNED(20 DOWNTO 0)
-"
+st "SIGNAL area3      : UNSIGNED(20 DOWNTO 0)"
 )
 )
 *203 (Net
@@ -6581,8 +6563,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,19600,126000,20500"
-st "SIGNAL area4      : UNSIGNED(20 DOWNTO 0)
-"
+st "SIGNAL area4      : UNSIGNED(20 DOWNTO 0)"
 )
 )
 *204 (Net
@@ -6601,8 +6582,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,20500,126000,21400"
-st "SIGNAL area5      : UNSIGNED(20 DOWNTO 0)
-"
+st "SIGNAL area5      : UNSIGNED(20 DOWNTO 0)"
 )
 )
 *205 (Net
@@ -6621,8 +6601,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,21400,130000,22300"
-st "SIGNAL dout       : std_logic_vector(11 DOWNTO 0)
-"
+st "SIGNAL dout       : std_logic_vector(11 DOWNTO 0)"
 )
 )
 *206 (Net
@@ -6641,8 +6620,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,22300,130000,23200"
-st "SIGNAL dout1      : std_logic_vector(11 DOWNTO 0)
-"
+st "SIGNAL dout1      : std_logic_vector(11 DOWNTO 0)"
 )
 )
 *207 (MWC
@@ -7123,8 +7101,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,23200,130000,24100"
-st "SIGNAL dout2      : std_logic_vector(11 DOWNTO 0)
-"
+st "SIGNAL dout2      : std_logic_vector(11 DOWNTO 0)"
 )
 )
 *224 (Net
@@ -7143,8 +7120,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,24100,130000,25000"
-st "SIGNAL dout3      : std_logic_vector(11 DOWNTO 0)
-"
+st "SIGNAL dout3      : std_logic_vector(11 DOWNTO 0)"
 )
 )
 *225 (MWC
@@ -8551,8 +8527,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,25000,120000,25900"
-st "SIGNAL dout4      : std_logic
-"
+st "SIGNAL dout4      : std_logic"
 )
 )
 *285 (Net
@@ -8570,8 +8545,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,25900,120000,26800"
-st "SIGNAL dout5      : std_logic
-"
+st "SIGNAL dout5      : std_logic"
 )
 )
 *286 (Net
@@ -8589,8 +8563,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,26800,120000,27700"
-st "SIGNAL dout6      : std_logic
-"
+st "SIGNAL dout6      : std_logic"
 )
 )
 *287 (Net
@@ -8608,8 +8581,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "105000,27700,120000,28600"
-st "SIGNAL dout7      : std_logic
-"
+st "SIGNAL dout7      : std_logic"
 )
 )
 *288 (Wire
@@ -8956,7 +8928,7 @@ isHidden 1
 font "courier,8,0"
 )
 xt "2000,39100,10500,40000"
-st "h_count : (11:0)"
+st "h_count : (10:0)"
 blo "2000,39800"
 tm "WireNameMgr"
 )
@@ -8994,8 +8966,8 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "2000,43100,10500,44000"
-st "v_count : (10:0)"
+xt "2000,43100,10000,44000"
+st "v_count : (9:0)"
 blo "2000,43800"
 tm "WireNameMgr"
 )
@@ -11220,11 +11192,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "-26578,-35753,108466,39777"
+viewArea "-3787,-17223,122353,53327"
 cachedDiagramExtent "-6500,-17205,131000,70000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-7000,-51000"
-lastUid 1815,0
+lastUid 1930,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -12433,7 +12405,7 @@ lang 11
 decl (Decl
 n "h_count"
 t "unsigned"
-b "(11 DOWNTO 0)"
+b "(10 DOWNTO 0)"
 o 9
 suid 9,0
 )
@@ -12446,7 +12418,7 @@ lang 11
 decl (Decl
 n "v_count"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 10
 suid 10,0
 )
