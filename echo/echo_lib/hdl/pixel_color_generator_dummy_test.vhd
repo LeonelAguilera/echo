@@ -17,12 +17,12 @@ ENTITY pixel_color_generator IS
       c0               : IN     std_logic;
       echo_duration    : IN     unsigned (7 DOWNTO 0);
       echo_intensity   : IN     unsigned (7 DOWNTO 0);
-      h_count          : IN     unsigned (11 DOWNTO 0);
+      h_count          : IN     unsigned (10 DOWNTO 0);
       left_ear_volume  : IN     unsigned (7 DOWNTO 0);
       master_volume    : IN     unsigned (7 DOWNTO 0);
       reset_n          : IN     std_logic;
       right_ear_volume : IN     unsigned (7 DOWNTO 0);
-      v_count          : IN     unsigned (10 DOWNTO 0);
+      v_count          : IN     unsigned (9 DOWNTO 0);
       vga_b            : OUT    std_logic_vector (7 DOWNTO 0);
       vga_g            : OUT    std_logic_vector (7 DOWNTO 0);
       vga_r            : OUT    std_logic_vector (7 DOWNTO 0)

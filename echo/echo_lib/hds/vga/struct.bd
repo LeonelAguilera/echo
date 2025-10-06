@@ -138,19 +138,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/vga"
 )
 (vvPair
 variable "date"
-value "10/05/25"
+value "10/06/25"
 )
 (vvPair
 variable "day"
-value "Sun"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Sunday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "05"
+value "06"
 )
 (vvPair
 variable "entity_name"
@@ -178,7 +178,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/05/25"
+value "10/06/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -190,7 +190,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "11:31:06"
+value "21:34:44"
 )
 (vvPair
 variable "group"
@@ -298,7 +298,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "11:31:06"
+value "21:34:44"
 )
 (vvPair
 variable "unit"
@@ -1756,7 +1756,7 @@ lang 11
 decl (Decl
 n "h_count"
 t "unsigned"
-b "(11 DOWNTO 0)"
+b "(10 DOWNTO 0)"
 o 6
 suid 19,0
 )
@@ -1766,7 +1766,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,18200,97000,19100"
-st "SIGNAL h_count          : unsigned(11 DOWNTO 0)"
+st "SIGNAL h_count          : unsigned(10 DOWNTO 0)"
 )
 )
 *48 (GlobalConnector
@@ -1853,7 +1853,7 @@ lang 11
 decl (Decl
 n "v_count"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 9
 suid 26,0
 )
@@ -1862,8 +1862,8 @@ uid 633,0
 va (VaSet
 font "courier,8,0"
 )
-xt "73000,20000,97000,20900"
-st "SIGNAL v_count          : unsigned(10 DOWNTO 0)"
+xt "73000,20000,96500,20900"
+st "SIGNAL v_count          : unsigned(9 DOWNTO 0)"
 )
 )
 *53 (MWC
@@ -3159,7 +3159,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "18000,10100,26500,11000"
-st "h_count : (11:0)"
+st "h_count : (10:0)"
 blo "18000,10800"
 tm "WireNameMgr"
 )
@@ -3289,8 +3289,8 @@ uid 631,0
 va (VaSet
 font "courier,8,0"
 )
-xt "18000,20100,26500,21000"
-st "v_count : (10:0)"
+xt "18000,20100,26000,21000"
+st "v_count : (9:0)"
 blo "18000,20800"
 tm "WireNameMgr"
 )
@@ -4229,11 +4229,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "3526,149,79210,42479"
+viewArea "1045,7985,67825,45335"
 cachedDiagramExtent "-5500,0,124000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-69000,0"
-lastUid 2140,0
+lastUid 2272,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -5265,8 +5265,8 @@ attribute pin_number : string;
 attribute array_pin_number : exemplar_string_array;
 
 -- VGA
-attribute pin_number of fpga_clk : signal is \"Y2\";
-attribute pin_number of fpga_reset_n: signal is \"M23\";
+-- attribute pin_number of fpga_clk : signal is \"Y2\";
+-- attribute pin_number of fpga_reset_n: signal is \"M23\";
 attribute pin_number of vga_clk: signal is \"A12\";
 attribute pin_number of vga_sync: signal is \"C10\";
 attribute pin_number of vga_blank_n: signal is \"F11\";
@@ -5308,7 +5308,7 @@ tm "BdDeclarativeTextMgr"
 )
 commonDM (CommonDM
 ldm (LogicalDM
-suid 74,0
+suid 75,0
 usingSuid 1
 emptyRow *170 (LEmptyRow
 )
@@ -5354,7 +5354,7 @@ m 4
 decl (Decl
 n "h_count"
 t "unsigned"
-b "(11 DOWNTO 0)"
+b "(10 DOWNTO 0)"
 o 6
 suid 19,0
 )
@@ -5392,7 +5392,7 @@ m 4
 decl (Decl
 n "v_count"
 t "unsigned"
-b "(10 DOWNTO 0)"
+b "(9 DOWNTO 0)"
 o 9
 suid 26,0
 )

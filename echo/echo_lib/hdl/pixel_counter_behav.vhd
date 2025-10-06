@@ -15,7 +15,7 @@ ENTITY pixel_counter IS
    PORT( 
       c0      : IN     std_logic;
       reset_n : IN     std_logic;
-      h_count : OUT    unsigned (11 DOWNTO 0)
+      h_count : OUT    unsigned (10 DOWNTO 0)
    );
 
 -- Declarations
@@ -24,7 +24,7 @@ END pixel_counter ;
 
 --
 ARCHITECTURE behav OF pixel_counter IS
-  SIGNAL counter : UNSIGNED(11 DOWNTO 0);
+  SIGNAL counter : UNSIGNED(10 DOWNTO 0);
 BEGIN
   PROCESS(c0)
   BEGIN

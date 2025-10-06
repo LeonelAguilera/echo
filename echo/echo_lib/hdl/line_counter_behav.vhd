@@ -14,9 +14,9 @@ USE ieee.numeric_std.all;
 ENTITY line_counter IS
    PORT( 
       c0      : IN     std_logic;
-      h_count : IN     unsigned (11 DOWNTO 0);
+      h_count : IN     unsigned (10 DOWNTO 0);
       reset_n : IN     std_logic;
-      v_count : OUT    unsigned (10 DOWNTO 0)
+      v_count : OUT    unsigned (9 DOWNTO 0)
    );
 
 -- Declarations
@@ -25,7 +25,7 @@ END line_counter ;
 
 --
 ARCHITECTURE behav OF line_counter IS
-  SIGNAL counter : UNSIGNED(10 DOWNTO 0);
+  SIGNAL counter : UNSIGNED(9 DOWNTO 0);
 BEGIN
   PROCESS(c0)
   BEGIN

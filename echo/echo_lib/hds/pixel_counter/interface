@@ -21,7 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 3,0
+suid 6,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -67,12 +67,12 @@ m 1
 decl (Decl
 n "h_count"
 t "unsigned"
-b "(11 DOWNTO 0)"
+b "(10 DOWNTO 0)"
 o 6
-suid 1,0
+suid 4,0
 )
 )
-uid 66,0
+uid 167,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -81,10 +81,10 @@ decl (Decl
 n "c0"
 t "std_logic"
 o 7
-suid 2,0
+suid 5,0
 )
 )
-uid 68,0
+uid 169,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -93,10 +93,10 @@ decl (Decl
 n "reset_n"
 t "std_logic"
 o 8
-suid 3,0
+suid 6,0
 )
 )
-uid 70,0
+uid 171,0
 )
 ]
 )
@@ -152,19 +152,19 @@ uid 92,0
 litem &14
 pos 0
 dimension 20
-uid 67,0
+uid 168,0
 )
 *23 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 69,0
+uid 170,0
 )
 *24 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 71,0
+uid 172,0
 )
 ]
 )
@@ -435,19 +435,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter"
 )
 (vvPair
 variable "date"
-value "10/04/25"
+value "10/06/25"
 )
 (vvPair
 variable "day"
-value "Sat"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Saturday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "04"
+value "06"
 )
 (vvPair
 variable "entity_name"
@@ -475,7 +475,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/04/25"
+value "10/06/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -487,7 +487,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "10:39:34"
+value "21:33:25"
 )
 (vvPair
 variable "group"
@@ -508,6 +508,10 @@ value "echo_lib"
 (vvPair
 variable "library_downstream_ModelSimCompiler"
 value "$HDS_PROJECT_DIR/echo_lib/modelsim"
+)
+(vvPair
+variable "library_downstream_PrecisionSynthesisDataPrep"
+value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
 variable "mm"
@@ -591,7 +595,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "10:39:34"
+value "21:33:25"
 )
 (vvPair
 variable "unit"
@@ -626,10 +630,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *58 (CptPort
-uid 51,0
+uid 152,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 52,0
+uid 153,0
 ro 90
 va (VaSet
 vasetType 1
@@ -638,11 +642,11 @@ fg "0,65535,0"
 xt "25000,6625,25750,7375"
 )
 tg (CPTG
-uid 53,0
+uid 154,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 54,0
+uid 155,0
 va (VaSet
 font "courier,8,0"
 )
@@ -654,12 +658,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 55,0
+uid 156,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,3600,64000,4500"
-st "h_count : OUT    unsigned (11 DOWNTO 0)"
+st "h_count : OUT    unsigned (10 DOWNTO 0)
+"
 )
 thePort (LogicalPort
 lang 11
@@ -667,17 +672,17 @@ m 1
 decl (Decl
 n "h_count"
 t "unsigned"
-b "(11 DOWNTO 0)"
+b "(10 DOWNTO 0)"
 o 6
-suid 1,0
+suid 4,0
 )
 )
 )
 *59 (CptPort
-uid 56,0
+uid 157,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 57,0
+uid 158,0
 ro 90
 va (VaSet
 vasetType 1
@@ -686,11 +691,11 @@ fg "0,65535,0"
 xt "14250,6625,15000,7375"
 )
 tg (CPTG
-uid 58,0
+uid 159,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 59,0
+uid 160,0
 va (VaSet
 font "courier,8,0"
 )
@@ -701,12 +706,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 60,0
+uid 161,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,1800,59000,2700"
-st "c0      : IN     std_logic  ;"
+st "c0      : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -714,15 +720,15 @@ decl (Decl
 n "c0"
 t "std_logic"
 o 7
-suid 2,0
+suid 5,0
 )
 )
 )
 *60 (CptPort
-uid 61,0
+uid 162,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 62,0
+uid 163,0
 ro 90
 va (VaSet
 vasetType 1
@@ -731,11 +737,11 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 63,0
+uid 164,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 64,0
+uid 165,0
 va (VaSet
 font "courier,8,0"
 )
@@ -746,12 +752,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 65,0
+uid 166,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,2700,59000,3600"
-st "reset_n : IN     std_logic  ;"
+st "reset_n : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -759,7 +766,7 @@ decl (Decl
 n "reset_n"
 t "std_logic"
 o 8
-suid 3,0
+suid 6,0
 )
 )
 )
@@ -1472,6 +1479,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 128,0
+lastUid 172,0
 activeModelName "Symbol:CDM"
 )
