@@ -49,10 +49,13 @@ BEGIN
                      (v_count < TO_UNSIGNED(position_y, 9)) AND
                      (v_count_modulo < segment_thickness) ELSE
             '0';
-  vga_r <= (OTHERS => '1') WHEN v_count < position_y - (height/2) ELSE
+  vga_r <= "01000110" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
+           (OTHERS => '1') WHEN v_count < position_y - (height/2) ELSE
            (OTHERS => '0');
-  vga_g <= (OTHERS => '1') WHEN v_count > position_y - (3 * height/4) ELSE
+  vga_g <= "00011110" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
+           (OTHERS => '1') WHEN v_count > position_y - (3 * height/4) ELSE
            (OTHERS => '0');
-  vga_b <= (OTHERS => '0');
+  vga_b <= "01010010" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
+           (OTHERS => '0');
 END ARCHITECTURE behav;
 
