@@ -10,14 +10,16 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+LIBRARY altera_mf;
+USE altera_mf.all;
 
 ENTITY v_syncr IS
    PORT( 
-      c0          : IN     std_logic;
-      reset_n     : IN     std_logic;
-      v_count     : IN     unsigned (9 DOWNTO 0);
-      vblank      : OUT    std_logic;
-      vga_vsync_n : OUT    std_logic
+      c0           : IN     std_logic;
+      fpga_reset_n : IN     std_logic;
+      v_count      : IN     unsigned (9 DOWNTO 0);
+      vblank       : OUT    std_logic;
+      vga_vsync_n  : OUT    std_logic
    );
 
 -- Declarations
