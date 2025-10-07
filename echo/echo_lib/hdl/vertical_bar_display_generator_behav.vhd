@@ -24,7 +24,7 @@ ENTITY vertical_bar_display_generator IS
    PORT(
       h_count         : IN     unsigned (10 DOWNTO 0);
       v_count         : IN     unsigned ( 9 DOWNTO 0);
-      active_segments : IN     UNSIGNED(INTEGER(CEIL(LOG2(REAL(number_of_segments))))-1 DOWNTO 0);
+      active_segments : IN     UNSIGNED(INTEGER(CEIL(LOG2(REAL(number_of_segments + 1))))-1 DOWNTO 0);
       vga_r           : OUT    std_logic_vector (7 DOWNTO 0);
       vga_g           : OUT    std_logic_vector (7 DOWNTO 0);
       vga_b           : OUT    std_logic_vector (7 DOWNTO 0);
