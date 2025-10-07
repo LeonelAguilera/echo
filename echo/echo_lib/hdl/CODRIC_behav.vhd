@@ -39,7 +39,7 @@ ARCHITECTURE behav OF CODRIC IS
   SIGNAL calc_y : SIGNED(11 DOWNTO 0);
   SIGNAL is_done : STD_LOGIC;
   SIGNAL angle : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
-  SIGNAL quadrant : STD_LOGIC_VECTOR(1 DOWNTO 0);
+  SIGNAL quadrant : BIT_VECTOR(1 DOWNTO 0);
   SIGNAL target_angle : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
   SIGNAL precomputed_angle_aproximator : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
 BEGIN
@@ -71,7 +71,7 @@ BEGIN
         END IF;          
       ELSIF counter /= number_of_iterations THEN
         precomputed_angle_aproximator <= TO_SIGNED(INTEGER(360.0 * 255.0 * ARCTAN(1.0 / (2.0 ** REAL(counter + 1)))/(MATH_2_PI * REAL(angle_amplitude))), precomputed_angle_aproximator'LENGTH);
-        IF angle < theta THEN
+        IF angle < target_angle THEN
           angle <= angle + precomputed_angle_aproximator;
           calc_x <= calc_x - SHIFT_RIGHT(calc_y, counter);
           calc_y <= calc_y + SHIFT_RIGHT(calc_x, counter);
