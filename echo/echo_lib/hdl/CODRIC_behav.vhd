@@ -24,7 +24,7 @@ ENTITY CODRIC IS
       theta       : IN     SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
       done        : OUT    std_logic;
       x_component : OUT    SIGNED (11 DOWNTO 0);
-      y_component : OUT    SIGNED (10 DOWNTO 0)
+      y_component : OUT    SIGNED (11 DOWNTO 0)
    );
 
 -- Declarations
@@ -36,23 +36,22 @@ ARCHITECTURE behav OF CODRIC IS
   CONSTANT Z : INTEGER := 39;
   SIGNAL counter : INTEGER RANGE 0 TO number_of_iterations;
   SIGNAL calc_x : SIGNED(11 DOWNTO 0);
-  SIGNAL calc_y : SIGNED(10 DOWNTO 0);
-  SIGNAL temp_product_result : SIGNED(17 DOWNTO 0);
+  SIGNAL calc_y : SIGNED(11 DOWNTO 0);
+  SIGNAL is_done : STD_LOGIC;
   SIGNAL angle : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
   SIGNAL precomputed_angle_aproximator : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
-  SIGNAL is_done : STD_LOGIC;
 BEGIN
   PROCESS(c0)
   BEGIN
     IF FALLING_EDGE(c0) THEN
       IF start = '1' THEN
         counter <= 0;
-        angle <= 0;
-        calc_x <= (OTHERS => '0', 7 DOWNTO 0 => radius);
+        calc_x <= "0000" & SIGNED(radius);--(7 DOWNTO 0 => STD_LOGIC_VECTOR(radius), OTHERS => '0');
         calc_y <= (OTHERS => '0');
-        angle <= 0;
+        angle <= (OTHERS => '0');
+        precomputed_angle_aproximator <= TO_SIGNED(INTEGER(360.0 * 255.0 * ARCTAN(1.0 / (2.0 ** REAL(0)))/(MATH_2_PI * REAL(angle_amplitude))), precomputed_angle_aproximator'LENGTH);
       ELSIF counter /= number_of_iterations THEN
-        precomputed_angle_aproximator <= TO_SIGNED(INTEGER(REAL(angle_amplitude) * ARCTAN(1.0 / (2.0 ** REAL(number_of_iterations)))/(MATH_2_PI)), precomputed_angle_aproximator'LENGTH);
+        precomputed_angle_aproximator <= TO_SIGNED(INTEGER(360.0 * 255.0 * ARCTAN(1.0 / (2.0 ** REAL(counter + 1)))/(MATH_2_PI * REAL(angle_amplitude))), precomputed_angle_aproximator'LENGTH);
         IF angle < theta THEN
           angle <= angle + precomputed_angle_aproximator;
           calc_x <= calc_x - SHIFT_RIGHT(calc_y, counter);
@@ -62,14 +61,18 @@ BEGIN
           calc_x <= calc_x + SHIFT_RIGHT(calc_y, counter);
           calc_y <= calc_y - SHIFT_RIGHT(calc_x, counter);
         END IF;
-        counter <= counter + 1;
       ELSE
         is_done <= '1';
-        x_component <= SHIFT_RIGHT(calc_x * 39, 6);
-        y_component <= SHIFT_RIGHT(calc_y * 39, 6);
+        x_component <= SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
+        y_component <= SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
       END IF;
       IF is_done = '1' THEN
         is_done <= '0';
+      END IF;
+    END IF;
+    IF RISING_EDGE(c0) THEN
+      IF counter /= number_of_iterations AND start = '0' THEN
+        counter <= counter + 1;
       END IF;
     END IF;
   END PROCESS;
