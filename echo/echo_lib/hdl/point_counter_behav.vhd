@@ -10,13 +10,15 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+USE IEEE.math_real.all;
 
 ENTITY point_counter IS
    PORT( 
       c0             : IN     std_logic;
       next_point     : IN     std_logic;
       reset          : IN     std_logic;
-      point_selector : OUT    std_logic_vector (1 DOWNTO 0)
+      point_selector : OUT    std_logic_vector (1 DOWNTO 0);
+      start          : OUT    std_logic
    );
 
 -- Declarations
