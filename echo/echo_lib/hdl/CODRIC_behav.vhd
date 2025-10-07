@@ -6,7 +6,7 @@
 --          at - 10:14:48 10/07/25
 --
 -- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
---
+-- Formula extracted from https://www.youtube.com/watch?v=bre7MVlxq7o
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
@@ -14,16 +14,17 @@ USE IEEE.math_real.all;
 
 ENTITY CODRIC IS
    GENERIC( 
-      number_of_iterations : INTEGER := 10
+      number_of_iterations : INTEGER := 10;
+	    angle_amplitude  : INTEGER	:= 270
    );
-   PORT( 
+   PORT(
+      c0          : IN     std_logic;
+      start       : IN     std_logic;
       radius      : IN     UNSIGNED (7 DOWNTO 0);
       theta       : IN     SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
       done        : OUT    std_logic;
       x_component : OUT    SIGNED (11 DOWNTO 0);
-      y_component : OUT    SIGNED (10 DOWNTO 0);
-      start       : IN     std_logic;
-      c0          : IN     std_logic
+      y_component : OUT    SIGNED (10 DOWNTO 0)
    );
 
 -- Declarations
@@ -34,11 +35,11 @@ END CODRIC ;
 ARCHITECTURE behav OF CODRIC IS
   CONSTANT Z : INTEGER := 39;
   SIGNAL counter : INTEGER RANGE 0 TO number_of_iterations;
-  SIGNAL last_x : SIGNED(11 DOWNTO 0);
-  SIGNAL last_y : SIGNED(10 DOWNTO 0);
-  SIGNAL next_x : SIGNED(11 DOWNTO 0);
-  SIGNAL next_y : SIGNED(10 DOWNTO 0);
-  SIGNAL angle : INTEGER;
+  SIGNAL calc_x : SIGNED(11 DOWNTO 0);
+  SIGNAL calc_y : SIGNED(10 DOWNTO 0);
+  SIGNAL temp_product_result : SIGNED(17 DOWNTO 0);
+  SIGNAL angle : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
+  SIGNAL precomputed_angle_aproximator : SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0);
   SIGNAL is_done : STD_LOGIC;
 BEGIN
   PROCESS(c0)
@@ -47,13 +48,30 @@ BEGIN
       IF start = '1' THEN
         counter <= 0;
         angle <= 0;
-        last_x <= (OTHERS => '0', 0 => '1');
-        last_y <= (OTHERS => '0');
+        calc_x <= (OTHERS => '0', 7 DOWNTO 0 => radius);
+        calc_y <= (OTHERS => '0');
+        angle <= 0;
       ELSIF counter /= number_of_iterations THEN
-        next_x <= last_x - SHIFT_RIGHT(last_y, counter);
-        next_y <= last_y + SHIFT_RIGHT(last_x, counter);
-      ELSE 
+        precomputed_angle_aproximator <= TO_SIGNED(INTEGER(REAL(angle_amplitude) * ARCTAN(1.0 / (2.0 ** REAL(number_of_iterations)))/(MATH_2_PI)), precomputed_angle_aproximator'LENGTH);
+        IF angle < theta THEN
+          angle <= angle + precomputed_angle_aproximator;
+          calc_x <= calc_x - SHIFT_RIGHT(calc_y, counter);
+          calc_y <= calc_y + SHIFT_RIGHT(calc_x, counter);
+        ELSE
+          angle <= angle - precomputed_angle_aproximator;
+          calc_x <= calc_x + SHIFT_RIGHT(calc_y, counter);
+          calc_y <= calc_y - SHIFT_RIGHT(calc_x, counter);
+        END IF;
+        counter <= counter + 1;
+      ELSE
+        is_done <= '1';
+        x_component <= SHIFT_RIGHT(calc_x * 39, 6);
+        y_component <= SHIFT_RIGHT(calc_y * 39, 6);
+      END IF;
+      IF is_done = '1' THEN
+        is_done <= '0';
       END IF;
     END IF;
   END PROCESS;
+  done <= is_done;
 END ARCHITECTURE behav;
