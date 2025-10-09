@@ -10,22 +10,24 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
-use IEEE.math_real.all;
+USE IEEE.math_real.all;
+LIBRARY work;
+USE work.codric_aux.all;
 
 ENTITY point_polar_coordinates_calculator IS
-   GENERIC(
-     	minor_radius     : INTEGER	:= 44;
-	    major_radius     : INTEGER	:= 84;
-	    angle_amplitude  : INTEGER	:= 270;
-	    center_angle     : INTEGER	:= 90;
-	    tap_width        : INTEGER	:= 24;
-	    tap_height       : INTEGER	:= 48
+   GENERIC( 
+      minor_radius    : INTEGER := 44;
+      major_radius    : INTEGER := 84;
+      angle_amplitude : INTEGER := 270;
+      center_angle    : INTEGER := 90;
+      tap_width       : INTEGER := 24;
+      tap_height      : INTEGER := 48
    );
    PORT( 
       angle          : IN     unsigned (7 DOWNTO 0);
-      point_selector : IN     BIT_VECTOR(1 DOWNTO 0);
+      point_selector : IN     BIT_VECTOR (1 DOWNTO 0);
       radius         : OUT    UNSIGNED (7 DOWNTO 0);
-      theta          : OUT    SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)
+      theta          : OUT    angle_t
    );
 
 -- Declarations
