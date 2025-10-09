@@ -35,20 +35,24 @@ END ring_generator ;
 
 --
 ARCHITECTURE behav OF ring_generator IS
+  -- CONSTANT m_l : REAL := TAN((REAL(center_angle) - (REAL(angle_amplitude) / 2.0)) * MATH_PI / 180.0); -- I'll... I'll just haardcode this part...
+  -- CONSTANT m_r : REAL := TAN((REAL(center_angle) + (REAL(angle_amplitude) / 2.0)) * MATH_PI / 180.0);
+  
   SIGNAL shifted_x: SIGNED(11 DOWNTO 0);
   SIGNAL shifted_y: SIGNED(10 DOWNTO 0);
-  SIGNAL squared_shifted_x : UNSIGNED(21 DOWNTO 0);
-  SIGNAL squared_shifted_y : UNSIGNED(19 DOWNTO 0);
+  SIGNAL squared_shifted_x : UNSIGNED(23 DOWNTO 0);
+  SIGNAL squared_shifted_y : UNSIGNED(21 DOWNTO 0);
   SIGNAL distance : UNSIGNED(21 DOWNTO 0);
 BEGIN
-  shifted_x <= SIGNED('0' & h_count) - TO_SIGNED(center_x, 12);
-  shifted_y <= SIGNED('0' & v_count) - TO_SIGNED(center_y, 11);
+  shifted_x <= SIGNED('0' & h_count) - TO_SIGNED(center_x, shifted_x'LENGTH);
+  shifted_y <= SIGNED('0' & v_count) - TO_SIGNED(center_y, shifted_y'LENGTH);
   squared_shifted_x <= UNSIGNED(shifted_x * shifted_x);
   squared_shifted_y <= UNSIGNED(shifted_y * shifted_y);
   distance <= squared_shifted_x(21 DOWNTO 0) + squared_shifted_y(21 DOWNTO 0);
   
   ring_mask <= '1' WHEN distance > (minor_radius * minor_radius) AND
-                        distance < (major_radius * major_radius) ELSE
+                        distance < (major_radius * major_radius) AND (
+                        (shifted_x < (-shifted_y)) OR (shifted_x < shifted_y)) ELSE -- I feel dirty...
                '0';
   
   ring_r <= "01000110";

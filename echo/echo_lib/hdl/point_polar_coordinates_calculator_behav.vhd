@@ -23,7 +23,7 @@ ENTITY point_polar_coordinates_calculator IS
    );
    PORT( 
       angle          : IN     unsigned (7 DOWNTO 0);
-      point_selector : IN     std_logic_vector (1 DOWNTO 0);
+      point_selector : IN     BIT_VECTOR(1 DOWNTO 0);
       radius         : OUT    UNSIGNED (7 DOWNTO 0);
       theta          : OUT    SIGNED (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)
    );
@@ -47,7 +47,7 @@ ARCHITECTURE behav OF point_polar_coordinates_calculator IS
   CONSTANT point_c_bias_angle : INTEGER := INTEGER((255.0 * 360.0 / REAL(angle_amplitude)) * (zero_bias_angle - minor_bias_angle));
   CONSTANT point_d_bias_angle : INTEGER := INTEGER((255.0 * 360.0 / REAL(angle_amplitude)) * (zero_bias_angle + minor_bias_angle));
   
-  CONSTANT angle_padding : STD_LOGIC_VECTOR(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) - 7 DOWNTO 0) := (OTHERS => '0');
+  CONSTANT angle_padding : STD_LOGIC_VECTOR(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) - 8 DOWNTO 0) := (OTHERS => '0');
 BEGIN
   radius <= TO_UNSIGNED(tap_major_radius, radius'length) WHEN point_selector(1) = '0' ELSE
             TO_UNSIGNED(tap_minor_radius, radius'length);
