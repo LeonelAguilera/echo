@@ -52,6 +52,7 @@ BEGIN
         calc_y <= (OTHERS => '0');
         angle <= (OTHERS => '0');
         precomputed_angle_aproximator <= TO_SIGNED(INTEGER(360.0 * 255.0 * ARCTAN(1.0 / (2.0 ** REAL(0)))/(MATH_2_PI * REAL(angle_amplitude))), precomputed_angle_aproximator'LENGTH);
+        is_done <= '0';
         
         IF theta < 0 THEN
           quadrant <= "11";
@@ -96,9 +97,6 @@ BEGIN
           x_component <= SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
           y_component <= -SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
         END CASE;
-      END IF;
-      IF is_done = '1' THEN
-        is_done <= '0';
       END IF;
     END IF;
     IF RISING_EDGE(c0) THEN

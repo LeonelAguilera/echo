@@ -27,7 +27,11 @@ END TriangleAreaCalculator ;
 
 --
 ARCHITECTURE behav OF TriangleAreaCalculator IS
+  SIGNAL temp_1 : UNSIGNED(20 DOWNTO 0);
+  SIGNAL temp_2 : UNSIGNED(20 DOWNTO 0);
 BEGIN
-  area <= shift_right(abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)), 1);
+  temp_1 <= (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2));
+  temp_2 <= ABS(temp_1);
+  area <= SHIFT_RIGHT(temp_2, 1);
 END ARCHITECTURE behav;
 

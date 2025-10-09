@@ -17,7 +17,7 @@ ENTITY point_counter IS
       c0             : IN     std_logic;
       next_point     : IN     std_logic;
       reset          : IN     std_logic;
-      point_selector : OUT    std_logic_vector (1 DOWNTO 0);
+      point_selector : OUT    BIT_VECTOR (1 DOWNTO 0);
       start          : OUT    std_logic
    );
 
@@ -34,11 +34,15 @@ BEGIN
     IF RISING_EDGE(c0) THEN
       IF reset = '1' THEN
         counter <= (OTHERS => '0');
+        start <= '1';
       ELSIF next_point = '1' THEN
         counter <= counter + 1;
+        start <= '1';
+      ELSE
+        start <= '0';
       END IF;
     END IF;
   END PROCESS;
-  point_selector <= STD_LOGIC_VECTOR(counter);
+  point_selector <= TO_BITVECTOR(STD_LOGIC_VECTOR(counter));
 END ARCHITECTURE behav;
 

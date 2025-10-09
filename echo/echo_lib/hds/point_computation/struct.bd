@@ -89,6 +89,16 @@ name "U_3"
 duLibraryName "echo_lib"
 duName "intermediate_registers"
 elements [
+(GiElement
+name "center_x"
+type "INTEGER"
+value "195"
+)
+(GiElement
+name "center_y"
+type "INTEGER"
+value "197"
+)
 ]
 mwi 0
 uid 923,0
@@ -164,19 +174,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/point_computation"
 )
 (vvPair
 variable "date"
-value "10/07/25"
+value "10/09/25"
 )
 (vvPair
 variable "day"
-value "Tue"
+value "Thu"
 )
 (vvPair
 variable "day_long"
-value "Tuesday"
+value "Thursday"
 )
 (vvPair
 variable "dd"
-value "07"
+value "09"
 )
 (vvPair
 variable "entity_name"
@@ -204,7 +214,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/07/25"
+value "10/09/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -216,7 +226,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "19:10:49"
+value "12:38:53"
 )
 (vvPair
 variable "group"
@@ -324,7 +334,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "19:10:49"
+value "12:38:53"
 )
 (vvPair
 variable "unit"
@@ -1455,7 +1465,7 @@ uid 414,0
 va (VaSet
 font "courier,8,0"
 )
-xt "33000,23650,55000,25450"
+xt "30000,5200,52000,7000"
 st "number_of_iterations = 10     ( INTEGER )  
 angle_amplitude      = 270    ( INTEGER )  "
 )
@@ -1533,7 +1543,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,20700,138000,21600"
-st "SIGNAL y_component    : SIGNED(10 DOWNTO 0)"
+st "SIGNAL y_component    : SIGNED(11 DOWNTO 0)"
 )
 )
 *40 (Net
@@ -1795,7 +1805,15 @@ iconName "VhdlFileViewIcon.png"
 iconMaskName "VhdlFileViewIcon.msk"
 ftype 10
 )
+ordering 1
 viewiconposition 0
+blkPorts [
+"c0"
+"next_point"
+"reset"
+"point_selector"
+"start"
+]
 )
 *51 (Blk
 uid 923,0
@@ -1857,11 +1875,24 @@ uid 931,0
 va (VaSet
 font "courier,8,0"
 )
-xt "54000,23650,54000,23650"
+xt "54000,23650,70000,25450"
+st "center_x = 195    ( INTEGER )  
+center_y = 197    ( INTEGER )  
+"
 )
 header ""
 )
 elements [
+(GiElement
+name "center_x"
+type "INTEGER"
+value "195"
+)
+(GiElement
+name "center_y"
+type "INTEGER"
+value "197"
+)
 ]
 )
 viewicon (ZoomableIcon
@@ -1876,7 +1907,24 @@ iconName "VhdlFileViewIcon.png"
 iconMaskName "VhdlFileViewIcon.msk"
 ftype 10
 )
+ordering 1
 viewiconposition 0
+blkPorts [
+"c0"
+"done"
+"point_selector"
+"x_component"
+"y_component"
+"Ax"
+"Ay"
+"Bx"
+"By"
+"Cx"
+"Cy"
+"Dx"
+"Dy"
+"next_point"
+]
 )
 *55 (Net
 uid 943,0
@@ -1908,6 +1956,7 @@ layer 5
 sl 0
 va (VaSet
 vasetType 3
+lineWidth 2
 )
 xt "17000,47000,18000,47000"
 pts [
@@ -1957,8 +2006,8 @@ lang 11
 decl (Decl
 n "din1"
 t "UNSIGNED"
-b "(7 DOWNTO 0)"
-o 13
+b "(9 DOWNTO 0)"
+o 21
 suid 1,0
 )
 )
@@ -2369,11 +2418,12 @@ layer 5
 sl 0
 va (VaSet
 vasetType 3
+lineWidth 2
 )
-xt "14000,47000,14000,47000"
+xt "11000,47000,11000,47000"
 pts [
-"14000,47000"
-"14000,47000"
+"11000,47000"
+"11000,47000"
 ]
 )
 ]
@@ -2386,7 +2436,7 @@ vasetType 1
 isHidden 1
 fg "0,65535,65535"
 )
-xt "14000,46625,14750,47375"
+xt "11000,46625,11750,47375"
 )
 tg (CPTG
 uid 992,0
@@ -2399,10 +2449,10 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "14791,46544,16791,47444"
+xt "11791,46544,13791,47444"
 st "dout"
 ju 2
-blo "16791,47244"
+blo "13791,47244"
 )
 s (Text
 uid 1008,0
@@ -2410,9 +2460,9 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "16791,47444,16791,47444"
+xt "13791,47444,13791,47444"
 ju 2
-blo "16791,47444"
+blo "13791,47444"
 )
 )
 thePort (LogicalPort
@@ -2421,8 +2471,8 @@ m 1
 decl (Decl
 n "dout"
 t "UNSIGNED"
-b "(7 DOWNTO 0)"
-o 13
+b "(UNSIGNED(9 DOWNTO 0) DOWNTO 0)"
+o 21
 suid 1,0
 )
 )
@@ -2431,8 +2481,8 @@ suid 1,0
 uid 995,0
 shape (PolyLine2D
 pts [
-"14000,47000"
-"12000,47000"
+"11000,47000"
+"9000,47000"
 ]
 uid 996,0
 layer 0
@@ -2444,7 +2494,7 @@ fg "49152,49152,49152"
 lineColor "26368,26368,26368"
 lineWidth 2
 )
-xt "12000,47000,14000,47000"
+xt "9000,47000,11000,47000"
 )
 oxt "6000,7000,8000,7000"
 )
@@ -2452,8 +2502,8 @@ oxt "6000,7000,8000,7000"
 uid 997,0
 shape (PolyLine2D
 pts [
-"12000,46000"
-"12000,48000"
+"9000,46000"
+"9000,48000"
 ]
 uid 998,0
 layer 0
@@ -2465,7 +2515,7 @@ fg "49152,49152,49152"
 lineColor "26368,26368,26368"
 lineWidth 2
 )
-xt "12000,46000,12000,48000"
+xt "9000,46000,9000,48000"
 )
 oxt "6000,6000,6000,8000"
 )
@@ -2479,7 +2529,7 @@ fg "0,65535,0"
 lineColor "65535,65535,65535"
 lineWidth -1
 )
-xt "12000,46000,14000,48000"
+xt "9000,46000,11000,48000"
 fos 1
 )
 showPorts 0
@@ -2495,27 +2545,27 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "11350,47200,16850,48100"
+xt "8350,47200,13850,48100"
 st "moduleware"
-blo "11350,47900"
+blo "8350,47900"
 )
 *78 (Text
 uid 1003,0
 va (VaSet
 font "courier,8,0"
 )
-xt "11350,48100,15350,49000"
+xt "8350,48100,12350,49000"
 st "constval"
-blo "11350,48800"
+blo "8350,48800"
 )
 *79 (Text
 uid 1004,0
 va (VaSet
 font "courier,8,0"
 )
-xt "11350,49000,12850,49900"
+xt "8350,49000,9850,49900"
 st "U_5"
-blo "11350,49700"
+blo "8350,49700"
 tm "InstanceNameMgr"
 )
 ]
@@ -2530,7 +2580,7 @@ uid 1007,0
 va (VaSet
 font "courier,8,0"
 )
-xt "5000,26300,5000,26300"
+xt "2000,26300,2000,26300"
 )
 header ""
 )
@@ -2545,12 +2595,16 @@ sN 0
 sTC 0
 selT 0
 )
+pwm [
+"dout"
+"UNSIGNED(9 DOWNTO 0)"
+]
 prms (Property
 optionalChildren [
 *80 (Property
 pclass "param"
 pname "value"
-pvalue "1100000001"
+pvalue "\"1100000001\""
 ptn "String"
 )
 ]
@@ -2562,30 +2616,11 @@ visOptions (mwParamsVisibilityOptions
 )
 )
 *81 (Net
-uid 1009,0
-lang 11
-decl (Decl
-n "dout"
-t "UNSIGNED"
-b "(7 DOWNTO 0)"
-o 13
-suid 36,0
-)
-declText (MLText
-uid 1010,0
-va (VaSet
-font "courier,8,0"
-)
-xt "116000,13500,138500,14400"
-st "SIGNAL dout           : UNSIGNED(7 DOWNTO 0)"
-)
-)
-*82 (Net
 uid 1059,0
 lang 11
 decl (Decl
 n "point_selector"
-t "std_logic_vector"
+t "BIT_VECTOR"
 b "(1 DOWNTO 0)"
 o 15
 suid 41,0
@@ -2595,11 +2630,11 @@ uid 1060,0
 va (VaSet
 font "courier,8,0"
 )
-xt "116000,15300,142500,16200"
-st "SIGNAL point_selector : std_logic_vector(1 DOWNTO 0)"
+xt "116000,15300,139500,16200"
+st "SIGNAL point_selector : BIT_VECTOR(1 DOWNTO 0)"
 )
 )
-*83 (Net
+*82 (Net
 uid 1132,0
 lang 11
 decl (Decl
@@ -2617,7 +2652,7 @@ xt "116000,17100,133000,18000"
 st "SIGNAL reset          : std_logic"
 )
 )
-*84 (Net
+*83 (Net
 uid 2663,0
 lang 11
 decl (Decl
@@ -2633,6 +2668,25 @@ font "courier,8,0"
 )
 xt "116000,18000,133000,18900"
 st "SIGNAL start          : std_logic"
+)
+)
+*84 (Net
+uid 3276,0
+lang 11
+decl (Decl
+n "dout"
+t "UNSIGNED"
+b "(9 DOWNTO 0)"
+o 21
+suid 45,0
+)
+declText (MLText
+uid 3277,0
+va (VaSet
+font "courier,8,0"
+)
+xt "116000,13500,138500,14400"
+st "SIGNAL dout           : UNSIGNED(9 DOWNTO 0)"
 )
 )
 *85 (Wire
@@ -3306,45 +3360,6 @@ tm "WireNameMgr"
 on &55
 )
 *102 (Wire
-uid 1011,0
-shape (OrthoPolyLine
-uid 1012,0
-va (VaSet
-vasetType 3
-)
-xt "14000,47000,17000,47000"
-pts [
-"14000,47000"
-"17000,47000"
-]
-)
-start &73
-end &57
-sat 32
-eat 32
-stc 0
-st 0
-sf 1
-si 0
-tg (WTG
-uid 1013,0
-ps "ConnStartEndStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 1014,0
-va (VaSet
-isHidden 1
-font "courier,8,0"
-)
-xt "16000,46100,18000,47000"
-st "dout"
-blo "16000,46800"
-tm "WireNameMgr"
-)
-)
-on &81
-)
-*103 (Wire
 uid 1019,0
 shape (OrthoPolyLine
 uid 1020,0
@@ -3382,12 +3397,12 @@ blo "25000,43800"
 tm "WireNameMgr"
 )
 )
-on &83
+on &82
 )
-*104 (Wire
+*103 (Wire
 uid 1051,0
 optionalChildren [
-*105 (BdJunction
+*104 (BdJunction
 uid 1069,0
 ps "OnConnectorStrategy"
 shape (Circle
@@ -3437,9 +3452,9 @@ blo "19000,26800"
 tm "WireNameMgr"
 )
 )
-on &82
+on &81
 )
-*106 (Wire
+*105 (Wire
 uid 1063,0
 shape (OrthoPolyLine
 uid 1064,0
@@ -3453,7 +3468,7 @@ pts [
 "52000,27000"
 ]
 )
-start &105
+start &104
 end &51
 sat 32
 eat 1
@@ -3477,9 +3492,9 @@ blo "43000,26800"
 tm "WireNameMgr"
 )
 )
-on &82
+on &81
 )
-*107 (Wire
+*106 (Wire
 uid 1138,0
 shape (OrthoPolyLine
 uid 1139,0
@@ -3515,7 +3530,7 @@ tm "WireNameMgr"
 )
 on &12
 )
-*108 (Wire
+*107 (Wire
 uid 2647,0
 shape (OrthoPolyLine
 uid 2648,0
@@ -3551,7 +3566,7 @@ tm "WireNameMgr"
 )
 on &12
 )
-*109 (Wire
+*108 (Wire
 uid 2655,0
 shape (OrthoPolyLine
 uid 2656,0
@@ -3584,6 +3599,47 @@ font "courier,8,0"
 xt "32100,23500,33000,26000"
 st "start"
 blo "32800,26000"
+tm "WireNameMgr"
+)
+)
+on &83
+)
+*109 (Wire
+uid 3278,0
+shape (OrthoPolyLine
+uid 3279,0
+va (VaSet
+vasetType 3
+lineWidth 2
+)
+xt "11000,47000,17000,47000"
+pts [
+"11000,47000"
+"17000,47000"
+]
+)
+start &73
+end &57
+sat 32
+eat 32
+sty 1
+stc 0
+st 0
+sf 1
+si 0
+tg (WTG
+uid 3280,0
+ps "ConnStartEndStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 3281,0
+va (VaSet
+isHidden 1
+font "courier,8,0"
+)
+xt "13000,46100,15000,47000"
+st "dout"
+blo "13000,46800"
 tm "WireNameMgr"
 )
 )
@@ -3705,11 +3761,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "-1200,-9400,74484,32930"
+viewArea "1000,10000,64812,44486"
 cachedDiagramExtent "-7000,0,171000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-7000,0"
-lastUid 2927,0
+lastUid 4588,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -4769,7 +4825,7 @@ tm "BdDeclarativeTextMgr"
 )
 commonDM (CommonDM
 ldm (LogicalDM
-suid 44,0
+suid 45,0
 usingSuid 1
 emptyRow *141 (LEmptyRow
 )
@@ -5045,22 +5101,8 @@ port (LogicalPort
 lang 11
 m 4
 decl (Decl
-n "dout"
-t "UNSIGNED"
-b "(7 DOWNTO 0)"
-o 13
-suid 36,0
-)
-)
-uid 1015,0
-)
-*172 (LeafLogPort
-port (LogicalPort
-lang 11
-m 4
-decl (Decl
 n "point_selector"
-t "std_logic_vector"
+t "BIT_VECTOR"
 b "(1 DOWNTO 0)"
 o 15
 suid 41,0
@@ -5068,7 +5110,7 @@ suid 41,0
 )
 uid 1061,0
 )
-*173 (LeafLogPort
+*172 (LeafLogPort
 port (LogicalPort
 lang 11
 m 4
@@ -5081,7 +5123,7 @@ suid 42,0
 )
 uid 1134,0
 )
-*174 (LeafLogPort
+*173 (LeafLogPort
 port (LogicalPort
 lang 11
 m 4
@@ -5093,6 +5135,20 @@ suid 44,0
 )
 )
 uid 2665,0
+)
+*174 (LeafLogPort
+port (LogicalPort
+lang 11
+m 4
+decl (Decl
+n "dout"
+t "UNSIGNED"
+b "(9 DOWNTO 0)"
+o 21
+suid 45,0
+)
+)
+uid 3282,0
 )
 ]
 )
@@ -5250,25 +5306,25 @@ uid 946,0
 litem &171
 pos 17
 dimension 20
-uid 1016,0
+uid 1062,0
 )
 *198 (MRCItem
 litem &172
 pos 18
 dimension 20
-uid 1062,0
+uid 1135,0
 )
 *199 (MRCItem
 litem &173
 pos 19
 dimension 20
-uid 1135,0
+uid 2666,0
 )
 *200 (MRCItem
 litem &174
 pos 20
 dimension 20
-uid 2666,0
+uid 3283,0
 )
 ]
 )
