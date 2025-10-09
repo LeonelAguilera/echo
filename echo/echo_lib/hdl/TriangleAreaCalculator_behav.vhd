@@ -19,7 +19,7 @@ ENTITY TriangleAreaCalculator IS
     y2 : IN UNSIGNED(9 DOWNTO 0);
     x3 : IN UNSIGNED(10 DOWNTO 0);
     y3 : IN UNSIGNED(9 DOWNTO 0);
-    area : OUT UNSIGNED(20 DOWNTO 0)
+    area : OUT UNSIGNED(19 DOWNTO 0)
   );
 -- Declarations
 
@@ -27,11 +27,23 @@ END TriangleAreaCalculator ;
 
 --
 ARCHITECTURE behav OF TriangleAreaCalculator IS
-  SIGNAL temp_1 : UNSIGNED(20 DOWNTO 0);
-  SIGNAL temp_2 : UNSIGNED(20 DOWNTO 0);
+  SIGNAL temp_x1 : SIGNED(11 DOWNTO 0);
+  SIGNAL temp_x2 : SIGNED(11 DOWNTO 0);
+  SIGNAL temp_x3 : SIGNED(11 DOWNTO 0);
+  SIGNAL temp_y1 : SIGNED(10 DOWNTO 0);
+  SIGNAL temp_y2 : SIGNED(10 DOWNTO 0);
+  SIGNAL temp_y3 : SIGNED(10 DOWNTO 0);
+  
+  SIGNAL operation_result : SIGNED(22 DOWNTO 0);
 BEGIN
-  temp_1 <= (x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2));
-  temp_2 <= ABS(temp_1);
-  area <= SHIFT_RIGHT(temp_2, 1);
+  temp_x1 <= SIGNED('0' & x1);
+  temp_x2 <= SIGNED('0' & x2);
+  temp_x3 <= SIGNED('0' & x3);
+  temp_y1 <= SIGNED('0' & y1);
+  temp_y2 <= SIGNED('0' & y2);
+  temp_y3 <= SIGNED('0' & y3);
+  
+  operation_result <= ABS((temp_x1 * (temp_y2 - temp_y3)) + (temp_x2 * (temp_y3 - temp_y1)) + (temp_x3 * (temp_y1 - temp_y2)));
+  area <= UNSIGNED(operation_result(20 DOWNTO 1));
 END ARCHITECTURE behav;
 
