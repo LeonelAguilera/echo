@@ -1,4 +1,4 @@
--- VHDL Entity echo_lib.AnularDisplayGenerator.interface
+-- VHDL Entity echo_lib.AnularDisplayGenerator.symbol
 --
 -- Created:
 --          by - leoag319.student-liu.se (muxen2-112.ad.liu.se)
