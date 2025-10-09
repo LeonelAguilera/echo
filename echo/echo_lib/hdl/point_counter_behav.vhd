@@ -11,6 +11,8 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 USE IEEE.math_real.all;
+LIBRARY work;
+USE work.codric_aux.all;
 
 ENTITY point_counter IS
    PORT( 

@@ -10,11 +10,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+USE IEEE.math_real.all;
+LIBRARY work;
+USE work.codric_aux.all;
 
 ENTITY intermediate_registers IS
-   GENERIC(
-      center_x	: INTEGER :=	195;
-      center_y	: INTEGER	:= 197
+   GENERIC( 
+      center_x : INTEGER := 195;
+      center_y : INTEGER := 197
    );
    PORT( 
       c0             : IN     std_logic;

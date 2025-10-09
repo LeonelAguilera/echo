@@ -15,6 +15,10 @@ unitName "numeric_std"
 library "IEEE"
 unitName "math_real"
 )
+(DmPackageRef
+library "work"
+unitName "codric_aux"
+)
 ]
 instances [
 (Instance
@@ -124,6 +128,7 @@ uid 999,0
 ]
 libraryRefs [
 "ieee"
+"work"
 ]
 )
 version "32.1"
@@ -226,7 +231,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "12:38:53"
+value "15:55:39"
 )
 (vvPair
 variable "group"
@@ -243,6 +248,10 @@ value "VHDL"
 (vvPair
 variable "library"
 value "echo_lib"
+)
+(vvPair
+variable "library_downstream_HdsLintPlugin"
+value "$HDS_PROJECT_DIR/echo_lib/designcheck"
 )
 (vvPair
 variable "library_downstream_ModelSimCompiler"
@@ -334,7 +343,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "12:38:53"
+value "15:55:39"
 )
 (vvPair
 variable "unit"
@@ -427,7 +436,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,1800,135000,2700"
-st "angle          : unsigned(7 DOWNTO 0)"
+st "angle          : unsigned(7 DOWNTO 0)
+"
 )
 )
 *3 (PortIoOut
@@ -491,7 +501,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,4500,135500,5400"
-st "Ax             : unsigned(10 DOWNTO 0)"
+st "Ax             : unsigned(10 DOWNTO 0)
+"
 )
 )
 *5 (PortIoOut
@@ -555,7 +566,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,5400,135000,6300"
-st "Ay             : unsigned(9 DOWNTO 0)"
+st "Ay             : unsigned(9 DOWNTO 0)
+"
 )
 )
 *7 (PortIoOut
@@ -619,7 +631,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,6300,135500,7200"
-st "Bx             : unsigned(10 DOWNTO 0)"
+st "Bx             : unsigned(10 DOWNTO 0)
+"
 )
 )
 *9 (PortIoOut
@@ -683,7 +696,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,7200,135000,8100"
-st "By             : unsigned(9 DOWNTO 0)"
+st "By             : unsigned(9 DOWNTO 0)
+"
 )
 )
 *11 (PortIoIn
@@ -747,7 +761,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,2700,129500,3600"
-st "c0             : std_logic"
+st "c0             : std_logic
+"
 )
 )
 *13 (PortIoOut
@@ -811,7 +826,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,8100,135500,9000"
-st "Cx             : unsigned(10 DOWNTO 0)"
+st "Cx             : unsigned(10 DOWNTO 0)
+"
 )
 )
 *15 (PortIoOut
@@ -875,7 +891,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,9000,135000,9900"
-st "Cy             : unsigned(9 DOWNTO 0)"
+st "Cy             : unsigned(9 DOWNTO 0)
+"
 )
 )
 *17 (PortIoOut
@@ -939,7 +956,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,9900,135500,10800"
-st "Dx             : unsigned(10 DOWNTO 0)"
+st "Dx             : unsigned(10 DOWNTO 0)
+"
 )
 )
 *19 (PortIoOut
@@ -1003,7 +1021,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,10800,135000,11700"
-st "Dy             : unsigned(9 DOWNTO 0)"
+st "Dy             : unsigned(9 DOWNTO 0)
+"
 )
 )
 *21 (PortIoIn
@@ -1068,7 +1087,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,3600,135000,4500"
-st "v_count        : unsigned(9 DOWNTO 0)"
+st "v_count        : unsigned(9 DOWNTO 0)
+"
 )
 )
 *23 (Grouping
@@ -1524,7 +1544,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,19800,138000,20700"
-st "SIGNAL x_component    : SIGNED(11 DOWNTO 0)"
+st "SIGNAL x_component    : SIGNED(11 DOWNTO 0)
+"
 )
 )
 *39 (Net
@@ -1543,7 +1564,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,20700,138000,21600"
-st "SIGNAL y_component    : SIGNED(11 DOWNTO 0)"
+st "SIGNAL y_component    : SIGNED(11 DOWNTO 0)
+"
 )
 )
 *40 (Net
@@ -1562,7 +1584,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,16200,138500,17100"
-st "SIGNAL radius         : UNSIGNED(7 DOWNTO 0)"
+st "SIGNAL radius         : UNSIGNED(7 DOWNTO 0)
+"
 )
 )
 *41 (Net
@@ -1570,8 +1593,7 @@ uid 543,0
 lang 11
 decl (Decl
 n "theta"
-t "SIGNED"
-b "(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)"
+t "angle_t"
 o 18
 suid 26,0
 )
@@ -1580,8 +1602,9 @@ uid 544,0
 va (VaSet
 font "courier,8,0"
 )
-xt "116000,18900,171000,19800"
-st "SIGNAL theta          : SIGNED(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)"
+xt "116000,18900,132000,19800"
+st "SIGNAL theta          : angle_t
+"
 )
 )
 *42 (Blk
@@ -1723,7 +1746,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,12600,133000,13500"
-st "SIGNAL done           : std_logic"
+st "SIGNAL done           : std_logic
+"
 )
 )
 *47 (Blk
@@ -1877,8 +1901,7 @@ font "courier,8,0"
 )
 xt "54000,23650,70000,25450"
 st "center_x = 195    ( INTEGER )  
-center_y = 197    ( INTEGER )  
-"
+center_y = 197    ( INTEGER )  "
 )
 header ""
 )
@@ -1941,7 +1964,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,14400,133000,15300"
-st "SIGNAL next_point     : std_logic"
+st "SIGNAL next_point     : std_logic
+"
 )
 )
 *56 (MWC
@@ -2631,7 +2655,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,15300,139500,16200"
-st "SIGNAL point_selector : BIT_VECTOR(1 DOWNTO 0)"
+st "SIGNAL point_selector : BIT_VECTOR(1 DOWNTO 0)
+"
 )
 )
 *82 (Net
@@ -2649,7 +2674,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,17100,133000,18000"
-st "SIGNAL reset          : std_logic"
+st "SIGNAL reset          : std_logic
+"
 )
 )
 *83 (Net
@@ -2667,7 +2693,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,18000,133000,18900"
-st "SIGNAL start          : std_logic"
+st "SIGNAL start          : std_logic
+"
 )
 )
 *84 (Net
@@ -2686,7 +2713,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,13500,138500,14400"
-st "SIGNAL dout           : UNSIGNED(9 DOWNTO 0)"
+st "SIGNAL dout           : UNSIGNED(9 DOWNTO 0)
+"
 )
 )
 *85 (Wire
@@ -3251,7 +3279,6 @@ shape (OrthoPolyLine
 uid 536,0
 va (VaSet
 vasetType 3
-lineWidth 2
 )
 xt "21000,18000,31000,18000"
 pts [
@@ -3263,7 +3290,6 @@ start &42
 end &34
 sat 2
 eat 1
-sty 1
 st 0
 sf 1
 si 0
@@ -3276,8 +3302,8 @@ uid 542,0
 va (VaSet
 font "courier,8,0"
 )
-xt "12000,21100,52500,22000"
-st "theta : (INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)):0)"
+xt "12000,21100,14500,22000"
+st "theta"
 blo "12000,21800"
 tm "WireNameMgr"
 )
@@ -3675,11 +3701,13 @@ uid 219,0
 va (VaSet
 font "courier,8,0"
 )
-xt "-7000,1400,7500,5000"
+xt "-7000,1400,7500,6800"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
-USE IEEE.math_real.all;"
+USE IEEE.math_real.all;
+LIBRARY work;
+USE work.codric_aux.all;"
 tm "PackageList"
 )
 ]
@@ -3761,11 +3789,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "1000,10000,64812,44486"
-cachedDiagramExtent "-7000,0,171000,51000"
+viewArea "-24137,-2090,68612,49785"
+cachedDiagramExtent "-7000,0,151000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-7000,0"
-lastUid 4588,0
+lastUid 8329,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -4791,7 +4819,7 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "114000,0,114000,0"
+xt "114000,0,151000,1800"
 tm "BdDeclarativeTextMgr"
 )
 diagSignalLabel (Text
@@ -5062,8 +5090,7 @@ lang 11
 m 4
 decl (Decl
 n "theta"
-t "SIGNED"
-b "(INTEGER(REALMAX(CEIL(LOG2(360.0*255.0/REAL(angle_amplitude))), 8.0)) DOWNTO 0)"
+t "angle_t"
 o 18
 suid 26,0
 )
