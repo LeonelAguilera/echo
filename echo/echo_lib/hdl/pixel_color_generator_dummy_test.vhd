@@ -35,6 +35,7 @@ END pixel_color_generator ;
 --
 ARCHITECTURE dummy_test OF pixel_color_generator IS
 BEGIN
+  -- Example of code change
   vga_r <= STD_LOGIC_VECTOR(h_count(7 DOWNTO 0));
   vga_g <= STD_LOGIC_VECTOR(v_count(7 DOWNTO 0));
   vga_b <= (OTHERS => '0');
