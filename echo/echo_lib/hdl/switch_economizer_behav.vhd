@@ -32,7 +32,7 @@ ENTITY switch_economizer IS
 -- Declarations
 
 END switch_economizer ;
-
+-- Example of change
 --
 ARCHITECTURE behav OF switch_economizer IS
 BEGIN
