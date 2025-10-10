@@ -102,7 +102,7 @@ ARCHITECTURE behav OF echo_eogic IS
   -- Interne Typen/Signale
   -- ==========================================================================
 
-  -- FSM: Read L \u2192 Read R \u2192 Calc \u2192 Write L \u2192 Write R
+  -- FSM: Read L -> Read R -> Calc -> Write L -> Write R
   type state_t is (S_IDLE,
                    S_RD_L, S_WAIT_L,
                    S_RD_R, S_WAIT_R,
