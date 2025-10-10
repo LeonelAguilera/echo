@@ -10,13 +10,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+USE IEEE.MATH_REAL.all;
 
 ENTITY hbar_rasterizer IS
    GENERIC( 
-      position_x  : INTEGER := 25;
-      position_y  : INTEGER := 432;
-      width       : INTEGER := 340;
-      heigth      : INTEGER := 48
+      position_x : INTEGER := 25;
+      position_y : INTEGER := 432;
+      width      : INTEGER := 340;
+      heigth     : INTEGER := 48
    );
    PORT( 
       h_count               : IN     unsigned (10 DOWNTO 0);

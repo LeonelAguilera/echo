@@ -139,23 +139,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/point_computation/struct.bd.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/point_computation/struct.bd.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/point_computation/struct.bd.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/point_computation/struct.bd.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -171,27 +171,27 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/point_computation"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/point_computation"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/point_computation"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/point_computation"
 )
 (vvPair
 variable "date"
-value "10/09/25"
+value "10/10/25"
 )
 (vvPair
 variable "day"
-value "Thu"
+value "Fri"
 )
 (vvPair
 variable "day_long"
-value "Thursday"
+value "Friday"
 )
 (vvPair
 variable "dd"
-value "09"
+value "10"
 )
 (vvPair
 variable "entity_name"
@@ -219,7 +219,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/09/25"
+value "10/10/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -231,7 +231,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "15:55:39"
+value "11:27:49"
 )
 (vvPair
 variable "group"
@@ -262,6 +262,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -279,11 +283,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/point_computation/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/point_computation/struct.bd"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/point_computation/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/point_computation/struct.bd"
 )
 (vvPair
 variable "package_name"
@@ -343,7 +347,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "15:55:39"
+value "11:27:49"
 )
 (vvPair
 variable "unit"
@@ -436,8 +440,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,1800,135000,2700"
-st "angle          : unsigned(7 DOWNTO 0)
-"
+st "angle          : unsigned(7 DOWNTO 0)"
 )
 )
 *3 (PortIoOut
@@ -501,8 +504,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,4500,135500,5400"
-st "Ax             : unsigned(10 DOWNTO 0)
-"
+st "Ax             : unsigned(10 DOWNTO 0)"
 )
 )
 *5 (PortIoOut
@@ -566,8 +568,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,5400,135000,6300"
-st "Ay             : unsigned(9 DOWNTO 0)
-"
+st "Ay             : unsigned(9 DOWNTO 0)"
 )
 )
 *7 (PortIoOut
@@ -631,8 +632,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,6300,135500,7200"
-st "Bx             : unsigned(10 DOWNTO 0)
-"
+st "Bx             : unsigned(10 DOWNTO 0)"
 )
 )
 *9 (PortIoOut
@@ -696,8 +696,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,7200,135000,8100"
-st "By             : unsigned(9 DOWNTO 0)
-"
+st "By             : unsigned(9 DOWNTO 0)"
 )
 )
 *11 (PortIoIn
@@ -761,8 +760,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,2700,129500,3600"
-st "c0             : std_logic
-"
+st "c0             : std_logic"
 )
 )
 *13 (PortIoOut
@@ -826,8 +824,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,8100,135500,9000"
-st "Cx             : unsigned(10 DOWNTO 0)
-"
+st "Cx             : unsigned(10 DOWNTO 0)"
 )
 )
 *15 (PortIoOut
@@ -891,8 +888,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,9000,135000,9900"
-st "Cy             : unsigned(9 DOWNTO 0)
-"
+st "Cy             : unsigned(9 DOWNTO 0)"
 )
 )
 *17 (PortIoOut
@@ -956,8 +952,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,9900,135500,10800"
-st "Dx             : unsigned(10 DOWNTO 0)
-"
+st "Dx             : unsigned(10 DOWNTO 0)"
 )
 )
 *19 (PortIoOut
@@ -1021,8 +1016,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,10800,135000,11700"
-st "Dy             : unsigned(9 DOWNTO 0)
-"
+st "Dy             : unsigned(9 DOWNTO 0)"
 )
 )
 *21 (PortIoIn
@@ -1087,8 +1081,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,3600,135000,4500"
-st "v_count        : unsigned(9 DOWNTO 0)
-"
+st "v_count        : unsigned(9 DOWNTO 0)"
 )
 )
 *23 (Grouping
@@ -1544,8 +1537,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,19800,138000,20700"
-st "SIGNAL x_component    : SIGNED(11 DOWNTO 0)
-"
+st "SIGNAL x_component    : SIGNED(11 DOWNTO 0)"
 )
 )
 *39 (Net
@@ -1564,8 +1556,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,20700,138000,21600"
-st "SIGNAL y_component    : SIGNED(11 DOWNTO 0)
-"
+st "SIGNAL y_component    : SIGNED(11 DOWNTO 0)"
 )
 )
 *40 (Net
@@ -1584,8 +1575,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,16200,138500,17100"
-st "SIGNAL radius         : UNSIGNED(7 DOWNTO 0)
-"
+st "SIGNAL radius         : UNSIGNED(7 DOWNTO 0)"
 )
 )
 *41 (Net
@@ -1603,8 +1593,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,18900,132000,19800"
-st "SIGNAL theta          : angle_t
-"
+st "SIGNAL theta          : angle_t"
 )
 )
 *42 (Blk
@@ -1746,8 +1735,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,12600,133000,13500"
-st "SIGNAL done           : std_logic
-"
+st "SIGNAL done           : std_logic"
 )
 )
 *47 (Blk
@@ -1964,8 +1952,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,14400,133000,15300"
-st "SIGNAL next_point     : std_logic
-"
+st "SIGNAL next_point     : std_logic"
 )
 )
 *56 (MWC
@@ -2655,8 +2642,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,15300,139500,16200"
-st "SIGNAL point_selector : BIT_VECTOR(1 DOWNTO 0)
-"
+st "SIGNAL point_selector : BIT_VECTOR(1 DOWNTO 0)"
 )
 )
 *82 (Net
@@ -2674,8 +2660,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,17100,133000,18000"
-st "SIGNAL reset          : std_logic
-"
+st "SIGNAL reset          : std_logic"
 )
 )
 *83 (Net
@@ -2693,8 +2678,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,18000,133000,18900"
-st "SIGNAL start          : std_logic
-"
+st "SIGNAL start          : std_logic"
 )
 )
 *84 (Net
@@ -2713,8 +2697,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "116000,13500,138500,14400"
-st "SIGNAL dout           : UNSIGNED(9 DOWNTO 0)
-"
+st "SIGNAL dout           : UNSIGNED(9 DOWNTO 0)"
 )
 )
 *85 (Wire
@@ -3789,11 +3772,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "-24137,-2090,68612,49785"
+viewArea "-24100,-2100,61972,46040"
 cachedDiagramExtent "-7000,0,151000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-7000,0"
-lastUid 8329,0
+lastUid 8416,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0

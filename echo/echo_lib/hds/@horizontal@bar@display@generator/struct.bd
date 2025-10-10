@@ -25,22 +25,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "heigth"
 type "INTEGER"
-value "48"
+value "height"
 )
 ]
 mwi 0
@@ -54,22 +54,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "wiper_width"
 type "INTEGER"
-value "12"
+value "wiper_width"
 )
 (GiElement
 name "wiper_heigth"
 type "INTEGER"
-value "96"
+value "wiper_heigth"
 )
 ]
 mwi 0
@@ -101,12 +101,12 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "fixed_comma_p"
@@ -130,23 +130,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator/struct.bd.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator/struct.bd.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator/struct.bd.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator/struct.bd.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -162,11 +162,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/HorizontalBarDisplayGenerator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/HorizontalBarDisplayGenerator"
 )
 (vvPair
 variable "date"
@@ -222,7 +222,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "09:42:57"
+value "11:16:44"
 )
 (vvPair
 variable "group"
@@ -253,6 +253,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -270,11 +274,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator/struct.bd"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/HorizontalBarDisplayGenerator/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/HorizontalBarDisplayGenerator/struct.bd"
 )
 (vvPair
 variable "package_name"
@@ -334,7 +338,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "09:42:57"
+value "11:16:44"
 )
 (vvPair
 variable "unit"
@@ -1188,11 +1192,11 @@ uid 231,0
 va (VaSet
 font "courier,8,0"
 )
-xt "30000,-500,47000,3100"
-st "position_x = 25     ( INTEGER )  
-position_y = 432    ( INTEGER )  
-width      = 340    ( INTEGER )  
-heigth     = 48     ( INTEGER )  "
+xt "30000,-500,50500,3100"
+st "position_x = position_x    ( INTEGER )  
+position_y = position_y    ( INTEGER )  
+width      = width         ( INTEGER )  
+heigth     = height        ( INTEGER )  "
 )
 header ""
 )
@@ -1200,22 +1204,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "heigth"
 type "INTEGER"
-value "48"
+value "height"
 )
 ]
 )
@@ -1303,12 +1307,11 @@ uid 241,0
 va (VaSet
 font "courier,8,0"
 )
-xt "31000,36400,49000,40000"
-st "position_x   = 25     ( INTEGER )  
-position_y   = 432    ( INTEGER )  
-wiper_width  = 12     ( INTEGER )  
-wiper_heigth = 96     ( INTEGER )  
-"
+xt "31000,36400,53500,40000"
+st "position_x   = position_x      ( INTEGER )  
+position_y   = position_y      ( INTEGER )  
+wiper_width  = wiper_width     ( INTEGER )  
+wiper_heigth = wiper_heigth    ( INTEGER )  "
 )
 header ""
 )
@@ -1316,22 +1319,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "wiper_width"
 type "INTEGER"
-value "12"
+value "wiper_width"
 )
 (GiElement
 name "wiper_heigth"
 type "INTEGER"
-value "96"
+value "wiper_heigth"
 )
 ]
 )
@@ -2144,7 +2147,7 @@ m 1
 decl (Decl
 n "dout"
 t "std_logic"
-o 16
+o 4
 suid 3,0
 )
 )
@@ -2444,7 +2447,7 @@ lang 11
 decl (Decl
 n "mask_f"
 t "std_logic"
-o 16
+o 4
 suid 18,0
 )
 declText (MLText
@@ -2516,10 +2519,10 @@ uid 537,0
 va (VaSet
 font "courier,8,0"
 )
-xt "19000,14300,37500,17000"
-st "position_x    = 25     ( INTEGER )  
-width         = 340    ( INTEGER )  
-fixed_comma_p = 3      ( INTEGER )  "
+xt "19000,14300,41000,17000"
+st "position_x    = position_x    ( INTEGER )  
+width         = width         ( INTEGER )  
+fixed_comma_p = 3             ( INTEGER )  "
 )
 header ""
 )
@@ -2527,12 +2530,12 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "fixed_comma_p"
@@ -2569,7 +2572,7 @@ decl (Decl
 n "wiper_center_position"
 t "unsigned"
 b "(10 DOWNTO 0)"
-o 16
+o 15
 suid 21,0
 )
 declText (MLText
@@ -3438,11 +3441,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "10500,17998,60956,46218"
+viewArea "-15165,-28347,83768,25120"
 cachedDiagramExtent "-6500,-500,127000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-11000,-51000"
-lastUid 766,0
+lastUid 966,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -4739,7 +4742,7 @@ m 1
 decl (Decl
 n "mask_f"
 t "std_logic"
-o 16
+o 4
 suid 18,0
 )
 )
@@ -4753,7 +4756,7 @@ decl (Decl
 n "wiper_center_position"
 t "unsigned"
 b "(10 DOWNTO 0)"
-o 16
+o 15
 suid 21,0
 )
 )
@@ -5013,6 +5016,54 @@ tm "GenericPragmaColHdrMgr"
 *201 (EolColHdr
 tm "GenericEolColHdrMgr"
 )
+*202 (LogGeneric
+generic (GiElement
+name "position_x"
+type "integer"
+value "25"
+)
+uid 814,0
+)
+*203 (LogGeneric
+generic (GiElement
+name "position_y"
+type "integer"
+value "432"
+)
+uid 816,0
+)
+*204 (LogGeneric
+generic (GiElement
+name "width"
+type "integer"
+value "340"
+)
+uid 818,0
+)
+*205 (LogGeneric
+generic (GiElement
+name "height"
+type "integer"
+value "48"
+)
+uid 820,0
+)
+*206 (LogGeneric
+generic (GiElement
+name "wiper_width"
+type "integer"
+value "12"
+)
+uid 822,0
+)
+*207 (LogGeneric
+generic (GiElement
+name "wiper_heigth"
+type "integer"
+value "96"
+)
+uid 824,0
+)
 ]
 )
 pdm (PhysicalDM
@@ -5020,7 +5071,7 @@ displayShortBounds 1
 editShortBounds 1
 uid 209,0
 optionalChildren [
-*202 (Sheet
+*208 (Sheet
 sheetRow (SheetRow
 headerVa (MVa
 cellColor "49152,49152,49152"
@@ -5037,31 +5088,67 @@ cellColor "39936,56832,65280"
 fontColor "0,0,0"
 font "courier,10,0"
 )
-emptyMRCItem *203 (MRCItem
+emptyMRCItem *209 (MRCItem
 litem &190
-pos 0
+pos 6
 dimension 20
 )
 uid 211,0
 optionalChildren [
-*204 (MRCItem
+*210 (MRCItem
 litem &191
 pos 0
 dimension 20
 uid 212,0
 )
-*205 (MRCItem
+*211 (MRCItem
 litem &192
 pos 1
 dimension 23
 uid 213,0
 )
-*206 (MRCItem
+*212 (MRCItem
 litem &193
 pos 2
 hidden 1
 dimension 20
 uid 214,0
+)
+*213 (MRCItem
+litem &202
+pos 0
+dimension 20
+uid 815,0
+)
+*214 (MRCItem
+litem &203
+pos 1
+dimension 20
+uid 817,0
+)
+*215 (MRCItem
+litem &204
+pos 2
+dimension 20
+uid 819,0
+)
+*216 (MRCItem
+litem &205
+pos 3
+dimension 20
+uid 821,0
+)
+*217 (MRCItem
+litem &206
+pos 4
+dimension 20
+uid 823,0
+)
+*218 (MRCItem
+litem &207
+pos 5
+dimension 20
+uid 825,0
 )
 ]
 )
@@ -5074,43 +5161,43 @@ textAngle 90
 )
 uid 215,0
 optionalChildren [
-*207 (MRCItem
+*219 (MRCItem
 litem &194
 pos 0
 dimension 20
 uid 216,0
 )
-*208 (MRCItem
+*220 (MRCItem
 litem &196
 pos 1
 dimension 50
 uid 217,0
 )
-*209 (MRCItem
+*221 (MRCItem
 litem &197
 pos 2
 dimension 100
 uid 218,0
 )
-*210 (MRCItem
+*222 (MRCItem
 litem &198
 pos 3
 dimension 100
 uid 219,0
 )
-*211 (MRCItem
+*223 (MRCItem
 litem &199
 pos 4
 dimension 50
 uid 220,0
 )
-*212 (MRCItem
+*224 (MRCItem
 litem &200
 pos 5
 dimension 50
 uid 221,0
 )
-*213 (MRCItem
+*225 (MRCItem
 litem &201
 pos 6
 dimension 80
@@ -5130,5 +5217,5 @@ vaOverrides [
 uid 196,0
 type 1
 )
-activeModelName "BlockDiag"
+activeModelName "BlockDiag:GEN"
 )

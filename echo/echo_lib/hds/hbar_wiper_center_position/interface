@@ -26,7 +26,7 @@ model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
 ordering 1
-suid 16,0
+suid 20,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -74,10 +74,10 @@ n "wiper_center_position"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 4
-suid 13,0
+suid 17,0
 )
 )
-uid 299,0
+uid 350,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -87,10 +87,10 @@ n "wiper_position"
 t "unsigned"
 b "(7 DOWNTO 0)"
 o 3
-suid 14,0
+suid 18,0
 )
 )
-uid 301,0
+uid 352,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -100,10 +100,10 @@ n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 1
-suid 15,0
+suid 19,0
 )
 )
-uid 303,0
+uid 354,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -113,10 +113,10 @@ n "v_count"
 t "unsigned"
 b "(9 DOWNTO 0)"
 o 2
-suid 16,0
+suid 20,0
 )
 )
-uid 305,0
+uid 356,0
 )
 ]
 )
@@ -172,25 +172,25 @@ uid 99,0
 litem &14
 pos 0
 dimension 20
-uid 300,0
+uid 351,0
 )
 *24 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 302,0
+uid 353,0
 )
 *25 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 304,0
+uid 355,0
 )
 *26 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 306,0
+uid 357,0
 )
 ]
 )
@@ -463,23 +463,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -495,11 +495,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position"
 )
 (vvPair
 variable "date"
@@ -555,7 +555,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "09:22:57"
+value "10:49:28"
 )
 (vvPair
 variable "group"
@@ -586,6 +586,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -603,11 +607,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface"
 )
 (vvPair
 variable "package_name"
@@ -667,7 +671,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "09:22:57"
+value "10:49:28"
 )
 (vvPair
 variable "unit"
@@ -702,10 +706,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *66 (CptPort
-uid 279,0
+uid 330,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 280,0
+uid 331,0
 ro 90
 va (VaSet
 vasetType 1
@@ -714,11 +718,11 @@ fg "0,65535,0"
 xt "30000,8625,30750,9375"
 )
 tg (CPTG
-uid 281,0
+uid 332,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 282,0
+uid 333,0
 va (VaSet
 font "courier,8,0"
 )
@@ -730,10 +734,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 283,0
+uid 334,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,4500,71000,5400"
+st "wiper_center_position : OUT    unsigned (10 DOWNTO 0)
+"
 )
 thePort (LogicalPort
 lang 11
@@ -743,15 +750,15 @@ n "wiper_center_position"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 4
-suid 13,0
+suid 17,0
 )
 )
 )
 *67 (CptPort
-uid 284,0
+uid 335,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 285,0
+uid 336,0
 ro 90
 va (VaSet
 vasetType 1
@@ -760,11 +767,11 @@ fg "0,65535,0"
 xt "14250,8625,15000,9375"
 )
 tg (CPTG
-uid 286,0
+uid 337,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 287,0
+uid 338,0
 va (VaSet
 font "courier,8,0"
 )
@@ -775,10 +782,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 288,0
+uid 339,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,3600,71500,4500"
+st "wiper_position        : IN     unsigned (7 DOWNTO 0) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -787,15 +797,15 @@ n "wiper_position"
 t "unsigned"
 b "(7 DOWNTO 0)"
 o 3
-suid 14,0
+suid 18,0
 )
 )
 )
 *68 (CptPort
-uid 289,0
+uid 340,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 290,0
+uid 341,0
 ro 90
 va (VaSet
 vasetType 1
@@ -804,11 +814,11 @@ fg "0,65535,0"
 xt "14250,9625,15000,10375"
 )
 tg (CPTG
-uid 291,0
+uid 342,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 292,0
+uid 343,0
 va (VaSet
 font "courier,8,0"
 )
@@ -819,10 +829,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 293,0
+uid 344,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,1800,72000,2700"
+st "h_count               : IN     unsigned (10 DOWNTO 0) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -831,15 +844,15 @@ n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 1
-suid 15,0
+suid 19,0
 )
 )
 )
 *69 (CptPort
-uid 294,0
+uid 345,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 295,0
+uid 346,0
 ro 90
 va (VaSet
 vasetType 1
@@ -848,11 +861,11 @@ fg "0,65535,0"
 xt "14250,10625,15000,11375"
 )
 tg (CPTG
-uid 296,0
+uid 347,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 297,0
+uid 348,0
 va (VaSet
 font "courier,8,0"
 )
@@ -863,10 +876,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 298,0
+uid 349,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,2700,71500,3600"
+st "v_count               : IN     unsigned (9 DOWNTO 0) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -875,7 +891,7 @@ n "v_count"
 t "unsigned"
 b "(9 DOWNTO 0)"
 o 2
-suid 16,0
+suid 20,0
 )
 )
 )
@@ -928,8 +944,7 @@ st "Generic Declarations
 
 position_x    INTEGER 25   
 width         INTEGER 340  
-fixed_comma_p INTEGER 3    
-"
+fixed_comma_p INTEGER 3    "
 )
 header "Generic Declarations"
 showHdrWhenContentsEmpty 1
@@ -1609,6 +1624,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 306,0
+lastUid 357,0
 activeModelName "Symbol:CDM"
 )
