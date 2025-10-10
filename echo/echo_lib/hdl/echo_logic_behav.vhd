@@ -8,50 +8,42 @@
 -- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
 --
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
-entity Echo_Logic is
-  generic (
-    G_ADDR_WIDTH : natural := 20;  -- Wortadressbreite
-    G_DATA_WIDTH : natural := 16   -- Audio: 16 Bit
-  );
-  port (
-    -- System
-    clk       : in  std_logic;
-    reset_n   : in  std_logic;
+ENTITY echo_logic IS
+   GENERIC( 
+      G_ADDR_WIDTH : natural := 20;      -- Wortadressbreite
+      G_DATA_WIDTH : natural := 16       -- Audio: 16 Bit
+   );
+   PORT( 
+      audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      delay_samples   : IN     unsigned (G_ADDR_WIDTH-2 DOWNTO 0);
+      g_feedback_q15  : IN     std_logic_vector (15 DOWNTO 0);
+      wr_en           : OUT    std_logic;
+      wr_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      wr_data         : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      rd_en           : OUT    std_logic;
+      rd_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      RESET_N         : IN     std_logic;
+      audio_in_ready  : OUT    std_logic;
+      audio_out_valid : OUT    std_logic;
+      rd_valid        : IN     std_logic;
+      rd_data         : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_in_valid  : IN     std_logic;
+      clk             : IN     std_logic
+   );
 
-    -- Audio-Stream (Stereo, 16 Bit, Zweierkomplement)
-    in_L      : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    in_R      : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    in_valid  : in  std_logic;      -- 1-Takt-Puls: neues L/R-Frame liegt an
-    in_ready  : out std_logic;      -- High: Wir können ein neues Frame übernehmen
+-- Declarations
 
-    out_L     : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    out_R     : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    out_valid : out std_logic;      -- 1-Takt-Puls: out_L/out_R gültig
+END echo_logic ;
 
-    -- Steuerung
-    -- delay_samples: Anzahl Samples pro KANAL (L ODER R).
-    -- Achtung: Ablage ist Stereo-interleaved \u2192 intern *2 in Wörter (delay_words).
-    delay_samples    : in  unsigned(G_ADDR_WIDTH-2 downto 0);
-    g_feedback_q15   : in  std_logic_vector(15 downto 0);     -- Q1.15 (0..~0.999)
 
-    -- SRAM_Control-User-Interface
-    wr_en    : out std_logic;
-    wr_addr  : out std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    wr_data  : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-
-    rd_en    : out std_logic;
-    rd_addr  : out std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    rd_data  : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    rd_valid : in  std_logic
-  );
-end entity;
-
-architecture behav of Echo_Logic is
-
+ARCHITECTURE behav OF echo_eogic IS
   -- ==========================================================================
   -- Hilfsfunktionen
   -- ==========================================================================
@@ -175,8 +167,8 @@ begin
   rd_addr <= std_logic_vector(rd_addr_i);
   wr_data <= wr_data_i;
 
-  out_L   <= std_logic_vector(yL);
-  out_R   <= std_logic_vector(yR);
+  audio_out_L   <= std_logic_vector(yL);
+  audio_out_R   <= std_logic_vector(yR);
 
   -- Steuerparameter intern
   g_q15 <= signed(g_feedback_q15);
