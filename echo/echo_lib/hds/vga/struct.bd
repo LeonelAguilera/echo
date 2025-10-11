@@ -138,19 +138,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/vga"
 )
 (vvPair
 variable "date"
-value "10/06/25"
+value "10/11/25"
 )
 (vvPair
 variable "day"
-value "Mon"
+value "Sat"
 )
 (vvPair
 variable "day_long"
-value "Monday"
+value "Saturday"
 )
 (vvPair
 variable "dd"
-value "06"
+value "11"
 )
 (vvPair
 variable "entity_name"
@@ -178,7 +178,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/06/25"
+value "10/11/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -190,7 +190,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "21:34:44"
+value "11:02:07"
 )
 (vvPair
 variable "group"
@@ -207,6 +207,10 @@ value "VHDL"
 (vvPair
 variable "library"
 value "echo_lib"
+)
+(vvPair
+variable "library_downstream_HdsLintPlugin"
+value "$HDS_PROJECT_DIR/echo_lib/designcheck"
 )
 (vvPair
 variable "library_downstream_ModelSimCompiler"
@@ -298,7 +302,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "21:34:44"
+value "11:02:07"
 )
 (vvPair
 variable "unit"
@@ -1766,7 +1770,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,18200,97000,19100"
-st "SIGNAL h_count          : unsigned(10 DOWNTO 0)"
+st "SIGNAL h_count          : unsigned(10 DOWNTO 0)
+"
 )
 )
 *48 (GlobalConnector
@@ -1826,7 +1831,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,3800,87500,4700"
-st "c0               : std_logic"
+st "c0               : std_logic
+"
 )
 )
 *51 (Net
@@ -1844,7 +1850,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,8300,87500,9200"
-st "reset_n          : std_logic"
+st "reset_n          : std_logic
+"
 )
 )
 *52 (Net
@@ -1863,7 +1870,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,20000,96500,20900"
-st "SIGNAL v_count          : unsigned(9 DOWNTO 0)"
+st "SIGNAL v_count          : unsigned(9 DOWNTO 0)
+"
 )
 )
 *53 (MWC
@@ -2323,7 +2331,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,11900,87500,12800"
-st "vga_clk          : std_logic"
+st "vga_clk          : std_logic
+"
 )
 )
 *72 (Net
@@ -2341,7 +2350,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,13700,87500,14600"
-st "vga_hsync_n      : std_logic"
+st "vga_hsync_n      : std_logic
+"
 )
 )
 *73 (Net
@@ -2359,7 +2369,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,11000,87500,11900"
-st "vga_blank_n      : std_logic"
+st "vga_blank_n      : std_logic
+"
 )
 )
 *74 (Net
@@ -2377,7 +2388,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,16400,87500,17300"
-st "vga_vsync_n      : std_logic"
+st "vga_vsync_n      : std_logic
+"
 )
 )
 *75 (Net
@@ -2396,7 +2408,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,14600,97000,15500"
-st "vga_r            : std_logic_vector(7 DOWNTO 0)"
+st "vga_r            : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *76 (Net
@@ -2415,7 +2428,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,12800,97000,13700"
-st "vga_g            : std_logic_vector(7 DOWNTO 0)"
+st "vga_g            : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *77 (Net
@@ -2434,7 +2448,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,10100,97000,11000"
-st "vga_b            : std_logic_vector(7 DOWNTO 0)"
+st "vga_b            : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *78 (Net
@@ -2452,7 +2467,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,15500,87500,16400"
-st "vga_sync         : std_logic"
+st "vga_sync         : std_logic
+"
 )
 )
 *79 (Net
@@ -2470,7 +2486,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,19100,91000,20000"
-st "SIGNAL hblank           : std_logic"
+st "SIGNAL hblank           : std_logic
+"
 )
 )
 *80 (Net
@@ -2488,7 +2505,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,20900,91000,21800"
-st "SIGNAL vblank           : std_logic"
+st "SIGNAL vblank           : std_logic
+"
 )
 )
 *81 (PortIoIn
@@ -2553,7 +2571,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,6500,93000,7400"
-st "left_ear_volume  : unsigned(7 DOWNTO 0)"
+st "left_ear_volume  : unsigned(7 DOWNTO 0)
+"
 )
 )
 *83 (Net
@@ -2572,7 +2591,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,9200,93000,10100"
-st "right_ear_volume : unsigned(7 DOWNTO 0)"
+st "right_ear_volume : unsigned(7 DOWNTO 0)
+"
 )
 )
 *84 (Net
@@ -2591,7 +2611,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,7400,93000,8300"
-st "master_volume    : unsigned(7 DOWNTO 0)"
+st "master_volume    : unsigned(7 DOWNTO 0)
+"
 )
 )
 *85 (Net
@@ -2610,7 +2631,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,2900,93000,3800"
-st "balance          : unsigned(7 DOWNTO 0)"
+st "balance          : unsigned(7 DOWNTO 0)
+"
 )
 )
 *86 (Net
@@ -2629,7 +2651,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,4700,93000,5600"
-st "echo_duration    : unsigned(7 DOWNTO 0)"
+st "echo_duration    : unsigned(7 DOWNTO 0)
+"
 )
 )
 *87 (Net
@@ -2648,7 +2671,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "73000,5600,93000,6500"
-st "echo_intensity   : unsigned(7 DOWNTO 0)"
+st "echo_intensity   : unsigned(7 DOWNTO 0)
+"
 )
 )
 *88 (MWC
@@ -4229,11 +4253,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "1045,7985,67825,45335"
+viewArea "7700,7800,65576,40170"
 cachedDiagramExtent "-5500,0,124000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-69000,0"
-lastUid 2272,0
+lastUid 2412,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
