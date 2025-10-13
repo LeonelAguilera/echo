@@ -23,9 +23,9 @@ ENTITY pixel_color_generator IS
       reset_n          : IN     std_logic;
       right_ear_volume : IN     unsigned (7 DOWNTO 0);
       v_count          : IN     unsigned (9 DOWNTO 0);
-      vga_b            : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_g            : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_r            : OUT    std_logic_vector (7 DOWNTO 0)
+      vga_b_d          : OUT    std_logic_vector (7 DOWNTO 0);
+      vga_g_d          : OUT    std_logic_vector (7 DOWNTO 0);
+      vga_r_d          : OUT    std_logic_vector (7 DOWNTO 0)
    );
 
 -- Declarations
@@ -35,9 +35,8 @@ END pixel_color_generator ;
 --
 ARCHITECTURE dummy_test OF pixel_color_generator IS
 BEGIN
-  -- Example of code change
-  vga_r <= STD_LOGIC_VECTOR(h_count(7 DOWNTO 0));
-  vga_g <= STD_LOGIC_VECTOR(v_count(7 DOWNTO 0));
-  vga_b <= (OTHERS => '0');
+  vga_r_d <= STD_LOGIC_VECTOR(h_count(7 DOWNTO 0));
+  vga_g_d <= STD_LOGIC_VECTOR(v_count(7 DOWNTO 0));
+  vga_b_d <= (OTHERS => '0');
 END ARCHITECTURE dummy_test;
 

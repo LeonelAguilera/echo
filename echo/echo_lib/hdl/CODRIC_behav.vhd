@@ -74,6 +74,7 @@ BEGIN
           target_angle <= (360 * 255 / angle_amplitude) - theta;
         END IF;          
       ELSIF counter /= number_of_iterations THEN
+        counter <= counter + 1;
         IF angle < target_angle THEN
           angle <= angle + precomputed_angle_aproximator(counter);
           calc_x <= calc_x - SHIFT_RIGHT(calc_y, counter);
@@ -99,11 +100,6 @@ BEGIN
           x_component <= SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
           y_component <= -SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
         END CASE;
-      END IF;
-    END IF;
-    IF RISING_EDGE(c0) THEN
-      IF counter /= number_of_iterations AND start = '0' THEN
-        counter <= counter + 1;
       END IF;
     END IF;
   END PROCESS;
