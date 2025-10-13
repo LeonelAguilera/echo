@@ -120,19 +120,19 @@ value "/home/alfth698/echo/echo/echo_lib/hds/top"
 )
 (vvPair
 variable "date"
-value "10/10/25"
+value "10/13/25"
 )
 (vvPair
 variable "day"
-value "Fri"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Friday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "10"
+value "13"
 )
 (vvPair
 variable "entity_name"
@@ -160,7 +160,7 @@ value "alfth698"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/10/25"
+value "10/13/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -168,11 +168,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-111.ad.liu.se"
+value "muxen2-108.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "02:21:16"
+value "14:10:50"
 )
 (vvPair
 variable "group"
@@ -180,7 +180,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-111.ad.liu.se"
+value "muxen2-108.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -272,7 +272,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "02:21:16"
+value "14:10:50"
 )
 (vvPair
 variable "unit"
@@ -1044,7 +1044,7 @@ fg "39936,56832,65280"
 lineColor "0,0,32768"
 lineWidth 2
 )
-xt "31000,28000,39000,38000"
+xt "31000,28000,39000,39000"
 )
 oxt "0,0,8000,10000"
 ttg (MlTextGroup
@@ -1108,7 +1108,7 @@ va (VaSet
 vasetType 1
 fg "49152,49152,49152"
 )
-xt "31250,36250,32750,37750"
+xt "31250,37250,32750,38750"
 iconName "BlockDiagram.png"
 iconMaskName "BlockDiagram.msk"
 ftype 1
@@ -1164,44 +1164,6 @@ st "SIGNAL Reset    : std_logic
 )
 )
 *38 (Net
-uid 475,0
-lang 11
-decl (Decl
-n "Mode"
-t "std_logic"
-o 4
-suid 14,0
-)
-declText (MLText
-uid 476,0
-va (VaSet
-font "courier,8,0"
-)
-xt "22000,4500,36000,5400"
-st "SIGNAL Mode     : std_logic
-"
-)
-)
-*39 (Net
-uid 487,0
-lang 11
-decl (Decl
-n "CSB"
-t "std_logic"
-o 8
-suid 15,0
-)
-declText (MLText
-uid 488,0
-va (VaSet
-font "courier,8,0"
-)
-xt "22000,2700,36000,3600"
-st "SIGNAL CSB      : std_logic
-"
-)
-)
-*40 (Net
 uid 649,0
 lang 11
 decl (Decl
@@ -1220,7 +1182,7 @@ st "SIGNAL SDA      : std_logic
 "
 )
 )
-*41 (Net
+*39 (Net
 uid 659,0
 lang 11
 decl (Decl
@@ -1239,7 +1201,7 @@ st "SIGNAL OK       : std_logic
 "
 )
 )
-*42 (Net
+*40 (Net
 uid 669,0
 lang 11
 decl (Decl
@@ -1255,6 +1217,44 @@ font "courier,8,0"
 )
 xt "22000,7200,36000,8100"
 st "SIGNAL SCL      : std_logic
+"
+)
+)
+*41 (Net
+uid 740,0
+lang 11
+decl (Decl
+n "CSB"
+t "std_logic"
+o 6
+suid 22,0
+)
+declText (MLText
+uid 741,0
+va (VaSet
+font "courier,8,0"
+)
+xt "22000,2700,36000,3600"
+st "SIGNAL CSB      : std_logic
+"
+)
+)
+*42 (Net
+uid 750,0
+lang 11
+decl (Decl
+n "Mode"
+t "std_logic"
+o 7
+suid 23,0
+)
+declText (MLText
+uid 751,0
+va (VaSet
+font "courier,8,0"
+)
+xt "22000,4500,36000,5400"
+st "SIGNAL Mode     : std_logic
 "
 )
 )
@@ -1331,78 +1331,6 @@ tm "WireNameMgr"
 on &37
 )
 *45 (Wire
-uid 467,0
-shape (OrthoPolyLine
-uid 468,0
-va (VaSet
-vasetType 3
-)
-xt "39000,32000,49000,32000"
-pts [
-"39000,32000"
-"49000,32000"
-]
-)
-start &32
-sat 2
-eat 16
-st 0
-sf 1
-si 0
-tg (WTG
-uid 473,0
-ps "ConnStartEndStrategy"
-stg "STSignalDisplayStrategy"
-f (Text
-uid 474,0
-va (VaSet
-font "courier,8,0"
-)
-xt "41000,31100,43000,32000"
-st "Mode"
-blo "41000,31800"
-tm "WireNameMgr"
-)
-)
-on &38
-)
-*46 (Wire
-uid 479,0
-shape (OrthoPolyLine
-uid 480,0
-va (VaSet
-vasetType 3
-)
-xt "39000,33000,49000,33000"
-pts [
-"39000,33000"
-"49000,33000"
-]
-)
-start &32
-sat 2
-eat 16
-st 0
-sf 1
-si 0
-tg (WTG
-uid 485,0
-ps "ConnStartEndStrategy"
-stg "STSignalDisplayStrategy"
-f (Text
-uid 486,0
-va (VaSet
-font "courier,8,0"
-)
-xt "41000,32100,42500,33000"
-st "CSB"
-blo "41000,32800"
-tm "WireNameMgr"
-)
-)
-on &39
-)
-*47 (Wire
 uid 641,0
 shape (OrthoPolyLine
 uid 642,0
@@ -1436,9 +1364,9 @@ blo "41000,33800"
 tm "WireNameMgr"
 )
 )
-on &40
+on &38
 )
-*48 (Wire
+*46 (Wire
 uid 651,0
 shape (OrthoPolyLine
 uid 652,0
@@ -1472,9 +1400,9 @@ blo "41000,34800"
 tm "WireNameMgr"
 )
 )
-on &41
+on &39
 )
-*49 (Wire
+*47 (Wire
 uid 661,0
 shape (OrthoPolyLine
 uid 662,0
@@ -1505,6 +1433,78 @@ font "courier,8,0"
 xt "41000,35100,42500,36000"
 st "SCL"
 blo "41000,35800"
+tm "WireNameMgr"
+)
+)
+on &40
+)
+*48 (Wire
+uid 732,0
+shape (OrthoPolyLine
+uid 733,0
+va (VaSet
+vasetType 3
+)
+xt "39000,37000,49000,37000"
+pts [
+"39000,37000"
+"49000,37000"
+]
+)
+start &32
+sat 2
+eat 16
+st 0
+sf 1
+si 0
+tg (WTG
+uid 738,0
+ps "ConnStartEndStrategy"
+stg "STSignalDisplayStrategy"
+f (Text
+uid 739,0
+va (VaSet
+font "courier,8,0"
+)
+xt "41000,36100,42500,37000"
+st "CSB"
+blo "41000,36800"
+tm "WireNameMgr"
+)
+)
+on &41
+)
+*49 (Wire
+uid 742,0
+shape (OrthoPolyLine
+uid 743,0
+va (VaSet
+vasetType 3
+)
+xt "39000,38000,49000,38000"
+pts [
+"39000,38000"
+"49000,38000"
+]
+)
+start &32
+sat 2
+eat 16
+st 0
+sf 1
+si 0
+tg (WTG
+uid 748,0
+ps "ConnStartEndStrategy"
+stg "STSignalDisplayStrategy"
+f (Text
+uid 749,0
+va (VaSet
+font "courier,8,0"
+)
+xt "41000,37100,43000,38000"
+st "Mode"
+blo "41000,37800"
 tm "WireNameMgr"
 )
 )
@@ -1624,12 +1624,12 @@ tm "BdCompilerDirectivesTextMgr"
 ]
 associable 1
 )
-windowSize "-4,16,1436,862"
-viewArea "-22100,-3300,65524,45444"
+windowSize "-8,41,1928,1170"
+viewArea "-22100,-3300,87532,59804"
 cachedDiagramExtent "0,0,69000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "0,0"
-lastUid 680,0
+lastUid 755,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -2689,7 +2689,7 @@ tm "BdDeclarativeTextMgr"
 )
 commonDM (CommonDM
 ldm (LogicalDM
-suid 21,0
+suid 23,0
 usingSuid 1
 emptyRow *81 (LEmptyRow
 )
@@ -2759,32 +2759,6 @@ port (LogicalPort
 lang 11
 m 4
 decl (Decl
-n "Mode"
-t "std_logic"
-o 4
-suid 14,0
-)
-)
-uid 477,0
-)
-*97 (LeafLogPort
-port (LogicalPort
-lang 11
-m 4
-decl (Decl
-n "CSB"
-t "std_logic"
-o 8
-suid 15,0
-)
-)
-uid 507,0
-)
-*98 (LeafLogPort
-port (LogicalPort
-lang 11
-m 4
-decl (Decl
 n "SDA"
 t "std_logic"
 o 9
@@ -2793,7 +2767,7 @@ suid 19,0
 )
 uid 675,0
 )
-*99 (LeafLogPort
+*97 (LeafLogPort
 port (LogicalPort
 lang 11
 m 4
@@ -2806,7 +2780,7 @@ suid 20,0
 )
 uid 677,0
 )
-*100 (LeafLogPort
+*98 (LeafLogPort
 port (LogicalPort
 lang 11
 m 4
@@ -2818,6 +2792,32 @@ suid 21,0
 )
 )
 uid 679,0
+)
+*99 (LeafLogPort
+port (LogicalPort
+lang 11
+m 4
+decl (Decl
+n "CSB"
+t "std_logic"
+o 6
+suid 22,0
+)
+)
+uid 752,0
+)
+*100 (LeafLogPort
+port (LogicalPort
+lang 11
+m 4
+decl (Decl
+n "Mode"
+t "std_logic"
+o 7
+suid 23,0
+)
+)
+uid 754,0
 )
 ]
 )
@@ -2885,31 +2885,31 @@ uid 466,0
 litem &96
 pos 2
 dimension 20
-uid 478,0
+uid 676,0
 )
 *109 (MRCItem
 litem &97
 pos 3
 dimension 20
-uid 508,0
+uid 678,0
 )
 *110 (MRCItem
 litem &98
 pos 4
 dimension 20
-uid 676,0
+uid 680,0
 )
 *111 (MRCItem
 litem &99
 pos 5
 dimension 20
-uid 678,0
+uid 753,0
 )
 *112 (MRCItem
 litem &100
 pos 6
 dimension 20
-uid 680,0
+uid 755,0
 )
 ]
 )
