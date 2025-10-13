@@ -8,6 +8,15 @@
 -- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
 --
 
+--
+-- VHDL Architecture echo_lib.echo_logic.behav
+--
+-- Created:
+--          by - antmo328.student-liu.se (muxen2-104.ad.liu.se)
+--          at - 14:31:37 10/07/25
+--
+-- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
+--
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
@@ -18,24 +27,25 @@ ENTITY echo_logic IS
       G_DATA_WIDTH : natural := 16       -- Audio: 16 Bit
    );
    PORT( 
+      RESET_N         : IN     std_logic;
+      clk             : IN     std_logic;
+      audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      delay_samples   : IN     unsigned (G_ADDR_WIDTH-2 DOWNTO 0);
-      g_feedback_q15  : IN     std_logic_vector (15 DOWNTO 0);
+      audio_in_ready  : OUT    std_logic;
+      audio_in_valid  : IN     std_logic;
+      audio_out_valid : OUT    std_logic;
       wr_en           : OUT    std_logic;
       wr_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
       wr_data         : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       rd_en           : OUT    std_logic;
       rd_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
-      RESET_N         : IN     std_logic;
-      audio_in_ready  : OUT    std_logic;
-      audio_out_valid : OUT    std_logic;
       rd_valid        : IN     std_logic;
       rd_data         : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      audio_in_valid  : IN     std_logic;
-      clk             : IN     std_logic
+      echo_disable    : IN     std_logic;
+      g_feedback_q15  : IN     std_logic_vector (15 DOWNTO 0);
+      delay_samples   : IN     std_logic_vector (G_ADDR_WIDTH-2 DOWNTO 0)
    );
 
 -- Declarations
@@ -43,7 +53,7 @@ ENTITY echo_logic IS
 END echo_logic ;
 
 
-ARCHITECTURE behav OF echo_eogic IS
+ARCHITECTURE behav OF echo_logic IS
   -- ==========================================================================
   -- Hilfsfunktionen
   -- ==========================================================================
@@ -65,42 +75,68 @@ ARCHITECTURE behav OF echo_eogic IS
   end function;
 
   -- Q1.15 multiply: x (s16) * g (q1.15) -> s16 (saturierend, rundend)
-  -- Rundung: für prod >= 0 wird +0x4000 addiert (Round-to-nearest),
-  --          für prod < 0 "round toward zero" (einfach & robust).
-  function mul_q15_s16(x : signed(15 downto 0); g : signed(15 downto 0)) return signed is
-    variable prod  : signed(31 downto 0);
-    variable round : signed(31 downto 0);
-    variable shr   : signed(31 downto 0);
-    variable y     : signed(15 downto 0);
-  begin
-    prod  := resize(x, 32) * resize(g, 32);     -- 16x16 -> 32 (Q2.30)
-    round := to_signed(16#00004000#, 32);
-    if prod >= 0 then
-      shr := shift_right(prod + round, 15);     -- -> Q1.15
-    else
-      shr := shift_right(prod, 15);             -- toward zero
-    end if;
+  -- Rundung: f? prod >= 0 wird +0x4000 addiert (Round-to-nearest),
+  --          f? prod < 0 "round toward zero" (einfach & robust).
+--  function mul_q15_s16(x : signed(15 downto 0); g : signed(15 downto 0)) return signed is
+--   variable prod64 : signed(63 downto 0);
+--   variable shr    : signed(63 downto 0);
+--   variable y      : signed(15 downto 0);
+-- begin
+--   prod64 := resize(x, 32) * resize(g, 32); -- 16x16 -> 64 Bit
+--   if prod64 >= 0 then
+--     shr := shift_right(prod64 + to_signed(16#00004000#, 64), 15);
+--   else
+--     shr := shift_right(prod64, 15);
+--   end if;
+-- 
+--   if    shr > to_signed( 32767, 64) then y := to_signed( 32767, 16);
+--   elsif shr < to_signed(-32768, 64) then y := to_signed(-32768, 16);
+--   else  y := signed(shr(15 downto 0));
+--   end if;
+-- 
+--   return y;
+-- end function;
+-- 
+--   -- Modularer Subtrahierer f? Ringpuffer-Adressen: (a - b) mod 2^N
+--   function mod_sub(a, b : unsigned) return unsigned is
+--     variable aa  : unsigned(a'range) := a;
+--     variable bb  : unsigned(a'range) := resize(b, a'length);
+--   begin
+--     return aa - bb;  -- wrappt automatisch mod 2^N
+--   end function;
 
-    -- Clip auf 16 Bit
-    if    shr > to_signed( 32767, 32) then y := to_signed( 32767, 16);
-    elsif shr < to_signed(-32768, 32) then y := to_signed(-32768, 16);
-    else  y := signed(shr(15 downto 0));
-    end if;
+function mul_q15_s16(x : signed(15 downto 0); g : signed(15 downto 0)) return signed is
+  variable prod  : signed(31 downto 0);  -- 16x16 -> 32
+  variable shr   : signed(31 downto 0);
+  variable y     : signed(15 downto 0);
+begin
+  prod := x * g;  -- 16x16 ergibt 32 Bit
+  if prod >= 0 then
+    shr := shift_right(prod + to_signed(16#00004000#, 32), 15); -- round-to-nearest
+  else
+    shr := shift_right(prod, 15); -- toward zero
+  end if;
 
-    return y;
-  end function;
+  if    shr > to_signed( 32767, 32) then y := to_signed( 32767, 16);
+  elsif shr < to_signed(-32768, 32) then y := to_signed(-32768, 16);
+  else  y := signed(shr(15 downto 0));
+  end if;
 
-  -- Modularer Subtrahierer für Ringpuffer-Adressen: (a - b) mod 2^N
-  function mod_sub(a, b : unsigned) return unsigned is
-    variable aa  : unsigned(a'range) := a;
-    variable bb  : unsigned(a'range) := resize(b, a'length);
-  begin
-    return aa - bb;  -- wrappt automatisch mod 2^N
-  end function;
+  return y;
+end function;
 
-  -- ==========================================================================
-  -- Interne Typen/Signale
-  -- ==========================================================================
+-- Modularer Subtrahierer für Ringpuffer-Adressen: (a - b) mod 2^N
+function mod_sub(a, b : unsigned) return unsigned is
+  variable aa  : unsigned(a'range) := a;
+  variable bb  : unsigned(a'range) := resize(b, a'length);
+begin
+  return aa - bb;  -- wrappt automatisch mod 2^N
+end function;
+
+
+-- ==========================================================================
+-- Interne Typen/Signale
+-- ==========================================================================
 
   -- FSM: Read L -> Read R -> Calc -> Write L -> Write R
   type state_t is (S_IDLE,
@@ -118,9 +154,10 @@ ARCHITECTURE behav OF echo_eogic IS
   -- Gain als signed (Q1.15)
   signal g_q15 : signed(15 downto 0);
 
-  -- Delay in WÖRTERN (Stereo interleaved \u2192 *2)
+  -- Delay in Wörtern (Stereo interleaved -> *2)
   signal delay_words : unsigned(G_ADDR_WIDTH-1 downto 0);
 
+  
   -- Ringpuffer-Schreibzeiger (zeigt aufs L-Wort; R = L+1)
   signal wr_ptr      : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
 
@@ -128,15 +165,15 @@ ARCHITECTURE behav OF echo_eogic IS
   signal rd_ptr_L    : unsigned(G_ADDR_WIDTH-1 downto 0);
   signal rd_ptr_R    : unsigned(G_ADDR_WIDTH-1 downto 0);
 
-  -- Verzögerte Werte aus dem Puffer
+  -- Verz?erte Werte aus dem Puffer
   signal delayed_L   : signed(15 downto 0) := (others => '0');
   signal delayed_R   : signed(15 downto 0) := (others => '0');
 
-  -- Effektiv genutzte verzögerte Werte (Priming: ggf. 0)
+  -- Effektiv genutzte verz?erte Werte (Priming: ggf. 0)
   signal delayed_eff_L : signed(15 downto 0) := (others => '0');
   signal delayed_eff_R : signed(15 downto 0) := (others => '0');
 
-  -- Ergebnis (wird auch zurückgeschrieben)
+  -- Ergebnis (wird auch zur?kgeschrieben)
   signal yL, yR      : signed(15 downto 0) := (others => '0');
 
   -- Flow Control / Handshakes
@@ -150,16 +187,16 @@ ARCHITECTURE behav OF echo_eogic IS
   signal rd_addr_i   : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
   signal wr_data_i   : std_logic_vector(G_DATA_WIDTH-1 downto 0) := (others => '0');
 
-  -- Priming: Wie viele Wörter seit Reset in den Ring geschrieben wurden (saturierend)
+  -- Priming: Wie viele W?ter seit Reset in den Ring geschrieben wurden (saturierend)
   signal filled_words : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
   signal primed       : std_logic := '0';
 
 begin
-  -----------------------------------------------------------------------------
-  -- I/O-Zuweisungen
-  -----------------------------------------------------------------------------
-  in_ready  <= in_ready_i;
-  out_valid <= out_valid_i;
+-----------------------------------------------------------------------------
+-- I/O-Zuweisungen
+-----------------------------------------------------------------------------
+  audio_in_ready  <= in_ready_i;
+  audio_out_valid <= out_valid_i;
 
   wr_en   <= wr_en_i;
   rd_en   <= rd_en_i;
@@ -173,23 +210,23 @@ begin
   -- Steuerparameter intern
   g_q15 <= signed(g_feedback_q15);
 
-  -- delay_words = delay_samples * 2 (Stereo interleaved \u2192 zwei Wörter pro Sample)
+  -- delay_words = delay_samples * 2 (Stereo interleaved - zwei Wörter pro Sample)
   delay_words <= resize(shift_left(delay_samples, 1), delay_words'length);
 
   -- Priming: effektive delayed-Werte (vor Calc, kombinatorisch)
   delayed_eff_L <= delayed_L when primed = '1' else (others => '0');
   delayed_eff_R <= delayed_R when primed = '1' else (others => '0');
 
-  -----------------------------------------------------------------------------
-  -- Nächster Zustand (kombinatorisch)
-  -----------------------------------------------------------------------------
-  process(s, in_valid, in_ready_i, rd_valid)
+-----------------------------------------------------------------------------
+-- Nächster Zustand (kombinatorisch)
+-----------------------------------------------------------------------------
+  process(s, audio_in_valid, in_ready_i, rd_valid, echo_disable)
   begin
     s_next <= s;
 
     case s is
       when S_IDLE =>
-        if in_valid = '1' and in_ready_i = '1' then
+        if audio_in_valid = '1' and in_ready_i = '1' then
           s_next <= S_RD_L;
         end if;
 
@@ -229,9 +266,9 @@ begin
     end case;
   end process;
 
-  -----------------------------------------------------------------------------
-  -- Sequentielle Logik: Zustandsregister, Datenpfad, Handshakes, Pointer
-  -----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+-- Sequentielle Logik: Zustandsregister, Datenpfad, Handshakes, Pointer
+-----------------------------------------------------------------------------
   process(clk, reset_n)
     variable rd_base : unsigned(G_ADDR_WIDTH-1 downto 0);
     variable fw_next : unsigned(G_ADDR_WIDTH-1 downto 0);
@@ -261,7 +298,7 @@ begin
       primed       <= '0';
 
     elsif rising_edge(clk) then
-      -- Defaults für Ein-Takt-Steuersignale
+      -- Defaults f? Ein-Takt-Steuersignale
       wr_en_i     <= '0';
       rd_en_i     <= '0';
       out_valid_i <= '0';
@@ -269,111 +306,95 @@ begin
       s <= s_next;
 
       case s is
-
-        -- ---------------------------------------------------------------
-        -- S_IDLE: Warten auf neues Stereo-Frame
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_IDLE: Warten auf neues Stereo-Frame
+-- ---------------------------------------------------------------
         when S_IDLE =>
           in_ready_i <= '1';
-          -- Priming-Status zyklisch aktualisieren (robust gegenüber laufender Änderung von delay)
           if filled_words >= delay_words then
             primed <= '1';
           else
             primed <= '0';
           end if;
 
-          if in_valid = '1' and in_ready_i = '1' then
-            -- Eingang registrieren
-            inL_reg <= signed(in_L);
-            inR_reg <= signed(in_R);
-
-            -- Lesebasisadresse: wr_ptr - delay_words (mod 2^W) \u2192 zeigt auf verzögertes L
+          if audio_in_valid = '1' and in_ready_i = '1' then
+            inL_reg <= signed(audio_in_L);
+            inR_reg <= signed(audio_in_R);
             rd_base   := mod_sub(wr_ptr, delay_words);
             rd_addr_i <= rd_base;             -- L-Adresse
             rd_ptr_L  <= rd_base;
             rd_ptr_R  <= rd_base + 1;         -- R ist +1
-
-            -- ersten Read starten
             rd_en_i    <= '1';
             in_ready_i <= '0';
           end if;
-
-        -- ---------------------------------------------------------------
-        -- S_RD_L: Puls wurde bereits in IDLE gesetzt
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_RD_L: Puls wurde bereits in IDLE gesetzt
+-- ---------------------------------------------------------------
         when S_RD_L =>
           null;
-
-        -- ---------------------------------------------------------------
-        -- S_WAIT_L: auf L-Daten warten
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_WAIT_L: auf L-Daten warten
+-- ---------------------------------------------------------------
         when S_WAIT_L =>
           if rd_valid = '1' then
             delayed_L <= signed(rd_data);
-            -- direkt R-Read anstoßen
+            -- direkt R-Read ansto?n
             rd_addr_i <= rd_ptr_R;
             rd_en_i   <= '1';
           end if;
-
-        -- ---------------------------------------------------------------
-        -- S_RD_R: Puls gesetzt \u2192 weiter zu WAIT_R
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_RD_R: Puls gesetzt -> weiter zu WAIT_R
+-- ---------------------------------------------------------------
         when S_RD_R =>
           null;
-
-        -- ---------------------------------------------------------------
-        -- S_WAIT_R: auf R-Daten warten
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_WAIT_R: auf R-Daten warten
+-- ---------------------------------------------------------------
         when S_WAIT_R =>
           if rd_valid = '1' then
             delayed_R <= signed(rd_data);
           end if;
-
-        -- ---------------------------------------------------------------
-        -- S_CALC: y = x + g * delayed (pro Kanal, saturierend)
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_CALC: y = x + g * delayed (pro Kanal, saturierend)
+-- ---------------------------------------------------------------
         when S_CALC =>
-          yL <= sat_add_s16(inL_reg, mul_q15_s16(delayed_eff_L, g_q15));
-          yR <= sat_add_s16(inR_reg, mul_q15_s16(delayed_eff_R, g_q15));
-
-        -- ---------------------------------------------------------------
-        -- S_WR_L: L-Wort schreiben
-        -- ---------------------------------------------------------------
+          if echo_diable = '1' then
+            yL <= inL_reg;
+            yR <= inR_reg;
+          else
+            yL <= sat_add_s16(inL_reg, mul_q15_s16(delayed_eff_L, g_q15));
+            yR <= sat_add_s16(inR_reg, mul_q15_s16(delayed_eff_R, g_q15));
+          end if;
+-- ---------------------------------------------------------------
+-- S_WR_L: L-Wort schreiben
+-- ---------------------------------------------------------------
         when S_WR_L =>
           wr_addr_i <= wr_ptr;                           -- L an wr_ptr
           wr_data_i <= std_logic_vector(yL);
           wr_en_i   <= '1';
-
-        -- ---------------------------------------------------------------
-        -- S_WR_L_HOLD: 1 Takt halten (für einfachen SRAM_Control)
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_WR_L_HOLD: 1 Takt halten (für einfachen SRAM_Control)
+-- ---------------------------------------------------------------
         when S_WR_L_HOLD =>
           null;
-
-        -- ---------------------------------------------------------------
-        -- S_WR_R: R-Wort schreiben
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_WR_R: R-Wort schreiben
+-- ---------------------------------------------------------------
         when S_WR_R =>
           wr_addr_i <= wr_ptr + 1;                       -- R an wr_ptr+1
           wr_data_i <= std_logic_vector(yR);
           wr_en_i   <= '1';
-
-        -- ---------------------------------------------------------------
-        -- S_WR_R_HOLD: Abschluss, Pointer/Priming updaten, out_valid pulsen
-        -- ---------------------------------------------------------------
+-- ---------------------------------------------------------------
+-- S_WR_R_HOLD: Abschluss, Pointer/Priming updaten, out_valid pulsen
+ -- ---------------------------------------------------------------
         when S_WR_R_HOLD =>
-          -- Schreibzeiger um 2 Wörter (ein Stereo-Frame) weiter (mod 2^W)
           wr_ptr      <= wr_ptr + 2;
-
-          -- Priming: geschriebenen Umfang (in WÖRTERN) saturierend hochzählen
           fw_next := filled_words + 2;
           if fw_next < filled_words then
-            -- Überlauf (theoretisch bei voller Runde) \u2192 auf max saturieren
-            filled_words <= (others => '1');
+            filled_words <= (others => '1'); -- füllt bei Überlauf mit einsen
           else
             filled_words <= fw_next;
           end if;
-
           out_valid_i <= '1';
           in_ready_i  <= '1';
 
@@ -382,13 +403,4 @@ begin
       end case;
     end if;
   end process;
-
-  -- Hinweise:
-  --  * Beim ersten Start sind SRAM-Inhalte undefiniert. Priming sorgt dafür, dass
-  --    bis zur Pufferfüllung das delayed-Signal 0 ist \u2192 kein Startknacksen.
-  --  * Änderung von 'delay_samples' wirkt sofort; Priming vergleicht laufend
-  --    'filled_words' mit 'delay_words'.
-  --  * Für 44,1 kHz hast du >1e6 Takte zwischen Frames (bei 50 MHz) \u2192 reichlich Luft.
-  --  * Wenn deine Quelle kein Back-pressure (in_ready) kann, setze einen kleinen FIFO vor.
 end architecture;
-
