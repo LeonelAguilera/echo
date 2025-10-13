@@ -11,9 +11,15 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "27.1"
@@ -21,7 +27,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 30,0
+suid 9,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -69,10 +75,10 @@ n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 6
-suid 28,0
+suid 7,0
 )
 )
-uid 519,0
+uid 211,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -81,22 +87,22 @@ decl (Decl
 n "c0"
 t "std_logic"
 o 7
-suid 29,0
+suid 8,0
 )
 )
-uid 521,0
+uid 213,0
 )
 *16 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
-n "fpga_reset_n"
+n "reset_n"
 t "std_logic"
 o 8
-suid 30,0
+suid 9,0
 )
 )
-uid 523,0
+uid 215,0
 )
 ]
 )
@@ -152,19 +158,19 @@ uid 92,0
 litem &14
 pos 0
 dimension 20
-uid 520,0
+uid 212,0
 )
 *23 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 522,0
+uid 214,0
 )
 *24 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 524,0
+uid 216,0
 )
 ]
 )
@@ -395,23 +401,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
+value "/home/leoag319/echo/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
+value "/home/leoag319/echo/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/pixel_counter/interface.info"
+value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/pixel_counter/interface.user"
+value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
+value "/home/leoag319/echo/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -427,11 +433,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/pixel_counter"
+value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/pixel_counter"
+value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter"
 )
 (vvPair
 variable "date"
@@ -487,7 +493,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "12:29:08"
+value "13:12:40"
 )
 (vvPair
 variable "group"
@@ -518,10 +524,6 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
-variable "library_downstream_QuartusPrimeImport"
-value "$HDS_PROJECT_DIR/echo_lib/work"
-)
-(vvPair
 variable "mm"
 value "10"
 )
@@ -539,11 +541,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/pixel_counter/interface"
+value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter/interface"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/pixel_counter/interface"
+value "/home/leoag319/echo/echo/echo_lib/hds/pixel_counter/interface"
 )
 (vvPair
 variable "package_name"
@@ -603,7 +605,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "12:29:08"
+value "13:12:40"
 )
 (vvPair
 variable "unit"
@@ -638,10 +640,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *58 (CptPort
-uid 504,0
+uid 196,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 505,0
+uid 197,0
 ro 90
 va (VaSet
 vasetType 1
@@ -650,11 +652,11 @@ fg "0,65535,0"
 xt "25000,6625,25750,7375"
 )
 tg (CPTG
-uid 506,0
+uid 198,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 507,0
+uid 199,0
 va (VaSet
 font "courier,8,0"
 )
@@ -666,12 +668,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 508,0
+uid 200,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,3600,66500,4500"
-st "h_count      : OUT    unsigned (10 DOWNTO 0)
+xt "44000,3600,64000,4500"
+st "h_count : OUT    unsigned (10 DOWNTO 0)
 "
 )
 thePort (LogicalPort
@@ -682,15 +684,15 @@ n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 6
-suid 28,0
+suid 7,0
 )
 )
 )
 *59 (CptPort
-uid 509,0
+uid 201,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 510,0
+uid 202,0
 ro 90
 va (VaSet
 vasetType 1
@@ -699,11 +701,11 @@ fg "0,65535,0"
 xt "14250,6625,15000,7375"
 )
 tg (CPTG
-uid 511,0
+uid 203,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 512,0
+uid 204,0
 va (VaSet
 font "courier,8,0"
 )
@@ -714,12 +716,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 513,0
+uid 205,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,1800,61500,2700"
-st "c0           : IN     std_logic  ;
+xt "44000,1800,59000,2700"
+st "c0      : IN     std_logic  ;
 "
 )
 thePort (LogicalPort
@@ -728,15 +730,15 @@ decl (Decl
 n "c0"
 t "std_logic"
 o 7
-suid 29,0
+suid 8,0
 )
 )
 )
 *60 (CptPort
-uid 514,0
+uid 206,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 515,0
+uid 207,0
 ro 90
 va (VaSet
 vasetType 1
@@ -745,36 +747,36 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 516,0
+uid 208,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 517,0
+uid 209,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,7550,22500,8450"
-st "fpga_reset_n"
+xt "16000,7550,19500,8450"
+st "reset_n"
 blo "16000,8250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 518,0
+uid 210,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,2700,61500,3600"
-st "fpga_reset_n : IN     std_logic  ;
+xt "44000,2700,59000,3600"
+st "reset_n : IN     std_logic  ;
 "
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
-n "fpga_reset_n"
+n "reset_n"
 t "std_logic"
 o 8
-suid 30,0
+suid 9,0
 )
 )
 )
@@ -1205,10 +1207,13 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,3600"
+xt "0,900,14500,5400"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
+"
 tm "PackageList"
 )
 ]
@@ -1487,6 +1492,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 524,0
+lastUid 216,0
 activeModelName "Symbol:CDM"
 )

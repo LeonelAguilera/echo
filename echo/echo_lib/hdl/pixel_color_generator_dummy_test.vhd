@@ -10,6 +10,8 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
 
 ENTITY pixel_color_generator IS
    PORT( 
@@ -23,9 +25,7 @@ ENTITY pixel_color_generator IS
       master_volume    : IN     unsigned (7 DOWNTO 0);
       right_ear_volume : IN     unsigned (7 DOWNTO 0);
       v_count          : IN     unsigned (9 DOWNTO 0);
-      vga_b_d          : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_g_d          : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_r_d          : OUT    std_logic_vector (7 DOWNTO 0)
+      prev_pixel_color : OUT    rgb_color_t
    );
 
 -- Declarations
@@ -35,8 +35,8 @@ END pixel_color_generator ;
 --
 ARCHITECTURE dummy_test OF pixel_color_generator IS
 BEGIN
-  vga_r_d <= STD_LOGIC_VECTOR(h_count(7 DOWNTO 0));
-  vga_g_d <= STD_LOGIC_VECTOR(v_count(7 DOWNTO 0));
-  vga_b_d <= (OTHERS => '0');
+  prev_pixel_color(0) <= STD_LOGIC_VECTOR(h_count(7 DOWNTO 0));
+  prev_pixel_color(1) <= STD_LOGIC_VECTOR(v_count(7 DOWNTO 0));
+  prev_pixel_color(2) <= (OTHERS => '0');
 END ARCHITECTURE dummy_test;
 

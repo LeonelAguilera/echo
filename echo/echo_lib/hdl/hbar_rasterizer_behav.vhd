@@ -11,6 +11,8 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 USE IEEE.MATH_REAL.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
 
 ENTITY hbar_rasterizer IS
    GENERIC( 
@@ -22,11 +24,9 @@ ENTITY hbar_rasterizer IS
    PORT( 
       h_count               : IN     unsigned (10 DOWNTO 0);
       v_count               : IN     unsigned (9 DOWNTO 0);
-      b_in_0                : OUT    std_logic_vector (7 DOWNTO 0);
       bar_mask              : OUT    std_logic;
-      g_in_0                : OUT    std_logic_vector (7 DOWNTO 0);
-      r_in_0                : OUT    std_logic_vector (7 DOWNTO 0);
-      wiper_center_position : IN     unsigned (10 DOWNTO 0)
+      wiper_center_position : IN     unsigned (10 DOWNTO 0);
+      bar_color             : OUT    rgb_color_t
    );
 
 -- Declarations
@@ -41,11 +41,11 @@ BEGIN
                        v_count >= position_y - heigth AND
                        v_count < position_y ELSE
               '0';
-  r_in_0 <= "01000110" WHEN h_count > wiper_center_position ELSE
-            "00011110";
-  g_in_0 <= "00011110" WHEN h_count > wiper_center_position ELSE
-            "01010001";
-  b_in_0 <= "01010010" WHEN h_count > wiper_center_position ELSE
-            "01111110";
+  bar_color(0) <= "01000110" WHEN h_count > wiper_center_position ELSE
+                  "00011110";
+  bar_color(1) <= "00011110" WHEN h_count > wiper_center_position ELSE
+                  "01010001";
+  bar_color(2) <= "01010010" WHEN h_count > wiper_center_position ELSE
+                  "01111110";
 END ARCHITECTURE behav;
 

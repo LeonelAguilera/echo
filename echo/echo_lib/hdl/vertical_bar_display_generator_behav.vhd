@@ -11,6 +11,8 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 USE IEEE.MATH_REAL.ALL;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
 
 ENTITY vertical_bar_display_generator IS
    GENERIC( 
@@ -25,9 +27,7 @@ ENTITY vertical_bar_display_generator IS
       h_count         : IN     unsigned (10 DOWNTO 0);
       v_count         : IN     unsigned ( 9 DOWNTO 0);
       active_segments : IN     UNSIGNED(INTEGER(CEIL(LOG2(REAL(number_of_segments + 1))))-1 DOWNTO 0);
-      vga_r           : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_g           : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_b           : OUT    std_logic_vector (7 DOWNTO 0);
+      vga_color       : OUT    rgb_color_t;
       mask_f          : OUT    std_logic
    );
 
@@ -49,13 +49,13 @@ BEGIN
                      (v_count < TO_UNSIGNED(position_y, 9)) AND
                      (v_count_modulo < segment_thickness) ELSE
             '0';
-  vga_r <= "01000110" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
-           (OTHERS => '1') WHEN v_count < position_y - (height/2) ELSE
-           (OTHERS => '0');
-  vga_g <= "00011110" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
-           (OTHERS => '1') WHEN v_count > position_y - (3 * height/4) ELSE
-           (OTHERS => '0');
-  vga_b <= "01010010" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
-           (OTHERS => '0');
+  vga_color(0) <= "01000110" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
+                  (OTHERS => '1') WHEN v_count < position_y - (height/2) ELSE
+                  (OTHERS => '0');
+  vga_color(1) <= "00011110" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
+                  (OTHERS => '1') WHEN v_count > position_y - (3 * height/4) ELSE
+                  (OTHERS => '0');
+  vga_color(2) <= "01010010" WHEN v_count < position_y - (active_segments * (2 ** segment_height_log2)) ELSE
+                  (OTHERS => '0');
 END ARCHITECTURE behav;
 

@@ -10,6 +10,8 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
 
 ENTITY ring_generator IS
    GENERIC( 
@@ -21,12 +23,10 @@ ENTITY ring_generator IS
       center_y        : INTEGER := 197
    );
    PORT( 
-      h_count   : IN     unsigned (10 DOWNTO 0);
-      v_count   : IN     unsigned (9 DOWNTO 0);
-      ring_b    : OUT    std_logic_vector (7 DOWNTO 0);
-      ring_g    : OUT    std_logic_vector (7 DOWNTO 0);
-      ring_mask : OUT    std_logic;
-      ring_r    : OUT    std_logic_vector (7 DOWNTO 0)
+      h_count    : IN     unsigned (10 DOWNTO 0);
+      v_count    : IN     unsigned (9 DOWNTO 0);
+      ring_mask  : OUT    std_logic;
+      ring_color : OUT    rgb_color_t
    );
 
 -- Declarations
@@ -55,8 +55,8 @@ BEGIN
                         (shifted_x < (-shifted_y)) OR (shifted_x < shifted_y)) ELSE -- I feel dirty...
                '0';
   
-  ring_r <= "01000110";
-  ring_g <= "00011110";
-  ring_b <= "01010010";
+  ring_color(0) <= "01000110";
+  ring_color(1) <= "00011110";
+  ring_color(2) <= "01010010";
 END ARCHITECTURE behav;
 

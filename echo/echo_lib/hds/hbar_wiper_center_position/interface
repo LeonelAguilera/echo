@@ -15,9 +15,15 @@ unitName "numeric_std"
 library "IEEE"
 unitName "MATH_REAL"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "27.1"
@@ -463,23 +469,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
+value "/home/leoag319/echo/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
+value "/home/leoag319/echo/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface.info"
+value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface.user"
+value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
+value "/home/leoag319/echo/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -495,27 +501,27 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position"
+value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position"
+value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position"
 )
 (vvPair
 variable "date"
-value "10/10/25"
+value "10/13/25"
 )
 (vvPair
 variable "day"
-value "Fri"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Friday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "10"
+value "13"
 )
 (vvPair
 variable "entity_name"
@@ -543,7 +549,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/10/25"
+value "10/13/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -551,11 +557,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-112.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "10:49:28"
+value "12:47:43"
 )
 (vvPair
 variable "group"
@@ -563,7 +569,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-112.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -586,10 +592,6 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
-variable "library_downstream_QuartusPrimeImport"
-value "$HDS_PROJECT_DIR/echo_lib/work"
-)
-(vvPair
 variable "mm"
 value "10"
 )
@@ -607,11 +609,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface"
+value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/hbar_wiper_center_position/interface"
+value "/home/leoag319/echo/echo/echo_lib/hds/hbar_wiper_center_position/interface"
 )
 (vvPair
 variable "package_name"
@@ -671,7 +673,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "10:49:28"
+value "12:47:43"
 )
 (vvPair
 variable "unit"
@@ -1341,11 +1343,14 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,4500"
+xt "0,900,14500,6300"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
-USE IEEE.MATH_REAL.all;"
+USE IEEE.MATH_REAL.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
+"
 tm "PackageList"
 )
 ]
