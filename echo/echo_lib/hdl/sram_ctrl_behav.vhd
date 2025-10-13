@@ -7,34 +7,37 @@
 --
 -- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
 --
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
-entity sram_ctrl is
-  generic(
-    G_ADDR_WIDTH : natural := 20;
-    G_DATA_WIDTH : natural := 16
-  );
-  port(
-    rd_data   : out   std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    rd_valid  : out   std_logic;
-    SRAM_ADDR : out   std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    SRAM_DQ   : inout std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    SRAM_CE_N : out   std_logic;
-    SRAM_OE_N : out   std_logic;
-    SRAM_WE_N : out   std_logic;
-    SRAM_UB_N : out   std_logic;
-    SRAM_LB_N : out   std_logic;
-    rd_addr   : in    std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    rd_en     : in    std_logic;
-    wr_en     : in    std_logic;
-    clk       : in    std_logic;
-    RESET_N   : in    std_logic;
-    wr_data   : in    std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    wr_addr   : in    std_logic_vector(G_ADDR_WIDTH-1 downto 0)
-  );
-end entity;
+ENTITY sram_ctrl IS
+   GENERIC( 
+      G_ADDR_WIDTH : natural := 20;
+      G_DATA_WIDTH : natural := 16
+   );
+   PORT( 
+      rd_valid  : OUT    std_logic;
+      SRAM_ADDR : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      SRAM_DQ   : INOUT  std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      SRAM_CE_N : OUT    std_logic;
+      SRAM_OE_N : OUT    std_logic;
+      SRAM_WE_N : OUT    std_logic;
+      SRAM_UB_N : OUT    std_logic;
+      SRAM_LB_N : OUT    std_logic;
+      rd_addr   : IN     std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      rd_en     : IN     std_logic;
+      wr_en     : IN     std_logic;
+      clk       : IN     std_logic;
+      RESET_N   : IN     std_logic;
+      wr_data   : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      wr_addr   : IN     std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      rd_data   : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0)
+   );
+
+-- Declarations
+
+END sram_ctrl ;
 
 architecture behav of sram_ctrl is
   type state_type is (IDLE, WRITE, WRITE_HOLD, READ, READ_HOLD);
@@ -44,15 +47,15 @@ architecture behav of sram_ctrl is
   signal dq_dir      : std_logic;  -- '1' = write drives bus
   signal rd_data_reg : std_logic_vector(G_DATA_WIDTH-1 downto 0);
 begin
-  --------------------------------------------------------------------
-  -- Bidirectional Data Bus
-  --------------------------------------------------------------------
+--------------------------------------------------------------------
+-- Bidirectional Data Bus
+--------------------------------------------------------------------
   SRAM_DQ <= dq_out when dq_dir = '1' else (others => 'Z');
   rd_data <= rd_data_reg;
 
-  --------------------------------------------------------------------
-  -- FSM: Next state
-  --------------------------------------------------------------------
+--------------------------------------------------------------------
+-- FSM: Next state
+--------------------------------------------------------------------
   process (state, wr_en, rd_en)
   begin
     next_state <= state;
@@ -70,9 +73,9 @@ begin
     end case;
   end process;
 
-  --------------------------------------------------------------------
-  -- FSM: Sequential part
-  --------------------------------------------------------------------
+--------------------------------------------------------------------
+-- FSM: Sequential part
+--------------------------------------------------------------------
   process (clk, RESET_N)
   begin
     if RESET_N = '0' then
