@@ -14,7 +14,6 @@ USE IEEE.MATH_REAL.all;
 LIBRARY echo_lib;
 USE echo_lib.color_t.ALL;
 
-
 ENTITY hbar_wiper_center_position IS
    GENERIC( 
       position_x    : INTEGER := 25;
