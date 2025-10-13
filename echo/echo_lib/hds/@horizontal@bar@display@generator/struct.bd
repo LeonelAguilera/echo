@@ -30,22 +30,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "heigth"
 type "INTEGER"
-value "48"
+value "height"
 )
 ]
 mwi 0
@@ -59,22 +59,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "wiper_width"
 type "INTEGER"
-value "12"
+value "wiper_width"
 )
 (GiElement
 name "wiper_heigth"
 type "INTEGER"
-value "96"
+value "wiper_height"
 )
 ]
 mwi 0
@@ -97,12 +97,12 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "fixed_comma_p"
@@ -228,7 +228,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:21:09"
+value "13:39:22"
 )
 (vvPair
 variable "group"
@@ -340,7 +340,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "13:21:09"
+value "13:39:22"
 )
 (vvPair
 variable "unit"
@@ -1047,11 +1047,12 @@ uid 231,0
 va (VaSet
 font "courier,8,0"
 )
-xt "30000,-500,47000,3100"
-st "position_x = 25     ( INTEGER )  
-position_y = 432    ( INTEGER )  
-width      = 340    ( INTEGER )  
-heigth     = 48     ( INTEGER )  "
+xt "30000,-500,50500,3100"
+st "position_x = position_x    ( INTEGER )  
+position_y = position_y    ( INTEGER )  
+width      = width         ( INTEGER )  
+heigth     = height        ( INTEGER )  
+"
 )
 header ""
 )
@@ -1059,22 +1060,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "heigth"
 type "INTEGER"
-value "48"
+value "height"
 )
 ]
 )
@@ -1160,11 +1161,12 @@ uid 241,0
 va (VaSet
 font "courier,8,0"
 )
-xt "31000,36400,49000,40000"
-st "position_x   = 25     ( INTEGER )  
-position_y   = 432    ( INTEGER )  
-wiper_width  = 12     ( INTEGER )  
-wiper_heigth = 96     ( INTEGER )  "
+xt "31000,36400,53500,40000"
+st "position_x   = position_x      ( INTEGER )  
+position_y   = position_y      ( INTEGER )  
+wiper_width  = wiper_width     ( INTEGER )  
+wiper_heigth = wiper_height    ( INTEGER )  
+"
 )
 header ""
 )
@@ -1172,22 +1174,22 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "position_y"
 type "INTEGER"
-value "432"
+value "position_y"
 )
 (GiElement
 name "wiper_width"
 type "INTEGER"
-value "12"
+value "wiper_width"
 )
 (GiElement
 name "wiper_heigth"
 type "INTEGER"
-value "96"
+value "wiper_height"
 )
 ]
 )
@@ -1793,10 +1795,11 @@ uid 537,0
 va (VaSet
 font "courier,8,0"
 )
-xt "19000,14300,37500,17000"
-st "position_x    = 25     ( INTEGER )  
-width         = 340    ( INTEGER )  
-fixed_comma_p = 3      ( INTEGER )  "
+xt "19000,14300,41000,17000"
+st "position_x    = position_x    ( INTEGER )  
+width         = width         ( INTEGER )  
+fixed_comma_p = 3             ( INTEGER )  
+"
 )
 header ""
 )
@@ -1804,12 +1807,12 @@ elements [
 (GiElement
 name "position_x"
 type "INTEGER"
-value "25"
+value "position_x"
 )
 (GiElement
 name "width"
 type "INTEGER"
-value "340"
+value "width"
 )
 (GiElement
 name "fixed_comma_p"
@@ -3119,11 +3122,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-8,41,1928,1170"
-viewArea "-6255,-9080,96525,50080"
+viewArea "-6300,-9100,91341,47102"
 cachedDiagramExtent "-6500,-500,127000,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-11000,-51000"
-lastUid 961,0
+lastUid 1014,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -4572,6 +4575,54 @@ tm "GenericPragmaColHdrMgr"
 *184 (EolColHdr
 tm "GenericEolColHdrMgr"
 )
+*185 (LogGeneric
+generic (GiElement
+name "position_x"
+type "integer"
+value "25"
+)
+uid 1003,0
+)
+*186 (LogGeneric
+generic (GiElement
+name "position_y"
+type "integer"
+value "386"
+)
+uid 1005,0
+)
+*187 (LogGeneric
+generic (GiElement
+name "width"
+type "integer"
+value "340"
+)
+uid 1007,0
+)
+*188 (LogGeneric
+generic (GiElement
+name "height"
+type "integer"
+value "48"
+)
+uid 1009,0
+)
+*189 (LogGeneric
+generic (GiElement
+name "wiper_width"
+type "integer"
+value "24"
+)
+uid 1011,0
+)
+*190 (LogGeneric
+generic (GiElement
+name "wiper_height"
+type "integer"
+value "96"
+)
+uid 1013,0
+)
 ]
 )
 pdm (PhysicalDM
@@ -4579,7 +4630,7 @@ displayShortBounds 1
 editShortBounds 1
 uid 209,0
 optionalChildren [
-*185 (Sheet
+*191 (Sheet
 sheetRow (SheetRow
 headerVa (MVa
 cellColor "49152,49152,49152"
@@ -4596,31 +4647,67 @@ cellColor "39936,56832,65280"
 fontColor "0,0,0"
 font "courier,10,0"
 )
-emptyMRCItem *186 (MRCItem
+emptyMRCItem *192 (MRCItem
 litem &173
-pos 0
+pos 6
 dimension 20
 )
 uid 211,0
 optionalChildren [
-*187 (MRCItem
+*193 (MRCItem
 litem &174
 pos 0
 dimension 20
 uid 212,0
 )
-*188 (MRCItem
+*194 (MRCItem
 litem &175
 pos 1
 dimension 23
 uid 213,0
 )
-*189 (MRCItem
+*195 (MRCItem
 litem &176
 pos 2
 hidden 1
 dimension 20
 uid 214,0
+)
+*196 (MRCItem
+litem &185
+pos 0
+dimension 20
+uid 1004,0
+)
+*197 (MRCItem
+litem &186
+pos 1
+dimension 20
+uid 1006,0
+)
+*198 (MRCItem
+litem &187
+pos 2
+dimension 20
+uid 1008,0
+)
+*199 (MRCItem
+litem &188
+pos 3
+dimension 20
+uid 1010,0
+)
+*200 (MRCItem
+litem &189
+pos 4
+dimension 20
+uid 1012,0
+)
+*201 (MRCItem
+litem &190
+pos 5
+dimension 20
+uid 1014,0
 )
 ]
 )
@@ -4633,43 +4720,43 @@ textAngle 90
 )
 uid 215,0
 optionalChildren [
-*190 (MRCItem
+*202 (MRCItem
 litem &177
 pos 0
 dimension 20
 uid 216,0
 )
-*191 (MRCItem
+*203 (MRCItem
 litem &179
 pos 1
 dimension 50
 uid 217,0
 )
-*192 (MRCItem
+*204 (MRCItem
 litem &180
 pos 2
 dimension 100
 uid 218,0
 )
-*193 (MRCItem
+*205 (MRCItem
 litem &181
 pos 3
 dimension 100
 uid 219,0
 )
-*194 (MRCItem
+*206 (MRCItem
 litem &182
 pos 4
 dimension 50
 uid 220,0
 )
-*195 (MRCItem
+*207 (MRCItem
 litem &183
 pos 5
 dimension 50
 uid 221,0
 )
-*196 (MRCItem
+*208 (MRCItem
 litem &184
 pos 6
 dimension 80
