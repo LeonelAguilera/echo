@@ -13,7 +13,6 @@ USE ieee.numeric_std.all;
 LIBRARY echo_lib;
 USE echo_lib.color_t.ALL;
 
-
 ENTITY line_counter IS
    PORT( 
       c0           : IN     std_logic;

@@ -17,7 +17,7 @@ ENTITY color_channel_separator IS
    PORT( 
       c0               : IN     std_logic;
       curr_pixel_color : IN     rgb_color_t;
-      reset_n          : IN     std_logic;
+      fpga_reset_n     : IN     std_logic;
       vga_b            : OUT    std_logic_vector (7 DOWNTO 0);
       vga_g            : OUT    std_logic_vector (7 DOWNTO 0);
       vga_r            : OUT    std_logic_vector (7 DOWNTO 0)

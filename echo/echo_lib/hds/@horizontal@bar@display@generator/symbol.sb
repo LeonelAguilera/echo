@@ -11,9 +11,15 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "27.1"
@@ -119,7 +125,6 @@ m 1
 decl (Decl
 n "hbar_color"
 t "rgb_color_t"
-b "(7 DOWNTO 0)"
 o 4
 suid 15,0
 )
@@ -152,7 +157,7 @@ font "courier,10,0"
 )
 emptyMRCItem *20 (MRCItem
 litem &1
-pos 3
+pos 5
 dimension 20
 )
 uid 117,0
@@ -388,7 +393,7 @@ font "courier,10,0"
 )
 emptyMRCItem *56 (MRCItem
 litem &37
-pos 3
+pos 6
 dimension 20
 )
 uid 145,0
@@ -519,23 +524,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator/symbol.sb.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator/symbol.sb.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator/symbol.sb.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator/symbol.sb.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -551,11 +556,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/HorizontalBarDisplayGenerator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/HorizontalBarDisplayGenerator"
 )
 (vvPair
 variable "date"
@@ -611,7 +616,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:39:22"
+value "14:30:23"
 )
 (vvPair
 variable "group"
@@ -642,6 +647,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -659,11 +668,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/@horizontal@bar@display@generator/symbol.sb"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@horizontal@bar@display@generator/symbol.sb"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/HorizontalBarDisplayGenerator/symbol.sb"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/HorizontalBarDisplayGenerator/symbol.sb"
 )
 (vvPair
 variable "package_name"
@@ -723,7 +732,7 @@ value "symbol"
 )
 (vvPair
 variable "time"
-value "13:39:22"
+value "14:30:23"
 )
 (vvPair
 variable "unit"
@@ -975,8 +984,8 @@ uid 1201,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,4500,69500,5400"
-st "hbar_color     : OUT    rgb_color_t (7 DOWNTO 0) ;"
+xt "44000,4500,63500,5400"
+st "hbar_color     : OUT    rgb_color_t  ;"
 )
 thePort (LogicalPort
 lang 11
@@ -984,7 +993,6 @@ m 1
 decl (Decl
 n "hbar_color"
 t "rgb_color_t"
-b "(7 DOWNTO 0)"
 o 4
 suid 15,0
 )
@@ -1454,18 +1462,22 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,3600"
+xt "0,900,14500,5400"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
+"
 tm "PackageList"
 )
 ]
 )
-windowSize "0,0,1015,690"
-viewArea "0,0,0,0"
-cachedDiagramExtent "0,0,0,0"
-pageBreakOrigin "0,0"
+windowSize "-8,67,1007,757"
+viewArea "-29826,-21278,36330,22241"
+cachedDiagramExtent "-2500,0,69000,51000"
+hasePageBreakOrigin 1
+pageBreakOrigin "-3000,0"
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -1736,6 +1748,8 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 1397,0
+lastUid 1466,0
+okToSyncOnLoad 1
+OkToSyncGenericsOnLoad 1
 activeModelName "Symbol:CDM"
 )

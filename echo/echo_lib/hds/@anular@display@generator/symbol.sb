@@ -11,9 +11,15 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "27.1"
@@ -163,7 +169,7 @@ font "courier,10,0"
 )
 emptyMRCItem *21 (MRCItem
 litem &1
-pos 3
+pos 6
 dimension 20
 )
 uid 117,0
@@ -405,7 +411,7 @@ font "courier,10,0"
 )
 emptyMRCItem *58 (MRCItem
 litem &39
-pos 3
+pos 6
 dimension 20
 )
 uid 145,0
@@ -536,23 +542,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/@anular@display@generator/interface.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@anular@display@generator/symbol.sb.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/@anular@display@generator/interface.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@anular@display@generator/symbol.sb.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -560,7 +566,7 @@ value "HDL Designer"
 )
 (vvPair
 variable "arch_name"
-value "interface"
+value "symbol"
 )
 (vvPair
 variable "config"
@@ -568,11 +574,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/@anular@display@generator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@anular@display@generator"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/AnularDisplayGenerator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/AnularDisplayGenerator"
 )
 (vvPair
 variable "date"
@@ -600,15 +606,15 @@ value "<TBD>"
 )
 (vvPair
 variable "f"
-value "interface"
+value "symbol.sb"
 )
 (vvPair
 variable "f_logical"
-value "interface"
+value "symbol.sb"
 )
 (vvPair
 variable "f_noext"
-value "interface"
+value "symbol"
 )
 (vvPair
 variable "graphical_source_author"
@@ -628,7 +634,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:07:48"
+value "14:39:46"
 )
 (vvPair
 variable "group"
@@ -659,6 +665,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -676,11 +686,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/@anular@display@generator/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/@anular@display@generator/symbol.sb"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/AnularDisplayGenerator/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/AnularDisplayGenerator/symbol.sb"
 )
 (vvPair
 variable "package_name"
@@ -728,19 +738,19 @@ value "<TBD>"
 )
 (vvPair
 variable "this_ext"
-value "<TBD>"
+value "sb"
 )
 (vvPair
 variable "this_file"
-value "interface"
+value "symbol"
 )
 (vvPair
 variable "this_file_logical"
-value "interface"
+value "symbol"
 )
 (vvPair
 variable "time"
-value "13:07:48"
+value "14:39:46"
 )
 (vvPair
 variable "unit"
@@ -756,7 +766,7 @@ value "2024.1 Built on 24 Jan 2024 at 18:06:06"
 )
 (vvPair
 variable "view"
-value "interface"
+value "symbol"
 )
 (vvPair
 variable "year"
@@ -1515,18 +1525,22 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,3600"
+xt "0,900,14500,5400"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
+"
 tm "PackageList"
 )
 ]
 )
-windowSize "0,0,1015,690"
-viewArea "0,0,0,0"
-cachedDiagramExtent "0,0,0,0"
-pageBreakOrigin "0,0"
+windowSize "148,109,1163,799"
+viewArea "-29917,-21303,36373,22304"
+cachedDiagramExtent "-3500,0,71500,51000"
+hasePageBreakOrigin 1
+pageBreakOrigin "-4000,0"
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -1797,6 +1811,8 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 1008,0
+lastUid 1031,0
+okToSyncOnLoad 1
+OkToSyncGenericsOnLoad 1
 activeModelName "Symbol:CDM"
 )

@@ -11,6 +11,11 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 instances [
 (Instance
@@ -165,6 +170,7 @@ uid 3277,0
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "32.1"
@@ -175,23 +181,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer/struct.bd.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_rasterizer/struct.bd.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer/struct.bd.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_rasterizer/struct.bd.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -207,11 +213,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_rasterizer"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_rasterizer"
 )
 (vvPair
 variable "date"
@@ -267,7 +273,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:07:28"
+value "15:35:01"
 )
 (vvPair
 variable "group"
@@ -298,6 +304,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -315,11 +325,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_rasterizer/struct.bd"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_rasterizer/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_rasterizer/struct.bd"
 )
 (vvPair
 variable "package_name"
@@ -379,7 +389,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "13:07:28"
+value "15:35:01"
 )
 (vvPair
 variable "unit"
@@ -4916,10 +4926,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "58000,40000,59044,40000"
+xt "58000,41000,59044,41000"
 pts [
-"58000,40000"
-"59044,40000"
+"58000,41000"
+"59044,41000"
 ]
 )
 ]
@@ -4932,7 +4942,7 @@ vasetType 1
 isHidden 1
 fg "0,65535,65535"
 )
-xt "57250,39625,58000,40375"
+xt "57250,40625,58000,41375"
 )
 tg (CPTG
 uid 814,0
@@ -4945,9 +4955,9 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "55000,39500,57000,40400"
+xt "55000,40500,57000,41400"
 st "din1"
-blo "55000,40200"
+blo "55000,41200"
 )
 s (Text
 uid 870,0
@@ -4955,8 +4965,8 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "55000,40400,55000,40400"
-blo "55000,40400"
+xt "55000,41400,55000,41400"
+blo "55000,41400"
 )
 )
 thePort (LogicalPort
@@ -4981,10 +4991,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "58000,34000,59044,34000"
+xt "58000,35000,59044,35000"
 pts [
-"58000,34000"
-"59044,34000"
+"58000,35000"
+"59044,35000"
 ]
 )
 ]
@@ -4997,7 +5007,7 @@ vasetType 1
 isHidden 1
 fg "0,65535,65535"
 )
-xt "57250,33625,58000,34375"
+xt "57250,34625,58000,35375"
 )
 tg (CPTG
 uid 819,0
@@ -5010,9 +5020,9 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "55000,33500,57000,34400"
+xt "55000,34500,57000,35400"
 st "din0"
-blo "55000,34200"
+blo "55000,35200"
 )
 s (Text
 uid 871,0
@@ -5020,8 +5030,8 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "55000,34400,55000,34400"
-blo "55000,34400"
+xt "55000,35400,55000,35400"
+blo "55000,35400"
 )
 )
 thePort (LogicalPort
@@ -5046,10 +5056,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "63044,37000,64000,37000"
+xt "63044,38000,64000,38000"
 pts [
-"64000,37000"
-"63044,37000"
+"64000,38000"
+"63044,38000"
 ]
 )
 ]
@@ -5062,7 +5072,7 @@ vasetType 1
 isHidden 1
 fg "0,65535,65535"
 )
-xt "64000,36625,64750,37375"
+xt "64000,37625,64750,38375"
 )
 tg (CPTG
 uid 824,0
@@ -5075,10 +5085,10 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "65000,36500,67000,37400"
+xt "65000,37500,67000,38400"
 st "dout"
 ju 2
-blo "67000,37200"
+blo "67000,38200"
 )
 s (Text
 uid 872,0
@@ -5086,9 +5096,9 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "67000,37400,67000,37400"
+xt "67000,38400,67000,38400"
 ju 2
-blo "67000,37400"
+blo "67000,38400"
 )
 )
 thePort (LogicalPort
@@ -5114,10 +5124,10 @@ va (VaSet
 vasetType 3
 transparent 1
 )
-xt "61000,40370,61000,43000"
+xt "61000,41370,61000,44000"
 pts [
-"61000,43000"
-"61000,40370"
+"61000,44000"
+"61000,41370"
 ]
 )
 ]
@@ -5129,7 +5139,7 @@ va (VaSet
 vasetType 1
 fg "0,65535,65535"
 )
-xt "60625,43000,61375,43750"
+xt "60625,44000,61375,44750"
 )
 tg (CPTG
 uid 829,0
@@ -5143,9 +5153,9 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "60500,44000,61400,46000"
+xt "60500,45000,61400,47000"
 st "cout"
-blo "61200,46000"
+blo "61200,47000"
 )
 s (Text
 uid 873,0
@@ -5154,8 +5164,8 @@ ro 270
 va (VaSet
 font "courier,8,0"
 )
-xt "61400,46000,61400,46000"
-blo "61400,46000"
+xt "61400,47000,61400,47000"
+blo "61400,47000"
 )
 )
 thePort (LogicalPort
@@ -5179,10 +5189,10 @@ sl 0
 va (VaSet
 vasetType 3
 )
-xt "61000,31000,61000,33632"
+xt "61000,32000,61000,34632"
 pts [
-"61000,31000"
-"61000,33632"
+"61000,32000"
+"61000,34632"
 ]
 )
 ]
@@ -5195,7 +5205,7 @@ vasetType 1
 isHidden 1
 fg "0,65535,65535"
 )
-xt "60625,30250,61375,31000"
+xt "60625,31250,61375,32000"
 )
 tg (CPTG
 uid 834,0
@@ -5209,10 +5219,10 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "60522,28732,61422,30232"
+xt "60522,29732,61422,31232"
 st "cin"
 ju 2
-blo "61222,28732"
+blo "61222,29732"
 )
 s (Text
 uid 874,0
@@ -5221,9 +5231,9 @@ ro 270
 va (VaSet
 font "courier,8,0"
 )
-xt "61422,28732,61422,28732"
+xt "61422,29732,61422,29732"
 ju 2
-blo "61422,28732"
+blo "61422,29732"
 )
 )
 thePort (LogicalPort
@@ -5252,7 +5262,7 @@ lineColor "0,0,32768"
 lineWidth -1
 fillStyle 1
 )
-xt "60452,33816,61452,35216"
+xt "60452,34816,61452,36216"
 )
 oxt "8452,8816,9452,10216"
 text (MLText
@@ -5261,7 +5271,7 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "60452,34066,61452,34966"
+xt "60452,35066,61452,35966"
 st "
 ci
 "
@@ -5286,7 +5296,7 @@ lineColor "0,0,32768"
 lineWidth -1
 fillStyle 1
 )
-xt "59000,39600,60000,41000"
+xt "59000,40600,60000,42000"
 )
 oxt "7000,14600,8000,16000"
 text (MLText
@@ -5295,7 +5305,7 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "59250,39850,59750,40750"
+xt "59250,40850,59750,41750"
 st "
 1
 "
@@ -5320,7 +5330,7 @@ lineColor "0,0,32768"
 lineWidth -1
 fillStyle 1
 )
-xt "60044,38600,62044,40000"
+xt "60044,39600,62044,41000"
 )
 oxt "8044,13600,10044,15000"
 text (MLText
@@ -5329,7 +5339,7 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "60544,38850,61544,39750"
+xt "60544,39850,61544,40750"
 st "
 co
 "
@@ -5354,7 +5364,7 @@ lineColor "0,0,32768"
 lineWidth -1
 fillStyle 1
 )
-xt "59000,33600,60000,35000"
+xt "59000,34600,60000,36000"
 )
 oxt "7000,8600,8000,10000"
 text (MLText
@@ -5363,7 +5373,7 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "59250,33850,59750,34750"
+xt "59250,34850,59750,35750"
 st "
 0
 "
@@ -5391,7 +5401,7 @@ fg "65535,65535,65535"
 lineColor "65535,65535,65535"
 fillStyle 1
 )
-xt "60044,35100,62744,39000"
+xt "60044,36100,62744,40000"
 )
 oxt "8044,10100,10744,14000"
 text (MLText
@@ -5400,7 +5410,7 @@ sl 0
 va (VaSet
 font "courier,8,0"
 )
-xt "61144,36600,61644,37500"
+xt "61144,37600,61644,38500"
 st "
 +
 "
@@ -5416,14 +5426,14 @@ ignorePrefs 1
 uid 856,0
 shape (CustomPolygon
 pts [
-"59044,32002"
-"63044,35336"
-"63044,38666"
-"59044,42000"
-"59044,38000"
-"60044,37001"
-"59044,36002"
-"59044,32002"
+"59044,33002"
+"63044,36336"
+"63044,39666"
+"59044,43000"
+"59044,39000"
+"60044,38001"
+"59044,37002"
+"59044,33002"
 ]
 uid 857,0
 layer 8
@@ -5434,7 +5444,7 @@ fg "0,65535,65535"
 bg "0,65535,65535"
 lineColor "26368,26368,26368"
 )
-xt "59044,32002,63044,42000"
+xt "59044,33002,63044,43000"
 )
 oxt "7044,7002,11044,17000"
 )
@@ -5448,7 +5458,7 @@ fg "65535,65535,65535"
 lineStyle 2
 lineWidth 2
 )
-xt "59044,32002,63044,42000"
+xt "59044,33002,63044,43000"
 )
 oxt "7044,7002,11044,17000"
 )
@@ -5462,7 +5472,7 @@ fg "65535,65535,65535"
 lineStyle 2
 lineWidth 2
 )
-xt "59000,32002,63044,42000"
+xt "59000,33002,63044,43000"
 )
 oxt "7000,7002,11044,17000"
 )
@@ -5479,7 +5489,7 @@ lineColor "0,0,32768"
 lineWidth -1
 fillStyle 1
 )
-xt "59178,37372,63178,38772"
+xt "59178,38372,63178,39772"
 )
 oxt "7178,12372,11178,13772"
 text (MLText
@@ -5489,7 +5499,7 @@ va (VaSet
 fg "0,0,32768"
 font "courier,8,0"
 )
-xt "59378,37572,63378,38472"
+xt "59378,38572,63378,39472"
 st "
 $sign_type(Unsigned)
 "
@@ -5509,7 +5519,7 @@ fg "0,65535,0"
 lineColor "65535,65535,65535"
 lineWidth -1
 )
-xt "58000,31000,64000,43000"
+xt "58000,32000,64000,44000"
 fos 1
 )
 showPorts 0
@@ -5525,27 +5535,27 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "62350,39200,67850,40100"
+xt "62350,40200,67850,41100"
 st "moduleware"
-blo "62350,39900"
+blo "62350,40900"
 )
 *168 (Text
 uid 865,0
 va (VaSet
 font "courier,8,0"
 )
-xt "62350,40100,63850,41000"
+xt "62350,41100,63850,42000"
 st "add"
-blo "62350,40800"
+blo "62350,41800"
 )
 *169 (Text
 uid 866,0
 va (VaSet
 font "courier,8,0"
 )
-xt "62350,41000,63850,41900"
+xt "62350,42000,63850,42900"
 st "U_2"
-blo "62350,41700"
+blo "62350,42700"
 tm "InstanceNameMgr"
 )
 ]
@@ -5560,7 +5570,7 @@ uid 869,0
 va (VaSet
 font "courier,8,0"
 )
-xt "56000,16300,56000,16300"
+xt "56000,17300,56000,17300"
 )
 header ""
 )
@@ -7446,7 +7456,7 @@ lang 11
 decl (Decl
 n "wiper_color"
 t "rgb_color_t"
-o 26
+o 11
 suid 76,0
 )
 declText (MLText
@@ -7537,7 +7547,11 @@ iconName "VhdlFileViewIcon.png"
 iconMaskName "VhdlFileViewIcon.msk"
 ftype 10
 )
+ordering 1
 viewiconposition 0
+blkPorts [
+"wiper_color"
+]
 )
 *249 (Wire
 uid 15,0
@@ -8219,11 +8233,11 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "57000,40000,58000,52000"
+xt "57000,41000,58000,52000"
 pts [
 "57000,52000"
 "58000,52000"
-"58000,40000"
+"58000,41000"
 ]
 )
 start &175
@@ -8261,11 +8275,11 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "57000,24000,58000,34000"
+xt "57000,24000,58000,35000"
 pts [
 "57000,24000"
 "58000,24000"
-"58000,34000"
+"58000,35000"
 ]
 )
 start &129
@@ -8347,10 +8361,10 @@ va (VaSet
 vasetType 3
 lineWidth 2
 )
-xt "64000,20000,72000,37000"
+xt "64000,20000,72000,38000"
 pts [
-"64000,37000"
-"67000,37000"
+"64000,38000"
+"67000,38000"
 "67000,20000"
 "72000,20000"
 ]
@@ -8374,9 +8388,9 @@ va (VaSet
 isHidden 1
 font "courier,8,0"
 )
-xt "66000,36100,71500,37000"
+xt "66000,37100,71500,38000"
 st "point_area"
-blo "66000,36800"
+blo "66000,37800"
 tm "WireNameMgr"
 )
 )
@@ -9757,10 +9771,10 @@ uid 1672,0
 va (VaSet
 vasetType 3
 )
-xt "61000,27000,61000,31000"
+xt "61000,27000,61000,32000"
 pts [
 "61000,27000"
-"61000,31000"
+"61000,32000"
 ]
 )
 start &202
@@ -9978,10 +9992,12 @@ uid 267,0
 va (VaSet
 font "courier,8,0"
 )
-xt "-6000,1300,8500,4000"
+xt "-6000,1300,8500,5800"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;"
 tm "PackageList"
 )
 ]
@@ -10062,12 +10078,12 @@ tm "BdCompilerDirectivesTextMgr"
 ]
 associable 1
 )
-windowSize "-8,54,1699,1027"
-viewArea "-101,-12614,137575,64387"
+windowSize "-8,41,1928,1170"
+viewArea "-34378,-22605,151911,84623"
 cachedDiagramExtent "-6500,-17205,131000,70000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-7000,-51000"
-lastUid 3286,0
+lastUid 3532,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -11508,7 +11524,7 @@ m 1
 decl (Decl
 n "wiper_color"
 t "rgb_color_t"
-o 26
+o 11
 suid 76,0
 )
 )
