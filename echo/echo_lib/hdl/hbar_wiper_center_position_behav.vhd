@@ -11,6 +11,9 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 USE IEEE.MATH_REAL.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
+
 
 ENTITY hbar_wiper_center_position IS
    GENERIC( 
