@@ -21,8 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-ordering 1
-suid 24,0
+suid 40,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -68,11 +67,11 @@ decl (Decl
 n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
-o 3
-suid 21,0
+o 6
+suid 37,0
 )
 )
-uid 383,0
+uid 587,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -82,11 +81,11 @@ decl (Decl
 n "v_count"
 t "unsigned"
 b "(9 DOWNTO 0)"
-o 4
-suid 22,0
+o 9
+suid 38,0
 )
 )
-uid 385,0
+uid 589,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -94,11 +93,11 @@ lang 11
 decl (Decl
 n "c0"
 t "std_logic"
-o 1
-suid 23,0
+o 7
+suid 39,0
 )
 )
-uid 387,0
+uid 591,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -106,11 +105,11 @@ lang 11
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 2
-suid 24,0
+o 8
+suid 40,0
 )
 )
-uid 389,0
+uid 593,0
 )
 ]
 )
@@ -166,25 +165,25 @@ uid 99,0
 litem &14
 pos 0
 dimension 20
-uid 384,0
+uid 588,0
 )
 *24 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 386,0
+uid 590,0
 )
 *25 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 388,0
+uid 592,0
 )
 *26 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 390,0
+uid 594,0
 )
 ]
 )
@@ -455,19 +454,19 @@ value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/line_counter"
 )
 (vvPair
 variable "date"
-value "10/10/25"
+value "10/13/25"
 )
 (vvPair
 variable "day"
-value "Fri"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Friday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "10"
+value "13"
 )
 (vvPair
 variable "entity_name"
@@ -495,7 +494,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/10/25"
+value "10/13/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -503,11 +502,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-112.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "00:25:25"
+value "12:29:08"
 )
 (vvPair
 variable "group"
@@ -515,7 +514,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-112.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -539,7 +538,7 @@ value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
 variable "library_downstream_QuartusPrimeImport"
-value "$HDS_PROJECT_DIR/QuartusIPSimLibs"
+value "$HDS_PROJECT_DIR/echo_lib/work"
 )
 (vvPair
 variable "mm"
@@ -623,7 +622,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "00:25:25"
+value "12:29:08"
 )
 (vvPair
 variable "unit"
@@ -658,10 +657,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *60 (CptPort
-uid 363,0
+uid 567,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 364,0
+uid 568,0
 ro 180
 va (VaSet
 vasetType 1
@@ -670,11 +669,11 @@ fg "0,65535,0"
 xt "19625,5250,20375,6000"
 )
 tg (CPTG
-uid 365,0
+uid 569,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 366,0
+uid 570,0
 ro 270
 va (VaSet
 font "courier,8,0"
@@ -687,7 +686,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 367,0
+uid 571,0
 va (VaSet
 font "courier,8,0"
 )
@@ -701,41 +700,41 @@ decl (Decl
 n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
-o 3
-suid 21,0
+o 6
+suid 37,0
 )
 )
 )
 *61 (CptPort
-uid 368,0
+uid 572,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 369,0
+uid 573,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "25000,8625,25750,9375"
+xt "25000,6625,25750,7375"
 )
 tg (CPTG
-uid 370,0
+uid 574,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 371,0
+uid 575,0
 va (VaSet
 font "courier,8,0"
 )
-xt "20500,8550,24000,9450"
+xt "20500,6550,24000,7450"
 st "v_count"
 ju 2
-blo "24000,9250"
+blo "24000,7250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 372,0
+uid 576,0
 va (VaSet
 font "courier,8,0"
 )
@@ -750,16 +749,16 @@ decl (Decl
 n "v_count"
 t "unsigned"
 b "(9 DOWNTO 0)"
-o 4
-suid 22,0
+o 9
+suid 38,0
 )
 )
 )
 *62 (CptPort
-uid 373,0
+uid 577,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 374,0
+uid 578,0
 ro 90
 va (VaSet
 vasetType 1
@@ -768,11 +767,11 @@ fg "0,65535,0"
 xt "14250,6625,15000,7375"
 )
 tg (CPTG
-uid 375,0
+uid 579,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 376,0
+uid 580,0
 va (VaSet
 font "courier,8,0"
 )
@@ -783,7 +782,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 377,0
+uid 581,0
 va (VaSet
 font "courier,8,0"
 )
@@ -796,16 +795,16 @@ lang 11
 decl (Decl
 n "c0"
 t "std_logic"
-o 1
-suid 23,0
+o 7
+suid 39,0
 )
 )
 )
 *63 (CptPort
-uid 378,0
+uid 582,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 379,0
+uid 583,0
 ro 90
 va (VaSet
 vasetType 1
@@ -814,11 +813,11 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 380,0
+uid 584,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 381,0
+uid 585,0
 va (VaSet
 font "courier,8,0"
 )
@@ -829,7 +828,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 382,0
+uid 586,0
 va (VaSet
 font "courier,8,0"
 )
@@ -842,8 +841,8 @@ lang 11
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 2
-suid 24,0
+o 8
+suid 40,0
 )
 )
 )
@@ -1556,6 +1555,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 390,0
+lastUid 594,0
 activeModelName "Symbol:CDM"
 )
