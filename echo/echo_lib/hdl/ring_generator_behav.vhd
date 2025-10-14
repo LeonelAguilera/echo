@@ -56,7 +56,7 @@ BEGIN
     
     ring_mask <= '1' WHEN distance > (minor_radius * minor_radius) AND
                           distance < (major_radius * major_radius) AND (
-                          (shifted_x > (-shifted_y)) OR (shifted_x > shifted_y)) ELSE -- I feel dirty...
+                          ((-shifted_x) > shifted_y) OR (shifted_x > shifted_y)) ELSE -- I feel dirty...
                  '0';
     END PROCESS;
   ring_color(0) <= "01000110";
