@@ -83,18 +83,7 @@ ARCHITECTURE behav OF pipelined_wiper_rasterizer IS
   
   SIGNAL total_point_area : SIGNED(20 DOWNTO 0);
   SIGNAL total_wiper_area : SIGNED(20 DOWNTO 0);
-BEGIN
-  Ax_s <= SIGNED('0' & Ax);
-  Ay_s <= SIGNED('0' & Ay);
-  Bx_s <= SIGNED('0' & Bx);
-  By_s <= SIGNED('0' & By);
-  Cx_s <= SIGNED('0' & Cx);
-  Cy_s <= SIGNED('0' & Cy);
-  Dx_s <= SIGNED('0' & Dx);
-  Dy_s <= SIGNED('0' & Dy);
-  Px_s <= SIGNED('0' & h_count);
-  Py_s <= SIGNED('0' & v_count);
-  
+BEGIN  
   area_ABC_doubled <= ABS( product_00 + product_01 + product_02);
   area_DBC_doubled <= ABS( product_03 + product_04 + product_05);
   area_PBC_doubled <= ABS( product_06 + product_07 + product_08);
@@ -105,6 +94,17 @@ BEGIN
   PROCESS(c0)
   BEGIN
     IF RISING_EDGE(c0) THEN
+      Ax_s <= SIGNED('0' & Ax);
+      Ay_s <= SIGNED('0' & Ay);
+      Bx_s <= SIGNED('0' & Bx);
+      By_s <= SIGNED('0' & By);
+      Cx_s <= SIGNED('0' & Cx);
+      Cy_s <= SIGNED('0' & Cy);
+      Dx_s <= SIGNED('0' & Dx);
+      Dy_s <= SIGNED('0' & Dy);
+      Px_s <= SIGNED('0' & h_count);
+      Py_s <= SIGNED('0' & v_count);
+      ------------------------------------------
       product_00 <= (Ax_s*(By_s-Cy_s));
       product_01 <= (Bx_s*(Cy_s-Ay_s));
       product_02 <= (Cx_s*(Ay_s-By_s));
