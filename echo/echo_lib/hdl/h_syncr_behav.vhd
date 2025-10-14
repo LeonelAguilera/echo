@@ -15,11 +15,11 @@ USE echo_lib.color_t.ALL;
 
 ENTITY h_syncr IS
    PORT( 
-      c0           : IN     std_logic;
-      fpga_reset_n : IN     std_logic;
-      h_count      : IN     unsigned (10 DOWNTO 0);
-      hblank       : OUT    std_logic;
-      vga_hsync_n  : OUT    std_logic
+      c0          : IN     std_logic;
+      h_count     : IN     unsigned (10 DOWNTO 0);
+      reset_n     : IN     std_logic;
+      hblank      : OUT    std_logic;
+      vga_hsync_n : OUT    std_logic
    );
 
 -- Declarations

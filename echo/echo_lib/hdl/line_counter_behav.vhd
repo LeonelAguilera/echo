@@ -15,10 +15,10 @@ USE echo_lib.color_t.ALL;
 
 ENTITY line_counter IS
    PORT( 
-      c0           : IN     std_logic;
-      fpga_reset_n : IN     std_logic;
-      h_count      : IN     unsigned (10 DOWNTO 0);
-      v_count      : OUT    unsigned (9 DOWNTO 0)
+      c0      : IN     std_logic;
+      h_count : IN     unsigned (10 DOWNTO 0);
+      reset_n : IN     std_logic;
+      v_count : OUT    unsigned (9 DOWNTO 0)
    );
 
 -- Declarations
