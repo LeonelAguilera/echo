@@ -32,7 +32,7 @@ END one_hot_mux ;
 
 --
 ARCHITECTURE behav OF one_hot_mux IS
-  CONSTANT background_color : rgb_color_t := ("01010101", "01101100", "11001001");
+  CONSTANT background_color : rgb_color_t := ("11001001", "01101100", "01010101");
 BEGIN
   WITH sel SELECT out_color <=
     in0 WHEN "000001",

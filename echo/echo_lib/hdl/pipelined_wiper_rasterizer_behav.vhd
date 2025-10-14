@@ -36,7 +36,7 @@ END pipelined_wiper_rasterizer ;
 
 --
 ARCHITECTURE behav OF pipelined_wiper_rasterizer IS
-  CONSTANT tolerance : SIGNED(20 DOWNTO 0) := "000000000000000000011";
+  CONSTANT tolerance : SIGNED(20 DOWNTO 0) := "000000000000000111111";
   SIGNAL Ax_s : SIGNED(11 DOWNTO 0);
   SIGNAL Ay_s : SIGNED(10 DOWNTO 0);
   SIGNAL Bx_s : SIGNED(11 DOWNTO 0);
@@ -83,7 +83,18 @@ ARCHITECTURE behav OF pipelined_wiper_rasterizer IS
   
   SIGNAL total_point_area : SIGNED(20 DOWNTO 0);
   SIGNAL total_wiper_area : SIGNED(20 DOWNTO 0);
-BEGIN  
+BEGIN
+  Ax_s <= SIGNED('0' & Ax);
+  Ay_s <= SIGNED('0' & Ay);
+  Bx_s <= SIGNED('0' & Bx);
+  By_s <= SIGNED('0' & By);
+  Cx_s <= SIGNED('0' & Cx);
+  Cy_s <= SIGNED('0' & Cy);
+  Dx_s <= SIGNED('0' & Dx);
+  Dy_s <= SIGNED('0' & Dy);
+  Px_s <= SIGNED('0' & h_count);
+  Py_s <= SIGNED('0' & v_count);
+  
   area_ABC_doubled <= ABS( product_00 + product_01 + product_02);
   area_DBC_doubled <= ABS( product_03 + product_04 + product_05);
   area_PBC_doubled <= ABS( product_06 + product_07 + product_08);
@@ -94,16 +105,6 @@ BEGIN
   PROCESS(c0)
   BEGIN
     IF RISING_EDGE(c0) THEN
-      Ax_s <= SIGNED('0' & Ax);
-      Ay_s <= SIGNED('0' & Ay);
-      Bx_s <= SIGNED('0' & Bx);
-      By_s <= SIGNED('0' & By);
-      Cx_s <= SIGNED('0' & Cx);
-      Cy_s <= SIGNED('0' & Cy);
-      Dx_s <= SIGNED('0' & Dx);
-      Dy_s <= SIGNED('0' & Dy);
-      Px_s <= SIGNED('0' & h_count);
-      Py_s <= SIGNED('0' & v_count);
       ------------------------------------------
       product_00 <= (Ax_s*(By_s-Cy_s));
       product_01 <= (Bx_s*(Cy_s-Ay_s));
@@ -130,15 +131,14 @@ BEGIN
       area_PBD <= area_PBD_doubled(21 DOWNTO 1);
       area_PAD <= area_PAD_doubled(21 DOWNTO 1);
       area_PAC <= area_PAC_doubled(21 DOWNTO 1);
+      ------------------------------------------
+      wiper_mask <= '1' WHEN (ABS(total_wiper_area - total_point_area) <= tolerance) ELSE
+                    '0';
     END IF;
   END PROCESS;
   
   total_wiper_area <= area_ABC + area_DBC;
   total_point_area <= area_PBC + area_PBD + area_PAD + area_PAC;
-  
-  wiper_mask <= '1' WHEN (total_wiper_area >= total_point_area + tolerance) OR
-                         (total_point_area >= total_wiper_area + tolerance) ELSE
-                '0';
   
   wiper_color(0) <= "11100110";
   wiper_color(1) <= "10001110";

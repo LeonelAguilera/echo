@@ -16,10 +16,16 @@ library "echo_lib"
 unitName "color_t"
 itemName "ALL"
 )
+(DmPackageRef
+library "altera_mf"
+unitName "all"
+itemName ""
+)
 ]
 libraryRefs [
 "ieee"
 "echo_lib"
+"altera_mf"
 ]
 )
 version "27.1"
@@ -27,7 +33,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 21,0
+suid 27,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -74,11 +80,11 @@ decl (Decl
 n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
-o 6
-suid 19,0
+o 20
+suid 25,0
 )
 )
-uid 387,0
+uid 475,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -86,23 +92,23 @@ lang 11
 decl (Decl
 n "c0"
 t "std_logic"
-o 7
-suid 20,0
+o 16
+suid 26,0
 )
 )
-uid 389,0
+uid 477,0
 )
 *16 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
-n "reset_n"
+n "fpga_reset_n"
 t "std_logic"
-o 8
-suid 21,0
+o 6
+suid 27,0
 )
 )
-uid 391,0
+uid 479,0
 )
 ]
 )
@@ -158,19 +164,19 @@ uid 92,0
 litem &14
 pos 0
 dimension 20
-uid 388,0
+uid 476,0
 )
 *23 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 390,0
+uid 478,0
 )
 *24 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 392,0
+uid 480,0
 )
 ]
 )
@@ -489,11 +495,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-107.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "15:57:31"
+value "18:58:51"
 )
 (vvPair
 variable "group"
@@ -501,7 +507,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-107.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -609,7 +615,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "15:57:31"
+value "18:58:51"
 )
 (vvPair
 variable "unit"
@@ -644,10 +650,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *58 (CptPort
-uid 372,0
+uid 460,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 373,0
+uid 461,0
 ro 90
 va (VaSet
 vasetType 1
@@ -656,11 +662,11 @@ fg "0,65535,0"
 xt "25000,6625,25750,7375"
 )
 tg (CPTG
-uid 374,0
+uid 462,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 375,0
+uid 463,0
 va (VaSet
 font "courier,8,0"
 )
@@ -672,12 +678,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 376,0
+uid 464,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,3600,64000,4500"
-st "h_count : OUT    unsigned (10 DOWNTO 0)
+xt "44000,3600,66500,4500"
+st "h_count      : OUT    unsigned (10 DOWNTO 0)
 "
 )
 thePort (LogicalPort
@@ -687,16 +693,16 @@ decl (Decl
 n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
-o 6
-suid 19,0
+o 20
+suid 25,0
 )
 )
 )
 *59 (CptPort
-uid 377,0
+uid 465,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 378,0
+uid 466,0
 ro 90
 va (VaSet
 vasetType 1
@@ -705,11 +711,11 @@ fg "0,65535,0"
 xt "14250,6625,15000,7375"
 )
 tg (CPTG
-uid 379,0
+uid 467,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 380,0
+uid 468,0
 va (VaSet
 font "courier,8,0"
 )
@@ -720,12 +726,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 381,0
+uid 469,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,1800,59000,2700"
-st "c0      : IN     std_logic  ;
+xt "44000,1800,61500,2700"
+st "c0           : IN     std_logic  ;
 "
 )
 thePort (LogicalPort
@@ -733,16 +739,16 @@ lang 11
 decl (Decl
 n "c0"
 t "std_logic"
-o 7
-suid 20,0
+o 16
+suid 26,0
 )
 )
 )
 *60 (CptPort
-uid 382,0
+uid 470,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 383,0
+uid 471,0
 ro 90
 va (VaSet
 vasetType 1
@@ -751,36 +757,36 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 384,0
+uid 472,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 385,0
+uid 473,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,7550,19500,8450"
-st "reset_n"
+xt "16000,7550,22500,8450"
+st "fpga_reset_n"
 blo "16000,8250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 386,0
+uid 474,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,2700,59000,3600"
-st "reset_n : IN     std_logic  ;
+xt "44000,2700,61500,3600"
+st "fpga_reset_n : IN     std_logic  ;
 "
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
-n "reset_n"
+n "fpga_reset_n"
 t "std_logic"
-o 8
-suid 21,0
+o 6
+suid 27,0
 )
 )
 )
@@ -1211,12 +1217,14 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,5400"
+xt "0,900,14500,7200"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 LIBRARY echo_lib;
-USE echo_lib.color_t.ALL;"
+USE echo_lib.color_t.ALL;
+LIBRARY altera_mf;
+USE altera_mf.all;"
 tm "PackageList"
 )
 ]
@@ -1495,6 +1503,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 392,0
+lastUid 480,0
 activeModelName "Symbol:CDM"
 )
