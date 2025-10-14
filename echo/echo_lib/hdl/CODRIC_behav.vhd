@@ -23,11 +23,11 @@ ENTITY CODRIC IS
    PORT( 
       c0          : IN     std_logic;
       start       : IN     std_logic;
-      radius      : IN     UNSIGNED (7 DOWNTO 0);
-      theta       : IN     angle_t;
       done        : OUT    std_logic;
       x_component : OUT    SIGNED (11 DOWNTO 0);
-      y_component : OUT    SIGNED (11 DOWNTO 0)
+      y_component : OUT    SIGNED (11 DOWNTO 0);
+      radius_t    : IN     UNSIGNED (7 DOWNTO 0);
+      theta_t     : IN     angle_t
    );
 
 -- Declarations
