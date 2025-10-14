@@ -11,6 +11,11 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 instances [
 (Instance
@@ -34,6 +39,7 @@ uid 249,0
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "32.1"
@@ -44,23 +50,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_generator/struct.bd.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_generator/struct.bd.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_generator/struct.bd.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_generator/struct.bd.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -76,11 +82,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_generator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_generator"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_generator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_generator"
 )
 (vvPair
 variable "date"
@@ -136,7 +142,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:04:19"
+value "14:42:44"
 )
 (vvPair
 variable "group"
@@ -167,6 +173,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -184,11 +194,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_generator/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_generator/struct.bd"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_generator/struct.bd"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_generator/struct.bd"
 )
 (vvPair
 variable "package_name"
@@ -248,7 +258,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "13:04:19"
+value "14:42:44"
 )
 (vvPair
 variable "unit"
@@ -341,8 +351,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,1800,129500,2700"
-st "angle       : unsigned(7 DOWNTO 0)
-"
+st "angle       : unsigned(7 DOWNTO 0)"
 )
 )
 *3 (PortIoOut
@@ -405,8 +414,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,6300,124000,7200"
-st "wiper_mask  : std_logic
-"
+st "wiper_mask  : std_logic"
 )
 )
 *5 (PortIoIn
@@ -471,8 +479,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,3600,130000,4500"
-st "h_count     : unsigned(10 DOWNTO 0)
-"
+st "h_count     : unsigned(10 DOWNTO 0)"
 )
 )
 *7 (PortIoIn
@@ -537,8 +544,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,4500,129500,5400"
-st "v_count     : unsigned(9 DOWNTO 0)
-"
+st "v_count     : unsigned(9 DOWNTO 0)"
 )
 )
 *9 (Grouping
@@ -1053,8 +1059,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,14400,133000,15300"
-st "SIGNAL Dy          : unsigned(9 DOWNTO 0)
-"
+st "SIGNAL Dy          : unsigned(9 DOWNTO 0)"
 )
 )
 *29 (Net
@@ -1073,8 +1078,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,13500,133500,14400"
-st "SIGNAL Dx          : unsigned(10 DOWNTO 0)
-"
+st "SIGNAL Dx          : unsigned(10 DOWNTO 0)"
 )
 )
 *30 (Net
@@ -1093,8 +1097,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,12600,133000,13500"
-st "SIGNAL Cy          : unsigned(9 DOWNTO 0)
-"
+st "SIGNAL Cy          : unsigned(9 DOWNTO 0)"
 )
 )
 *31 (Net
@@ -1113,8 +1116,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,11700,133500,12600"
-st "SIGNAL Cx          : unsigned(10 DOWNTO 0)
-"
+st "SIGNAL Cx          : unsigned(10 DOWNTO 0)"
 )
 )
 *32 (Net
@@ -1133,8 +1135,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,10800,133000,11700"
-st "SIGNAL By          : unsigned(9 DOWNTO 0)
-"
+st "SIGNAL By          : unsigned(9 DOWNTO 0)"
 )
 )
 *33 (Net
@@ -1153,8 +1154,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,9900,133500,10800"
-st "SIGNAL Bx          : unsigned(10 DOWNTO 0)
-"
+st "SIGNAL Bx          : unsigned(10 DOWNTO 0)"
 )
 )
 *34 (Net
@@ -1173,8 +1173,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,9000,133000,9900"
-st "SIGNAL Ay          : unsigned(9 DOWNTO 0)
-"
+st "SIGNAL Ay          : unsigned(9 DOWNTO 0)"
 )
 )
 *35 (Net
@@ -1193,8 +1192,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,8100,133500,9000"
-st "SIGNAL Ax          : unsigned(10 DOWNTO 0)
-"
+st "SIGNAL Ax          : unsigned(10 DOWNTO 0)"
 )
 )
 *36 (PortIoIn
@@ -1258,8 +1256,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,2700,124000,3600"
-st "c0          : std_logic
-"
+st "c0          : std_logic"
 )
 )
 *38 (PortIoOut
@@ -1313,7 +1310,7 @@ lang 11
 decl (Decl
 n "wiper_color"
 t "rgb_color_t"
-o 17
+o 5
 suid 27,0
 )
 declText (MLText
@@ -1322,8 +1319,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "112000,5400,125000,6300"
-st "wiper_color : rgb_color_t
-"
+st "wiper_color : rgb_color_t"
 )
 )
 *40 (Wire
@@ -1968,10 +1964,12 @@ uid 157,0
 va (VaSet
 font "courier,8,0"
 )
-xt "-6000,1300,8500,4000"
+xt "-6000,1300,8500,5800"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;"
 tm "PackageList"
 )
 ]
@@ -2052,12 +2050,12 @@ tm "BdCompilerDirectivesTextMgr"
 ]
 associable 1
 )
-windowSize "-8,54,1699,1027"
-viewArea "-12100,-2600,63584,39730"
+windowSize "-8,80,1699,1053"
+viewArea "-27301,93,71385,55287"
 cachedDiagramExtent "-6000,0,133500,51000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-7000,0"
-lastUid 716,0
+lastUid 854,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -3339,7 +3337,7 @@ m 1
 decl (Decl
 n "wiper_color"
 t "rgb_color_t"
-o 17
+o 5
 suid 27,0
 )
 )

@@ -11,9 +11,15 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "27.1"
@@ -21,7 +27,8 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 1,0
+ordering 1
+suid 2,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -67,11 +74,11 @@ m 1
 decl (Decl
 n "wiper_color"
 t "rgb_color_t"
-o 26
-suid 1,0
+o 1
+suid 2,0
 )
 )
-uid 56,0
+uid 143,0
 )
 ]
 )
@@ -127,7 +134,7 @@ uid 78,0
 litem &14
 pos 0
 dimension 20
-uid 57,0
+uid 144,0
 )
 ]
 )
@@ -358,23 +365,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_colorer/interface.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_colorer/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_colorer/interface.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_colorer/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -390,11 +397,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_colorer"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_colorer"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_colorer"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_colorer"
 )
 (vvPair
 variable "date"
@@ -450,7 +457,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:05:58"
+value "14:43:29"
 )
 (vvPair
 variable "group"
@@ -481,6 +488,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -498,11 +509,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_colorer/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_colorer/interface"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/wiper_colorer/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/wiper_colorer/interface"
 )
 (vvPair
 variable "package_name"
@@ -562,7 +573,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "13:05:58"
+value "14:43:29"
 )
 (vvPair
 variable "unit"
@@ -597,10 +608,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *54 (CptPort
-uid 51,0
+uid 138,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 52,0
+uid 139,0
 ro 90
 va (VaSet
 vasetType 1
@@ -609,11 +620,11 @@ fg "0,65535,0"
 xt "24000,10625,24750,11375"
 )
 tg (CPTG
-uid 53,0
+uid 140,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 54,0
+uid 141,0
 va (VaSet
 font "courier,8,0"
 )
@@ -625,12 +636,10 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 55,0
+uid 142,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,1800,61000,2700"
-st "wiper_color : OUT    rgb_color_t "
 )
 thePort (LogicalPort
 lang 11
@@ -638,8 +647,8 @@ m 1
 decl (Decl
 n "wiper_color"
 t "rgb_color_t"
-o 26
-suid 1,0
+o 1
+suid 2,0
 )
 )
 )
@@ -1070,10 +1079,12 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,3600"
+xt "0,900,14500,5400"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;"
 tm "PackageList"
 )
 ]
@@ -1352,6 +1363,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 114,0
+lastUid 144,0
 activeModelName "Symbol:CDM"
 )

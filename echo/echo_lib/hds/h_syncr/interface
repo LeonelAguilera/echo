@@ -27,7 +27,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 20,0
+suid 35,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -74,10 +74,10 @@ n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 6
-suid 16,0
+suid 31,0
 )
 )
-uid 307,0
+uid 481,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -87,10 +87,10 @@ decl (Decl
 n "hblank"
 t "std_logic"
 o 18
-suid 17,0
+suid 32,0
 )
 )
-uid 309,0
+uid 483,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -100,10 +100,10 @@ decl (Decl
 n "vga_hsync_n"
 t "std_logic"
 o 10
-suid 18,0
+suid 33,0
 )
 )
-uid 311,0
+uid 485,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -112,22 +112,22 @@ decl (Decl
 n "c0"
 t "std_logic"
 o 7
-suid 19,0
+suid 34,0
 )
 )
-uid 313,0
+uid 487,0
 )
 *18 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
-n "reset_n"
+n "fpga_reset_n"
 t "std_logic"
 o 8
-suid 20,0
+suid 35,0
 )
 )
-uid 315,0
+uid 489,0
 )
 ]
 )
@@ -183,31 +183,31 @@ uid 106,0
 litem &14
 pos 0
 dimension 20
-uid 308,0
+uid 482,0
 )
 *25 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 310,0
+uid 484,0
 )
 *26 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 312,0
+uid 486,0
 )
 *27 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 314,0
+uid 488,0
 )
 *28 (MRCItem
 litem &18
 pos 4
 dimension 20
-uid 316,0
+uid 490,0
 )
 ]
 )
@@ -438,23 +438,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/h_syncr/interface.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/h_syncr/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/h_syncr/interface.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/h_syncr/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -470,11 +470,11 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/h_syncr"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/h_syncr"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/h_syncr"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/h_syncr"
 )
 (vvPair
 variable "date"
@@ -530,7 +530,7 @@ value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:12:40"
+value "15:02:21"
 )
 (vvPair
 variable "group"
@@ -561,6 +561,10 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
+)
+(vvPair
 variable "mm"
 value "10"
 )
@@ -578,11 +582,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/h_syncr/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/h_syncr/interface"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/h_syncr/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/h_syncr/interface"
 )
 (vvPair
 variable "package_name"
@@ -642,7 +646,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "13:12:40"
+value "15:02:21"
 )
 (vvPair
 variable "unit"
@@ -677,10 +681,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *62 (CptPort
-uid 282,0
+uid 456,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 283,0
+uid 457,0
 ro 90
 va (VaSet
 vasetType 1
@@ -689,11 +693,11 @@ fg "0,65535,0"
 xt "14250,6625,15000,7375"
 )
 tg (CPTG
-uid 284,0
+uid 458,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 285,0
+uid 459,0
 va (VaSet
 font "courier,8,0"
 )
@@ -704,12 +708,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 286,0
+uid 460,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,2700,67000,3600"
-st "h_count     : IN     unsigned (10 DOWNTO 0) ;
+xt "44000,3600,67500,4500"
+st "h_count      : IN     unsigned (10 DOWNTO 0) ;
 "
 )
 thePort (LogicalPort
@@ -719,15 +723,15 @@ n "h_count"
 t "unsigned"
 b "(10 DOWNTO 0)"
 o 6
-suid 16,0
+suid 31,0
 )
 )
 )
 *63 (CptPort
-uid 287,0
+uid 461,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 288,0
+uid 462,0
 ro 90
 va (VaSet
 vasetType 1
@@ -736,11 +740,11 @@ fg "0,65535,0"
 xt "25000,10625,25750,11375"
 )
 tg (CPTG
-uid 289,0
+uid 463,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 290,0
+uid 464,0
 va (VaSet
 font "courier,8,0"
 )
@@ -752,12 +756,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 291,0
+uid 465,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,4500,61000,5400"
-st "hblank      : OUT    std_logic  ;
+xt "44000,4500,61500,5400"
+st "hblank       : OUT    std_logic  ;
 "
 )
 thePort (LogicalPort
@@ -767,15 +771,15 @@ decl (Decl
 n "hblank"
 t "std_logic"
 o 18
-suid 17,0
+suid 32,0
 )
 )
 )
 *64 (CptPort
-uid 292,0
+uid 466,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 293,0
+uid 467,0
 ro 90
 va (VaSet
 vasetType 1
@@ -784,11 +788,11 @@ fg "0,65535,0"
 xt "25000,6625,25750,7375"
 )
 tg (CPTG
-uid 294,0
+uid 468,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 295,0
+uid 469,0
 va (VaSet
 font "courier,8,0"
 )
@@ -800,12 +804,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 296,0
+uid 470,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,5400,60000,6300"
-st "vga_hsync_n : OUT    std_logic 
+xt "44000,5400,60500,6300"
+st "vga_hsync_n  : OUT    std_logic 
 "
 )
 thePort (LogicalPort
@@ -815,15 +819,15 @@ decl (Decl
 n "vga_hsync_n"
 t "std_logic"
 o 10
-suid 18,0
+suid 33,0
 )
 )
 )
 *65 (CptPort
-uid 297,0
+uid 471,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 298,0
+uid 472,0
 ro 90
 va (VaSet
 vasetType 1
@@ -832,11 +836,11 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 299,0
+uid 473,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 300,0
+uid 474,0
 va (VaSet
 font "courier,8,0"
 )
@@ -847,12 +851,12 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 301,0
+uid 475,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,1800,61000,2700"
-st "c0          : IN     std_logic  ;
+xt "44000,1800,61500,2700"
+st "c0           : IN     std_logic  ;
 "
 )
 thePort (LogicalPort
@@ -861,15 +865,15 @@ decl (Decl
 n "c0"
 t "std_logic"
 o 7
-suid 19,0
+suid 34,0
 )
 )
 )
 *66 (CptPort
-uid 302,0
+uid 476,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 303,0
+uid 477,0
 ro 90
 va (VaSet
 vasetType 1
@@ -878,36 +882,36 @@ fg "0,65535,0"
 xt "14250,8625,15000,9375"
 )
 tg (CPTG
-uid 304,0
+uid 478,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 305,0
+uid 479,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,8550,19500,9450"
-st "reset_n"
+xt "16000,8550,22500,9450"
+st "fpga_reset_n"
 blo "16000,9250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 306,0
+uid 480,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,3600,61000,4500"
-st "reset_n     : IN     std_logic  ;
+xt "44000,2700,61500,3600"
+st "fpga_reset_n : IN     std_logic  ;
 "
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
-n "reset_n"
+n "fpga_reset_n"
 t "std_logic"
 o 8
-suid 20,0
+suid 35,0
 )
 )
 )
@@ -1343,8 +1347,7 @@ st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 LIBRARY echo_lib;
-USE echo_lib.color_t.ALL;
-"
+USE echo_lib.color_t.ALL;"
 tm "PackageList"
 )
 ]
@@ -1623,6 +1626,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 316,0
+lastUid 490,0
 activeModelName "Symbol:CDM"
 )

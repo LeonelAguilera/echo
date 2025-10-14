@@ -27,3 +27,4 @@ force -freeze sim:/pixel_color_generator/left_ear_volume 8'b01100000 0
 force -freeze sim:/pixel_color_generator/right_ear_volume 8'b01100000 0
 force -freeze sim:/pixel_color_generator/echo_intensity 8'b01100000 0
 force -freeze sim:/pixel_color_generator/echo_duration 8'b01100000 0
+force fpga_reset_n 0 20ns, 1 20us, 0 80ms

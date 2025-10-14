@@ -11,9 +11,15 @@ unitName "std_logic_1164"
 library "ieee"
 unitName "numeric_std"
 )
+(DmPackageRef
+library "echo_lib"
+unitName "color_t"
+itemName "ALL"
+)
 ]
 libraryRefs [
 "ieee"
+"echo_lib"
 ]
 )
 version "27.1"
@@ -22,7 +28,7 @@ model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
 ordering 1
-suid 10,0
+suid 13,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -69,10 +75,10 @@ n "point_area"
 t "UNSIGNED"
 b "(19 DOWNTO 0)"
 o 1
-suid 8,0
+suid 11,0
 )
 )
-uid 243,0
+uid 287,0
 )
 *15 (LogPort
 port (LogicalPort
@@ -82,10 +88,10 @@ n "wiper_area"
 t "UNSIGNED"
 b "(19 DOWNTO 0)"
 o 2
-suid 9,0
+suid 12,0
 )
 )
-uid 245,0
+uid 289,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -95,10 +101,10 @@ decl (Decl
 n "wiper_mask"
 t "std_logic"
 o 3
-suid 10,0
+suid 13,0
 )
 )
-uid 247,0
+uid 291,0
 )
 ]
 )
@@ -154,19 +160,19 @@ uid 85,0
 litem &14
 pos 0
 dimension 20
-uid 244,0
+uid 288,0
 )
 *23 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 246,0
+uid 290,0
 )
 *24 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 248,0
+uid 292,0
 )
 ]
 )
@@ -411,23 +417,23 @@ VExpander (VariableExpander
 vvMap [
 (vvPair
 variable "HDLDir"
-value "/home/leoag319/echo/echo/echo_lib/hdl"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hdl"
 )
 (vvPair
 variable "HDSDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/tolerance_comparator/interface.info"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/tolerance_comparator/interface.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "/home/leoag319/echo/echo/echo_lib/hds/tolerance_comparator/interface.user"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/tolerance_comparator/interface.user"
 )
 (vvPair
 variable "SourceDir"
-value "/home/leoag319/echo/echo/echo_lib/hds"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds"
 )
 (vvPair
 variable "appl"
@@ -443,27 +449,27 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "/home/leoag319/echo/echo/echo_lib/hds/tolerance_comparator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/tolerance_comparator"
 )
 (vvPair
 variable "d_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/tolerance_comparator"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/tolerance_comparator"
 )
 (vvPair
 variable "date"
-value "10/09/25"
+value "10/13/25"
 )
 (vvPair
 variable "day"
-value "Thu"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Thursday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "09"
+value "13"
 )
 (vvPair
 variable "entity_name"
@@ -491,7 +497,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/09/25"
+value "10/13/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -499,11 +505,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-112.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:34:07"
+value "14:43:29"
 )
 (vvPair
 variable "group"
@@ -511,7 +517,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-112.ad.liu.se"
+value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -522,12 +528,20 @@ variable "library"
 value "echo_lib"
 )
 (vvPair
+variable "library_downstream_HdsLintPlugin"
+value "$HDS_PROJECT_DIR/echo_lib/designcheck"
+)
+(vvPair
 variable "library_downstream_ModelSimCompiler"
 value "$HDS_PROJECT_DIR/echo_lib/modelsim"
 )
 (vvPair
 variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
+)
+(vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/echo_lib/work"
 )
 (vvPair
 variable "mm"
@@ -547,11 +561,11 @@ value "October"
 )
 (vvPair
 variable "p"
-value "/home/leoag319/echo/echo/echo_lib/hds/tolerance_comparator/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/tolerance_comparator/interface"
 )
 (vvPair
 variable "p_logical"
-value "/home/leoag319/echo/echo/echo_lib/hds/tolerance_comparator/interface"
+value "/home/leoag319/echo_vga_test/echo/echo_lib/hds/tolerance_comparator/interface"
 )
 (vvPair
 variable "package_name"
@@ -611,7 +625,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "13:34:07"
+value "14:43:29"
 )
 (vvPair
 variable "unit"
@@ -646,10 +660,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *60 (CptPort
-uid 228,0
+uid 272,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 229,0
+uid 273,0
 ro 90
 va (VaSet
 vasetType 1
@@ -658,11 +672,11 @@ fg "0,65535,0"
 xt "14250,13625,15000,14375"
 )
 tg (CPTG
-uid 230,0
+uid 274,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 231,0
+uid 275,0
 va (VaSet
 font "courier,8,0"
 )
@@ -673,7 +687,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 232,0
+uid 276,0
 va (VaSet
 font "courier,8,0"
 )
@@ -685,15 +699,15 @@ n "point_area"
 t "UNSIGNED"
 b "(19 DOWNTO 0)"
 o 1
-suid 8,0
+suid 11,0
 )
 )
 )
 *61 (CptPort
-uid 233,0
+uid 277,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 234,0
+uid 278,0
 ro 90
 va (VaSet
 vasetType 1
@@ -702,11 +716,11 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 235,0
+uid 279,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 236,0
+uid 280,0
 va (VaSet
 font "courier,8,0"
 )
@@ -717,7 +731,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 237,0
+uid 281,0
 va (VaSet
 font "courier,8,0"
 )
@@ -729,15 +743,15 @@ n "wiper_area"
 t "UNSIGNED"
 b "(19 DOWNTO 0)"
 o 2
-suid 9,0
+suid 12,0
 )
 )
 )
 *62 (CptPort
-uid 238,0
+uid 282,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 239,0
+uid 283,0
 ro 90
 va (VaSet
 vasetType 1
@@ -746,11 +760,11 @@ fg "0,65535,0"
 xt "28000,10625,28750,11375"
 )
 tg (CPTG
-uid 240,0
+uid 284,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 241,0
+uid 285,0
 va (VaSet
 font "courier,8,0"
 )
@@ -762,7 +776,7 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 242,0
+uid 286,0
 va (VaSet
 font "courier,8,0"
 )
@@ -774,7 +788,7 @@ decl (Decl
 n "wiper_mask"
 t "std_logic"
 o 3
-suid 10,0
+suid 13,0
 )
 )
 )
@@ -825,8 +839,7 @@ font "courier,8,0"
 xt "-5500,7000,5500,9700"
 st "Generic Declarations
 
-tolerance INTEGER 3  
-"
+tolerance INTEGER 3  "
 )
 header "Generic Declarations"
 showHdrWhenContentsEmpty 1
@@ -1213,10 +1226,12 @@ uid 50,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,900,14500,3600"
+xt "0,900,14500,5400"
 st "LIBRARY ieee;
 USE ieee.std_logic_1164.all;
-USE ieee.numeric_std.all;"
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;"
 tm "PackageList"
 )
 ]
@@ -1495,6 +1510,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 248,0
+lastUid 292,0
 activeModelName "Symbol:CDM"
 )
