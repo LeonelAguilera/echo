@@ -10,9 +10,6 @@ ENTITY i2c_init IS
       SCL   : OUT    std_logic;
       OK    : OUT    std_logic
    );
-
--- Declarations
-
 END i2c_init ;
 
 ARCHITECTURE init OF i2c_init IS
@@ -26,6 +23,7 @@ ARCHITECTURE init OF i2c_init IS
     signal Bit_count : integer := 0; 
 BEGIN
   
+  
   process(CLK, RESET)
   begin 
     if Reset = '1' then
@@ -34,11 +32,12 @@ BEGIN
   elsif rising_edge(CLK)then
     if Bit_count < Bits1 then 
       SDA       <= SDA_rom(Bits1-1-Bit_count);
-      SCL       <= SCL_rom(Bits2-1-Bit_count); 
+      SCL       <= SCL_rom(Bits2-1-Bit_count);
       Bit_count <= Bit_count + 1;
   else OK <= '1'; 
     end if;
     end if; 
   end process; 
   
+
 END ARCHITECTURE init;
