@@ -62,6 +62,25 @@ ARCHITECTURE behav OF pipelined_wiper_rasterizer IS
   SIGNAL area_PAD_doubled : SIGNED(22 DOWNTO 0);
   SIGNAL area_PAC_doubled : SIGNED(22 DOWNTO 0);
   
+  SIGNAL product_00 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_01 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_02 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_03 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_04 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_05 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_06 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_07 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_08 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_09 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_10 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_11 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_12 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_13 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_14 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_15 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_16 : SIGNED(22 DOWNTO 0);
+  SIGNAL product_17 : SIGNED(22 DOWNTO 0);
+  
   SIGNAL total_point_area : SIGNED(20 DOWNTO 0);
   SIGNAL total_wiper_area : SIGNED(20 DOWNTO 0);
 BEGIN
@@ -76,16 +95,35 @@ BEGIN
   Px_s <= SIGNED('0' & h_count);
   Py_s <= SIGNED('0' & v_count);
   
-  area_ABC_doubled <= ABS((Ax_s*(By_s-Cy_s)) + (Bx_s*(Cy_s-Ay_s)) + (Cx_s*(Ay_s-By_s)));
-  area_DBC_doubled <= ABS((Dx_s*(By_s-Cy_s)) + (Bx_s*(Cy_s-Dy_s)) + (Cx_s*(Dy_s-By_s)));
-  area_PBC_doubled <= ABS((Px_s*(By_s-Cy_s)) + (Bx_s*(Cy_s-Py_s)) + (Cx_s*(Py_s-By_s)));
-  area_PBD_doubled <= ABS((Px_s*(By_s-Dy_s)) + (Bx_s*(Dy_s-Py_s)) + (Dx_s*(Py_s-By_s)));
-  area_PAD_doubled <= ABS((Px_s*(Ay_s-Dy_s)) + (Ax_s*(Dy_s-Py_s)) + (Dx_s*(Py_s-Ay_s)));
-  area_PAC_doubled <= ABS((Px_s*(Ay_s-Cy_s)) + (Ax_s*(Cy_s-Py_s)) + (Cx_s*(Py_s-Ay_s)));
+  area_ABC_doubled <= ABS( product_00 + product_01 + product_02);
+  area_DBC_doubled <= ABS( product_03 + product_04 + product_05);
+  area_PBC_doubled <= ABS( product_06 + product_07 + product_08);
+  area_PBD_doubled <= ABS( product_09 + product_10 + product_11);
+  area_PAD_doubled <= ABS( product_12 + product_13 + product_14);
+  area_PAC_doubled <= ABS( product_15 + product_16 + product_17);
   
   PROCESS(c0)
   BEGIN
     IF RISING_EDGE(c0) THEN
+      product_00 <= (Ax_s*(By_s-Cy_s));
+      product_01 <= (Bx_s*(Cy_s-Ay_s));
+      product_02 <= (Cx_s*(Ay_s-By_s));
+      product_03 <= (Dx_s*(By_s-Cy_s));
+      product_04 <= (Bx_s*(Cy_s-Dy_s));
+      product_05 <= (Cx_s*(Dy_s-By_s));
+      product_06 <= (Px_s*(By_s-Cy_s));
+      product_07 <= (Bx_s*(Cy_s-Py_s));
+      product_08 <= (Cx_s*(Py_s-By_s));
+      product_09 <= (Px_s*(By_s-Dy_s));
+      product_10 <= (Bx_s*(Dy_s-Py_s));
+      product_11 <= (Dx_s*(Py_s-By_s));
+      product_12 <= (Px_s*(Ay_s-Dy_s));
+      product_13 <= (Ax_s*(Dy_s-Py_s));
+      product_14 <= (Dx_s*(Py_s-Ay_s));
+      product_15 <= (Px_s*(Ay_s-Cy_s));
+      product_16 <= (Ax_s*(Cy_s-Py_s));
+      product_17 <= (Cx_s*(Py_s-Ay_s));
+      ------------------------------------------
       area_ABC <= area_ABC_doubled(21 DOWNTO 1);
       area_DBC <= area_DBC_doubled(21 DOWNTO 1);
       area_PBC <= area_PBC_doubled(21 DOWNTO 1);
