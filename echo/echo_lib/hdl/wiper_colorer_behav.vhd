@@ -10,6 +10,8 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
 
 ENTITY wiper_colorer IS
    PORT( 

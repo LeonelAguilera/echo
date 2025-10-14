@@ -12,6 +12,7 @@ USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 LIBRARY echo_lib;
 USE echo_lib.color_t.ALL;
+USE IEEE.MATH_REAL.all;
 
 ENTITY ring_generator IS
    GENERIC( 
@@ -23,10 +24,10 @@ ENTITY ring_generator IS
       center_y        : INTEGER := 197
    );
    PORT( 
-      h_count    : IN     unsigned (10 DOWNTO 0);
       v_count    : IN     unsigned (9 DOWNTO 0);
       ring_mask  : OUT    std_logic;
-      ring_color : OUT    rgb_color_t
+      ring_color : OUT    rgb_color_t;
+      h_count    : IN     unsigned (10 DOWNTO 0)
    );
 
 -- Declarations
