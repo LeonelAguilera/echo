@@ -26,8 +26,8 @@ ENTITY CODRIC IS
       done        : OUT    std_logic;
       x_component : OUT    SIGNED (11 DOWNTO 0);
       y_component : OUT    SIGNED (11 DOWNTO 0);
-      radius_t    : IN     UNSIGNED (7 DOWNTO 0);
-      theta_t     : IN     angle_t
+      radius      : IN     UNSIGNED (7 DOWNTO 0);
+      theta       : IN     angle_t
    );
 
 -- Declarations
@@ -52,26 +52,26 @@ BEGIN
     IF FALLING_EDGE(c0) THEN
       IF start = '1' THEN
         counter <= 0;
-        calc_x <= "0000" & SIGNED(radius_t);--(7 DOWNTO 0 => STD_LOGIC_VECTOR(radius_t), OTHERS => '0');
+        calc_x <= "0000" & SIGNED(radius);--(7 DOWNTO 0 => STD_LOGIC_VECTOR(radius), OTHERS => '0');
         calc_y <= (OTHERS => '0');
         angle <= (OTHERS => '0');
         is_done <= '0';
         
-        IF theta_t < 0 THEN
+        IF theta < 0 THEN
           quadrant <= "11";
-          target_angle <= -theta_t;
-        ELSIF theta_t >= 0 AND theta_t < (90 * 255 / angle_amplitude) THEN
+          target_angle <= -theta;
+        ELSIF theta >= 0 AND theta < (90 * 255 / angle_amplitude) THEN
           quadrant <= "00";
-          target_angle <= theta_t;
-        ELSIF theta_t >= (90 * 255 / angle_amplitude) AND theta_t < (180 * 255 / angle_amplitude) THEN
+          target_angle <= theta;
+        ELSIF theta >= (90 * 255 / angle_amplitude) AND theta < (180 * 255 / angle_amplitude) THEN
           quadrant <= "01";
-          target_angle <= (180 * 255 / angle_amplitude) - theta_t;
-        ELSIF theta_t >= (180 * 255 / angle_amplitude) AND theta_t < (270 * 255 / angle_amplitude) THEN
+          target_angle <= (180 * 255 / angle_amplitude) - theta;
+        ELSIF theta >= (180 * 255 / angle_amplitude) AND theta < (270 * 255 / angle_amplitude) THEN
           quadrant <= "10";
-          target_angle <= theta_t - (180 * 255 / angle_amplitude);
+          target_angle <= theta - (180 * 255 / angle_amplitude);
         ELSE
           quadrant <= "11";
-          target_angle <= (360 * 255 / angle_amplitude) - theta_t;
+          target_angle <= (360 * 255 / angle_amplitude) - theta;
         END IF;          
       ELSIF counter /= number_of_iterations THEN
         counter <= counter + 1;

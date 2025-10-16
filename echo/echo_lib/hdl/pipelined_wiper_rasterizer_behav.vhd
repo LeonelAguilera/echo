@@ -49,18 +49,18 @@ ARCHITECTURE behav OF pipelined_wiper_rasterizer IS
   SIGNAL Py_s : SIGNED(10 DOWNTO 0);
   
   SIGNAL area_ABC : SIGNED(20 DOWNTO 0);
-  SIGNAL area_DBC : SIGNED(20 DOWNTO 0);
+  SIGNAL area_ADC : SIGNED(20 DOWNTO 0);
+  SIGNAL area_PAB : SIGNED(20 DOWNTO 0);
   SIGNAL area_PBC : SIGNED(20 DOWNTO 0);
-  SIGNAL area_PBD : SIGNED(20 DOWNTO 0);
-  SIGNAL area_PAD : SIGNED(20 DOWNTO 0);
-  SIGNAL area_PAC : SIGNED(20 DOWNTO 0);
+  SIGNAL area_PCD : SIGNED(20 DOWNTO 0);
+  SIGNAL area_PDA : SIGNED(20 DOWNTO 0);
   
   SIGNAL area_ABC_doubled : SIGNED(22 DOWNTO 0);
-  SIGNAL area_DBC_doubled : SIGNED(22 DOWNTO 0);
+  SIGNAL area_ADC_doubled : SIGNED(22 DOWNTO 0);
+  SIGNAL area_PAB_doubled : SIGNED(22 DOWNTO 0);
   SIGNAL area_PBC_doubled : SIGNED(22 DOWNTO 0);
-  SIGNAL area_PBD_doubled : SIGNED(22 DOWNTO 0);
-  SIGNAL area_PAD_doubled : SIGNED(22 DOWNTO 0);
-  SIGNAL area_PAC_doubled : SIGNED(22 DOWNTO 0);
+  SIGNAL area_PCD_doubled : SIGNED(22 DOWNTO 0);
+  SIGNAL area_PDA_doubled : SIGNED(22 DOWNTO 0);
   
   SIGNAL product_00 : SIGNED(22 DOWNTO 0);
   SIGNAL product_01 : SIGNED(22 DOWNTO 0);
@@ -83,6 +83,9 @@ ARCHITECTURE behav OF pipelined_wiper_rasterizer IS
   
   SIGNAL total_point_area : SIGNED(20 DOWNTO 0);
   SIGNAL total_wiper_area : SIGNED(20 DOWNTO 0);
+  
+  -- SIGNAL clamped_difference : STD_LOGIC_VECTOR(7 DOWNTO 0);
+  -- SIGNAL difference : SIGNED(20 DOWNTO 0);
 BEGIN
   Ax_s <= SIGNED('0' & Ax);
   Ay_s <= SIGNED('0' & Ay);
@@ -96,11 +99,14 @@ BEGIN
   Py_s <= SIGNED('0' & v_count);
   
   area_ABC_doubled <= ABS( product_00 + product_01 + product_02);
-  area_DBC_doubled <= ABS( product_03 + product_04 + product_05);
-  area_PBC_doubled <= ABS( product_06 + product_07 + product_08);
-  area_PBD_doubled <= ABS( product_09 + product_10 + product_11);
-  area_PAD_doubled <= ABS( product_12 + product_13 + product_14);
-  area_PAC_doubled <= ABS( product_15 + product_16 + product_17);
+  area_ADC_doubled <= ABS( product_03 + product_04 + product_05);
+  area_PAB_doubled <= ABS( product_06 + product_07 + product_08);
+  area_PBC_doubled <= ABS( product_09 + product_10 + product_11);
+  area_PCD_doubled <= ABS( product_12 + product_13 + product_14);
+  area_PDA_doubled <= ABS( product_15 + product_16 + product_17);
+  
+  total_wiper_area <= area_ABC + area_ADC;
+  total_point_area <= area_PAB + area_PBC + area_PCD + area_PDA;
   
   PROCESS(c0)
   BEGIN
@@ -109,38 +115,46 @@ BEGIN
       product_00 <= (Ax_s*(By_s-Cy_s));
       product_01 <= (Bx_s*(Cy_s-Ay_s));
       product_02 <= (Cx_s*(Ay_s-By_s));
-      product_03 <= (Dx_s*(By_s-Cy_s));
-      product_04 <= (Bx_s*(Cy_s-Dy_s));
-      product_05 <= (Cx_s*(Dy_s-By_s));
-      product_06 <= (Px_s*(By_s-Cy_s));
-      product_07 <= (Bx_s*(Cy_s-Py_s));
-      product_08 <= (Cx_s*(Py_s-By_s));
-      product_09 <= (Px_s*(By_s-Dy_s));
-      product_10 <= (Bx_s*(Dy_s-Py_s));
-      product_11 <= (Dx_s*(Py_s-By_s));
-      product_12 <= (Px_s*(Ay_s-Dy_s));
-      product_13 <= (Ax_s*(Dy_s-Py_s));
-      product_14 <= (Dx_s*(Py_s-Ay_s));
-      product_15 <= (Px_s*(Ay_s-Cy_s));
-      product_16 <= (Ax_s*(Cy_s-Py_s));
-      product_17 <= (Cx_s*(Py_s-Ay_s));
+      product_03 <= (Ax_s*(Dy_s-Cy_s));
+      product_04 <= (Dx_s*(Cy_s-Ay_s));
+      product_05 <= (Cx_s*(Ay_s-Dy_s));
+      product_06 <= (Px_s*(Ay_s-By_s));
+      product_07 <= (Ax_s*(By_s-Py_s));
+      product_08 <= (Bx_s*(Py_s-Ay_s));
+      product_09 <= (Px_s*(By_s-Cy_s));
+      product_10 <= (Bx_s*(Cy_s-Py_s));
+      product_11 <= (Cx_s*(Py_s-By_s));
+      product_12 <= (Px_s*(Cy_s-Dy_s));
+      product_13 <= (Cx_s*(Dy_s-Py_s));
+      product_14 <= (Dx_s*(Py_s-Cy_s));
+      product_15 <= (Px_s*(Dy_s-Ay_s));
+      product_16 <= (Dx_s*(Ay_s-Py_s));
+      product_17 <= (Ax_s*(Py_s-Dy_s));
       ------------------------------------------
       area_ABC <= area_ABC_doubled(21 DOWNTO 1);
-      area_DBC <= area_DBC_doubled(21 DOWNTO 1);
+      area_ADC <= area_ADC_doubled(21 DOWNTO 1);
+      area_PAB <= area_PAB_doubled(21 DOWNTO 1);
       area_PBC <= area_PBC_doubled(21 DOWNTO 1);
-      area_PBD <= area_PBD_doubled(21 DOWNTO 1);
-      area_PAD <= area_PAD_doubled(21 DOWNTO 1);
-      area_PAC <= area_PAC_doubled(21 DOWNTO 1);
+      area_PCD <= area_PCD_doubled(21 DOWNTO 1);
+      area_PDA <= area_PDA_doubled(21 DOWNTO 1);
       ------------------------------------------
       wiper_mask <= '1' WHEN (ABS(total_wiper_area - total_point_area) <= tolerance) ELSE
                     '0';
+      -- difference <= ABS(total_wiper_area - total_point_area);
+      -- clamped_difference <= STD_LOGIC_VECTOR(difference(7 DOWNTO 0)) WHEN difference <= "000000000000011111111" ELSE
+      --                       "11111111";
     END IF;
   END PROCESS;
   
-  total_wiper_area <= area_ABC + area_DBC;
-  total_point_area <= area_PBC + area_PBD + area_PAD + area_PAC;
   
   wiper_color(0) <= "11100110";
   wiper_color(1) <= "10001110";
   wiper_color(2) <= "00110101";
+  
+  
+  -- wiper_color(0) <= clamped_difference;
+  -- wiper_color(1) <= clamped_difference;
+  -- wiper_color(2) <= clamped_difference;
+  
+  -- wiper_mask <= '1';
 END ARCHITECTURE behav;
