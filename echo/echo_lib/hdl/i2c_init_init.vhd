@@ -7,9 +7,11 @@ ENTITY i2c_init IS
       Reset : IN     std_logic;
       CLK   : IN     std_logic;
       SDA   : OUT    std_logic;
-      SCL   : OUT    std_logic;
-      OK    : OUT    std_logic
+      SCL   : OUT    std_logic
    );
+
+-- Declarations
+
 END i2c_init ;
 
 ARCHITECTURE init OF i2c_init IS

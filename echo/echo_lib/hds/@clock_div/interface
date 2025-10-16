@@ -22,7 +22,7 @@ model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
 ordering 1
-suid 21,0
+suid 24,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -68,23 +68,23 @@ m 1
 decl (Decl
 n "CLK"
 t "std_logic"
-o 2
-suid 19,0
+o 1
+suid 22,0
 )
 )
-uid 433,0
+uid 477,0
 )
 *15 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
-n "FPGA_clk"
+n "PLL"
 t "std_logic"
-o 1
-suid 20,0
+o 3
+suid 23,0
 )
 )
-uid 435,0
+uid 479,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -92,11 +92,11 @@ lang 11
 decl (Decl
 n "Reset"
 t "std_logic"
-o 3
-suid 21,0
+o 2
+suid 24,0
 )
 )
-uid 437,0
+uid 481,0
 )
 ]
 )
@@ -152,19 +152,19 @@ uid 71,0
 litem &14
 pos 0
 dimension 20
-uid 434,0
+uid 478,0
 )
 *23 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 436,0
+uid 480,0
 )
 *24 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 438,0
+uid 482,0
 )
 ]
 )
@@ -435,19 +435,19 @@ value "/home/alfth698/echo/echo/echo_lib/hds/Clock_div"
 )
 (vvPair
 variable "date"
-value "10/10/25"
+value "10/16/25"
 )
 (vvPair
 variable "day"
-value "Fri"
+value "Thu"
 )
 (vvPair
 variable "day_long"
-value "Friday"
+value "Thursday"
 )
 (vvPair
 variable "dd"
-value "10"
+value "16"
 )
 (vvPair
 variable "entity_name"
@@ -475,7 +475,7 @@ value "alfth698"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/10/25"
+value "10/16/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -483,11 +483,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-111.ad.liu.se"
+value "muxen2-116.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "00:40:42"
+value "13:37:38"
 )
 (vvPair
 variable "group"
@@ -495,7 +495,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-111.ad.liu.se"
+value "muxen2-116.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -504,6 +504,10 @@ value "VHDL"
 (vvPair
 variable "library"
 value "echo_lib"
+)
+(vvPair
+variable "library_downstream_ModelSimCompiler"
+value "$HDS_PROJECT_DIR/echo_lib/modelsim"
 )
 (vvPair
 variable "mm"
@@ -587,7 +591,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "00:40:42"
+value "13:37:38"
 )
 (vvPair
 variable "unit"
@@ -622,10 +626,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *58 (CptPort
-uid 418,0
+uid 462,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 419,0
+uid 463,0
 ro 90
 va (VaSet
 vasetType 1
@@ -634,11 +638,11 @@ fg "0,65535,0"
 xt "23000,6625,23750,7375"
 )
 tg (CPTG
-uid 420,0
+uid 464,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 421,0
+uid 465,0
 va (VaSet
 font "courier,8,0"
 )
@@ -650,10 +654,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 422,0
+uid 466,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,1800,58000,2700"
+st "CLK   : OUT    std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -661,16 +668,16 @@ m 1
 decl (Decl
 n "CLK"
 t "std_logic"
-o 2
-suid 19,0
+o 1
+suid 22,0
 )
 )
 )
 *59 (CptPort
-uid 423,0
+uid 467,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 424,0
+uid 468,0
 ro 90
 va (VaSet
 vasetType 1
@@ -679,41 +686,44 @@ fg "0,65535,0"
 xt "14250,7625,15000,8375"
 )
 tg (CPTG
-uid 425,0
+uid 469,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 426,0
+uid 470,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,7550,20000,8450"
-st "FPGA_clk"
+xt "16000,7550,17500,8450"
+st "PLL"
 blo "16000,8250"
 tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 427,0
+uid 471,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,3600,57000,4500"
+st "PLL   : IN     std_logic 
+"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
-n "FPGA_clk"
+n "PLL"
 t "std_logic"
-o 1
-suid 20,0
+o 3
+suid 23,0
 )
 )
 )
 *60 (CptPort
-uid 428,0
+uid 472,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 429,0
+uid 473,0
 ro 90
 va (VaSet
 vasetType 1
@@ -722,11 +732,11 @@ fg "0,65535,0"
 xt "14250,9625,15000,10375"
 )
 tg (CPTG
-uid 430,0
+uid 474,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 431,0
+uid 475,0
 va (VaSet
 font "courier,8,0"
 )
@@ -737,18 +747,21 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 432,0
+uid 476,0
 va (VaSet
 font "courier,8,0"
 )
+xt "44000,2700,58000,3600"
+st "Reset : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "Reset"
 t "std_logic"
-o 3
-suid 21,0
+o 2
+suid 24,0
 )
 )
 )
@@ -1461,6 +1474,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 438,0
+lastUid 482,0
 activeModelName "Symbol:CDM"
 )

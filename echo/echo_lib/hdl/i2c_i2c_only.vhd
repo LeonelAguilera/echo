@@ -4,13 +4,10 @@ USE ieee.numeric_std.all;
 
 ENTITY i2c IS
    PORT( 
-      FPGA_clk : IN     std_logic;
-      SDA      : OUT    std_logic;
-      OK       : OUT    std_logic;
-      SCL      : OUT    std_logic;
-      Reset    : IN     std_logic;
-      Mode     : OUT    std_logic;
-      CSB      : OUT    std_logic
+      PLL   : IN     std_logic;
+      SDA   : OUT    std_logic;
+      SCL   : OUT    std_logic;
+      Reset : IN     std_logic
    );
 
 -- Declarations
