@@ -27,31 +27,25 @@ ENTITY echo_logic IS
       G_DATA_WIDTH : natural := 16       -- Audio: 16 Bit
    );
    PORT( 
-      RESET_N         : IN     std_logic;
       clk             : IN     std_logic;
-    
-      audio_in_valid  : IN     std_logic;
       audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      
-      audio_in_ready  : OUT    std_logic;
-      audio_out_valid : OUT    std_logic;
       audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      
-      
+      audio_in_ready  : OUT    std_logic;
+      audio_in_valid  : IN     std_logic;
+      audio_out_valid : OUT    std_logic;
       wr_en           : OUT    std_logic;
       wr_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
       wr_data         : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       rd_en           : OUT    std_logic;
       rd_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
-      
       rd_valid        : IN     std_logic;
       rd_data         : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
-      
-      echo_disable    : IN     std_logic; 
+      echo_disable    : IN     std_logic;
       g_feedback_q15  : IN     std_logic_vector (15 DOWNTO 0);
-      delay_samples   : IN     std_logic_vector (G_ADDR_WIDTH-2 DOWNTO 0)
+      delay_samples   : IN     std_logic_vector (18 DOWNTO 0);
+      RESET_N         : OUT    std_logic
    );
 
 -- Declarations

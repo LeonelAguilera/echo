@@ -12,6 +12,14 @@ USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 
 ENTITY kb_decode IS
+   PORT(
+      clk       : IN     std_logic;
+      RESET_N   : IN     std_logic; 
+      KB_SCAN_VALID : IN     std_logic;
+      KB_SCAN_CODE  : IN     std_logic_vector (7 DOWNTO 0);
+      KB_DECODE     : OUT    std_logic_vector (24 DOWNTO 0)
+   );
+
 -- Declarations
 
 END kb_decode ;
