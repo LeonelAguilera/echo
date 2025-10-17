@@ -30,13 +30,13 @@ BEGIN
   begin 
     if Reset = '1' then
     Bit_count <= 0; 
-    OK <= '0';
+    -- OK <= '0';
   elsif rising_edge(CLK)then
     if Bit_count < Bits1 then 
       SDA       <= SDA_rom(Bits1-1-Bit_count);
       SCL       <= SCL_rom(Bits2-1-Bit_count);
       Bit_count <= Bit_count + 1;
-  else OK <= '1'; 
+  -- else OK <= '1'; 
     end if;
     end if; 
   end process; 
