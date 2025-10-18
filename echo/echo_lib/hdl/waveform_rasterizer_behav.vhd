@@ -87,7 +87,8 @@ BEGIN
         END IF;
       ELSE
         IF x_counter /= target_x AND y_counter /= target_y THEN
-          write_address <= STD_LOGIC_VECTOR(x_counter(x_counter'LENGTH -2 DOWNTO 0) & y_counter(y_counter'LENGTH -2 DOWNTO 0));
+          -- write_address <= STD_LOGIC_VECTOR(x_counter(x_counter'LENGTH -2 DOWNTO 0) & y_counter(y_counter'LENGTH -2 DOWNTO 0));
+          write_address <= STD_LOGIC_VECTOR(x_counter(x_counter'LENGTH -2 DOWNTO 0) + (y_counter(y_counter'LENGTH -2 DOWNTO 0) * 160));
           color_data <= (OTHERS => '1');
           y_counter <= y_counter - 1;
         ELSIF x_counter /= target_x THEN

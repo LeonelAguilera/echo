@@ -31,8 +31,8 @@ END overcomplicated_conmutator ;
 --
 ARCHITECTURE behav OF overcomplicated_conmutator IS
 BEGIN
-  din_0 <= color_data;
-  din_1 <= color_data;
+  din0 <= color_data;
+  din1 <= color_data;
   addr0 <= read_address WHEN buffer_selector = '0' ELSE
            write_address;
   addr1 <= read_address WHEN buffer_selector = '1' ELSE

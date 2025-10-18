@@ -52,21 +52,21 @@ ARCHITECTURE behav OF color_mapper IS
   SIGNAL sum_g : UNSIGNED(8 DOWNTO 0);
   SIGNAL sum_b : UNSIGNED(8 DOWNTO 0);
 BEGIN
-  mask_f <= '0' WHEN display_color_data = 0 ELSE
-            '1';
-  
   s_display_color_data <= SIGNED('0' & display_color_data);
   
+  mask_f <= '0' WHEN s_display_color_data = 0 ELSE
+            '1';
+  
   mul_r <= s_display_color_data * (s_oscil_line_color_r - s_background_color_r);
-  sum_r <= UNSIGNED(mul_r(14 DOWNTO 6) + background_color_r);
-  vga_r <= sum_r(7 DOWNTO 0);
+  sum_r <= UNSIGNED(mul_r(14 DOWNTO 6) + s_background_color_r);
+  vga_r <= STD_LOGIC_VECTOR(sum_r(7 DOWNTO 0));
   
   mul_g <= s_display_color_data * (s_oscil_line_color_g - s_background_color_g);
-  sum_g <= UNSIGNED(mul_g(14 DOWNTO 6) + background_color_g);
-  vga_g <= sum_g(7 DOWNTO 0);
+  sum_g <= UNSIGNED(mul_g(14 DOWNTO 6) + s_background_color_g);
+  vga_g <= STD_LOGIC_VECTOR(sum_g(7 DOWNTO 0));
   
   mul_b <= s_display_color_data * (s_oscil_line_color_b - s_background_color_b);
-  sum_b <= UNSIGNED(mul_b(14 DOWNTO 6) + background_color_b);
-  vga_b <= sum_r(7 DOWNTO 0);
+  sum_b <= UNSIGNED(mul_b(14 DOWNTO 6) + s_background_color_b);
+  vga_b <= STD_LOGIC_VECTOR(sum_r(7 DOWNTO 0));
 END ARCHITECTURE behav;
 

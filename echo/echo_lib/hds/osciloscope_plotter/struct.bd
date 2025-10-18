@@ -155,6 +155,26 @@ name "U_5"
 duLibraryName "echo_lib"
 duName "address_calculator"
 elements [
+(GiElement
+name "min_x"
+type "UNSIGNED(10 DOWNTO 0)"
+value "\"00101110000\""
+)
+(GiElement
+name "max_x"
+type "UNSIGNED(10 DOWNTO 0)"
+value "\"01111110000\""
+)
+(GiElement
+name "min_y"
+type "UNSIGNED(9 DOWNTO 0)"
+value "\"0000010000\""
+)
+(GiElement
+name "max_y"
+type "UNSIGNED(9 DOWNTO 0)"
+value "\"1000010000\""
+)
 ]
 mwi 0
 uid 2741,0
@@ -230,19 +250,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/osciloscope_plotter"
 )
 (vvPair
 variable "date"
-value "10/18/25"
+value "10/19/25"
 )
 (vvPair
 variable "day"
-value "Sat"
+value "Sun"
 )
 (vvPair
 variable "day_long"
-value "Saturday"
+value "Sunday"
 )
 (vvPair
 variable "dd"
-value "18"
+value "19"
 )
 (vvPair
 variable "entity_name"
@@ -270,7 +290,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/18/25"
+value "10/19/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -282,7 +302,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "23:39:15"
+value "00:16:35"
 )
 (vvPair
 variable "group"
@@ -398,7 +418,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "23:39:15"
+value "00:16:35"
 )
 (vvPair
 variable "unit"
@@ -4235,11 +4255,36 @@ uid 2749,0
 va (VaSet
 font "courier,8,0"
 )
-xt "11000,46650,11000,46650"
+xt "11000,46650,37500,50250"
+st "min_x = \"00101110000\"    ( UNSIGNED(10 DOWNTO 0) )  
+max_x = \"01111110000\"    ( UNSIGNED(10 DOWNTO 0) )  
+min_y = \"0000010000\"     ( UNSIGNED(9 DOWNTO 0)  )  
+max_y = \"1000010000\"     ( UNSIGNED(9 DOWNTO 0)  )  
+"
 )
 header ""
 )
 elements [
+(GiElement
+name "min_x"
+type "UNSIGNED(10 DOWNTO 0)"
+value "\"00101110000\""
+)
+(GiElement
+name "max_x"
+type "UNSIGNED(10 DOWNTO 0)"
+value "\"01111110000\""
+)
+(GiElement
+name "min_y"
+type "UNSIGNED(9 DOWNTO 0)"
+value "\"0000010000\""
+)
+(GiElement
+name "max_y"
+type "UNSIGNED(9 DOWNTO 0)"
+value "\"1000010000\""
+)
 ]
 )
 viewicon (ZoomableIcon
@@ -4843,74 +4888,9 @@ suid 4,0
 )
 )
 *180 (CptPort
-uid 3755,0
-optionalChildren [
-*181 (Line
-uid 3759,0
-layer 5
-sl 0
-va (VaSet
-vasetType 3
-transparent 1
-)
-xt "47750,37000,48000,37000"
-pts [
-"48000,37000"
-"47750,37000"
-]
-)
-*182 (Circle
-uid 3760,0
-va (VaSet
-vasetType 1
-fg "65535,65535,65535"
-lineColor "26368,26368,26368"
-)
-xt "47000,36625,47750,37375"
-radius 375
-)
-]
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 3756,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,65535"
-)
-xt "48000,36625,48750,37375"
-)
-tg (CPTG
-uid 3757,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 3758,0
-sl 0
-va (VaSet
-font "courier,8,0"
-)
-xt "45872,36696,46872,37596"
-st "qb"
-ju 2
-blo "46872,37396"
-)
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "qb"
-t "std_logic"
-o 31
-suid 5,0
-)
-)
-)
-*183 (CptPort
 uid 3771,0
 optionalChildren [
-*184 (Line
+*181 (Line
 uid 3775,0
 layer 5
 sl 0
@@ -4960,7 +4940,7 @@ suid 8,0
 )
 )
 )
-*185 (CommentText
+*182 (CommentText
 uid 3776,0
 shape (Rectangle
 uid 3777,0
@@ -4993,7 +4973,7 @@ visibleHeight 1000
 visibleWidth 4000
 )
 )
-*186 (CommentGraphic
+*183 (CommentGraphic
 uid 3779,0
 shape (CustomPolygon
 pts [
@@ -5036,7 +5016,7 @@ uid 3783,0
 ps "CenterOffsetStrategy"
 stg "VerticalLayoutStrategy"
 textVec [
-*187 (Text
+*184 (Text
 uid 3784,0
 va (VaSet
 isHidden 1
@@ -5046,7 +5026,7 @@ xt "44350,39200,49850,40100"
 st "moduleware"
 blo "44350,39900"
 )
-*188 (Text
+*185 (Text
 uid 3785,0
 va (VaSet
 font "courier,8,0"
@@ -5055,7 +5035,7 @@ xt "44350,40100,46350,41000"
 st "rsff"
 blo "44350,40800"
 )
-*189 (Text
+*186 (Text
 uid 3786,0
 va (VaSet
 font "courier,8,0"
@@ -5091,10 +5071,10 @@ sTC 0
 selT 0
 )
 dp [
-*190 (CptPort
+*187 (CptPort
 uid 3744,0
 optionalChildren [
-*191 (Line
+*188 (Line
 uid 3748,0
 layer 5
 sl 0
@@ -5144,10 +5124,10 @@ suid 3,0
 )
 )
 )
-*192 (CptPort
+*189 (CptPort
 uid 3761,0
 optionalChildren [
-*193 (Line
+*190 (Line
 uid 3765,0
 layer 5
 sl 0
@@ -5196,10 +5176,10 @@ suid 6,0
 )
 )
 )
-*194 (CptPort
+*191 (CptPort
 uid 3766,0
 optionalChildren [
-*195 (Line
+*192 (Line
 uid 3770,0
 layer 5
 sl 0
@@ -5249,25 +5229,87 @@ suid 7,0
 )
 )
 )
+*193 (CptPort
+uid 3755,0
+optionalChildren [
+*194 (Line
+uid 3759,0
+layer 5
+sl 0
+va (VaSet
+vasetType 3
+transparent 1
+)
+xt "47000,37000,48000,37000"
+pts [
+"48000,37000"
+"47000,37000"
+]
+)
+]
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 3756,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,65535"
+)
+xt "48000,36625,48750,37375"
+)
+tg (CPTG
+uid 3757,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 3758,0
+sl 0
+va (VaSet
+font "courier,8,0"
+)
+xt "45872,36696,46872,37596"
+st "qb"
+ju 2
+blo "46872,37396"
+)
+)
+thePort (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "qb"
+t "std_logic"
+o 31
+suid 5,0
+)
+)
+)
 ]
 prms (Property
 optionalChildren [
-*196 (Property
+*195 (Property
 pclass "param"
 pname "enable_type"
 pvalue "2"
 ptn "String"
 )
-*197 (Property
+*196 (Property
 pclass "param"
 pname "rst_type"
 pvalue "4"
 ptn "String"
 )
-*198 (Property
+*197 (Property
 pclass "param"
 pname "set_type"
 pvalue "4"
+ptn "String"
+)
+*198 (Property
+uid 3937,0
+pclass "param"
+pname "qb_type"
+pvalue "1"
 ptn "String"
 )
 ]
@@ -6050,7 +6092,7 @@ pts [
 ]
 )
 start &54
-end &183
+end &180
 sat 2
 eat 32
 stc 0
@@ -7083,11 +7125,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-4,4,1703,977"
-viewArea "8983,4590,110428,61328"
+viewArea "-33423,18771,65510,74105"
 cachedDiagramExtent "-11000,0,195000,58683"
 hasePageBreakOrigin 1
 pageBreakOrigin "-12000,0"
-lastUid 3827,0
+lastUid 4155,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0

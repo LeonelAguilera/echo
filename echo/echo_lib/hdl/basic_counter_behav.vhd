@@ -38,6 +38,6 @@ BEGIN
       END IF;
     END IF;
   END PROCESS;
-  read_address <= counter;
+  read_address <= STD_LOGIC_VECTOR(counter);
 END ARCHITECTURE behav;
 
