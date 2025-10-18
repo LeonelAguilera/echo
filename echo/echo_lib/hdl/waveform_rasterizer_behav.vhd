@@ -39,28 +39,30 @@ END waveform_rasterizer ;
 --
 ARCHITECTURE behav OF waveform_rasterizer IS
   CONSTANT block_size : INTEGER := 2**log2_block_size;
-  CONSTANT pixels_per_h_delta_fxp : INTEGER := (2**fixed_point_decimals) * 160 / (h_block_number * block_size);
-  CONSTANT pixels_per_v_delta_fxp : INTEGER := (2**fixed_point_decimals) * 256 / (v_block_number * block_size);
+  CONSTANT pixels_per_h_delta_fxp : INTEGER := (2**fixed_point_decimals) * (h_block_number * block_size) / 160;
+  CONSTANT pixels_per_v_delta_fxp : INTEGER := (2**fixed_point_decimals) * (v_block_number * block_size) / 256;
   CONSTANT max_slope : INTEGER := INTEGER(CEIL( REAL(v_block_number*block_size*(2**fixed_point_decimals)) / REAL(pixels_per_h_delta_fxp) ));
   SIGNAL x_counter : SIGNED(INTEGER(CEIL(LOG2(REAL(h_block_number * block_size)))) DOWNTO 0);
   SIGNAL y_counter : SIGNED(INTEGER(CEIL(LOG2(REAL(v_block_number * block_size)))) DOWNTO 0);
   SIGNAL busy : STD_LOGIC;
 BEGIN
   PROCESS(c0, fpga_reset_n)
-    VARIABLE last_x_fxp : SIGNED(x_counter'LENGTH + INTEGER(CEIL(LOG2(REAL(pixels_per_h_delta_fxp)))) - 1 DOWNTO 0);
-    VARIABLE last_y_fxp : SIGNED(x_counter'LENGTH + INTEGER(CEIL(LOG2(REAL(pixels_per_h_delta_fxp)))) - 1 DOWNTO 0);
-    VARIABLE curr_x_fxp : SIGNED(y_counter'LENGTH + INTEGER(CEIL(LOG2(REAL(pixels_per_h_delta_fxp)))) - 1 DOWNTO 0);
-    VARIABLE curr_y_fxp : SIGNED(y_counter'LENGTH + INTEGER(CEIL(LOG2(REAL(pixels_per_h_delta_fxp)))) - 1 DOWNTO 0);
+    VARIABLE last_x_fxp : SIGNED(x_counter'LENGTH + fixed_point_decimals - 1 DOWNTO 0);
+    VARIABLE last_y_fxp : SIGNED(y_counter'LENGTH + fixed_point_decimals - 1 DOWNTO 0);
+    VARIABLE curr_x_fxp : SIGNED(x_counter'LENGTH + fixed_point_decimals - 1 DOWNTO 0);
+    VARIABLE curr_y_fxp : SIGNED(y_counter'LENGTH + fixed_point_decimals - 1 DOWNTO 0);
     VARIABLE target_x : SIGNED(x_counter'LENGTH -1 DOWNTO 0);
     VARIABLE target_y : SIGNED(y_counter'LENGTH -1 DOWNTO 0);
     VARIABLE slope_fxp : SIGNED(INTEGER(CEIL(LOG2(REAL(max_slope)))) + fixed_point_decimals DOWNTO 0);
-    VARIABLE line_height_fxp : SIGNED(slope'LENGTH - 1 DOWNTO 0);
+    VARIABLE line_height_fxp : SIGNED(slope_fxp'LENGTH + INTEGER(CEIL(LOG2(REAL(line_thickness)))) - 1 DOWNTO 0);
     VARIABLE temp_y_counter : SIGNED(last_y_fxp'LENGTH - 1 DOWNTO 0);
     VARIABLE temp_target_y  : SIGNED(last_y_fxp'LENGTH - 1 DOWNTO 0);
     VARIABLE delta_y : SIGNED(y_counter'LENGTH - 1 DOWNTO 0);
   BEGIN
     IF fpga_reset_n = '1' THEN
       busy <= '0';
+      curr_x_fxp := (OTHERS => '0');
+      curr_y_fxp := (OTHERS => '0');
     ELSIF RISING_EDGE(c0) THEN
       IF busy = '0' THEN
         next_data <= '1';
@@ -69,36 +71,32 @@ BEGIN
           busy <= '1';
           last_x_fxp := curr_x_fxp;
           last_y_fxp := curr_y_fxp;
-          curr_x_fxp := RESIZE(x_coordinate * pixels_per_h_delta_fxp, curr_x_fxp'LENGTH);
-          curr_y_fxp := RESIZE(y_coordinate * pixels_per_h_delta_fxp, curr_y_fxp'LENGTH);
+          curr_x_fxp := RESIZE(SIGNED('0' & x_coordinate) * pixels_per_h_delta_fxp, curr_x_fxp'LENGTH);
+          curr_y_fxp := RESIZE(SIGNED('0' & y_coordinate) * pixels_per_v_delta_fxp, curr_y_fxp'LENGTH);
           
-          slope_fxp := (curr_y - last_y) * (2**fixed_point_decimals) / (curr_x - last_x);
-          line_height_fxp := (ABS(slope_fxp) + 1) * line_thickness;
+          slope_fxp := RESIZE((curr_y_fxp - last_y_fxp) * (2**fixed_point_decimals) / (curr_x_fxp - last_x_fxp), slope_fxp);
+          line_height_fxp := RESIZE((ABS(slope_fxp) + (2**fixed_point_decimals)) * line_thickness, line_height_fxp'LENGTH);
           
-          x_counter <= last_x(x_counter'LENGTH - 1 DOWNTO fixed_point_decimals);
-          target_x  := curr_x;
+          x_counter <= last_x_fxp(last_x_fxp'LENGTH - 1 DOWNTO fixed_point_decimals);
+          target_x  := curr_x_fxp(curr_x_fxp'LENGTH - 1 DOWNTO fixed_point_decimals);
           
-          temp_y_counter := last_y + RESIZE(SHIFT_RIGHT(line_height_fxp, 1), last_y'LENGTH);
-          temp_target_y  := last_y - RESIZE(SHIFT_RIGHT(line_height_fxp, 1), last_y'LENGTH);
-          y_counter <= temp_y_counter(y_counter'LENGTH - 1 DOWNTO fixed_point_decimals);
-          target_y  := temp_target_y(y_counter'LENGTH - 1 DOWNTO fixed_point_decimals);
+          temp_y_counter := last_y_fxp + RESIZE(SHIFT_RIGHT(line_height_fxp, 1), last_y_fxp'LENGTH);
+          temp_target_y  := last_y_fxp - RESIZE(SHIFT_RIGHT(line_height_fxp, 1), last_y_fxp'LENGTH);
+          y_counter <= MAXIMUM(0, MINIMUM(temp_y_counter(temp_y_counter'LENGTH - 1 DOWNTO fixed_point_decimals), (2**(y_counter'LENGTH - 1)) - 1));
+          target_y  := MAXIMUM(0, MINIMUM(temp_target_y(temp_target_y'LENGTH - 1 DOWNTO fixed_point_decimals), (2**(target_y'LENGTH - 1)) - 1));
         END IF;
       ELSE
-        IF x_counter /= target_x THEN
-          IF y_counter /= target_y THEN
-            write_address <= x_counter & y_counter;
-            color_data <= (OTHERS => '1');
-            y_counter <= y_counter + 1;
-          ELSE
-            delta_y := RESIZE(slope_fxp * (x_counter + 1) / pixels_per_h_delta_fxp, delta_y'LENGTH - 1);
+        IF x_counter /= target_x AND y_counter /= target_y THEN
+          write_address <= STD_LOGIC_VECTOR(x_counter(x_counter'LENGTH -2 DOWNTO 0) & y_counter(y_counter'LENGTH -2 DOWNTO 0));
+          color_data <= (OTHERS => '1');
+          y_counter <= y_counter - 1;
+        ELSIF x_counter /= target_x THEN
+          delta_y := RESIZE(SHIFT_RIGHT(slope_fxp * (x_counter + 1 - last_x_fxp(last_x_fxp'LENGTH - 1 DOWNTO fixed_point_decimals)), fixed_point_decimals), delta_y'LENGTH);
           
-            temp_y_counter := last_y + delta_y + RESIZE(SHIFT_RIGHT(line_height_fxp, 1), last_y'LENGTH);
-            temp_target_y  := last_y + delta_y - RESIZE(SHIFT_RIGHT(line_height_fxp, 1), last_y'LENGTH);
-            y_counter <= temp_y_counter(y_counter'LENGTH - 1 DOWNTO fixed_point_decimals);
-            target_y  := temp_target_y(y_counter'LENGTH - 1 DOWNTO fixed_point_decimals);
-            
-            x_counter <= x_counter + 1;
-          END IF;
+          y_counter <= MAXIMUM(0, MINIMUM(temp_y_counter(y_counter'LENGTH - 1 DOWNTO fixed_point_decimals) + delta_y, (2**(y_counter'LENGTH - 1)) - 1));
+          target_y  := MAXIMUM(0, MINIMUM(temp_target_y(y_counter'LENGTH - 1 DOWNTO fixed_point_decimals) + delta_y, (2**(target_y'LENGTH - 1)) - 1));
+          
+          x_counter <= x_counter + 1;
         ELSE
           busy <= '0';
           next_data <= '1';
