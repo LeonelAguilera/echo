@@ -100,7 +100,19 @@ BEGIN
         ELSE
           busy <= '0';
           next_data <= '1';
+          x_counter <= (OTHERS => '0');
         END IF;
+      END IF;
+    END IF;
+  END PROCESS;
+  
+  PROCESS(c0)
+  BEGIN
+    IF RISING_EDGE(c0) THEN
+      IF x_counter = (h_block_number * block_size) THEN
+        buffer_ready <= '1';
+      ELSE
+        buffer_ready <= '0';
       END IF;
     END IF;
   END PROCESS;
