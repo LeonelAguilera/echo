@@ -78,6 +78,7 @@ BEGIN
           pending <= '0';
         END IF;
       END IF;
+      
       IF next_data = '1' AND last_nd = '0' AND pending = '0' THEN
         IF read_pointer = write_pointer THEN
           pending <= '1';
@@ -86,7 +87,7 @@ BEGIN
           (x_coordinate, y_coordinate) <= coord_memory(read_pointer);
           data_available <= '1';
         END IF;
-      ELSE
+      ELSIF pending = '0' THEN
         data_available <= '0';              
       END IF;
     END IF;

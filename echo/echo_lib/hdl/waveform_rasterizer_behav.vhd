@@ -63,6 +63,7 @@ BEGIN
       busy <= '0';
       curr_x_fxp := (OTHERS => '0');
       curr_y_fxp := (OTHERS => '0');
+      next_data <= '0';
     ELSIF RISING_EDGE(c0) THEN
       IF busy = '0' THEN
         next_data <= '1';
@@ -88,7 +89,7 @@ BEGIN
       ELSE
         IF x_counter /= target_x AND y_counter /= target_y THEN
           -- write_address <= STD_LOGIC_VECTOR(x_counter(x_counter'LENGTH -2 DOWNTO 0) & y_counter(y_counter'LENGTH -2 DOWNTO 0));
-          write_address <= STD_LOGIC_VECTOR(x_counter(x_counter'LENGTH -2 DOWNTO 0) + (y_counter(y_counter'LENGTH -2 DOWNTO 0) * 160));
+          write_address <= STD_LOGIC_VECTOR(RESIZE(x_counter(x_counter'LENGTH -2 DOWNTO 0), write_address'LENGTH) + RESIZE(y_counter(y_counter'LENGTH -2 DOWNTO 0) * 640, write_address'LENGTH));
           color_data <= (OTHERS => '1');
           y_counter <= y_counter - 1;
         ELSIF x_counter /= target_x THEN
