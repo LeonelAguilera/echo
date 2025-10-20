@@ -34,7 +34,7 @@ ENTITY echo_logic IS
       audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_in_ready  : OUT    std_logic;
-      audio_in_valid  : IN     std_logic;
+      audio_in_valid  : IN     std_logic;   -- comes from auio I/O if 1 echo read data
       audio_out_valid : OUT    std_logic;
       wr_en           : OUT    std_logic;
       wr_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
@@ -54,7 +54,7 @@ END echo_logic ;
 
 
 ARCHITECTURE behav OF echo_logic IS
-  ---- ==========================================================================
+  -- ==========================================================================
   -- Hilfsfunktionen
   -- ==========================================================================
 -- 16-bit saturating add: a + b -> signed 16-bit with clip
