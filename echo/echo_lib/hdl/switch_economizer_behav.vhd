@@ -28,6 +28,8 @@ ENTITY switch_economizer IS
       echo_intensity     : OUT    unsigned (7 DOWNTO 0);
       left_ear_volume    : OUT    unsigned (7 DOWNTO 0);
       master_volume      : OUT    unsigned (7 DOWNTO 0);
+      new_x_coordinate   : OUT    STD_LOGIC_VECTOR (7 DOWNTO 0);
+      new_y_coordinate   : OUT    STD_LOGIC_VECTOR (7 DOWNTO 0);
       right_ear_volume   : OUT    unsigned (7 DOWNTO 0)
    );
 
@@ -55,5 +57,8 @@ BEGIN
   
   echo_intensity(7 DOWNTO 5) <= echo_intensity_d;
   echo_intensity(4 DOWNTO 0) <= (OTHERS => '0');
+  
+  new_x_coordinate <= STD_LOGIC_VECTOR(balance_d(1 DOWNTO 0) & right_ear_volume_d & left_ear_volume_d);
+  new_y_coordinate <= STD_LOGIC_VECTOR(echo_intensity_d(0) & echo_duration_d & master_volume_d & balance_d(2));
 END ARCHITECTURE behav;
 

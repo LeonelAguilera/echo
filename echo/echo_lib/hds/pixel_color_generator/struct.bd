@@ -293,19 +293,19 @@ value "/home/leoag319/echo/echo/echo_lib/hds/pixel_color_generator"
 )
 (vvPair
 variable "date"
-value "10/14/25"
+value "10/20/25"
 )
 (vvPair
 variable "day"
-value "Tue"
+value "Mon"
 )
 (vvPair
 variable "day_long"
-value "Tuesday"
+value "Monday"
 )
 (vvPair
 variable "dd"
-value "14"
+value "20"
 )
 (vvPair
 variable "entity_name"
@@ -333,7 +333,7 @@ value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/14/25"
+value "10/20/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -341,11 +341,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
-value "muxen2-109.ad.liu.se"
+value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "19:07:43"
+value "11:18:41"
 )
 (vvPair
 variable "group"
@@ -353,7 +353,7 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
-value "muxen2-109.ad.liu.se"
+value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "language"
@@ -461,7 +461,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "19:07:43"
+value "11:18:41"
 )
 (vvPair
 variable "unit"
@@ -554,7 +554,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,1800,197000,2700"
-st "balance              : unsigned(7 DOWNTO 0)"
+st "balance              : unsigned(7 DOWNTO 0)
+"
 )
 )
 *3 (PortIoIn
@@ -619,7 +620,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,3600,197000,4500"
-st "echo_duration        : unsigned(7 DOWNTO 0)"
+st "echo_duration        : unsigned(7 DOWNTO 0)
+"
 )
 )
 *5 (PortIoIn
@@ -684,7 +686,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,4500,197000,5400"
-st "echo_intensity       : unsigned(7 DOWNTO 0)"
+st "echo_intensity       : unsigned(7 DOWNTO 0)
+"
 )
 )
 *7 (PortIoIn
@@ -749,7 +752,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,6300,197500,7200"
-st "h_count              : unsigned(10 DOWNTO 0)"
+st "h_count              : unsigned(10 DOWNTO 0)
+"
 )
 )
 *9 (PortIoIn
@@ -814,7 +818,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,7200,197000,8100"
-st "left_ear_volume      : unsigned(7 DOWNTO 0)"
+st "left_ear_volume      : unsigned(7 DOWNTO 0)
+"
 )
 )
 *11 (PortIoIn
@@ -879,7 +884,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,8100,197000,9000"
-st "master_volume        : unsigned(7 DOWNTO 0)"
+st "master_volume        : unsigned(7 DOWNTO 0)
+"
 )
 )
 *13 (PortIoIn
@@ -944,7 +950,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,9000,197000,9900"
-st "right_ear_volume     : unsigned(7 DOWNTO 0)"
+st "right_ear_volume     : unsigned(7 DOWNTO 0)
+"
 )
 )
 *15 (PortIoIn
@@ -1009,7 +1016,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,9900,197000,10800"
-st "v_count              : unsigned(9 DOWNTO 0)"
+st "v_count              : unsigned(9 DOWNTO 0)
+"
 )
 )
 *17 (PortIoIn
@@ -1073,7 +1081,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,2700,191500,3600"
-st "c0                   : std_logic"
+st "c0                   : std_logic
+"
 )
 )
 *19 (Grouping
@@ -2433,7 +2442,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,10800,192500,11700"
-st "prev_pixel_color     : rgb_color_t"
+st "prev_pixel_color     : rgb_color_t
+"
 )
 )
 *62 (SaComponent
@@ -3366,7 +3376,7 @@ uid 2284,0
 decl (Decl
 n "vga_color"
 t "rgb_color_t"
-o 24
+o 23
 suid 50,0
 )
 declText (MLText
@@ -3375,7 +3385,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,22500,196000,23400"
-st "SIGNAL vga_color            : rgb_color_t"
+st "SIGNAL vga_color            : rgb_color_t
+"
 )
 )
 *90 (Net
@@ -3383,7 +3394,7 @@ uid 2290,0
 decl (Decl
 n "vga_color1"
 t "rgb_color_t"
-o 25
+o 24
 suid 51,0
 )
 declText (MLText
@@ -3392,7 +3403,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,23400,196000,24300"
-st "SIGNAL vga_color1           : rgb_color_t"
+st "SIGNAL vga_color1           : rgb_color_t
+"
 )
 )
 *91 (Net
@@ -3410,7 +3422,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,12600,196000,13500"
-st "SIGNAL anular_display_color : rgb_color_t"
+st "SIGNAL anular_display_color : rgb_color_t
+"
 )
 )
 *92 (Net
@@ -3428,7 +3441,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,14400,196000,15300"
-st "SIGNAL hbar_color           : rgb_color_t"
+st "SIGNAL hbar_color           : rgb_color_t
+"
 )
 )
 *93 (Net
@@ -3446,7 +3460,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,15300,196000,16200"
-st "SIGNAL hbar_color1          : rgb_color_t"
+st "SIGNAL hbar_color1          : rgb_color_t
+"
 )
 )
 *94 (Net
@@ -3464,7 +3479,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,16200,196000,17100"
-st "SIGNAL hbar_color2          : rgb_color_t"
+st "SIGNAL hbar_color2          : rgb_color_t
+"
 )
 )
 *95 (Net
@@ -3481,7 +3497,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,17100,195000,18000"
-st "SIGNAL mask_f               : std_logic"
+st "SIGNAL mask_f               : std_logic
+"
 )
 )
 *96 (Net
@@ -3498,7 +3515,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,18000,195000,18900"
-st "SIGNAL mask_f1              : std_logic"
+st "SIGNAL mask_f1              : std_logic
+"
 )
 )
 *97 (Net
@@ -3516,7 +3534,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,18900,195000,19800"
-st "SIGNAL mask_f2              : std_logic"
+st "SIGNAL mask_f2              : std_logic
+"
 )
 )
 *98 (Net
@@ -3534,7 +3553,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,19800,195000,20700"
-st "SIGNAL mask_f3              : std_logic"
+st "SIGNAL mask_f3              : std_logic
+"
 )
 )
 *99 (Net
@@ -3552,7 +3572,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,20700,195000,21600"
-st "SIGNAL mask_f4              : std_logic"
+st "SIGNAL mask_f4              : std_logic
+"
 )
 )
 *100 (Net
@@ -3570,7 +3591,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,21600,195000,22500"
-st "SIGNAL mask_f5              : std_logic"
+st "SIGNAL mask_f5              : std_logic
+"
 )
 )
 *101 (MWC
@@ -4131,7 +4153,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,13500,204500,14400"
-st "SIGNAL dout1                : std_logic_vector(5 DOWNTO 0)"
+st "SIGNAL dout1                : std_logic_vector(5 DOWNTO 0)
+"
 )
 )
 *123 (SaComponent
@@ -4552,7 +4575,7 @@ lang 11
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 25
+o 5
 suid 72,0
 )
 declText (MLText
@@ -4561,7 +4584,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "175000,5400,191500,6300"
-st "fpga_reset_n         : std_logic"
+st "fpga_reset_n         : std_logic
+"
 )
 )
 *137 (Wire
@@ -6457,11 +6481,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-8,41,1928,1170"
-viewArea "-2945,25225,55818,59048"
+viewArea "-80000,-2069,129106,118292"
 cachedDiagramExtent "-6500,0,204500,89000"
 hasePageBreakOrigin 1
 pageBreakOrigin "-12000,0"
-lastUid 4082,0
+lastUid 4163,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -7695,7 +7719,7 @@ m 4
 decl (Decl
 n "vga_color"
 t "rgb_color_t"
-o 24
+o 23
 suid 50,0
 )
 )
@@ -7707,7 +7731,7 @@ m 4
 decl (Decl
 n "vga_color1"
 t "rgb_color_t"
-o 25
+o 24
 suid 51,0
 )
 )
@@ -7861,7 +7885,7 @@ lang 11
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 25
+o 5
 suid 72,0
 )
 )

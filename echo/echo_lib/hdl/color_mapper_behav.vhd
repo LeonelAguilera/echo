@@ -16,21 +16,15 @@ USE echo_lib.color_t.ALL;
 
 ENTITY color_mapper IS
    GENERIC( 
-      background_color_r : UNSIGNED(7 DOWNTO 0) := "01111010";
-      background_color_g : UNSIGNED(7 DOWNTO 0) := "10011000";
-      background_color_b : UNSIGNED(7 DOWNTO 0) := "11101110";
-      oscil_line_color_r : UNSIGNED(7 DOWNTO 0) := "11100110";
-      oscil_line_color_g : UNSIGNED(7 DOWNTO 0) := "10001110";
-      oscil_line_color_b : UNSIGNED(7 DOWNTO 0) := "00110101"
+      background_color : rgb_color_t := ("01111010", "10011000", "11101110");
+      oscil_line_color : rgb_color_t := ("11100110", "10001110", "00110101")
    );
    PORT( 
-      mask_f             : OUT    std_logic;
-      vga_b              : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_g              : OUT    std_logic_vector (7 DOWNTO 0);
-      vga_r              : OUT    std_logic_vector (7 DOWNTO 0);
       display_color_data : IN     std_logic_vector (1 DOWNTO 0);
       in_image_window    : IN     std_logic;
-      bg_image           : IN     rgb_color_t
+      mask_f             : OUT    std_logic;
+      bg_image           : IN     rgb_color_t;
+      oscilloscope_color : OUT    rgb_color_t
    );
 
 -- Declarations
@@ -39,13 +33,13 @@ END color_mapper ;
 
 --
 ARCHITECTURE behav OF color_mapper IS
-  CONSTANT s_background_color_r : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color_r);
-  CONSTANT s_background_color_g : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color_g);
-  CONSTANT s_background_color_b : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color_b);
+  CONSTANT s_background_color_r : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color(0));
+  CONSTANT s_background_color_g : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color(1));
+  CONSTANT s_background_color_b : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color(2));
   
-  CONSTANT s_oscil_line_color_r : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color_r);
-  CONSTANT s_oscil_line_color_g : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color_g);
-  CONSTANT s_oscil_line_color_b : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color_b);
+  CONSTANT s_oscil_line_color_r : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color(0));
+  CONSTANT s_oscil_line_color_g : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color(1));
+  CONSTANT s_oscil_line_color_b : SIGNED(8 DOWNTO 0) := SIGNED('0' & background_color(2));
   
   SIGNAL s_display_color_data : SIGNED(display_color_data'LENGTH DOWNTO 0);
   
@@ -60,19 +54,20 @@ BEGIN
   
   mul_r <= s_display_color_data * (s_oscil_line_color_r - s_background_color_r);
   sum_r <= UNSIGNED(mul_r(mul_r'LENGTH - 1 DOWNTO s_display_color_data'LENGTH) + s_background_color_r);
-  vga_r <= bg_image(0) WHEN s_display_color_data = 0 ELSE
+  oscilloscope_color(0) <= bg_image(0) WHEN s_display_color_data = 0 ELSE
            STD_LOGIC_VECTOR(sum_r(7 DOWNTO 0));
   
   mul_g <= s_display_color_data * (s_oscil_line_color_g - s_background_color_g);
   sum_g <= UNSIGNED(mul_g(mul_g'LENGTH - 1 DOWNTO s_display_color_data'LENGTH) + s_background_color_g);
-  vga_g <= bg_image(1) WHEN s_display_color_data = 0 ELSE
+  oscilloscope_color(1) <= bg_image(1) WHEN s_display_color_data = 0 ELSE
            STD_LOGIC_VECTOR(sum_g(7 DOWNTO 0));
   
   mul_b <= s_display_color_data * (s_oscil_line_color_b - s_background_color_b);
   sum_b <= UNSIGNED(mul_b(mul_b'LENGTH - 1 DOWNTO s_display_color_data'LENGTH) + s_background_color_b);
-  vga_b <= bg_image(2) WHEN s_display_color_data = 0 ELSE
+  oscilloscope_color(2) <= bg_image(2) WHEN s_display_color_data = 0 ELSE
            STD_LOGIC_VECTOR(sum_b(7 DOWNTO 0));
   
   mask_f <= in_image_window;
+  --oscilloscope_color <= bg_image;
 END ARCHITECTURE behav;
 

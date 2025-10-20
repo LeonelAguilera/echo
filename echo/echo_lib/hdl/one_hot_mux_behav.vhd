@@ -16,13 +16,14 @@ USE work.color_t.ALL;
 
 ENTITY one_hot_mux IS
    PORT( 
-      sel       : IN     std_logic_vector (5 DOWNTO 0);
+      sel       : IN     std_logic_vector (6 DOWNTO 0);
       in0       : IN     rgb_color_t;
       in1       : IN     rgb_color_t;
       in2       : IN     rgb_color_t;
       in3       : IN     rgb_color_t;
       in4       : IN     rgb_color_t;
       in5       : IN     rgb_color_t;
+      in6       : IN     rgb_color_t;
       out_color : OUT    rgb_color_t
    );
 
@@ -35,11 +36,12 @@ ARCHITECTURE behav OF one_hot_mux IS
   CONSTANT background_color : rgb_color_t := ("11001001", "01101100", "01010101");
 BEGIN
   WITH sel SELECT out_color <=
-    in0 WHEN "000001",
-    in1 WHEN "000010",
-    in2 WHEN "000100",
-    in3 WHEN "001000",
-    in4 WHEN "010000",
-    in5 WHEN "100000",
+    in0 WHEN "0000001",
+    in1 WHEN "0000010",
+    in2 WHEN "0000100",
+    in3 WHEN "0001000",
+    in4 WHEN "0010000",
+    in5 WHEN "0100000",
+    in6 WHEN "1000000",
     background_color WHEN OTHERS;
 END ARCHITECTURE behav;
