@@ -21,3 +21,12 @@ attribute array_pin_number of balance_d : signal is ("AD26", "AB26", "AC25");
 attribute array_pin_number of master_volume_d : signal is ("AB25", "AC24", "AB24");
 attribute array_pin_number of echo_intensity_d : signal is ("AB23", "AA24", "AA23");
 attribute array_pin_number of echo_duration_d : signal is ("AA22", "Y24 ", "Y23 ");
+
+-- SRAM
+attribute array_pin_number of SRAM_ADDR : signal is ("T8  ","AB8 ","AB9 ","AC11","AB11","AA4 ","AC3 ","AB4 ","AD3 ","AF2 ","T7  ","AF5 ","AC5 ","AB5 ", "AE6 ","AB6 ", "AC7 ", "AE7 ","AD7 ","AB7 ");
+attribute array_pin_number of SRAM_DQ : signal is ("AG3 ","AF3 ","AE4 ","AE3 ","AE1 ","AE2 ","AD2 ","AD1 ","AF7 ","AH6 ","AG6 ","AF6 ","AH4 ","AG4 ","AF4 ","AH3 ");
+attribute pin_number of SRAM_CE_N : signal is "AF8";
+attribute pin_number of SRAM_UB_N : signal is "AC4";
+attribute pin_number of SRAM_LB_N : signal is "AD4";
+attribute pin_number of SRAM_OE_N : signal is "AD5";
+attribute pin_number of SRAM_WE_N : signal is "AE8";
