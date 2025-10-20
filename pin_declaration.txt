@@ -1,0 +1,23 @@
+type exemplar_string_array is array (natural range <>, natural range <>) of character;
+attribute pin_number : string;
+attribute array_pin_number : exemplar_string_array;
+
+-- VGA
+attribute pin_number of fpga_clk : signal is "Y2";
+attribute pin_number of fpga_reset_n: signal is "M23";
+attribute pin_number of vga_clk: signal is "A12";
+attribute pin_number of vga_sync: signal is "C10";
+attribute pin_number of vga_blank_n: signal is "F11";
+attribute pin_number of vga_hsync_n: signal is "G13";
+attribute pin_number of vga_vsync_n: signal is "C13";
+attribute array_pin_number of vga_r : signal is ("H10", "H8 ", "J12", "G10", "F12", "D10", "E11", "E12");
+attribute array_pin_number of vga_g : signal is ("C9 ", "F10", "B8 ", "C8 ", "H12", "F8 ", "G11", "G8 ");
+attribute array_pin_number of vga_b : signal is ("D12", "D11", "C12", "A11", "B11", "C11", "A10", "B10");
+
+-- Switches
+attribute array_pin_number of left_ear_volume_d : signal is ("AB28", "AC28", "AC27");
+attribute array_pin_number of right_ear_volume_d : signal is ("AD27", "AB27", "AC26");
+attribute array_pin_number of balance_d : signal is ("AD26", "AB26", "AC25");
+attribute array_pin_number of master_volume_d : signal is ("AB25", "AC24", "AB24");
+attribute array_pin_number of echo_intensity_d : signal is ("AB23", "AA24", "AA23");
+attribute array_pin_number of echo_duration_d : signal is ("AA22", "Y24 ", "Y23 ");
