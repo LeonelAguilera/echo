@@ -21,7 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 22,0
+suid 23,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -79,7 +79,7 @@ m 1
 decl (Decl
 n "SDA"
 t "std_logic"
-o 11
+o 12
 suid 2,0
 )
 )
@@ -92,7 +92,7 @@ m 1
 decl (Decl
 n "SCL"
 t "std_logic"
-o 10
+o 11
 suid 3,0
 )
 )
@@ -106,26 +106,13 @@ decl (Decl
 n "DAC"
 t "signed"
 b "(15 DOWNTO 0)"
-o 7
+o 8
 suid 13,0
 )
 )
 uid 950,0
 )
 *18 (LogPort
-port (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "overflow"
-t "std_logic"
-o 12
-suid 14,0
-)
-)
-uid 952,0
-)
-*19 (LogPort
 port (LogicalPort
 lang 11
 m 1
@@ -138,7 +125,7 @@ suid 15,0
 )
 uid 954,0
 )
-*20 (LogPort
+*19 (LogPort
 port (LogicalPort
 lang 11
 m 1
@@ -146,13 +133,13 @@ decl (Decl
 n "HEX7"
 t "std_logic_vector"
 b "(0 to 6)"
-o 9
+o 10
 suid 16,0
 )
 )
 uid 1157,0
 )
-*21 (LogPort
+*20 (LogPort
 port (LogicalPort
 lang 11
 m 1
@@ -160,13 +147,13 @@ decl (Decl
 n "HEX6"
 t "std_logic_vector"
 b "(0 to 6)"
-o 8
+o 9
 suid 17,0
 )
 )
 uid 1159,0
 )
-*22 (LogPort
+*21 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -179,7 +166,7 @@ suid 18,0
 )
 uid 1401,0
 )
-*23 (LogPort
+*22 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -191,7 +178,7 @@ suid 19,0
 )
 uid 1403,0
 )
-*24 (LogPort
+*23 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -203,7 +190,7 @@ suid 20,0
 )
 uid 1405,0
 )
-*25 (LogPort
+*24 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -216,7 +203,7 @@ suid 21,0
 )
 uid 1407,0
 )
-*26 (LogPort
+*25 (LogPort
 port (LogicalPort
 decl (Decl
 n "FPGA_CLK"
@@ -227,6 +214,18 @@ i "'0'"
 )
 )
 uid 1567,0
+)
+*26 (LogPort
+port (LogicalPort
+lang 11
+decl (Decl
+n "lrsel"
+t "std_logic"
+o 7
+suid 23,0
+)
+)
+uid 1805,0
 )
 ]
 )
@@ -306,55 +305,55 @@ uid 949,0
 litem &18
 pos 4
 dimension 20
-uid 951,0
+uid 953,0
 )
 *37 (MRCItem
 litem &19
 pos 5
 dimension 20
-uid 953,0
+uid 1156,0
 )
 *38 (MRCItem
 litem &20
 pos 6
 dimension 20
-uid 1156,0
+uid 1158,0
 )
 *39 (MRCItem
 litem &21
 pos 7
 dimension 20
-uid 1158,0
+uid 1400,0
 )
 *40 (MRCItem
 litem &22
 pos 8
 dimension 20
-uid 1400,0
+uid 1402,0
 )
 *41 (MRCItem
 litem &23
 pos 9
 dimension 20
-uid 1402,0
+uid 1404,0
 )
 *42 (MRCItem
 litem &24
 pos 10
 dimension 20
-uid 1404,0
+uid 1406,0
 )
 *43 (MRCItem
 litem &25
 pos 11
 dimension 20
-uid 1406,0
+uid 1566,0
 )
 *44 (MRCItem
 litem &26
 pos 12
 dimension 20
-uid 1566,0
+uid 1804,0
 )
 ]
 )
@@ -677,7 +676,7 @@ value "muxen2-107.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "14:46:11"
+value "16:31:25"
 )
 (vvPair
 variable "group"
@@ -789,7 +788,7 @@ value "symbol"
 )
 (vvPair
 variable "time"
-value "14:46:11"
+value "16:31:25"
 )
 (vvPair
 variable "unit"
@@ -856,7 +855,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,4500,61500,5400"
-st "Reset        : IN     std_logic  ;"
+st "Reset        : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -901,8 +901,9 @@ uid 125,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,10800,61500,11700"
-st "SDA          : OUT    std_logic  ;"
+xt "44000,11700,61500,12600"
+st "SDA          : OUT    std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -910,7 +911,7 @@ m 1
 decl (Decl
 n "SDA"
 t "std_logic"
-o 11
+o 12
 suid 2,0
 )
 )
@@ -948,8 +949,9 @@ uid 130,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,9900,61500,10800"
-st "SCL          : OUT    std_logic  ;"
+xt "44000,10800,61500,11700"
+st "SCL          : OUT    std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -957,7 +959,7 @@ m 1
 decl (Decl
 n "SCL"
 t "std_logic"
-o 10
+o 11
 suid 3,0
 )
 )
@@ -995,8 +997,9 @@ uid 984,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,7200,66500,8100"
-st "DAC          : OUT    signed (15 DOWNTO 0) ;"
+xt "44000,8100,66500,9000"
+st "DAC          : OUT    signed (15 DOWNTO 0) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1005,59 +1008,12 @@ decl (Decl
 n "DAC"
 t "signed"
 b "(15 DOWNTO 0)"
-o 7
+o 8
 suid 13,0
 )
 )
 )
 *82 (CptPort
-uid 985,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 986,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "39000,11625,39750,12375"
-)
-tg (CPTG
-uid 987,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 988,0
-va (VaSet
-font "courier,8,0"
-)
-xt "34000,11550,38000,12450"
-st "overflow"
-ju 2
-blo "38000,12250"
-tm "CptPortNameMgr"
-)
-)
-dt (MLText
-uid 989,0
-va (VaSet
-font "courier,8,0"
-)
-xt "44000,11700,61500,12600"
-st "overflow     : OUT    std_logic  ;"
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "overflow"
-t "std_logic"
-o 12
-suid 14,0
-)
-)
-)
-*83 (CptPort
 uid 990,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1091,7 +1047,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,12600,60500,13500"
-st "signal_ready : OUT    std_logic "
+st "signal_ready : OUT    std_logic 
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1104,7 +1061,7 @@ suid 15,0
 )
 )
 )
-*84 (CptPort
+*83 (CptPort
 uid 1160,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1137,8 +1094,9 @@ uid 1164,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,9000,69000,9900"
-st "HEX7         : OUT    std_logic_vector (0 to 6) ;"
+xt "44000,9900,69000,10800"
+st "HEX7         : OUT    std_logic_vector (0 to 6) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1147,12 +1105,12 @@ decl (Decl
 n "HEX7"
 t "std_logic_vector"
 b "(0 to 6)"
-o 9
+o 10
 suid 16,0
 )
 )
 )
-*85 (CptPort
+*84 (CptPort
 uid 1165,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1185,8 +1143,9 @@ uid 1169,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,8100,69000,9000"
-st "HEX6         : OUT    std_logic_vector (0 to 6) ;"
+xt "44000,9000,69000,9900"
+st "HEX6         : OUT    std_logic_vector (0 to 6) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1195,12 +1154,12 @@ decl (Decl
 n "HEX6"
 t "std_logic_vector"
 b "(0 to 6)"
-o 8
+o 9
 suid 17,0
 )
 )
 )
-*86 (CptPort
+*85 (CptPort
 uid 1408,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1233,7 +1192,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,3600,71500,4500"
-st "Left_Audio   : IN     std_logic_vector (15 downto 0) ;"
+st "Left_Audio   : IN     std_logic_vector (15 downto 0) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1246,7 +1206,7 @@ suid 18,0
 )
 )
 )
-*87 (CptPort
+*86 (CptPort
 uid 1413,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1279,7 +1239,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,1800,61500,2700"
-st "Enable       : IN     std_logic  ;"
+st "Enable       : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1291,7 +1252,7 @@ suid 19,0
 )
 )
 )
-*88 (CptPort
+*87 (CptPort
 uid 1418,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1324,7 +1285,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,6300,65000,7200"
-st "Vector_Value : IN     std_logic_vector  ;"
+st "Vector_Value : IN     std_logic_vector  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1336,7 +1298,7 @@ suid 20,0
 )
 )
 )
-*89 (CptPort
+*88 (CptPort
 uid 1423,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1369,7 +1331,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,5400,71500,6300"
-st "Right_Audio  : IN     std_logic_vector (15 downto 0) ;"
+st "Right_Audio  : IN     std_logic_vector (15 downto 0) ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -1382,7 +1345,7 @@ suid 21,0
 )
 )
 )
-*90 (CptPort
+*89 (CptPort
 uid 1568,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1425,7 +1388,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,2700,65200,3600"
-st "FPGA_CLK     : IN     STD_LOGIC  := '0' ;"
+st "FPGA_CLK     : IN     STD_LOGIC  := '0' ;
+"
 )
 thePort (LogicalPort
 decl (Decl
@@ -1434,6 +1398,52 @@ t "STD_LOGIC"
 o 2
 suid 22,0
 i "'0'"
+)
+)
+)
+*90 (CptPort
+uid 1806,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1807,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "14250,15625,15000,16375"
+)
+tg (CPTG
+uid 1808,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1809,0
+va (VaSet
+font "courier,8,0"
+)
+xt "16000,15550,18500,16450"
+st "lrsel"
+blo "16000,16250"
+tm "CptPortNameMgr"
+)
+)
+dt (MLText
+uid 1810,0
+va (VaSet
+font "courier,8,0"
+)
+xt "44000,7200,61500,8100"
+st "lrsel        : IN     std_logic  ;
+"
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "lrsel"
+t "std_logic"
+o 7
+suid 23,0
 )
 )
 )
@@ -2144,6 +2154,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 1688,0
+lastUid 1810,0
 activeModelName "Symbol:CDM"
 )

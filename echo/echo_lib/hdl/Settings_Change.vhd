@@ -4,15 +4,15 @@ USE ieee.numeric_std.all;
 
 ENTITY Settings IS
    PORT( 
-      Reset     : IN     std_logic;
       DPressed  : IN     std_logic;
       WPressed  : IN     std_logic;
       SPressed  : IN     std_logic;
-      overflow  : IN     std_logic;
       vol_count : OUT    unsigned (3 DOWNTO 0);
-      c0        : IN     std_logic;
       bal_count : OUT    unsigned (3 DOWNTO 0);
-      APressed  : IN     std_logic
+      APressed  : IN     std_logic;
+      Reset     : IN     std_logic;
+      c0        : IN     std_logic;
+      overflow  : IN     std_logic
    );
 
 -- Declarations

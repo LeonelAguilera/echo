@@ -21,7 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 18,0
+suid 19,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -68,26 +68,13 @@ decl (Decl
 n "DAC"
 t "signed"
 b "(15 DOWNTO 0)"
-o 7
+o 8
 suid 2,0
 )
 )
 uid 134,0
 )
 *15 (LogPort
-port (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "overflow"
-t "std_logic"
-o 8
-suid 5,0
-)
-)
-uid 140,0
-)
-*16 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -99,7 +86,7 @@ suid 7,0
 )
 uid 144,0
 )
-*17 (LogPort
+*16 (LogPort
 port (LogicalPort
 lang 11
 m 1
@@ -112,19 +99,20 @@ suid 8,0
 )
 uid 146,0
 )
-*18 (LogPort
+*17 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
 n "Vector_Value"
 t "std_logic_vector"
+b "(5 downto 0)"
 o 5
 suid 11,0
 )
 )
 uid 593,0
 )
-*19 (LogPort
+*18 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -136,33 +124,33 @@ suid 15,0
 )
 uid 690,0
 )
-*20 (LogPort
+*19 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
 n "Left_Audio"
 t "std_logic_vector"
-b "(15 downto 0)"
+b "(15 DOWNTO 0)"
 o 2
 suid 16,0
 )
 )
 uid 692,0
 )
-*21 (LogPort
+*20 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
 n "Right_Audio"
 t "std_logic_vector"
-b "(15 downto 0)"
+b "(15 DOWNTO 0)"
 o 4
 suid 17,0
 )
 )
 uid 694,0
 )
-*22 (LogPort
+*21 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -173,6 +161,18 @@ suid 18,0
 )
 )
 uid 780,0
+)
+*22 (LogPort
+port (LogicalPort
+lang 11
+decl (Decl
+n "lrsel"
+t "std_logic"
+o 7
+suid 19,0
+)
+)
+uid 1017,0
 )
 ]
 )
@@ -232,51 +232,51 @@ uid 133,0
 )
 *29 (MRCItem
 litem &15
-pos 1
-dimension 20
-uid 139,0
-)
-*30 (MRCItem
-litem &16
 pos 2
 dimension 20
 uid 143,0
 )
-*31 (MRCItem
-litem &17
+*30 (MRCItem
+litem &16
 pos 3
 dimension 20
 uid 145,0
 )
-*32 (MRCItem
-litem &18
+*31 (MRCItem
+litem &17
 pos 4
 dimension 20
 uid 592,0
 )
-*33 (MRCItem
-litem &19
+*32 (MRCItem
+litem &18
 pos 5
 dimension 20
 uid 689,0
 )
-*34 (MRCItem
-litem &20
+*33 (MRCItem
+litem &19
 pos 6
 dimension 20
 uid 691,0
 )
-*35 (MRCItem
-litem &21
+*34 (MRCItem
+litem &20
 pos 7
 dimension 20
 uid 693,0
 )
-*36 (MRCItem
-litem &22
+*35 (MRCItem
+litem &21
 pos 8
 dimension 20
 uid 779,0
+)
+*36 (MRCItem
+litem &22
+pos 1
+dimension 20
+uid 1016,0
 )
 ]
 )
@@ -599,7 +599,7 @@ value "muxen2-107.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "14:45:03"
+value "16:29:47"
 )
 (vvPair
 variable "group"
@@ -711,7 +711,7 @@ value "symbol"
 )
 (vvPair
 variable "time"
-value "14:45:03"
+value "16:29:47"
 )
 (vvPair
 variable "unit"
@@ -778,7 +778,7 @@ uid 158,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,7200,66500,8100"
+xt "44000,8100,66500,9000"
 st "DAC          : OUT    signed (15 DOWNTO 0) ;"
 )
 thePort (LogicalPort
@@ -788,59 +788,12 @@ decl (Decl
 n "DAC"
 t "signed"
 b "(15 DOWNTO 0)"
-o 7
+o 8
 suid 2,0
 )
 )
 )
 *71 (CptPort
-uid 169,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 170,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "31000,7625,31750,8375"
-)
-tg (CPTG
-uid 171,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 172,0
-va (VaSet
-font "courier,8,0"
-)
-xt "26000,7550,30000,8450"
-st "overflow"
-ju 2
-blo "30000,8250"
-tm "CptPortNameMgr"
-)
-)
-dt (MLText
-uid 173,0
-va (VaSet
-font "courier,8,0"
-)
-xt "44000,8100,61500,9000"
-st "overflow     : OUT    std_logic  ;"
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "overflow"
-t "std_logic"
-o 8
-suid 5,0
-)
-)
-)
-*72 (CptPort
 uid 179,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -885,7 +838,7 @@ suid 7,0
 )
 )
 )
-*73 (CptPort
+*72 (CptPort
 uid 184,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -932,7 +885,7 @@ suid 8,0
 )
 )
 )
-*74 (CptPort
+*73 (CptPort
 uid 594,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -964,20 +917,21 @@ uid 598,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,5400,65000,6300"
-st "Vector_Value : IN     std_logic_vector  ;"
+xt "44000,5400,71000,6300"
+st "Vector_Value : IN     std_logic_vector (5 downto 0) ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "Vector_Value"
 t "std_logic_vector"
+b "(5 downto 0)"
 o 5
 suid 11,0
 )
 )
 )
-*75 (CptPort
+*74 (CptPort
 uid 695,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1022,7 +976,7 @@ suid 15,0
 )
 )
 )
-*76 (CptPort
+*75 (CptPort
 uid 700,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1055,20 +1009,20 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,2700,71500,3600"
-st "Left_Audio   : IN     std_logic_vector (15 downto 0) ;"
+st "Left_Audio   : IN     std_logic_vector (15 DOWNTO 0) ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "Left_Audio"
 t "std_logic_vector"
-b "(15 downto 0)"
+b "(15 DOWNTO 0)"
 o 2
 suid 16,0
 )
 )
 )
-*77 (CptPort
+*76 (CptPort
 uid 705,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1101,20 +1055,20 @@ va (VaSet
 font "courier,8,0"
 )
 xt "44000,4500,71500,5400"
-st "Right_Audio  : IN     std_logic_vector (15 downto 0) ;"
+st "Right_Audio  : IN     std_logic_vector (15 DOWNTO 0) ;"
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "Right_Audio"
 t "std_logic_vector"
-b "(15 downto 0)"
+b "(15 DOWNTO 0)"
 o 4
 suid 17,0
 )
 )
 )
-*78 (CptPort
+*77 (CptPort
 uid 781,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1159,6 +1113,51 @@ suid 18,0
 )
 )
 )
+*78 (CptPort
+uid 1018,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1019,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "14250,18625,15000,19375"
+)
+tg (CPTG
+uid 1020,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1021,0
+va (VaSet
+font "courier,8,0"
+)
+xt "16000,18550,18500,19450"
+st "lrsel"
+blo "16000,19250"
+tm "CptPortNameMgr"
+)
+)
+dt (MLText
+uid 1022,0
+va (VaSet
+font "courier,8,0"
+)
+xt "44000,7200,61500,8100"
+st "lrsel        : IN     std_logic  ;"
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "lrsel"
+t "std_logic"
+o 7
+suid 19,0
+)
+)
+)
 ]
 shape (Rectangle
 uid 9,0
@@ -1168,7 +1167,7 @@ fg "0,65535,0"
 lineColor "0,32896,0"
 lineWidth 2
 )
-xt "15000,6000,31000,19000"
+xt "15000,6000,31000,20000"
 )
 oxt "15000,6000,23000,16000"
 biTextGroup (BiTextGroup
@@ -1869,6 +1868,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 877,0
+lastUid 1275,0
 activeModelName "Symbol:CDM"
 )

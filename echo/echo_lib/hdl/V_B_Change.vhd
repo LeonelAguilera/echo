@@ -50,11 +50,11 @@ begin
 			balance_shift5 <= balance_shift4 + balance_shift1; -- 150%
 			balance_shift6 <= balance_shift5 + balance_shift1; -- 175%	
 			
-     	volume_ctrl : process (clk, rstn) -- Adjust volume and balance
+     	volume_ctrl : process (c0, Reset) -- Adjust volume and balance
 	
 	    begin
 	  
-		if rstn = '0' then
+		if Reset = '0' then
 			--tmp_DAC  <= (others => '0');
 			--overflow <= '0';
 		elsif rising_edge(c0) then
