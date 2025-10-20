@@ -5,17 +5,18 @@ USE ieee.numeric_std.all;
 ENTITY V_B IS
    PORT( 
       lrsel        : IN     std_logic;
-      bal_count    : IN     unsigned (3 DOWNTO 0);
-      vol_count    : IN     unsigned (3 DOWNTO 0);
-      TXReg        : IN     signed(15 downto 0); 
+      TXReg        : IN     signed (15 DOWNTO 0);
       DAC_en       : IN     std_logic;
       DAC          : OUT    signed (15 DOWNTO 0);
       overflow     : OUT    std_logic;
       signal_ready : OUT    std_logic;
       Reset        : IN     std_logic;
-      PLL          : IN     std_logic
+      PLL          : IN     std_logic;
+      bal_count    : IN     unsigned (3 DOWNTO 0);
+      vol_count    : IN     unsigned (3 DOWNTO 0)
    );
 
+-- Declarations
 
 END V_B ;
 
