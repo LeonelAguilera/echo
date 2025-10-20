@@ -1,12 +1,4 @@
---
--- VHDL Architecture echo_lib.tb_echo_top.sim
---
--- Created:
---          by - antmo328.student-liu.se (muxen2-112.ad.liu.se)
---          at - 13:02:49 10/10/25
---
--- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
---
+-- tb_echo_top.vhd
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -15,170 +7,175 @@ entity tb_echo_top is
 end entity;
 
 architecture sim of tb_echo_top is
-  constant CLK_PERIOD : time := 22.6757 us / 1000.0;  -- ~44.1 kHz
+  constant G_DATA_WIDTH : natural := 16;
+  constant G_ADDR_WIDTH : natural := 19;
 
-  -- Clock / Reset
-  signal clk, reset_n : std_logic := '0';
+  signal clk              : std_logic := '0';
+  signal RESET_N          : std_logic := '0';
 
-  -- Audio I/O
-  signal in_valid, in_ready, out_valid : std_logic := '0';
-  signal in_L, in_R, out_L, out_R : std_logic_vector(15 downto 0);
+  -- Keyboard (seriell LSB-first)
+  signal KB_SCAN_CODE     : std_logic := '0';
+  signal KB_SCAN_VALID    : std_logic := '0';
 
-  -- Steuerung
-  signal delay_samples  : unsigned(18 downto 0) := to_unsigned(22050, 19); -- 0.5 s delay
-  signal g_feedback_q15 : std_logic_vector(15 downto 0) := x"4000";       -- 0.5 gain
+  -- Audio I/F
+  signal audio_in_L       : std_logic_vector(G_DATA_WIDTH-1 downto 0) := (others => '0');
+  signal audio_in_R       : std_logic_vector(G_DATA_WIDTH-1 downto 0) := (others => '0');
+  signal audio_in_valid   : std_logic := '0';
+  signal audio_in_ready   : std_logic;
 
-  -- SRAM-Interface (zwischen Echo und Controller)
-  signal wr_en, rd_en : std_logic;
-  signal wr_addr, rd_addr : std_logic_vector(19 downto 0);
-  signal wr_data, rd_data : std_logic_vector(15 downto 0);
-  signal rd_valid : std_logic;
+  signal audio_out_L      : std_logic_vector(G_DATA_WIDTH-1 downto 0);
+  signal audio_out_R      : std_logic_vector(G_DATA_WIDTH-1 downto 0);
+  signal audio_out_valid  : std_logic;
 
-  -- Physikalische SRAM-Pins
-  signal SRAM_ADDR  : std_logic_vector(19 downto 0);  -- 20 Bit Bus intern
-  signal SRAM_DQ    : std_logic_vector(15 downto 0);
-  signal SRAM_CE_N  : std_logic;
-  signal SRAM_OE_N  : std_logic;
-  signal SRAM_WE_N  : std_logic;
-  signal SRAM_UB_N  : std_logic;
-  signal SRAM_LB_N  : std_logic;
+  signal delay_samples    : std_logic_vector(18 downto 0);
+  signal g_feedback_q15   : std_logic_vector(15 downto 0);
 
+  -- SRAM Bus (beidseitig!)
+  signal SRAM_ADDR        : std_logic_vector(G_ADDR_WIDTH-1 downto 0);
+  signal SRAM_CE_N        : std_logic;
+  signal SRAM_DQ          : std_logic_vector(G_DATA_WIDTH-1 downto 0);
+  signal SRAM_LB_N        : std_logic;
+  signal SRAM_OE_N        : std_logic;
+  signal SRAM_UB_N        : std_logic;
+  signal SRAM_WE_N        : std_logic;
+
+  constant CLK_PERIOD : time := 20 ns;
+
+  -- Scan-Set-2 MAKE-Codes
+  constant SC_H : std_logic_vector(7 downto 0) := x"33";
+  constant SC_J : std_logic_vector(7 downto 0) := x"3B";
+  constant SC_K : std_logic_vector(7 downto 0) := x"42";
+  constant SC_L : std_logic_vector(7 downto 0) := x"4B";
+  constant SC_E : std_logic_vector(7 downto 0) := x"24";
 begin
-  -------------------------------------------------------------------------
   -- Clock
-  -------------------------------------------------------------------------
   clk <= not clk after CLK_PERIOD/2;
 
-  -------------------------------------------------------------------------
-  -- DUT 1: Echo Logic
-  -------------------------------------------------------------------------
-  u_echo: entity work.echo_logic
-    port map (
+  -- ========== DUT ==========
+  dut: entity work.echo_top
+    generic map(
+      G_DATA_WIDTH => G_DATA_WIDTH,
+      G_ADDR_WIDTH => G_ADDR_WIDTH
+    )
+    port map(
+      audio_in_L      => audio_in_L,
+      audio_in_R      => audio_in_R,
+      audio_in_ready  => audio_in_ready,
+      audio_in_valid  => audio_in_valid,
+      audio_out_L     => audio_out_L,
+      audio_out_R     => audio_out_R,
+      audio_out_valid => audio_out_valid,
       clk             => clk,
-      RESET_N         => reset_n,
-      audio_in_L      => in_L,
-      audio_in_R      => in_R,
-      audio_in_valid  => in_valid,
-      audio_in_ready  => in_ready,
-      audio_out_L     => out_L,
-      audio_out_R     => out_R,
-      audio_out_valid => out_valid,
       delay_samples   => delay_samples,
       g_feedback_q15  => g_feedback_q15,
-      wr_en           => wr_en,
-      wr_addr         => wr_addr,
-      wr_data         => wr_data,
-      rd_en           => rd_en,
-      rd_addr         => rd_addr,
-      rd_data         => rd_data,
-      rd_valid        => rd_valid
+      KB_SCAN_CODE    => KB_SCAN_CODE,
+      KB_SCAN_VALID   => KB_SCAN_VALID,
+      RESET_N         => RESET_N,
+      SRAM_ADDR       => SRAM_ADDR,
+      SRAM_CE_N       => SRAM_CE_N,
+      SRAM_DQ         => SRAM_DQ,       -- ? INOUT am DUT empfohlen
+      SRAM_LB_N       => SRAM_LB_N,
+      SRAM_OE_N       => SRAM_OE_N,
+      SRAM_UB_N       => SRAM_UB_N,
+      SRAM_WE_N       => SRAM_WE_N
     );
 
-  -------------------------------------------------------------------------
-  -- DUT 2: SRAM-Controller
-  -------------------------------------------------------------------------
-  u_ctrl: entity work.sram_ctrl
+  -- ========== SRAM-Modell ==========
+  u_sram: entity work.sram_async_model
+    generic map (
+      DATA_WIDTH => G_DATA_WIDTH,
+      ADDR_WIDTH => G_ADDR_WIDTH
+    )
     port map (
-      clk        => clk,
-      RESET_N    => reset_n,
-      wr_en      => wr_en,
-      wr_addr    => wr_addr,
-      wr_data    => wr_data,
-      rd_en      => rd_en,
-      rd_addr    => rd_addr,
-      rd_data    => rd_data,
-      rd_valid   => rd_valid,
-      SRAM_ADDR  => SRAM_ADDR,
-      SRAM_DQ    => SRAM_DQ,
-      SRAM_CE_N  => SRAM_CE_N,
-      SRAM_OE_N  => SRAM_OE_N,
-      SRAM_WE_N  => SRAM_WE_N,
-      SRAM_UB_N  => SRAM_UB_N,
-      SRAM_LB_N  => SRAM_LB_N
+      CE_N => SRAM_CE_N,
+      OE_N => SRAM_OE_N,
+      WE_N => SRAM_WE_N,
+      LB_N => SRAM_LB_N,
+      UB_N => SRAM_UB_N,
+      A    => SRAM_ADDR,
+      DQ   => SRAM_DQ
     );
 
-  -------------------------------------------------------------------------
-  -- DUT 3: Asynchrones SRAM-Model (19 Bit Adress)
-  -------------------------------------------------------------------------
-  u_sram: entity work.SRAM_Async_Model
-    port map (
-      ADDR  => SRAM_ADDR(19 downto 0),  -- truncate to 19 Bit
-      DQ    => SRAM_DQ,
-      CE_N  => SRAM_CE_N,
-      OE_N  => SRAM_OE_N,
-      WE_N  => SRAM_WE_N,
-      UB_N  => SRAM_UB_N,
-      LB_N  => SRAM_LB_N
-    );
+  --------------------------------------------------------------------
+  -- Stimulus
+  --------------------------------------------------------------------
+  stim: process
+    procedure reset_dut is
+    begin
+      RESET_N <= '0';
+      KB_SCAN_VALID <= '0';
+      KB_SCAN_CODE  <= '0';
+      audio_in_valid <= '0';
+      wait for 200 ns;
+      RESET_N <= '1';
+      wait for 200 ns;
+    end procedure;
 
-  -------------------------------------------------------------------------
-  -- Stimulus: einfacher Impulstest
-  -------------------------------------------------------------------------
- 
-stim : process
-  constant SAMPLE_RATE_HZ : integer := 44100;
-  constant DURATION_S     : real := 0.5;  -- 500 ms Testsignal
-  constant TOTAL_SAMPLES  : integer := 22050;
-  constant AMP            : integer := 30000;  -- Amplitude für Testsignal (max. 32767)
-  variable sample_val     : integer := 0;
-begin
-  -- Resetphase
-  reset_n <= '0';
-  in_valid <= '0';
-  in_L <= (others => '0');
-  in_R <= (others => '0');
-  wait for 200 ns;
-  reset_n <= '1';
-  wait for 200 ns;
+    -- 8 serielle Bits (LSB-first) einspeisen
+    procedure send_scancode(code : std_logic_vector(7 downto 0)) is
+    begin
+      for i in 0 to 7 loop
+        KB_SCAN_CODE  <= code(i);
+        KB_SCAN_VALID <= '1';
+        wait until rising_edge(clk);
+        KB_SCAN_VALID <= '0';
+        wait until rising_edge(clk);
+      end loop;
+      wait for 5*CLK_PERIOD;
+    end procedure;
 
-  report "Start ECHO Langzeit-Test (500 ms Muster)" severity note;
-
-  ---------------------------------------------------------------------
-  -- Phase 1: 500 ms Pseudo-Testsignal (z. B. Rampenform)
-  ---------------------------------------------------------------------
-  for i in 0 to TOTAL_SAMPLES-1 loop
-    if in_ready = '1' then
-      in_valid <= '1';
-
-      -- einfache Pseudo-Wellenform: Sägezahn / Rampenform
-      if (i mod 200) < 100 then
-        sample_val := ( (i * AMP) / 100 ) mod (2 * AMP) - AMP;
+    procedure push_sample(l, r : integer) is
+      variable lv, rv : std_logic_vector(G_DATA_WIDTH-1 downto 0);
+    begin
+      lv := std_logic_vector(to_signed(l, G_DATA_WIDTH));
+      rv := std_logic_vector(to_signed(r, G_DATA_WIDTH));
+      wait until rising_edge(clk);
+      audio_in_L <= lv;  audio_in_R <= rv;
+      audio_in_valid <= '1';
+      if audio_in_ready = '1' then
+        wait until rising_edge(clk);
+        audio_in_valid <= '0';
       else
-        sample_val := AMP - ( (i * AMP) / 100 ) mod (2 * AMP);
+        while audio_in_ready = '0' loop
+          wait until rising_edge(clk);
+        end loop;
+        wait until rising_edge(clk);
+        audio_in_valid <= '0';
       end if;
+    end procedure;
 
-      -- Linker & rechter Kanal leicht unterschiedlich
-      in_L <= std_logic_vector(to_signed(sample_val, 16));
-      in_R <= std_logic_vector(to_signed(-sample_val / 2, 16));
-    else
-      in_valid <= '0';
-    end if;
+  begin
+    reset_dut;
 
-    wait until rising_edge(clk);
-  end loop;
+    -- ein paar Writes/Reads provozieren durch DUT-Workflow (Audio & Keys)
+    for i in 0 to 200 loop
+      push_sample(i*64 - 6400, i*64 - 6400);
+    end loop;
 
-  ---------------------------------------------------------------------
-  -- Phase 2: 0.5 s Stille (Echoausklang sichtbar)
-  ---------------------------------------------------------------------
-  report "Testsignal beendet ? jetzt Stille (Echoausklang)" severity note;
-  for i in 0 to SAMPLE_RATE_HZ / 2 loop
-    if in_ready = '1' then
-      in_valid <= '1';
-      in_L <= (others => '0');
-      in_R <= (others => '0');
-    else
-      in_valid <= '0';
-    end if;
-    wait until rising_edge(clk);
-  end loop;
+    send_scancode(SC_H);
+    send_scancode(SC_J);
+    send_scancode(SC_K);
+    send_scancode(SC_L);
+    send_scancode(SC_E);
 
-  ---------------------------------------------------------------------
-  -- Simulation Ende
-  ---------------------------------------------------------------------
-  in_valid <= '0';
-  report "Echo-Logic Test vollständig beendet" severity note;
-   -- std.env.stop;
-end process;
+    for i in 0 to 400 loop
+      push_sample( (i mod 200)*128 - 12000, (i mod 200)*128 - 12000 );
+      if audio_out_valid = '1' then
+        report "OUT L="
+          & integer'image(to_integer(signed(audio_out_L)))
+          & "  R="
+          & integer'image(to_integer(signed(audio_out_R)))
+          & "  delay="
+          & integer'image(to_integer(unsigned(delay_samples)))
+          & "  g_q15="
+          & integer'image(to_integer(signed(g_feedback_q15)))
+          severity note;
+      end if;
+    end loop;
 
+    report "TB: Fertig." severity note;
+    wait;
+  end process;
 
 end architecture;
+

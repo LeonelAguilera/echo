@@ -28,6 +28,7 @@ ENTITY echo_logic IS
    );
    PORT( 
       clk             : IN     std_logic;
+      reset_n         : IN     std_logic;
       audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
@@ -44,8 +45,7 @@ ENTITY echo_logic IS
       rd_data         : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       echo_disable    : IN     std_logic;
       g_feedback_q15  : IN     std_logic_vector (15 DOWNTO 0);
-      delay_samples   : IN     std_logic_vector (18 DOWNTO 0);
-      RESET_N         : OUT    std_logic
+      delay_samples   : IN     std_logic_vector (18 DOWNTO 0)
    );
 
 -- Declarations
@@ -54,7 +54,7 @@ END echo_logic ;
 
 
 ARCHITECTURE behav OF echo_logic IS
-  -- ==========================================================================
+  ---- ==========================================================================
   -- Hilfsfunktionen
   -- ==========================================================================
 -- 16-bit saturating add: a + b -> signed 16-bit with clip
@@ -74,27 +74,63 @@ ARCHITECTURE behav OF echo_logic IS
   end function;
 
 -- Multipliziert signed Audio (Q1.15) mit unsigned Dämpfungsfaktor (0..1)
-  function mul_q15u_s16(x : signed(15 downto 0); g : unsigned(15 downto 0)) return signed is
-    variable x32  : signed(31 downto 0);
-    variable g32  : signed(31 downto 0);
-    variable prod : signed(31 downto 0);
-    variable shr  : signed(31 downto 0);
-    variable y    : signed(15 downto 0);
-  begin
-    x32 := resize(x, 32);
-    g32 := signed(resize(g, 32));
-    prod := resize(x32 * g32, 32);  
-    shr := shift_right(prod + to_signed(16384, 32), 15);
+----  function mul_q15u_s16(x : signed(15 downto 0); g : unsigned(15 downto 0)) return signed is
+----    variable x32  : signed(31 downto 0);
+----    variable g32  : signed(31 downto 0);
+----    variable prod : signed(31 downto 0);
+----    variable shr  : signed(31 downto 0);
+----    variable y    : signed(15 downto 0);
+----  begin
+----    x32 := resize(x, 32);
+----    g32 := signed(resize(g, 32));
+----    prod := resize(x32 * g32, 32);  
+----    shr := shift_right(prod + to_signed(16384, 32), 15);
+----  
+----    if shr > to_signed( 32767, 32) then
+----      y := to_signed( 32767, 16);
+----    elsif shr < to_signed(-32768, 32) then
+----      y := to_signed(-32768, 16);
+----    else
+----      y := signed(shr(15 downto 0));
+----    end if;
+----    return y;
+----  end function;
   
-    if shr > to_signed( 32767, 32) then
-      y := to_signed( 32767, 16);
-    elsif shr < to_signed(-32768, 32) then
-      y := to_signed(-32768, 16);
-    else
-      y := signed(shr(15 downto 0));
-    end if;
-    return y;
-  end function;
+  -- x: Q1.15 signed audio
+-- g: 0..1 as 15-fraction-bit unsigned (i.e. 1.0 \u2248 0x7FFF)
+function mul_q15u_s16(x : signed(15 downto 0); g : unsigned(15 downto 0)) return signed is
+  -- extend x to a working width
+  variable x32  : signed(31 downto 0);
+  -- extend g with a leading 0 so it's always non-negative in signed domain
+  variable g17  : signed(16 downto 0);
+  -- wide accumulator for the product + rounding
+  variable prod : signed(48 downto 0);  -- 32 + 17 - 1 = 48 bits minimum; one extra for safety
+  variable acc  : signed(48 downto 0);
+  variable shf  : signed(48 downto 0);
+  variable y    : signed(15 downto 0);
+begin
+  x32 := resize(x, 32);
+  g17 := signed('0' & g);  -- 0..65535 interpreted as +0..+65535
+
+  -- multiply with adequate width first
+  prod := resize(x32, prod'length) * resize(g17, prod'length);
+
+  -- round to nearest then arithmetic shift right by 15
+  acc := prod + to_signed(16384, prod'length);      -- 2^14
+  shf := shift_right(acc, 15);
+
+  -- saturate to Q1.15
+  if shf > to_signed( 32767, shf'length) then
+    y := to_signed( 32767, 16);
+  elsif shf < to_signed(-32768, shf'length) then
+    y := to_signed(-32768, 16);
+  else
+    y := resize(shf, 16);
+  end if;
+
+  return y;
+end function;
+
   
 -- Modularer Subtrahierer für Ringpuffer-Adressen: (a - b) mod 2^N
   function mod_sub(a, b : unsigned) return unsigned is
@@ -154,7 +190,8 @@ begin
   g_q15 <= unsigned(g_feedback_q15);
 
   -- delay_words = delay_samples * 2 (Stereo interleaved - zwei Wörter pro Sample)
-  delay_words <= resize(shift_left(delay_samples, 1), delay_words'length);
+  delay_words <= shift_left(resize(unsigned(delay_samples), delay_words'length), 1);
+
 
   -- Priming: effektive delayed-Werte (vor Calc, kombinatorisch)
   delayed_eff_L <= delayed_L when primed = '1' else (others => '0');

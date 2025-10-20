@@ -29,10 +29,10 @@ ENTITY sram_ctrl IS
       rd_en     : IN     std_logic;
       wr_en     : IN     std_logic;
       clk       : IN     std_logic;
-      RESET_N   : IN     std_logic;
       wr_data   : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
       wr_addr   : IN     std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
-      rd_data   : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0)
+      rd_data   : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      RESET_N   : IN     std_logic
    );
 
 -- Declarations
