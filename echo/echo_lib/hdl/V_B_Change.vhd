@@ -11,10 +11,10 @@ ENTITY V_B IS
       overflow     : OUT    std_logic;
       signal_ready : OUT    std_logic;
       Reset        : IN     std_logic;
-      PLL          : IN     std_logic;
+      c0           : IN     std_logic;
       bal_count    : IN     unsigned (3 DOWNTO 0);
       vol_count    : IN     unsigned (3 DOWNTO 0)
-   );
+       );
 
 -- Declarations
 
@@ -57,7 +57,7 @@ begin
 		if rstn = '0' then
 			--tmp_DAC  <= (others => '0');
 			--overflow <= '0';
-		elsif rising_edge(PLL) then
+		elsif rising_edge(c0) then
 			old_lrsel <= lrsel;
 			------- Increase in steps of +2.5 dB ------------------------------------
 			volume_shift0 <= resize(TXReg,20); -- 1

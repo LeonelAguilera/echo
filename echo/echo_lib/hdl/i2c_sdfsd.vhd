@@ -13,12 +13,12 @@ USE ieee.numeric_std.all;
 
 ENTITY i2c IS
    PORT( 
-      PLL   : IN     std_logic;
       SDA   : OUT    std_logic;
       SCL   : OUT    std_logic;
       Reset : IN     std_logic;
       HEX6  : OUT    std_logic_vector (0 TO 6);
-      HEX7  : OUT    std_logic_vector (0 TO 6)
+      HEX7  : OUT    std_logic_vector (0 TO 6);
+      c0    : IN     std_logic
    );
 
 -- Declarations

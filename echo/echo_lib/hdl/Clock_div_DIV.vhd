@@ -4,12 +4,11 @@ USE ieee.numeric_std.all;
 
 ENTITY Clock_div IS
    PORT( 
-      CLK   : OUT    std_logic;
-      Reset : IN     std_logic;
-      PLL   : IN     std_logic
+      CLK        : OUT    std_logic;
+      Reset      : IN     std_logic;
+      c0         : IN     std_logic
    );
 
--- Declarations
 
 END Clock_div ;
 
@@ -21,14 +20,14 @@ ARCHITECTURE DIV OF Clock_div IS
   
 BEGIN
   
-   process(PLL)   
+   process(c0)   
    begin    
   If Reset = '1' then 
     count <= 0; 
     clk_int <= '0';
-  elsif rising_edge(PLL) then 
+  elsif rising_edge(c0) then 
     count <= count+1;              
-   If count = 325 then                    -- couting to 500 on a 50Mhz clock takes 1/100k second = 100kHz clock
+   If count = 325 then              -- couting to 500 on a 50Mhz clock takes 1/100k second = 100kHz clock
     clk_int <= not clk_int;                          
     count <= 0; 
   end if; 

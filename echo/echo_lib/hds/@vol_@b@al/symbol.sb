@@ -21,7 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 17,0
+suid 18,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -91,27 +91,15 @@ uid 140,0
 port (LogicalPort
 lang 11
 decl (Decl
-n "PLL"
-t "std_logic"
-o 3
-suid 6,0
-)
-)
-uid 142,0
-)
-*17 (LogPort
-port (LogicalPort
-lang 11
-decl (Decl
 n "Reset"
 t "std_logic"
-o 4
+o 3
 suid 7,0
 )
 )
 uid 144,0
 )
-*18 (LogPort
+*17 (LogPort
 port (LogicalPort
 lang 11
 m 1
@@ -124,19 +112,19 @@ suid 8,0
 )
 uid 146,0
 )
-*19 (LogPort
+*18 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
 n "Vector_Value"
 t "std_logic_vector"
-o 6
+o 5
 suid 11,0
 )
 )
 uid 593,0
 )
-*20 (LogPort
+*19 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -148,7 +136,7 @@ suid 15,0
 )
 uid 690,0
 )
-*21 (LogPort
+*20 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
@@ -161,18 +149,30 @@ suid 16,0
 )
 uid 692,0
 )
-*22 (LogPort
+*21 (LogPort
 port (LogicalPort
 lang 11
 decl (Decl
 n "Right_Audio"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 5
+o 4
 suid 17,0
 )
 )
 uid 694,0
+)
+*22 (LogPort
+port (LogicalPort
+lang 11
+decl (Decl
+n "c0"
+t "std_logic"
+o 6
+suid 18,0
+)
+)
+uid 780,0
 )
 ]
 )
@@ -240,43 +240,43 @@ uid 139,0
 litem &16
 pos 2
 dimension 20
-uid 141,0
+uid 143,0
 )
 *31 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 143,0
+uid 145,0
 )
 *32 (MRCItem
 litem &18
 pos 4
 dimension 20
-uid 145,0
+uid 592,0
 )
 *33 (MRCItem
 litem &19
 pos 5
 dimension 20
-uid 592,0
+uid 689,0
 )
 *34 (MRCItem
 litem &20
 pos 6
 dimension 20
-uid 689,0
+uid 691,0
 )
 *35 (MRCItem
 litem &21
 pos 7
 dimension 20
-uid 691,0
+uid 693,0
 )
 *36 (MRCItem
 litem &22
 pos 8
 dimension 20
-uid 693,0
+uid 779,0
 )
 ]
 )
@@ -599,7 +599,7 @@ value "muxen2-107.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:57:32"
+value "14:45:03"
 )
 (vvPair
 variable "group"
@@ -624,6 +624,10 @@ value "$HDS_PROJECT_DIR/echo_lib/modelsim"
 (vvPair
 variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
+)
+(vvPair
+variable "library_downstream_QuartusPrimeImport"
+value "$HDS_PROJECT_DIR/QuartusIPSimLibs"
 )
 (vvPair
 variable "mm"
@@ -707,7 +711,7 @@ value "symbol"
 )
 (vvPair
 variable "time"
-value "13:57:32"
+value "14:45:03"
 )
 (vvPair
 variable "unit"
@@ -837,51 +841,6 @@ suid 5,0
 )
 )
 *72 (CptPort
-uid 174,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 175,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "14250,9625,15000,10375"
-)
-tg (CPTG
-uid 176,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 177,0
-va (VaSet
-font "courier,8,0"
-)
-xt "16000,9550,17500,10450"
-st "PLL"
-blo "16000,10250"
-tm "CptPortNameMgr"
-)
-)
-dt (MLText
-uid 178,0
-va (VaSet
-font "courier,8,0"
-)
-xt "44000,3600,61500,4500"
-st "PLL          : IN     std_logic  ;"
-)
-thePort (LogicalPort
-lang 11
-decl (Decl
-n "PLL"
-t "std_logic"
-o 3
-suid 6,0
-)
-)
-)
-*73 (CptPort
 uid 179,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -913,7 +872,7 @@ uid 183,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,4500,61500,5400"
+xt "44000,3600,61500,4500"
 st "Reset        : IN     std_logic  ;"
 )
 thePort (LogicalPort
@@ -921,12 +880,12 @@ lang 11
 decl (Decl
 n "Reset"
 t "std_logic"
-o 4
+o 3
 suid 7,0
 )
 )
 )
-*74 (CptPort
+*73 (CptPort
 uid 184,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -973,7 +932,7 @@ suid 8,0
 )
 )
 )
-*75 (CptPort
+*74 (CptPort
 uid 594,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1005,7 +964,7 @@ uid 598,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,6300,65000,7200"
+xt "44000,5400,65000,6300"
 st "Vector_Value : IN     std_logic_vector  ;"
 )
 thePort (LogicalPort
@@ -1013,12 +972,12 @@ lang 11
 decl (Decl
 n "Vector_Value"
 t "std_logic_vector"
-o 6
+o 5
 suid 11,0
 )
 )
 )
-*76 (CptPort
+*75 (CptPort
 uid 695,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1063,7 +1022,7 @@ suid 15,0
 )
 )
 )
-*77 (CptPort
+*76 (CptPort
 uid 700,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1109,7 +1068,7 @@ suid 16,0
 )
 )
 )
-*78 (CptPort
+*77 (CptPort
 uid 705,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1141,7 +1100,7 @@ uid 709,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,5400,71500,6300"
+xt "44000,4500,71500,5400"
 st "Right_Audio  : IN     std_logic_vector (15 downto 0) ;"
 )
 thePort (LogicalPort
@@ -1150,8 +1109,53 @@ decl (Decl
 n "Right_Audio"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 5
+o 4
 suid 17,0
+)
+)
+)
+*78 (CptPort
+uid 781,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 782,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "14250,17625,15000,18375"
+)
+tg (CPTG
+uid 783,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 784,0
+va (VaSet
+font "courier,8,0"
+)
+xt "16000,17550,17000,18450"
+st "c0"
+blo "16000,18250"
+tm "CptPortNameMgr"
+)
+)
+dt (MLText
+uid 785,0
+va (VaSet
+font "courier,8,0"
+)
+xt "44000,6300,61500,7200"
+st "c0           : IN     std_logic  ;"
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "c0"
+t "std_logic"
+o 6
+suid 18,0
 )
 )
 )
@@ -1164,7 +1168,7 @@ fg "0,65535,0"
 lineColor "0,32896,0"
 lineWidth 2
 )
-xt "15000,6000,31000,18000"
+xt "15000,6000,31000,19000"
 )
 oxt "15000,6000,23000,16000"
 biTextGroup (BiTextGroup
@@ -1865,6 +1869,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 732,0
+lastUid 877,0
 activeModelName "Symbol:CDM"
 )

@@ -10,7 +10,7 @@ ENTITY Settings IS
       SPressed  : IN     std_logic;
       overflow  : IN     std_logic;
       vol_count : OUT    unsigned (3 DOWNTO 0);
-      PLL       : IN     std_logic;
+      c0        : IN     std_logic;
       bal_count : OUT    unsigned (3 DOWNTO 0);
       APressed  : IN     std_logic
    );
@@ -19,7 +19,7 @@ ENTITY Settings IS
 
 END Settings ;
 
-architecture change of Settings is
+architecture change of Settings is 
 	signal tmp_vol : unsigned(3 downto 0) := "0110"; 
 	signal tmp_bal : unsigned(3 downto 0) := "0100";
 	signal old_APressed, old_DPressed, 
@@ -27,12 +27,12 @@ architecture change of Settings is
 	signal old_overflow : std_logic;
 	
 begin
-	process (PLL, Reset) 
+	process (c0, Reset) 
 	begin
 		if Reset = '0' then
 			--tmp_vol <= "0110"; -- set initial volume  to 6
 			--tmp_bal <= "0100"; -- set initial balance to 4
-		elsif rising_edge(PLL) then
+		elsif rising_edge(c0) then
 		old_APressed  <= APressed;
 		old_DPressed <= DPressed;
 		old_WPressed    <= WPressed;
