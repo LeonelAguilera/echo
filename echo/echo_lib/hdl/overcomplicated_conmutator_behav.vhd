@@ -11,17 +11,19 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 USE IEEE.MATH_REAL.ALL;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
 
 ENTITY overcomplicated_conmutator IS
    PORT( 
       buffer_selector : IN     std_logic;
-      color_data      : IN     std_logic_vector (5 DOWNTO 0);
+      color_data      : IN     std_logic_vector (1 DOWNTO 0);
       read_address    : IN     std_logic_vector (18 DOWNTO 0);
       write_address   : IN     std_logic_vector (18 DOWNTO 0);
       addr0           : OUT    std_logic_vector (18 DOWNTO 0);
       addr1           : OUT    std_logic_vector (18 DOWNTO 0);
-      din0            : OUT    std_logic_vector (5 DOWNTO 0);
-      din1            : OUT    std_logic_vector (5 DOWNTO 0)
+      din0            : OUT    std_logic_vector (1 DOWNTO 0);
+      din1            : OUT    std_logic_vector (1 DOWNTO 0)
    );
 
 -- Declarations

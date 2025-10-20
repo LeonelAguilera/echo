@@ -11,25 +11,28 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 USE IEEE.MATH_REAL.ALL;
+LIBRARY echo_lib;
+USE echo_lib.color_t.ALL;
+
 
 ENTITY coordinate_fifo IS
-  GENERIC( 
-    fifo_size : INTEGER := 8
-  );
-  PORT( 
-    load_new         : IN     std_logic;
-    new_x_coordinate : IN     STD_LOGIC_VECTOR (7 DOWNTO 0);
-    new_y_coordinate : IN     STD_LOGIC_VECTOR (7 DOWNTO 0);
-    next_data        : IN     std_logic;
-    data_available   : OUT    std_logic;
-    x_coordinate     : OUT    std_logic_vector (7 DOWNTO 0);
-    y_coordinate     : OUT    std_logic_vector (7 DOWNTO 0);
-    c0               : IN     std_logic;
-    fpga_reset_n     : IN     std_logic
-  );
-  
-  -- Declarations
-  
+   GENERIC( 
+      fifo_size : INTEGER := 8
+   );
+   PORT( 
+      load_new         : IN     std_logic;
+      new_x_coordinate : IN     STD_LOGIC_VECTOR (7 DOWNTO 0);
+      new_y_coordinate : IN     STD_LOGIC_VECTOR (7 DOWNTO 0);
+      next_data        : IN     std_logic;
+      data_available   : OUT    std_logic;
+      x_coordinate     : OUT    std_logic_vector (7 DOWNTO 0);
+      y_coordinate     : OUT    std_logic_vector (7 DOWNTO 0);
+      c0               : IN     std_logic;
+      fpga_reset_n     : IN     std_logic
+   );
+
+-- Declarations
+
 END coordinate_fifo ;
 
 --
