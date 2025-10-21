@@ -31,6 +31,5 @@ attribute array_pin_number of hex7 : signal is ("AA14","AG18","AF17","AH17","AG1
 attribute pin_number of SDA: signal is "A8";
 attribute pin_number of SCL: signal is "B7";
 attribute pin_number of Reset: signal is "AE14";
-attribute pin_number of PLL : signal is "AF14";
 
 END i2c ;
