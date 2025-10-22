@@ -48,29 +48,55 @@ ARCHITECTURE behav OF kb_decoder IS
 BEGIN
   
   process(sys_clk)
+  
+  variable prev_clk : std_logic := '1';
+  
+  
   begin
     if rising_edge(sys_clk) then
       clk_sync <= clk_sync(1 downto 0) & kb_clk;
-      clk_fall <= (clk_sync(2) and not clk_sync(1));
+      
+
+      if (prev_clk = '1') and (clk_sync(1) = '0') then
+        clk_fall <= '1';
+      else
+        clk_fall <= '0';
+      end if;
+
+      prev_clk := clk_sync(1);
+     
+            
     end if;
   end process;
   
   
   process(sys_clk)
+  variable bit_count_v : integer range 0 to 11 := 0;
+  variable shift_var   : std_logic_vector(10 downto 0);
+  
   begin
     if rising_edge(sys_clk) then
       ready_reg <= '0';
+      
+         
       if clk_fall = '1' then
-        shift_reg <= kb_data & shift_reg(10 downto 1);
-        bit_count <= bit_count+1;
-        if bit_count = 11 then
-          bit_count <= 0;
-          if (shift_reg(0) = '0') and (shift_reg(10) = '1') then
-            data_reg <= shift_reg(8 downto 1);
+        shift_var := kb_data & shift_reg(10 downto 1);
+        shift_reg <= shift_var;
+        bit_count_v := bit_count_v + 1;
+        
+        if bit_count_v = 11 then
+          bit_count_v := 0;
+                 
+          if (shift_var(0) = '0') and (shift_var(10) = '1') then 
+            data_reg <= shift_var(8 downto 1);
             ready_reg <= '1';
           end if;
         end if;
+        
+        bit_count <= bit_count_v;
+        
       end if;
+      
     end if;
   end process;
   
@@ -78,6 +104,7 @@ BEGIN
   scan_code <= data_reg;
   
   scan_ready <= ready_reg;
+   
   
 END ARCHITECTURE behav;
 
