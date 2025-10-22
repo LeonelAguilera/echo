@@ -40,6 +40,15 @@ elements [
 mwi 0
 uid 2194,0
 )
+(Instance
+name "U_0"
+duLibraryName "echo_lib"
+duName "echo"
+elements [
+]
+mwi 0
+uid 523,0
+)
 ]
 libraryRefs [
 "ieee"
@@ -97,11 +106,11 @@ value "10/20/25"
 )
 (vvPair
 variable "day"
-value "Mon"
+value "Fri"
 )
 (vvPair
 variable "day_long"
-value "Monday"
+value "Friday"
 )
 (vvPair
 variable "dd"
@@ -4734,6 +4743,22 @@ tm "GenericPragmaColHdrMgr"
 *184 (EolColHdr
 tm "GenericEolColHdrMgr"
 )
+*185 (LogGeneric
+generic (GiElement
+name "G_ADDR_WIDTH"
+type "natural"
+value "20"
+)
+uid 991,0
+)
+*186 (LogGeneric
+generic (GiElement
+name "G_DATA_WIDTH"
+type "natural"
+value "16"
+)
+uid 993,0
+)
 ]
 )
 pdm (PhysicalDM
@@ -4783,6 +4808,18 @@ pos 2
 hidden 1
 dimension 20
 uid 100,0
+)
+*192 (MRCItem
+litem &185
+pos 0
+dimension 20
+uid 992,0
+)
+*193 (MRCItem
+litem &186
+pos 1
+dimension 20
+uid 994,0
 )
 ]
 )

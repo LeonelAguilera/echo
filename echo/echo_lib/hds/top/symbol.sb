@@ -463,6 +463,22 @@ tm "GenericPragmaColHdrMgr"
 *64 (EolColHdr
 tm "GenericEolColHdrMgr"
 )
+*39 (LogGeneric
+generic (GiElement
+name "G_ADDR_WIDTH"
+type "natural"
+value "20"
+)
+uid 109,0
+)
+*40 (LogGeneric
+generic (GiElement
+name "G_DATA_WIDTH"
+type "natural"
+value "16"
+)
+uid 111,0
+)
 ]
 )
 pdm (PhysicalDM
@@ -1491,13 +1507,27 @@ uid 15,0
 va (VaSet
 font "courier,8,0"
 )
-xt "0,12000,10500,12900"
-st "Generic Declarations"
+xt "0,12000,13000,15600"
+st "Generic Declarations
+
+G_ADDR_WIDTH natural 20  
+G_DATA_WIDTH natural 16  
+"
 )
 header "Generic Declarations"
 showHdrWhenContentsEmpty 1
 )
 elements [
+(GiElement
+name "G_ADDR_WIDTH"
+type "natural"
+value "20"
+)
+(GiElement
+name "G_DATA_WIDTH"
+type "natural"
+value "16"
+)
 ]
 )
 portInstanceVisAsIs 1
