@@ -52,7 +52,7 @@ begin
   clk <= not clk after CLK_PERIOD/2;
 
   -- ========== DUT ==========
-  dut: entity work.echo_top
+  dut: entity work.echo
     generic map(
       G_DATA_WIDTH => G_DATA_WIDTH,
       G_ADDR_WIDTH => G_ADDR_WIDTH
@@ -158,7 +158,7 @@ begin
     send_scancode(SC_L);
     send_scancode(SC_E);
 
-    for i in 0 to 400 loop
+    for i in 0 to 40000 loop
       push_sample( (i mod 200)*128 - 12000, (i mod 200)*128 - 12000 );
       if audio_out_valid = '1' then
         report "OUT L="
