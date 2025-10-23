@@ -1,5 +1,5 @@
 # vsim -f hds_args.tmp -no_autoacc -foreign "hdsInit /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll" -pli ""/sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll"" 
-# Start time: 12:45:48 on Oct 20,2025
+# Start time: 10:10:17 on Oct 23,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -7,5 +7,21 @@
 # Loading ieee.numeric_std(body)
 # Loading work.audio_io(behavioral)#1
 # Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
-# End time: 12:46:43 on Oct 20,2025, Elapsed time: 0:00:55
+add wave -r /*
+force -repeat 15.38ns clk 1 0ns, 0 7.69ns
+force -repeat 81.38ns mclk_in 1 0ns, 0 40.69ns
+force -repeat 1us i2s_bclk 1 0ns, 0 0.5us
+force -repeat 32us i2s_lrclk 0 0ns, 1 16us
+force rst 1
+run 100ns
+# 0
+# 
+force rst 0
+force i2s_adcdat 1 0us, 0 1us, 1 2us, 0 3us, 1 4us, 0 5us, 1 6us, 0 7us, 1 8us, 0 9us, 1 10us, 0 11us, 1 12us, 0 13us, 1 14us, 0 15us
+force i2s_adcdat 0 16us, 1 17us, 0 18us, 1 19us, 0 20us, 1 21us, 0 22us, 1 23us, 0 24us, 1 25us, 0 26us, 1 27us, 0 28us, 1 29us, 0 30us, 1 31us
+run -all
+# Break key hit
+# 0
+# Simulation stop requested.
+# End time: 10:32:57 on Oct 23,2025, Elapsed time: 0:22:40
 # Errors: 0, Warnings: 0
