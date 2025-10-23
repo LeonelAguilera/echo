@@ -12,25 +12,15 @@ USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
 
 ENTITY kb_decoder IS
-  port (
-  sys_clk     : in std_logic;
-  kb_clk      : in std_logic;
-  kb_data     : in std_logic;
-  scan_code   : out std_logic_vector (7 downto 0);
-  scan_ready  : out std_logic
-  );
-  
- --Declarations
-type exemplar_string_array is array (natural range <>, natural range <>) of character;
-attribute pin_number : string;
-attribute array_pin_number : exemplar_string_array;
-attribute pin_number of sys_clk : signal is "Y2";
-attribute pin_number of kb_clk : signal is "G6";
-attribute pin_number of kb_data : signal is "H5";
-attribute array_pin_number of scan_code : signal is ("G21","G22","G20","H21","E24","E25","E22","E21");
-attribute pin_number of scan_ready : signal is "G19";
+   PORT( 
+      sys_clk    : IN     std_logic;
+      kb_clk     : IN     std_logic;
+      kb_data    : IN     std_logic;
+      scan_code  : OUT    std_logic_vector (7 DOWNTO 0);
+      scan_ready : OUT    std_logic
+   );
 
-
+-- Declarations
 
 END kb_decoder ;
 
