@@ -1,21 +1,23 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.keyboard_package.ALL;
+
 
 ENTITY Left_Right IS
    PORT( 
-      
-      c0          : IN     std_logic; 
+      c0          : IN     std_logic;
       Reset       : IN     std_logic;
       Left_Audio  : IN     std_logic_vector (15 DOWNTO 0);
       Right_Audio : IN     std_logic_vector (15 DOWNTO 0);
-      lrsel       : IN     std_logic; -- from i2s 
+      lrsel       : IN     std_logic;
       Enable      : IN     std_logic;
       DAC_en      : OUT    std_logic;
       TXReg       : OUT    signed (15 DOWNTO 0)
-    
    );
 
+-- Declarations
 
 END Left_Right ;
 

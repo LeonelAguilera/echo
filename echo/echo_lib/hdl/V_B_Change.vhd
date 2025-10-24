@@ -1,6 +1,9 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.keyboard_package.ALL;
+
 
 ENTITY V_B IS
    PORT( 
@@ -11,10 +14,10 @@ ENTITY V_B IS
       overflow     : OUT    std_logic;
       signal_ready : OUT    std_logic;
       Reset        : IN     std_logic;
-      c0           : IN     std_logic;
       bal_count    : IN     unsigned (3 DOWNTO 0);
-      vol_count    : IN     unsigned (3 DOWNTO 0)
-       );
+      vol_count    : IN     unsigned (3 DOWNTO 0);
+      c0           : IN     std_logic
+   );
 
 -- Declarations
 

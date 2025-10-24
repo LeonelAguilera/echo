@@ -10,21 +10,23 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
-USE work.keyboard_package.all;
+LIBRARY echo_lib;
+USE echo_lib.keyboard_package.ALL;
 
 ENTITY gen_kb_dec IS
-  
- generic (
-    N       : integer := 18;   -- Number of functions
-    key_map : key_array(N-1 downto 0)   -- Key map provided by user
-  );
-  port (
-    clk        : in  std_logic;
-    scancode   : in  std_logic_vector(6 downto 0);
-    output_signal : out std_logic_vector(N-1 downto 0);
-    invalid_led : out std_logic   -- LED for invalid keys
-  );
-  
+   GENERIC( 
+      N       : integer := 18;               -- Number of functions
+      key_map : key_array(N-1 downto 0)      -- Key map provided by user
+   );
+   PORT( 
+      clk           : IN     std_logic;
+      scancode      : IN     std_logic_vector (7 DOWNTO 0);
+      output_signal : OUT    std_logic_vector (N-1 DOWNTO 0);
+      invalid_led   : OUT    std_logic
+   );
+
+-- Declarations
+
 END gen_kb_dec ;
 
 ARCHITECTURE behav OF gen_kb_dec IS

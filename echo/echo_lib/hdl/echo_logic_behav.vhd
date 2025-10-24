@@ -17,42 +17,43 @@
 --
 -- using Siemens HDL Designer(TM) 2024.1 Built on 24 Jan 2024 at 18:06:06
 --
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.keyboard_package.ALL;
 
-entity echo_logic is
-  generic(
-    G_ADDR_WIDTH : natural := 20;  -- physische Adressbreite
-    G_DATA_WIDTH : natural := 16
-  );
-  port(
-    clk             : in  std_logic;
-    reset_n         : in  std_logic;
 
-    audio_in_L      : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    audio_in_R      : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    audio_out_L     : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    audio_out_R     : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    audio_in_ready  : out std_logic;
-    audio_in_valid  : in  std_logic;
-    audio_out_valid : out std_logic;
+ENTITY echo_logic IS
+   GENERIC( 
+      G_ADDR_WIDTH : natural := 20;      -- physische Adressbreite
+      G_DATA_WIDTH : natural := 16
+   );
+   PORT( 
+      clk             : IN     std_logic;
+      RESET_N         : IN     std_logic;
+      audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      audio_in_ready  : OUT    std_logic;
+      audio_in_valid  : IN     std_logic;
+      audio_out_valid : OUT    std_logic;
+      wr_en           : OUT    std_logic;
+      wr_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      wr_data         : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      rd_en           : OUT    std_logic;
+      rd_addr         : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      rd_valid        : IN     std_logic;
+      rd_data         : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      echo_disable    : IN     std_logic;
+      g_feedback_q15  : IN     std_logic_vector (15 DOWNTO 0);
+      delay_samples   : IN     std_logic_vector (18 DOWNTO 0)
+   );
 
-    -- Interface zum SRAM-Controller (physische Adressen!)
-    wr_en   : out std_logic;
-    wr_addr : out std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    wr_data : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    rd_en   : out std_logic;
-    rd_addr : out std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    rd_valid: in  std_logic;
-    rd_data : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
+-- Declarations
 
-    -- Echo-Parameter
-    echo_disable   : in  std_logic;
-    g_feedback_q15 : in  std_logic_vector(15 downto 0);  -- 0..0x7FFF ~ 0..~1.0
-    delay_samples  : in  std_logic_vector(18 downto 0)   -- Anzahl Stereo-Samples Delay
-  );
-end entity;
+END echo_logic ;
 
 architecture behav of echo_logic is
 

@@ -11,7 +11,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 PACKAGE keyboard_package IS
-  type key_array is array (natural range<>) of std_logic_vector(6 downto 0);
+  type key_array is array (natural range<>) of std_logic_vector(7 downto 0);
 END keyboard_package;
 
 package body keyboard_package is
