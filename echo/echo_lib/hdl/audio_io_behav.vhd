@@ -25,7 +25,7 @@ entity audio_io is
     Port (
                                                                                                                -- System Clock and Reset
         clk         : in  std_logic;  -- 65 MHz FPGA clock
-        rst         : in  std_logic;  -- Active high reset
+        rst         : in  std_logic;  -- Active low reset
         
                                                                                                          -- I2S Interface (WM8731 as Master)
         i2s_bclk    : in  std_logic;  -- Bit clock from WM8731 (~1.4 MHz)
@@ -90,7 +90,7 @@ begin
     
     process(clk, rst)
     begin
-        if rst = '1' then
+        if rst = '0' then
             bclk_sync <= (others => '0');
             lrclk_sync <= (others => '0');
             bclk_rise <= '0';
@@ -124,7 +124,7 @@ begin
     
     process(clk, rst)
     begin
-        if rst = '1' then
+        if rst = '0' then
             adc_sr <= (others => '0');
             adc_cnt <= 0;
             adc_left <= (others => '0');
@@ -160,7 +160,7 @@ begin
                                                                                    -- DAC Data Capture: Captures processed audio data from echo module
     process(clk, rst)
     begin
-        if rst = '1' then
+        if rst = '0' then
             dac_left <= (others => '0');
             dac_right <= (others => '0');
         elsif rising_edge(clk) then
@@ -174,7 +174,7 @@ begin
                                                                            -- Serializes 16-bit left and right channels to I2S DAC output
     process(clk, rst)
     begin
-        if rst = '1' then
+        if rst = '0' then
             dac_sr <= (others => '0');
             dac_cnt <= 0;
             dac_ch <= '0';

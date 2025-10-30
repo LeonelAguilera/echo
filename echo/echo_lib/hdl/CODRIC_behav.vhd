@@ -48,6 +48,8 @@ ARCHITECTURE behav OF CODRIC IS
   SIGNAL target_angle : angle_t;
 BEGIN
   PROCESS(c0)
+  VARIABLE intermidiate_x_component : SIGNED(MAXIMUM(INTEGER(CEIL(LOG2(REAL(Z)))) + calc_x'LENGTH + 5, 16) DOWNTO 0);
+  VARIABLE intermidiate_y_component : SIGNED(MAXIMUM(INTEGER(CEIL(LOG2(REAL(Z)))) + calc_y'LENGTH + 5, 16) DOWNTO 0);
   BEGIN
     IF FALLING_EDGE(c0) THEN
       IF start = '1' THEN
@@ -77,28 +79,44 @@ BEGIN
         counter <= counter + 1;
         IF angle < target_angle THEN
           angle <= angle + precomputed_angle_aproximator(counter);
-          calc_x <= calc_x - SHIFT_RIGHT(calc_y, counter);
-          calc_y <= calc_y + SHIFT_RIGHT(calc_x, counter);
+          IF counter < calc_y'LENGTH THEN
+            calc_x <= calc_x - SHIFT_RIGHT(calc_y, counter);
+          ELSE
+            calc_x <= calc_x;
+          END IF;
+          IF counter < calc_x'LENGTH THEN
+            calc_y <= calc_y + SHIFT_RIGHT(calc_x, counter);
+          ELSE
+            calc_y <= calc_y;
+          END IF;
         ELSE
           angle <= angle - precomputed_angle_aproximator(counter);
           calc_x <= calc_x + SHIFT_RIGHT(calc_y, counter);
           calc_y <= calc_y - SHIFT_RIGHT(calc_x, counter);
         END IF;
-      ELSE
+      ELSIF counter = number_of_iterations THEN
         is_done <= '1';
         CASE quadrant IS
         WHEN "00" =>
-          x_component <= SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
-          y_component <= SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
+          intermidiate_x_component := calc_x * Z;
+          intermidiate_x_component := calc_y * Z;
+          x_component <= intermidiate_x_component(17 DOWNTO 6);
+          y_component <= intermidiate_y_component(17 DOWNTO 6);
         WHEN "01" =>
-          x_component <= -SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
-          y_component <= SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
+          intermidiate_x_component := -calc_x * Z;
+          intermidiate_x_component := calc_y * Z;
+          x_component <= intermidiate_x_component(17 DOWNTO 6);
+          y_component <= intermidiate_y_component(17 DOWNTO 6);
         WHEN "10" =>
-          x_component <= -SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
-          y_component <= -SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
+          intermidiate_x_component := -calc_x * Z;
+          intermidiate_x_component := -calc_y * Z;
+          x_component <= intermidiate_x_component(17 DOWNTO 6);
+          y_component <= intermidiate_y_component(17 DOWNTO 6);
         WHEN "11" =>
-          x_component <= SHIFT_RIGHT(calc_x * 39, 6)(11 DOWNTO 0);
-          y_component <= -SHIFT_RIGHT(calc_y * 39, 6)(11 DOWNTO 0);
+          intermidiate_x_component := calc_x * Z;
+          intermidiate_x_component := -calc_y * Z;
+          x_component <= intermidiate_x_component(17 DOWNTO 6);
+          y_component <= intermidiate_y_component(17 DOWNTO 6);
         END CASE;
       END IF;
     END IF;
