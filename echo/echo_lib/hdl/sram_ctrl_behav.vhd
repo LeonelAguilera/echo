@@ -46,7 +46,7 @@ architecture behav of sram_ctrl is
   signal wr_a0, wr_a1 : std_logic_vector(G_ADDR_WIDTH-1 downto 0);
   signal wr_d0, wr_d1 : std_logic_vector(G_DATA_WIDTH-1 downto 0);
 
-  -- aktueller Write-Datensatz (wird in W_SETUP -> WRITE benutzt)
+  -- aktueller Write-Datensatz
   signal wr_a_cur     : std_logic_vector(G_ADDR_WIDTH-1 downto 0);
   signal wr_d_cur     : std_logic_vector(G_DATA_WIDTH-1 downto 0);
 
@@ -54,13 +54,13 @@ architecture behav of sram_ctrl is
   signal rd_addr_l    : std_logic_vector(G_ADDR_WIDTH-1 downto 0);
   signal rd_pend      : std_logic := '0';
 
-  -- Pending-ORs für Next-State
+  -- Pending-ORs
   signal pending_wr   : std_logic;
   signal pending_rd   : std_logic;
 begin
   -- Statische Pins
   SRAM_CE_N <= '0';  -- immer selektiert
-  SRAM_UB_N <= '0';  -- Upper/Lower Byte immer aktiv (16-bit Wort)
+  SRAM_UB_N <= '0';  -- Upper/Lower Byte aktiv
   SRAM_LB_N <= '0';
 
   -- Tri-State Daten
@@ -71,23 +71,30 @@ begin
   pending_wr <= wr_v0 or wr_v1;
   pending_rd <= rd_pend;
 
-  -- ===================== Next-State-Logik (auf Pendings) ====================
+  -- ===================== Next-State-Logik (READ bevorzugen) =================
   process(s, pending_wr, pending_rd)
   begin
     s_n <= s;
     case s is
       when IDLE =>
-        if    pending_wr='1' then s_n <= W_SETUP;
-        elsif pending_rd='1' then s_n <= R_SETUP;
+        if    pending_rd='1' then s_n <= R_SETUP;  -- READ zuerst
+        elsif pending_wr='1' then s_n <= W_SETUP;
         end if;
 
-      when W_SETUP => s_n <= WRITE;
-      when WRITE   => s_n <= W_HOLD;
+      when W_SETUP =>
+        if    pending_rd='1' then s_n <= R_SETUP;  -- preemptiv lesen
+        else                      s_n <= WRITE;
+        end if;
+
+      when WRITE =>
+        if    pending_rd='1' then s_n <= R_SETUP;  -- direkt zu READ
+        else                      s_n <= W_HOLD;
+        end if;
 
       when W_HOLD =>
-        if    pending_wr='1' then s_n <= W_SETUP;
-        elsif pending_rd='1' then s_n <= R_SETUP;
-        else                     s_n <= IDLE;
+        if    pending_rd='1' then s_n <= R_SETUP;  -- READ bevorzugen
+        elsif pending_wr='1' then s_n <= W_SETUP;
+        else                      s_n <= IDLE;
         end if;
 
       when R_SETUP => s_n <= READ;
@@ -96,7 +103,7 @@ begin
       when R_HOLD  =>
         if    pending_wr='1' then s_n <= W_SETUP;
         elsif pending_rd='1' then s_n <= R_SETUP;
-        else                     s_n <= IDLE;
+        else                      s_n <= IDLE;
         end if;
     end case;
   end process;
@@ -128,7 +135,7 @@ begin
 
     elsif rising_edge(clk) then
       s        <= s_n;
-      rd_valid <= '0';     -- default in jedem Takt
+      rd_valid <= '0';     -- default
 
       -- ====== ENQUEUE: Write-Requests (Tiefe 2) ======
       if wr_en = '1' then
@@ -141,7 +148,7 @@ begin
           wr_d1 <= wr_data;
           wr_v1 <= '1';
         else
-          -- Overflow (sollte bei L/R nicht passieren) -> letzte überdeckt
+          -- Overflow -> letzte überdeckt
           wr_a1 <= wr_addr;
           wr_d1 <= wr_data;
           wr_v1 <= '1';
@@ -163,14 +170,13 @@ begin
 
         -- ---- WRITE ----
         when W_SETUP =>
-          -- sicherstellen: Slot0 befüllt (falls nur Slot1 voll -> nach vorne ziehen)
+          -- Slot0 nach vorne ziehen, falls nur Slot1 belegt
           if (wr_v0 = '0') and (wr_v1 = '1') then
             wr_a0 <= wr_a1; wr_d0 <= wr_d1; wr_v0 <= '1';
             wr_v1 <= '0';
           end if;
 
           if wr_v0 = '1' then
-            -- aktuellen Datensatz abholen
             wr_a_cur <= wr_a0;
             wr_d_cur <= wr_d0;
             wr_v0    <= '0';        -- Slot0 verbraucht

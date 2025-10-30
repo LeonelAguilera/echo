@@ -120,19 +120,19 @@ value "/home/antmo328/echo/echo/echo_lib/hds/top"
 )
 (vvPair
 variable "date"
-value "10/17/25"
+value "10/28/25"
 )
 (vvPair
 variable "day"
-value "Fri"
+value "Tue"
 )
 (vvPair
 variable "day_long"
-value "Friday"
+value "Tuesday"
 )
 (vvPair
 variable "dd"
-value "17"
+value "28"
 )
 (vvPair
 variable "entity_name"
@@ -160,7 +160,7 @@ value "antmo328"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/17/25"
+value "10/28/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -172,7 +172,7 @@ value "muxen2-112.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "22:43:46"
+value "17:20:43"
 )
 (vvPair
 variable "group"
@@ -197,6 +197,10 @@ value "$HDS_PROJECT_DIR/echo_lib/designcheck"
 (vvPair
 variable "library_downstream_ModelSimCompiler"
 value "$HDS_PROJECT_DIR/echo_lib/modelsim"
+)
+(vvPair
+variable "library_downstream_PrecisionSynthesisDataPrep"
+value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
 variable "mm"
@@ -280,7 +284,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "22:43:46"
+value "17:20:43"
 )
 (vvPair
 variable "unit"
@@ -1142,8 +1146,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,11700,55500,12600"
-st "SIGNAL audio_in_L      : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
-"
+st "SIGNAL audio_in_L      : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
 )
 )
 *37 (Net
@@ -1161,8 +1164,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,2700,39500,3600"
-st "SIGNAL KB_SCAN_CODE    : std_logic
-"
+st "SIGNAL KB_SCAN_CODE    : std_logic"
 )
 )
 *38 (Net
@@ -1180,8 +1182,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,3600,39500,4500"
-st "SIGNAL KB_SCAN_VALID   : std_logic
-"
+st "SIGNAL KB_SCAN_VALID   : std_logic"
 )
 )
 *39 (Net
@@ -1199,8 +1200,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,4500,39500,5400"
-st "SIGNAL RESET_N         : std_logic
-"
+st "SIGNAL RESET_N         : std_logic"
 )
 )
 *40 (Net
@@ -1219,8 +1219,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,12600,55500,13500"
-st "SIGNAL audio_in_R      : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
-"
+st "SIGNAL audio_in_R      : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
 )
 )
 *41 (Net
@@ -1238,8 +1237,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,13500,39500,14400"
-st "SIGNAL audio_in_ready  : std_logic
-"
+st "SIGNAL audio_in_ready  : std_logic"
 )
 )
 *42 (Net
@@ -1257,8 +1255,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,14400,39500,15300"
-st "SIGNAL audio_in_valid  : std_logic
-"
+st "SIGNAL audio_in_valid  : std_logic"
 )
 )
 *43 (Net
@@ -1277,8 +1274,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,15300,55500,16200"
-st "SIGNAL audio_out_L     : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
-"
+st "SIGNAL audio_out_L     : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
 )
 )
 *44 (Net
@@ -1297,8 +1293,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,16200,55500,17100"
-st "SIGNAL audio_out_R     : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
-"
+st "SIGNAL audio_out_R     : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
 )
 )
 *45 (Net
@@ -1316,8 +1311,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,17100,39500,18000"
-st "SIGNAL audio_out_valid : std_logic
-"
+st "SIGNAL audio_out_valid : std_logic"
 )
 )
 *46 (Net
@@ -1336,8 +1330,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,5400,55500,6300"
-st "SIGNAL SRAM_ADDR       : std_logic_vector(G_ADDR_WIDTH-1 DOWNTO 0)
-"
+st "SIGNAL SRAM_ADDR       : std_logic_vector(G_ADDR_WIDTH-1 DOWNTO 0)"
 )
 )
 *47 (Net
@@ -1355,8 +1348,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,6300,39500,7200"
-st "SIGNAL SRAM_CE_N       : std_logic
-"
+st "SIGNAL SRAM_CE_N       : std_logic"
 )
 )
 *48 (Net
@@ -1375,8 +1367,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,7200,55500,8100"
-st "SIGNAL SRAM_DQ         : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
-"
+st "SIGNAL SRAM_DQ         : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
 )
 )
 *49 (Net
@@ -1394,8 +1385,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,8100,39500,9000"
-st "SIGNAL SRAM_LB_N       : std_logic
-"
+st "SIGNAL SRAM_LB_N       : std_logic"
 )
 )
 *50 (Net
@@ -1413,8 +1403,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,9000,39500,9900"
-st "SIGNAL SRAM_OE_N       : std_logic
-"
+st "SIGNAL SRAM_OE_N       : std_logic"
 )
 )
 *51 (Net
@@ -1432,8 +1421,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,9900,39500,10800"
-st "SIGNAL SRAM_UB_N       : std_logic
-"
+st "SIGNAL SRAM_UB_N       : std_logic"
 )
 )
 *52 (Net
@@ -1451,8 +1439,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,10800,39500,11700"
-st "SIGNAL SRAM_WE_N       : std_logic
-"
+st "SIGNAL SRAM_WE_N       : std_logic"
 )
 )
 *53 (Net
@@ -1470,8 +1457,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,18000,39500,18900"
-st "SIGNAL clk             : std_logic
-"
+st "SIGNAL clk             : std_logic"
 )
 )
 *54 (Net
@@ -1490,8 +1476,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,18900,49500,19800"
-st "SIGNAL delay_samples   : std_logic_vector(18 DOWNTO 0)
-"
+st "SIGNAL delay_samples   : std_logic_vector(18 DOWNTO 0)"
 )
 )
 *55 (Net
@@ -1510,8 +1495,7 @@ va (VaSet
 font "courier,8,0"
 )
 xt "22000,19800,49500,20700"
-st "SIGNAL g_feedback_q15  : std_logic_vector(15 DOWNTO 0)
-"
+st "SIGNAL g_feedback_q15  : std_logic_vector(15 DOWNTO 0)"
 )
 )
 *56 (Wire
@@ -1971,7 +1955,7 @@ pts [
 ]
 )
 start &32
-sat 2
+sat 4
 eat 16
 sty 1
 st 0
@@ -2369,7 +2353,7 @@ viewArea "40646,19266,98801,47747"
 cachedDiagramExtent "0,0,75400,67000"
 hasePageBreakOrigin 1
 pageBreakOrigin "0,0"
-lastUid 1664,0
+lastUid 1767,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0

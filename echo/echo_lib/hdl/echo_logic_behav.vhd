@@ -23,7 +23,7 @@ use ieee.numeric_std.all;
 
 entity echo_logic is
   generic(
-    G_ADDR_WIDTH : natural := 20;  -- physische Adressbreite
+    G_ADDR_WIDTH : natural := 20;  -- physische Adressbreite (WORT-Adresse)
     G_DATA_WIDTH : natural := 16
   );
   port(
@@ -38,7 +38,7 @@ entity echo_logic is
     audio_in_valid  : in  std_logic;
     audio_out_valid : out std_logic;
 
-    -- Interface zum SRAM-Controller (physische Adressen!)
+    -- Interface zum SRAM-Controller (physische Wort-Adressen!)
     wr_en   : out std_logic;
     wr_addr : out std_logic_vector(G_ADDR_WIDTH-1 downto 0);
     wr_data : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
@@ -83,7 +83,7 @@ architecture behav of echo_logic is
     x32 := resize(x, W_X);
     g17 := signed('0' & g);
     prod := resize(x32 * g17, prod'length);
-    acc  := prod + to_signed(2**(FRAC-1), prod'length);
+    acc  := prod + to_signed(2**(FRAC-1), prod'length); -- round
     shf  := shift_right(acc, FRAC);
     if    shf > to_signed( 32767, shf'length) then y := to_signed( 32767, 16);
     elsif shf < to_signed(-32768, shf'length) then y := to_signed(-32768, 16);
@@ -111,14 +111,14 @@ architecture behav of echo_logic is
   signal inL_reg, inR_reg : signed(15 downto 0) := (others => '0');
   signal yL, yR           : signed(15 downto 0) := (others => '0');
 
-  signal delayed_L, delayed_R     : signed(15 downto 0) := (others => '0');
+  signal delayed_L, delayed_R       : signed(15 downto 0) := (others => '0');
   signal delayed_eff_L, delayed_eff_R : signed(15 downto 0);
 
-  signal wr_ptr   : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');  -- Basisadresse pro Frame (physisch, gerade)
+  signal wr_ptr   : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');  -- Basis (even)
   signal rd_ptr_L : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
   signal rd_ptr_R : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
 
-  signal delay_words : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
+  signal delay_words : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');  -- Delay in WORTEN
   signal g_q15       : unsigned(15 downto 0);
 
   signal in_ready_i  : std_logic := '1';
@@ -129,13 +129,14 @@ architecture behav of echo_logic is
   signal rd_addr_i   : unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0');
   signal wr_data_i   : std_logic_vector(G_DATA_WIDTH-1 downto 0) := (others => '0');
 
-  signal filled_words: unsigned(G_ADDR_WIDTH-1 downto 0) := (others => '0'); -- Anzahl geschriebener Worte
+  -- +1 Bit Headroom
+  signal filled_words: unsigned(G_ADDR_WIDTH downto 0) := (others => '0'); -- Worte im Puffer
   signal primed      : std_logic := '0';
-  
-  
-  -- neue ptr für even =================================================================================
-  --signal wr_ptr_even : unsigned(G_ADDR_WIDTH-1 downto 0);
-  
+
+  -- neues Gate: \u201eerst rechnen, wenn erstes L+R-Paar tatsächlich gelesen\u201c
+  signal got_L, got_R : std_logic := '0';
+  signal pair_ok      : std_logic := '0';
+
 begin
   -- ===== I/O =====
   audio_in_ready  <= in_ready_i;
@@ -152,12 +153,12 @@ begin
 
   g_q15 <= unsigned(g_feedback_q15);
 
-  -- *** WICHTIG: physische Adressierung (A0 benutzt) ? *4 Worte pro Stereo-Sample ***
-  delay_words <= shift_left(resize(unsigned(delay_samples), delay_words'length), 1);  -- *4
+  -- Delay in SAMPLES angegeben \u21d2 in WORTEN: ×2 (Stereo = 2 Worte/Sample)
+  delay_words <= shift_left(resize(unsigned(delay_samples), delay_words'length), 1);
 
-  -- effektive delayed-Werte erst nach ?Priming?
-  delayed_eff_L <= delayed_L when primed = '1' else (others => '0');
-  delayed_eff_R <= delayed_R when primed = '1' else (others => '0');
+  -- effektive delayed-Werte nur wenn erstes L+R sicher gelesen wurde
+  delayed_eff_L <= delayed_L when pair_ok = '1' else (others => '0');
+  delayed_eff_R <= delayed_R when pair_ok = '1' else (others => '0');
 
   --------------------------------------------------------------------
   -- Next state
@@ -171,39 +172,18 @@ begin
           s_next <= S_RD_L;
         end if;
 
-      when S_RD_L =>
-        s_next <= S_WAIT_L;
+      when S_RD_L   => s_next <= S_WAIT_L;
+      when S_WAIT_L => if rd_valid = '1' then s_next <= S_RD_R;   end if;
+      when S_RD_R   => s_next <= S_WAIT_R;
+      when S_WAIT_R => if rd_valid = '1' then s_next <= S_CALC;   end if;
 
-      when S_WAIT_L =>
-        if rd_valid = '1' then
-          s_next <= S_RD_R;
-        end if;
+      when S_CALC       => s_next <= S_WR_L;
+      when S_WR_L       => s_next <= S_WR_L_HOLD;
+      when S_WR_L_HOLD  => s_next <= S_WR_R;
+      when S_WR_R       => s_next <= S_WR_R_HOLD;
+      when S_WR_R_HOLD  => s_next <= S_IDLE;
 
-      when S_RD_R =>
-        s_next <= S_WAIT_R;
-
-      when S_WAIT_R =>
-        if rd_valid = '1' then
-          s_next <= S_CALC;
-        end if;
-
-      when S_CALC =>
-        s_next <= S_WR_L;
-
-      when S_WR_L =>
-        s_next <= S_WR_L_HOLD;
-
-      when S_WR_L_HOLD =>
-        s_next <= S_WR_R;
-
-      when S_WR_R =>
-        s_next <= S_WR_R_HOLD;
-
-      when S_WR_R_HOLD =>
-        s_next <= S_IDLE;
-
-      when others =>
-        s_next <= S_IDLE;
+      when others       => s_next <= S_IDLE;
     end case;
   end process;
 
@@ -211,9 +191,8 @@ begin
   -- Sequentiell: Zustände / Handshakes / Adressen
   --------------------------------------------------------------------
   process (clk, reset_n)
-    variable rd_base : unsigned(G_ADDR_WIDTH-1 downto 0);
-    variable fw_next : unsigned(G_ADDR_WIDTH-1 downto 0);
-    variable base_even: unsigned(G_ADDR_WIDTH-1 downto 0);  -- NEU
+    variable rd_base  : unsigned(G_ADDR_WIDTH-1 downto 0);
+    variable base_even: unsigned(G_ADDR_WIDTH-1 downto 0);
     variable w_even   : unsigned(G_ADDR_WIDTH-1 downto 0);
   begin
     if reset_n = '0' then
@@ -234,6 +213,9 @@ begin
       wr_data_i    <= (others => '0');
       filled_words <= (others => '0');
       primed       <= '0';
+      got_L        <= '0';
+      got_R        <= '0';
+      pair_ok      <= '0';
 
     elsif rising_edge(clk) then
       -- Defaults pro Takt
@@ -244,58 +226,35 @@ begin
       s <= s_next;
 
       case s is
+        -- ===== neues Stereo-Frame annehmen, L-Read starten =====
         when S_IDLE =>
           in_ready_i <= '1';
-          if filled_words >= delay_words then
-            primed <= '1';
-          else
-            primed <= '0';
+
+          -- sticky primed: wird EINMAL gesetzt, wenn genug gefüllt + erstes Paar gelesen
+          if primed = '0' then
+            if (filled_words >= resize(delay_words, filled_words'length)) and (pair_ok = '1') then
+              primed <= '1';
+            end if;
           end if;
 
           if audio_in_valid = '1' and in_ready_i = '1' then
             inL_reg <= signed(audio_in_L);
             inR_reg <= signed(audio_in_R);
 
-            -- Frame-Basis EVEN (A0 = 0)
-            base_even := wr_ptr;
-            base_even(0) := '0';
+            -- even Basis (A0=0)
+            base_even := wr_ptr;  base_even(0) := '0';
 
-          -- Delay-Read-Basis (ebenfalls even)
-            rd_base := mod_sub(base_even, delay_words);
-            rd_base(0) := '0';
+            -- Delay-Read-Basis (even - even = even)
+            rd_base   := mod_sub(base_even, delay_words);
 
-          -- Read L starten
-            rd_ptr_L  <= rd_base;       -- L @ base
-            rd_ptr_R  <= rd_base + 1;   -- R @ base+1
+            -- L lesen
+            rd_ptr_L  <= rd_base;
+            rd_ptr_R  <= rd_base + 1;
             rd_addr_i <= rd_base;
             rd_en_i   <= '1';
 
             in_ready_i <= '0';
           end if;
-
-        -- ===== neues Stereo-Frame annehmen, L-Read starten =====
-        --  when S_IDLE =>
-        --    in_ready_i <= '1';
-        --    if filled_words >= delay_words then
-        --     primed <= '1';
-        --    else
-        --      primed <= '0';
-        --    end if;
-
-        --    if audio_in_valid = '1' and in_ready_i = '1' then
-        --      inL_reg <= signed(audio_in_L);
-        --      inR_reg <= signed(audio_in_R);
-
-            -- Basisadresse für den Delay-Read (physische Worte!)
-        --      rd_base  := mod_sub(wr_ptr, delay_words);
-        --      rd_ptr_L <= rd_base;          -- L liest @ base
-        --      rd_ptr_R <= rd_base + 1;      -- R liest @ base+2 (A0 benutzt ? nächstes Wort = +2)
-
-        --      rd_addr_i <= rd_base;
-        --      rd_en_i   <= '1';
-
-        --      in_ready_i <= '0';
-        --    end if;
 
         when S_RD_L =>
           null;
@@ -304,6 +263,10 @@ begin
         when S_WAIT_L =>
           if rd_valid = '1' then
             delayed_L <= signed(rd_data);
+            if primed = '1' then
+              filled_words <= filled_words - 1;   -- ein Wort konsumiert
+            end if;
+            got_L <= '1';
           end if;
 
         -- ===== R-Read jetzt pulsen =====
@@ -315,6 +278,10 @@ begin
         when S_WAIT_R =>
           if rd_valid = '1' then
             delayed_R <= signed(rd_data);
+            if primed = '1' then
+              filled_words <= filled_words - 1;   -- ein Wort konsumiert
+            end if;
+            got_R <= '1';
           end if;
 
         -- ===== Ausgabe berechnen =====
@@ -327,55 +294,36 @@ begin
             yR <= sat_add_s16(inR_reg, mul_q15u_s16(delayed_eff_R, g_q15));
           end if;
 
-        -- ===== Schreiben L @ wr_ptr =====
+        -- ===== Schreiben L @ even(wr_ptr) =====
         when S_WR_L =>
-          --  wr_addr_i <= wr_ptr;
-          --  wr_data_i <= std_logic_vector(yL);
-          --  wr_en_i   <= '1';
-          w_even := wr_ptr;
-          w_even(0) := '0';
-
-          wr_addr_i <= w_even;                  -- L @ base
+          w_even := wr_ptr;  w_even(0) := '0';
+          wr_addr_i <= w_even;
           wr_data_i <= std_logic_vector(yL);
           wr_en_i   <= '1';
+
         when S_WR_L_HOLD =>
           null;
 
-        -- ===== Schreiben R @ wr_ptr+2 =====
+        -- ===== Schreiben R @ even(wr_ptr)+1 =====
         when S_WR_R =>
-          -- wr_addr_i <= wr_ptr + 1;
-          -- wr_data_i <= std_logic_vector(yR);
-          -- wr_en_i   <= '1';
-
-          w_even := wr_ptr;
-          w_even(0) := '0';
-
-          wr_addr_i <= w_even + 1;              -- R @ base+1
+          w_even := wr_ptr;  w_even(0) := '0';
+          wr_addr_i <= w_even + 1;
           wr_data_i <= std_logic_vector(yR);
           wr_en_i   <= '1';
 
         -- ===== Abschluss, Pointer/Füllstand/Nächster Frame =====
         when S_WR_R_HOLD =>
-          --  wr_ptr <= wr_ptr + 2;   -- nächstes Stereo-Frame (L@+0, R@+2)
-          --  fw_next := filled_words + 2;
-          --  if fw_next < filled_words then
-          --    filled_words <= (others => '1'); -- Wrap erkannt
-          --  else
-          --    filled_words <= fw_next;
-          --  end if;
-          --  out_valid_i <= '1';
-          --  in_ready_i  <= '1';
+          w_even := wr_ptr;  w_even(0) := '0';
+          wr_ptr <= w_even + 2;                -- nächstes Stereo-Frame (even)
 
-          w_even := wr_ptr;
-          w_even(0) := '0';
-          wr_ptr <= w_even + 2;
+          filled_words <= filled_words + 2;     -- zwei Worte geschrieben
 
-          fw_next := filled_words + 2;          -- +2 Worte pro Stereo-Frame
-          if fw_next < filled_words then
-            filled_words <= (others => '1');
-          else
-            filled_words <= fw_next;
+          -- erstes L+R tatsächlich gelesen? \u2192 ab jetzt Delay-Daten freigeben
+          if got_L = '1' and got_R = '1' then
+            pair_ok <= '1';
           end if;
+          got_L <= '0';
+          got_R <= '0';
 
           out_valid_i <= '1';
           in_ready_i  <= '1';
