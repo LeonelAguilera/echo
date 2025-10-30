@@ -73,6 +73,11 @@ architecture Behavioral of audio_io is
     signal adc_bit_counter : integer range 0 to 31 := 0;
     signal prev_adc_lrc    : std_logic := '0';
     signal adc_data_active : std_logic := '0';  -- indicates ongoing reception
+    
+    signal left_channel_out_s : std_logic_vector(15 downto 0);
+    signal right_channel_out_s : std_logic_vector(15 downto 0);
+    
+    signal prev_data_valid : STD_LOGIC;
 
 begin
 
@@ -103,6 +108,16 @@ begin
     --------------------------------------------------------------------
     -- DAC: Parallel-to-Serial Conversion (I2S compliant)
     --------------------------------------------------------------------
+    load_out_data: process(clk)
+    begin
+      IF rising_edge(clk) THEN
+        prev_data_valid <= data_valid;
+        IF data_valid = '1' AND prev_data_valid = '0' THEN
+          left_channel_out_s <= left_channel_out;
+          right_channel_out_s <= right_channel_out;
+        END IF;
+      END IF;
+    end process;
     dac_parallel_to_serial : process(bclk, reset_n)
     begin
         if reset_n = '0' then
@@ -119,28 +134,19 @@ begin
                 dac_bit_counter <= 0;
                 dac_data_active <= '1';
                 
-                -- Load new data on LRC edge (with 1-bit delay)
-                if data_valid = '1' then
-                    if dac_lrc = '0' then
-                        dac_shift_reg <= left_channel_out;
-                    else
-                        dac_shift_reg <= right_channel_out;
-                    end if;
-                --else
-                    --dac_shift_reg <= (others => '0');
+                if dac_lrc = '0' then
+                    dac_shift_reg <= left_channel_out_s;
+                else
+                    dac_shift_reg <= right_channel_out_s;
                 end if;
                 
             elsif dac_data_active = '1' then
                 -- Output MSB first, with one-bit delay after LRC
-                if dac_bit_counter = 0 then
-                    dac_dat <= '0';  -- 1-bit delay (I2S spec)
-                else
+                if dac_bit_counter >= 1 AND dac_bit_counter <= 16 THEN
                     dac_dat <= dac_shift_reg(15);
                     dac_shift_reg <= dac_shift_reg(14 downto 0) & '0';
-                end if;
-
-                dac_bit_counter <= dac_bit_counter + 1;
-                if dac_bit_counter = 16 then
+                    dac_bit_counter <= dac_bit_counter + 1;
+                else
                     dac_data_active <= '0';
                     --dac_dat <= '0';
                 end if;

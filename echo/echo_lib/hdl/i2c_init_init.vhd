@@ -34,7 +34,7 @@ architecture init of i2c_init is
     -- R6
     "10" & "0011010" & "0" & "1" & "00001100" & "1" & "00000000" & "1" & "01" &
     -- R8
-    "10" & "0011010" & "0" & "1" & "00001110" & "1" & "01000001" & "1" & "01" &
+    "10" & "0011010" & "0" & "1" & "00001110" & "1" & "01000010" & "1" & "01" &
     -- R9
     "10" & "0011010" & "0" & "1" & "00010000" & "1" & "00000000" & "1" & "01" &
     -- R10
@@ -69,12 +69,12 @@ begin
             enable_scl <= '0';
         elsif rising_edge(CLK_100k) then
             if bit_index < Bits_SDA then
-                SDA_reg <= SDA_rom(Bits_SDA-1 - bit_index);
-                enable_scl <= '1';  -- Starta SCL
-                bit_index <= bit_index + 1;
+              SDA_reg <= SDA_rom(Bits_SDA-1 - bit_index);
+              enable_scl <= '1';  -- Start SCL
+              bit_index <= bit_index + 1;
             else
-                enable_scl <= '0';  -- SCL stoppas
-                SDA_reg <= '1';     -- Idle
+              enable_scl <= '0';  -- SCL stop
+              SDA_reg <= '1';     -- Idle
             end if;
         end if;
     end process;
@@ -82,20 +82,20 @@ begin
     process(CLK_200k, Reset)
     begin
         if Reset = '0' then
-            scl_index <= 0;
-            SCL_reg   <= '1';
+          scl_index <= 0;
+          SCL_reg   <= '1';
         elsif rising_edge(CLK_200k) then
             if enable_scl = '1' then
                 if scl_index < Bits_SCL then
-                    SCL_reg <= SCL_rom(Bits_SCL-1 - scl_index);
-                    scl_index <= scl_index + 1;
-                else
-                    scl_index <= 0;
-                    SCL_reg   <= '1';
-                end if;
+                  SCL_reg <= SCL_rom(Bits_SCL-1 - scl_index);
+                  scl_index <= scl_index + 1;
+              else
+                  scl_index <= 0;
+                  SCL_reg   <= '1';
+              end if;
             else
-                SCL_reg   <= '1';
-                scl_index <= 0;
+              SCL_reg   <= '1';
+              scl_index <= 0;
             end if;
         end if;
     end process;
