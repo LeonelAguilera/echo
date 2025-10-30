@@ -1,6 +1,6 @@
 # vsim -f hds_args.tmp -no_autoacc -foreign "hdsInit /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll" -pli ""/sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll"" 
-# Start time: 10:10:17 on Oct 23,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Start time: 05:42:22 on Oct 30,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -8,20 +8,56 @@
 # Loading work.audio_io(behavioral)#1
 # Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
 add wave -r /*
-force -repeat 15.38ns clk 1 0ns, 0 7.69ns
-force -repeat 81.38ns mclk_in 1 0ns, 0 40.69ns
-force -repeat 1us i2s_bclk 1 0ns, 0 0.5us
-force -repeat 32us i2s_lrclk 0 0ns, 1 16us
-force rst 1
+force /audio_io/clk 0
+
+force /audio_io/reset_n 0
+
+force /audio_io/bclk 0
+
+force /audio_io/adc_lrc 0
+
+force /audio_io/dac_lrc 0
+
+force /audio_io/adc_dat 0
+
+force /audio_io/left_channel_out  "1010101010101010"
+
+force /audio_io/right_channel_out "0101010101010101"
+
+run 200ns; force /audio_io/reset_n 1; run 100ns
+# 0
+# 
+# 0
+# 
+
+force /audio_io/adc_lrc 0
+
+force -freeze /audio_io/adc_dat 1 0ns, 0 100ns, 1 200ns, 0 300ns, 1 400ns, 0 500ns, 1 600ns, 0 700ns, 1 800ns, 0 900ns, 1 1000ns, 0 1100ns, 1 1200ns, 0 1300ns, 1 1400ns, 0 1500ns
+
+force -repeat 100ns /audio_io/bclk 0 0ns, 1 50ns
+
+run 1600ns
+# 0
+# 
+
+force /audio_io/adc_lrc 1
+
 run 100ns
 # 0
 # 
-force rst 0
-force i2s_adcdat 1 0us, 0 1us, 1 2us, 0 3us, 1 4us, 0 5us, 1 6us, 0 7us, 1 8us, 0 9us, 1 10us, 0 11us, 1 12us, 0 13us, 1 14us, 0 15us
-force i2s_adcdat 0 16us, 1 17us, 0 18us, 1 19us, 0 20us, 1 21us, 0 22us, 1 23us, 0 24us, 1 25us, 0 26us, 1 27us, 0 28us, 1 29us, 0 30us, 1 31us
-run -all
-# Break key hit
+
+force -freeze /audio_io/adc_dat 0 0ns, 1 100ns, 0 200ns, 1 300ns, 0 400ns, 1 500ns, 0 600ns, 1 700ns, 0 800ns, 1 900ns, 0 1000ns, 1 1100ns, 0 1200ns, 1 1300ns, 0 1400ns, 1 1500ns
+
+force -repeat 100ns /audio_io/bclk 0 0ns, 1 50ns
+
+run 1600ns
 # 0
-# Simulation stop requested.
-# End time: 10:32:57 on Oct 23,2025, Elapsed time: 0:22:40
-# Errors: 0, Warnings: 0
+# 
+
+force /audio_io/adc_lrc 0
+
+run 200ns
+# 0
+# 
+
+run -all
