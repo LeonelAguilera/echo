@@ -15,7 +15,11 @@ ENTITY Settings IS
       APressed  : IN     std_logic;
       Reset     : IN     std_logic;
       c0        : IN     std_logic;
-      overflow  : IN     std_logic
+      overflow  : IN     std_logic;
+      vol_down  : OUT    unsigned(7 downto 0); 
+      vol_up    : OUT    unsigned(7 downto 0);
+      bal_left  : OUT    unsigned(7 downto 0);
+      bal_right : OUT    unsigned(7 downto 0)
    );
 
 -- Declarations
@@ -28,6 +32,10 @@ architecture change of Settings is
 	signal old_APressed, old_DPressed, 
 	       old_WPressed, old_SPressed  : std_logic;
 	signal old_overflow : std_logic;
+	signal A_count : unsigned(3 downto 0) := (others => '0');
+	signal D_count : unsigned(3 downto 0) := (others => '0');
+	signal W_count : unsigned(3 downto 0) := (others => '0');
+	signal S_count : unsigned(3 downto 0) := (others => '0');
 	
 begin
 	process (c0, Reset) 
@@ -45,12 +53,16 @@ begin
 			if overflow = '0' then
 				if (APressed  = '1') and (tmp_bal > "0000") and old_APressed = '0' then     -- if left arrow pressed 
 					tmp_bal <= tmp_bal - 1;
+					A_count <= A_count + 1; 
 				elsif (DPressed = '1') and (tmp_bal < "1000") and old_DPressed = '0' then -- if right arrow pressed
 					tmp_bal <= tmp_bal + 1;
+					D_count <= D_count + 1;
 				elsif (WPressed = '1') and (tmp_vol < "1100") and old_WPressed = '0' then       -- if up arrow pressed
 					tmp_vol <= tmp_vol + 1;
+					W_count <= W_count + 1; 
 				elsif (SPressed = '1') and (tmp_vol > "0000") and old_SPressed = '0' then   -- if down arrow pressed
 					tmp_vol <= tmp_vol - 1;
+					S_count <= S_count + 1; 
 				end if; -- Vol_count & Bal_count (0 - 10)
 			elsif  overflow = '1' and old_overflow = '0' then
 				tmp_vol <= tmp_vol - 1;
@@ -61,5 +73,13 @@ begin
 	
 	bal_count <= tmp_bal; -- output balance					 
 	vol_count <= tmp_vol; -- output volume
+	
+	vol_up    <= W_count & "0000";
+  vol_down  <= S_count & "0000";
+
+  bal_left  <= A_count & "0000";
+  bal_right <= D_count & "0000";
+
+	
 					 
 end architecture;

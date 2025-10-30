@@ -65,6 +65,8 @@ architecture Behavioral of audio_io is
     signal dac_bit_counter : integer range 0 to 31 := 0;
     signal prev_dac_lrc    : std_logic := '0';
     signal dac_data_active : std_logic := '0';  -- indicates ongoing transmission
+    
+    SIGNAL prev_bclk : STD_LOGIC;
 
     --------------------------------------------------------------------
     -- ADC Reception signals
@@ -118,40 +120,39 @@ begin
         END IF;
       END IF;
     end process;
-    dac_parallel_to_serial : process(bclk, reset_n)
+    
+    
+    dac_parallel_to_serial : process(clk, reset_n)
     begin
-        if reset_n = '0' then
-            dac_dat <= '0';
-            dac_shift_reg <= (others => '0');
+      IF reset_n = '0' THEN
+        dac_dat <= '0';
+        dac_shift_reg <= (OTHERS => '0');
+        dac_bit_counter <= 0;
+        prev_dac_lrc <= '0';
+        dac_data_active <= '0';
+        prev_bclk <= '0';
+      ELSIF RISING_EDGE(clk) THEN
+        prev_bclk <= bclk;
+        
+        IF bclk = '0' AND prev_bclk = '1' THEN
+          prev_dac_lrc <= dac_lrc;
+          IF dac_lrc /= prev_dac_lrc THEN
+            dac_data_active <= '1';
+            dac_shift_reg <= left_channel_out_s WHEN dac_lrc = '0' ELSE
+                             right_channel_out_s;
             dac_bit_counter <= 0;
-            prev_dac_lrc <= '0';
-            dac_data_active <= '0';
-            
-        elsif falling_edge(bclk) then
-            -- Detect LRC transition (frame sync)
-            if dac_lrc /= prev_dac_lrc then
-                prev_dac_lrc <= dac_lrc;
-                dac_bit_counter <= 0;
-                dac_data_active <= '1';
-                
-                if dac_lrc = '0' then
-                    dac_shift_reg <= left_channel_out_s;
-                else
-                    dac_shift_reg <= right_channel_out_s;
-                end if;
-                
-            elsif dac_data_active = '1' then
-                -- Output MSB first, with one-bit delay after LRC
-                if dac_bit_counter >= 1 AND dac_bit_counter <= 16 THEN
-                    dac_dat <= dac_shift_reg(15);
-                    dac_shift_reg <= dac_shift_reg(14 downto 0) & '0';
-                    dac_bit_counter <= dac_bit_counter + 1;
-                else
-                    dac_data_active <= '0';
-                    --dac_dat <= '0';
-                end if;
-            end if;
-        end if;
+          ELSIF dac_data_active = '1' THEN
+            IF dac_bit_counter <= 16 THEN
+              dac_bit_counter <= dac_bit_counter + 1;
+              IF dac_bit_counter > 0 THEN
+                dac_dat <= dac_shift_reg(dac_bit_counter - 1);
+              END IF;
+            ELSE
+              dac_data_active <= '0';
+            END IF;
+          END IF;
+        END IF;
+      END IF;
     end process;
 
     --------------------------------------------------------------------

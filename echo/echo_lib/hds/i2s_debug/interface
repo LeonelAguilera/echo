@@ -21,7 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 6,0
+suid 25,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -63,24 +63,24 @@ tm "EolColHdrMgr"
 *14 (LogPort
 port (LogicalPort
 decl (Decl
-n "AUD_ADCDAT"
+n "AUD_BCLK"
 t "std_logic"
-o 1
-suid 1,0
+o 2
+suid 20,0
 )
 )
-uid 81,0
+uid 340,0
 )
 *15 (LogPort
 port (LogicalPort
 decl (Decl
-n "AUD_BCLK"
+n "AUD_DACDAT"
 t "std_logic"
-o 2
-suid 2,0
+o 10
+suid 21,0
 )
 )
-uid 83,0
+uid 342,0
 )
 *16 (LogPort
 port (LogicalPort
@@ -88,10 +88,10 @@ decl (Decl
 n "AUD_DACLRCK"
 t "std_logic"
 o 3
-suid 3,0
+suid 22,0
 )
 )
-uid 85,0
+uid 344,0
 )
 *17 (LogPort
 port (LogicalPort
@@ -101,10 +101,10 @@ n "audio_debug_1"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
 o 21
-suid 4,0
+suid 23,0
 )
 )
-uid 87,0
+uid 346,0
 )
 *18 (LogPort
 port (LogicalPort
@@ -115,10 +115,10 @@ n "audio_debug_2"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
 o 57
-suid 5,0
+suid 24,0
 )
 )
-uid 89,0
+uid 348,0
 )
 *19 (LogPort
 port (LogicalPort
@@ -127,10 +127,10 @@ decl (Decl
 n "reduced_clock"
 t "std_logic"
 o 22
-suid 6,0
+suid 25,0
 )
 )
-uid 91,0
+uid 350,0
 )
 ]
 )
@@ -186,37 +186,37 @@ uid 113,0
 litem &14
 pos 0
 dimension 20
-uid 82,0
+uid 341,0
 )
 *26 (MRCItem
 litem &15
 pos 1
 dimension 20
-uid 84,0
+uid 343,0
 )
 *27 (MRCItem
 litem &16
 pos 2
 dimension 20
-uid 86,0
+uid 345,0
 )
 *28 (MRCItem
 litem &17
 pos 3
 dimension 20
-uid 88,0
+uid 347,0
 )
 *29 (MRCItem
 litem &18
 pos 4
 dimension 20
-uid 90,0
+uid 349,0
 )
 *30 (MRCItem
 litem &19
 pos 5
 dimension 20
-uid 92,0
+uid 351,0
 )
 ]
 )
@@ -539,7 +539,7 @@ value "muxen2-116.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "16:00:48"
+value "22:23:12"
 )
 (vvPair
 variable "group"
@@ -655,7 +655,7 @@ value "interface"
 )
 (vvPair
 variable "time"
-value "16:00:48"
+value "22:23:12"
 )
 (vvPair
 variable "unit"
@@ -690,54 +690,10 @@ optionalChildren [
 uid 8,0
 optionalChildren [
 *64 (CptPort
-uid 51,0
+uid 310,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 52,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "14250,7625,15000,8375"
-)
-tg (CPTG
-uid 53,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 54,0
-va (VaSet
-font "courier,8,0"
-)
-xt "16000,7550,21500,8450"
-st "AUD_ADCDAT"
-blo "16000,8250"
-tm "CptPortNameMgr"
-)
-)
-dt (MLText
-uid 55,0
-va (VaSet
-font "courier,8,0"
-)
-xt "44000,1800,62000,2700"
-st "AUD_ADCDAT    : IN     std_logic  ;"
-)
-thePort (LogicalPort
-decl (Decl
-n "AUD_ADCDAT"
-t "std_logic"
-o 1
-suid 1,0
-)
-)
-)
-*65 (CptPort
-uid 56,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 57,0
+uid 311,0
 ro 90
 va (VaSet
 vasetType 1
@@ -746,11 +702,11 @@ fg "0,65535,0"
 xt "14250,10625,15000,11375"
 )
 tg (CPTG
-uid 58,0
+uid 312,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 59,0
+uid 313,0
 va (VaSet
 font "courier,8,0"
 )
@@ -761,27 +717,73 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 60,0
+uid 314,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,2700,62000,3600"
-st "AUD_BCLK      : IN     std_logic  ;"
+xt "44000,1800,62000,2700"
+st "AUD_BCLK      : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 decl (Decl
 n "AUD_BCLK"
 t "std_logic"
 o 2
-suid 2,0
+suid 20,0
+)
+)
+)
+*65 (CptPort
+uid 315,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 316,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "14250,7625,15000,8375"
+)
+tg (CPTG
+uid 317,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 318,0
+va (VaSet
+font "courier,8,0"
+)
+xt "16000,7550,21500,8450"
+st "AUD_DACDAT"
+blo "16000,8250"
+tm "CptPortNameMgr"
+)
+)
+dt (MLText
+uid 319,0
+va (VaSet
+font "courier,8,0"
+)
+xt "44000,2700,62000,3600"
+st "AUD_DACDAT    : IN     std_logic  ;
+"
+)
+thePort (LogicalPort
+decl (Decl
+n "AUD_DACDAT"
+t "std_logic"
+o 10
+suid 21,0
 )
 )
 )
 *66 (CptPort
-uid 61,0
+uid 320,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 62,0
+uid 321,0
 ro 90
 va (VaSet
 vasetType 1
@@ -790,11 +792,11 @@ fg "0,65535,0"
 xt "14250,14625,15000,15375"
 )
 tg (CPTG
-uid 63,0
+uid 322,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 64,0
+uid 323,0
 va (VaSet
 font "courier,8,0"
 )
@@ -805,27 +807,28 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 65,0
+uid 324,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,3600,62000,4500"
-st "AUD_DACLRCK   : IN     std_logic  ;"
+st "AUD_DACLRCK   : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 decl (Decl
 n "AUD_DACLRCK"
 t "std_logic"
 o 3
-suid 3,0
+suid 22,0
 )
 )
 )
 *67 (CptPort
-uid 66,0
+uid 325,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 67,0
+uid 326,0
 ro 90
 va (VaSet
 vasetType 1
@@ -834,11 +837,11 @@ fg "0,65535,0"
 xt "23000,7625,23750,8375"
 )
 tg (CPTG
-uid 68,0
+uid 327,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 69,0
+uid 328,0
 va (VaSet
 font "courier,8,0"
 )
@@ -850,12 +853,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 70,0
+uid 329,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,5400,71500,6300"
-st "audio_debug_1 : OUT    std_logic_vector (7 DOWNTO 0) ;"
+st "audio_debug_1 : OUT    std_logic_vector (7 DOWNTO 0) ;
+"
 )
 thePort (LogicalPort
 m 1
@@ -864,15 +868,15 @@ n "audio_debug_1"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
 o 21
-suid 4,0
+suid 23,0
 )
 )
 )
 *68 (CptPort
-uid 71,0
+uid 330,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 72,0
+uid 331,0
 ro 90
 va (VaSet
 vasetType 1
@@ -881,11 +885,11 @@ fg "0,65535,0"
 xt "23000,11625,23750,12375"
 )
 tg (CPTG
-uid 73,0
+uid 332,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 74,0
+uid 333,0
 va (VaSet
 font "courier,8,0"
 )
@@ -897,12 +901,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 75,0
+uid 334,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,6300,70500,7200"
-st "audio_debug_2 : OUT    std_logic_vector (7 DOWNTO 0)"
+st "audio_debug_2 : OUT    std_logic_vector (7 DOWNTO 0)
+"
 )
 thePort (LogicalPort
 lang 11
@@ -912,15 +917,15 @@ n "audio_debug_2"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
 o 57
-suid 5,0
+suid 24,0
 )
 )
 )
 *69 (CptPort
-uid 76,0
+uid 335,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 77,0
+uid 336,0
 ro 90
 va (VaSet
 vasetType 1
@@ -929,11 +934,11 @@ fg "0,65535,0"
 xt "14250,12625,15000,13375"
 )
 tg (CPTG
-uid 78,0
+uid 337,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 79,0
+uid 338,0
 va (VaSet
 font "courier,8,0"
 )
@@ -944,12 +949,13 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
-uid 80,0
+uid 339,0
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,4500,62000,5400"
-st "reduced_clock : IN     std_logic  ;"
+st "reduced_clock : IN     std_logic  ;
+"
 )
 thePort (LogicalPort
 lang 11
@@ -957,7 +963,7 @@ decl (Decl
 n "reduced_clock"
 t "std_logic"
 o 22
-suid 6,0
+suid 25,0
 )
 )
 )
@@ -1670,6 +1676,6 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 149,0
+lastUid 351,0
 activeModelName "Symbol:CDM"
 )

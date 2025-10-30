@@ -13,8 +13,8 @@ USE ieee.numeric_std.all;
 
 ENTITY i2s_debug IS
    PORT( 
-      AUD_ADCDAT    : IN     std_logic;
       AUD_BCLK      : IN     std_logic;
+      AUD_DACDAT    : IN     std_logic;
       AUD_DACLRCK   : IN     std_logic;
       reduced_clock : IN     std_logic;
       audio_debug_1 : OUT    std_logic_vector (7 DOWNTO 0);
@@ -32,7 +32,8 @@ ARCHITECTURE behav OF i2s_debug IS
   SIGNAL bit_counter : INTEGER RANGE 0 TO 16;
   SIGNAL prev_lrclk : std_logic;
 BEGIN
-  audio_debug_1 <= shift_register(15 DOWNTO 8);
+  --audio_debug_1 <= shift_register(15 DOWNTO 8);
+  audio_debug_1 <= audio_in_left(7 DOWNTO 0);
   audio_debug_2 <= shift_register(7 DOWNTO 0);
   
   PROCESS(AUD_BCLK)
@@ -47,7 +48,7 @@ BEGIN
         IF bit_counter = 16 THEN
           active <= '0';
         ELSE
-          shift_register <= shift_register(14 DOWNTO 0) & AUD_ADCDAT;
+          shift_register <= shift_register(14 DOWNTO 0) & AUD_DACDAT;
           bit_counter <= bit_counter + 1;
         END IF;
       END IF;

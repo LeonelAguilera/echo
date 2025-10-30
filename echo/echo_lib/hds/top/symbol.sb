@@ -21,7 +21,7 @@ appVersion "2024.1 Built on 24 Jan 2024 at 18:06:06"
 model (Symbol
 commonDM (CommonDM
 ldm (LogicalDM
-suid 52,0
+suid 53,0
 usingSuid 1
 emptyRow *1 (LEmptyRow
 )
@@ -65,7 +65,7 @@ port (LogicalPort
 decl (Decl
 n "fpga_clk"
 t "STD_LOGIC"
-o 5
+o 2
 suid 1,0
 i "'0'"
 )
@@ -86,10 +86,11 @@ uid 396,0
 )
 *16 (LogPort
 port (LogicalPort
+m 1
 decl (Decl
 n "AUD_BCLK"
 t "std_logic"
-o 3
+o 7
 suid 10,0
 )
 )
@@ -101,7 +102,7 @@ m 1
 decl (Decl
 n "AUD_DACDAT"
 t "std_logic"
-o 9
+o 8
 suid 11,0
 )
 )
@@ -109,10 +110,11 @@ uid 400,0
 )
 *18 (LogPort
 port (LogicalPort
+m 1
 decl (Decl
 n "AUD_DACLRCK"
 t "std_logic"
-o 4
+o 9
 suid 12,0
 )
 )
@@ -131,10 +133,11 @@ uid 404,0
 )
 *20 (LogPort
 port (LogicalPort
+m 1
 decl (Decl
 n "AUD_ADCLRCK"
 t "std_logic"
-o 2
+o 6
 suid 14,0
 )
 )
@@ -253,7 +256,7 @@ lang 11
 decl (Decl
 n "kb_clk"
 t "std_logic"
-o 7
+o 4
 suid 27,0
 )
 )
@@ -265,7 +268,7 @@ lang 11
 decl (Decl
 n "kb_data"
 t "std_logic"
-o 8
+o 5
 suid 28,0
 )
 )
@@ -395,7 +398,7 @@ port (LogicalPort
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 6
+o 3
 suid 41,0
 i "'0'"
 )
@@ -1139,7 +1142,7 @@ value "muxen2-116.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "16:28:08"
+value "22:30:14"
 )
 (vvPair
 variable "group"
@@ -1255,7 +1258,7 @@ value "symbol"
 )
 (vvPair
 variable "time"
-value "16:28:08"
+value "22:30:14"
 )
 (vvPair
 variable "unit"
@@ -1331,14 +1334,14 @@ uid 117,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,5400,65700,6300"
+xt "44000,2700,65700,3600"
 st "fpga_clk      : IN     STD_LOGIC  := '0' ;"
 )
 thePort (LogicalPort
 decl (Decl
 n "fpga_clk"
 t "STD_LOGIC"
-o 5
+o 2
 suid 1,0
 i "'0'"
 )
@@ -1394,26 +1397,27 @@ suid 9,0
 uid 412,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 2103,0
+uid 6316,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "14250,19625,15000,20375"
+xt "39000,83625,39750,84375"
 )
 tg (CPTG
 uid 414,0
 ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
+stg "RightVerticalLayoutStrategy"
 f (Text
 uid 415,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,19550,20000,20450"
+xt "34000,83550,38000,84450"
 st "AUD_BCLK"
-blo "16000,20250"
+ju 2
+blo "38000,84250"
 tm "CptPortNameMgr"
 )
 )
@@ -1422,14 +1426,15 @@ uid 416,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,3600,62000,4500"
-st "AUD_BCLK      : IN     std_logic  ;"
+xt "44000,7200,62000,8100"
+st "AUD_BCLK      : OUT    std_logic  ;"
 )
 thePort (LogicalPort
+m 1
 decl (Decl
 n "AUD_BCLK"
 t "std_logic"
-o 3
+o 7
 suid 10,0
 )
 )
@@ -1467,7 +1472,7 @@ uid 421,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,9000,62000,9900"
+xt "44000,8100,62000,9000"
 st "AUD_DACDAT    : OUT    std_logic  ;"
 )
 thePort (LogicalPort
@@ -1475,7 +1480,7 @@ m 1
 decl (Decl
 n "AUD_DACDAT"
 t "std_logic"
-o 9
+o 8
 suid 11,0
 )
 )
@@ -1484,26 +1489,27 @@ suid 11,0
 uid 422,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 2104,0
+uid 6317,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "14250,21625,15000,22375"
+xt "39000,85625,39750,86375"
 )
 tg (CPTG
 uid 424,0
 ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
+stg "RightVerticalLayoutStrategy"
 f (Text
 uid 425,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,21550,22000,22450"
+xt "32000,85550,38000,86450"
 st "AUD_DACLRCK"
-blo "16000,22250"
+ju 2
+blo "38000,86250"
 tm "CptPortNameMgr"
 )
 )
@@ -1512,14 +1518,15 @@ uid 426,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,4500,62000,5400"
-st "AUD_DACLRCK   : IN     std_logic  ;"
+xt "44000,9000,62000,9900"
+st "AUD_DACLRCK   : OUT    std_logic  ;"
 )
 thePort (LogicalPort
+m 1
 decl (Decl
 n "AUD_DACLRCK"
 t "std_logic"
-o 4
+o 9
 suid 12,0
 )
 )
@@ -1572,26 +1579,27 @@ suid 13,0
 uid 432,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 3184,0
+uid 6318,0
 ro 90
 va (VaSet
 vasetType 1
 fg "0,65535,0"
 )
-xt "14250,25625,15000,26375"
+xt "39000,87625,39750,88375"
 )
 tg (CPTG
 uid 434,0
 ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
+stg "RightVerticalLayoutStrategy"
 f (Text
 uid 435,0
 va (VaSet
 font "courier,8,0"
 )
-xt "16000,25550,22000,26450"
+xt "32000,87550,38000,88450"
 st "AUD_ADCLRCK"
-blo "16000,26250"
+ju 2
+blo "38000,88250"
 tm "CptPortNameMgr"
 )
 )
@@ -1600,14 +1608,15 @@ uid 436,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,2700,62000,3600"
-st "AUD_ADCLRCK   : IN     std_logic  ;"
+xt "44000,6300,62000,7200"
+st "AUD_ADCLRCK   : OUT    std_logic  ;"
 )
 thePort (LogicalPort
+m 1
 decl (Decl
 n "AUD_ADCLRCK"
 t "std_logic"
-o 2
+o 6
 suid 14,0
 )
 )
@@ -2023,7 +2032,7 @@ uid 1472,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,7200,62000,8100"
+xt "44000,4500,62000,5400"
 st "kb_clk        : IN     std_logic  ;"
 )
 thePort (LogicalPort
@@ -2031,7 +2040,7 @@ lang 11
 decl (Decl
 n "kb_clk"
 t "std_logic"
-o 7
+o 4
 suid 27,0
 )
 )
@@ -2068,7 +2077,7 @@ uid 1477,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,8100,62000,9000"
+xt "44000,5400,62000,6300"
 st "kb_data       : IN     std_logic  ;"
 )
 thePort (LogicalPort
@@ -2076,7 +2085,7 @@ lang 11
 decl (Decl
 n "kb_data"
 t "std_logic"
-o 8
+o 5
 suid 28,0
 )
 )
@@ -2548,14 +2557,14 @@ uid 2635,0
 va (VaSet
 font "courier,8,0"
 )
-xt "44000,6300,65700,7200"
+xt "44000,3600,65700,4500"
 st "fpga_reset_n  : IN     std_logic  := '0' ;"
 )
 thePort (LogicalPort
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 6
+o 3
 suid 41,0
 i "'0'"
 )
@@ -2996,7 +3005,7 @@ fg "0,65535,0"
 lineColor "0,32896,0"
 lineWidth 2
 )
-xt "15000,6000,39000,83000"
+xt "15000,6000,39000,89000"
 )
 oxt "15000,6000,39000,26000"
 biTextGroup (BiTextGroup
@@ -3711,7 +3720,7 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
-lastUid 4692,0
+lastUid 6778,0
 okToSyncOnLoad 1
 OkToSyncGenericsOnLoad 1
 activeModelName "Symbol"
