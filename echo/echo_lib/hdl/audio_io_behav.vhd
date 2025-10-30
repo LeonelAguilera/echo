@@ -23,182 +23,121 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity audio_io is
     Port (
-                                                                                                               -- System Clock and Reset
-        clk         : in  std_logic;  -- 65 MHz FPGA clock
-        rst         : in  std_logic;  -- Active low reset
+        -- System Clock and Reset
+        clk         : in  std_logic;        -- Main system clock (e.g., 12.288MHz)
+        reset_n     : in  std_logic;        -- Active low reset
         
-                                                                                                         -- I2S Interface (WM8731 as Master)
-        i2s_bclk    : in  std_logic;  -- Bit clock from WM8731 (~1.4 MHz)
-        i2s_lrclk   : in  std_logic;  -- Left/Right clock from WM8731 (44.1 kHz)
-        i2s_adcdat  : in  std_logic;  -- ADC serial data input (from codec ADC)
-        i2s_dacdat  : out std_logic;  -- DAC serial data output (to codec DAC)
+        -- WM8731 Audio Interface (I2S)
+        bclk        : in  std_logic;        -- Bit clock (64*fs)
+        adc_lrc     : in  std_logic;        -- ADC left/right clock (fs)
+        dac_lrc     : in  std_logic;        -- DAC left/right clock (fs)
+        adc_dat     : in  std_logic;        -- ADC serial data input from codec
+        dac_dat     : out std_logic;        -- DAC serial data output to codec
         
-                                                                                                                     -- Master Clock Input (from PLL)
-        mclk_in     : in  std_logic;  -- Master clock input (~12.288 MHz or 11.2896 MHz)
-        
-                                                                                                             -- Master Clock Output (to WM8731)
-        mclk        : out std_logic;  -- Master clock output (pass-through from PLL)
-          
-                                                                                                           -- Parallel Interface to Echo Module
-        left_in     : out std_logic_vector(15 downto 0);  -- Left channel input from ADC
-        right_in    : out std_logic_vector(15 downto 0);  -- Right channel input from ADC
-        data_valid  : out std_logic;  -- New data available
-        
-        left_out    : in  std_logic_vector(15 downto 0);  -- Left channel output to DAC
-        right_out   : in  std_logic_vector(15 downto 0);  -- Right channel output to DAC
-        data_ready  : in  std_logic   -- Data ready from echo module
+        -- Audio Data Interface
+        left_channel_out  : in  std_logic_vector(15 downto 0);  -- Parallel data to DAC
+        right_channel_out : in  std_logic_vector(15 downto 0);  -- Parallel data to DAC
+        left_channel_in   : out std_logic_vector(15 downto 0);  -- Parallel data from ADC
+        right_channel_in  : out std_logic_vector(15 downto 0);  -- Parallel data from ADC
+        data_ready        : out std_logic   -- New ADC data available
     );
 end audio_io;
 
 architecture Behavioral of audio_io is
+
+    -- DAC Transmission signals
+    signal dac_shift_reg      : std_logic_vector(15 downto 0) := (others => '0');
+    signal dac_bit_counter    : integer range 0 to 16 := 0;
+    signal prev_dac_lrc       : std_logic := '0';
     
-                                                                                                -- I2S Clock Synchronization
-    signal bclk_sync    : std_logic_vector(2 downto 0) := (others => '0');
-    signal lrclk_sync   : std_logic_vector(2 downto 0) := (others => '0');
-    signal bclk_rise    : std_logic := '0';
-    signal bclk_fall    : std_logic := '0';
-    signal lrclk_prev   : std_logic := '0';
-    signal lrclk_edge   : std_logic := '0';
-    
-                                                                                               -- ADC Receiver Signals (from codec ADC -> FPGA)
-    signal adc_sr       : std_logic_vector(15 downto 0) := (others => '0');
-    signal adc_cnt      : integer range 0 to 31 := 0;
-    signal adc_left     : std_logic_vector(15 downto 0) := (others => '0');
-    signal adc_right    : std_logic_vector(15 downto 0) := (others => '0');
-    signal adc_ch       : std_logic := '0';  -- 0=Left, 1=Right
-    signal adc_valid    : std_logic := '0';
-    
-                                                                                                    -- DAC Transmitter Signals (from FPGA -> codec DAC)
-    signal dac_sr       : std_logic_vector(15 downto 0) := (others => '0');
-    signal dac_cnt      : integer range 0 to 31 := 0;
-    signal dac_left     : std_logic_vector(15 downto 0) := (others => '0');
-    signal dac_right    : std_logic_vector(15 downto 0) := (others => '0');
-    signal dac_ch       : std_logic := '0';
-    
+    -- ADC Reception signals  
+    signal adc_shift_reg      : std_logic_vector(15 downto 0) := (others => '0');
+    signal adc_bit_counter    : integer range 0 to 16 := 0;
+    signal prev_adc_lrc       : std_logic := '0';
+
 begin
 
-                                                                                              -- Pass-through Master Clock from PLL to WM8731
-    mclk <= mclk_in;
+                                                 -- DAC Parallel-to-Serial Conversion Process
     
-                                                                                                -- Output parallel data to echo module
-    left_in <= adc_left;
-    right_in <= adc_right;
-    data_valid <= adc_valid;
-    
-    
-                                                                                                   -- Clock Synchronization and Edge Detection
-    
-    process(clk, rst)
+    dac_parallel_to_serial : process(bclk, reset_n)
     begin
-        if rst = '0' then
-            bclk_sync <= (others => '0');
-            lrclk_sync <= (others => '0');
-            bclk_rise <= '0';
-            bclk_fall <= '0';
-            lrclk_prev <= '0';
-            lrclk_edge <= '0';
-        elsif rising_edge(clk) then
-            bclk_sync <= bclk_sync(1 downto 0) & i2s_bclk;
+        if reset_n = '0' then
+            dac_dat <= '0';
+            dac_shift_reg <= (others => '0');
+            dac_bit_counter <= 0;
+            prev_dac_lrc <= '0';
             
-            lrclk_sync <= lrclk_sync(1 downto 0) & i2s_lrclk;
-            
-            bclk_rise <= '0';
-            bclk_fall <= '0';
-            if bclk_sync(2) = '0' and bclk_sync(1) = '1' then
-                bclk_rise <= '1';
-            elsif bclk_sync(2) = '1' and bclk_sync(1) = '0' then
-                bclk_fall <= '1';
-            end if;
-            
-            lrclk_prev <= lrclk_sync(2);
-            if lrclk_sync(2) /= lrclk_prev then
-                lrclk_edge <= '1';
+        elsif falling_edge(bclk) then
+                                                             -- Detect DAC LRC (frame sync) transition
+            if dac_lrc /= prev_dac_lrc then
+                prev_dac_lrc <= dac_lrc;
+                dac_bit_counter <= 0;
+                
+                                                                  -- Load new parallel data based on channel
+                if dac_lrc = '0' then
+                    dac_shift_reg <= left_channel_out;
+                    dac_dat <= left_channel_out(15);  
+                else
+                    dac_shift_reg <= right_channel_out;
+                    dac_dat <= right_channel_out(15);  
+                end if;
+                
             else
-                lrclk_edge <= '0';
-            end if;
-        end if;
-    end process;
-    
-    
-                                                                    -- Deserializes incoming I2S ADC data into 16-bit left and right channels
-    
-    process(clk, rst)
-    begin
-        if rst = '0' then
-            adc_sr <= (others => '0');
-            adc_cnt <= 0;
-            adc_left <= (others => '0');
-            adc_right <= (others => '0');
-            adc_ch <= '0';
-            adc_valid <= '0';
-        elsif rising_edge(clk) then
-            adc_valid <= '0';
-            
-            if lrclk_edge = '1' then
-                adc_cnt <= 0;
-                adc_ch <= lrclk_sync(2);
                 
-                if adc_ch = '0' then
-                    adc_left <= adc_sr;
+                if dac_bit_counter < 15 then
+                    dac_bit_counter <= dac_bit_counter + 1;
+                    
+                    dac_shift_reg <= dac_shift_reg(14 downto 0) & '0';
+                    dac_dat <= dac_shift_reg(15);  -- Output MSB after shift
                 else
-                    adc_right <= adc_sr;
-                    adc_valid <= '1';  
-                end if;
-                
-                adc_sr <= (others => '0');
-            end if;
-            
-            if bclk_fall = '1' then
-                if adc_cnt < 16 then
-                    adc_sr <= adc_sr(14 downto 0) & i2s_adcdat;
-                    adc_cnt <= adc_cnt + 1;
+                                                                          -- All 16 bits transmitted
+                    dac_bit_counter <= dac_bit_counter + 1;
+                    dac_dat <= '0';
                 end if;
             end if;
         end if;
     end process;
+
+                                                          -- ADC Serial-to-Parallel Conversion Process
     
-                                                                                   -- DAC Data Capture: Captures processed audio data from echo module
-    process(clk, rst)
+    adc_serial_to_parallel : process(bclk, reset_n)
     begin
-        if rst = '0' then
-            dac_left <= (others => '0');
-            dac_right <= (others => '0');
-        elsif rising_edge(clk) then
-            if data_ready = '1' then
-                dac_left <= left_out;
-                dac_right <= right_out;
-            end if;
-        end if;
-    end process;
-    
-                                                                           -- Serializes 16-bit left and right channels to I2S DAC output
-    process(clk, rst)
-    begin
-        if rst = '0' then
-            dac_sr <= (others => '0');
-            dac_cnt <= 0;
-            dac_ch <= '0';
-            i2s_dacdat <= '0';
-        elsif rising_edge(clk) then
+        if reset_n = '0' then
+            left_channel_in <= (others => '0');
+            right_channel_in <= (others => '0');
+            adc_shift_reg <= (others => '0');
+            adc_bit_counter <= 0;
+            prev_adc_lrc <= '0';
+            data_ready <= '0';
             
-            if lrclk_edge = '1' then
-                dac_cnt <= 0;
-                dac_ch <= lrclk_sync(2);
+        elsif rising_edge(bclk) then
+            data_ready <= '0';  -- Default: clear pulse
+            
+            
+            if adc_lrc /= prev_adc_lrc then
+                prev_adc_lrc <= adc_lrc;
                 
-                if lrclk_sync(2) = '0' then
-                    dac_sr <= dac_left;
-                else
-                    dac_sr <= dac_right;
+                
+                if adc_bit_counter = 16 then
+                    if prev_adc_lrc = '0' then
+                                                                 -- Just finished left channel
+                        left_channel_in <= adc_shift_reg;
+                    else
+                                                                  -- Just finished right channel
+                        right_channel_in <= adc_shift_reg;
+                        data_ready <= '1';  -- Both channels complete
+                    end if;
                 end if;
-            end if;
-            
-            if bclk_rise = '1' then
-                if dac_cnt < 16 then
-                    i2s_dacdat <= dac_sr(15);
-                    dac_sr <= dac_sr(14 downto 0) & '0';
-                    dac_cnt <= dac_cnt + 1;
-                else
-                    i2s_dacdat <= '0';
+                
+                -- Start new channel
+                adc_bit_counter <= 0;
+                adc_shift_reg <= (others => '0');
+                
+            else
+                -- Shift in data bits
+                if adc_bit_counter < 16 then
+                    adc_bit_counter <= adc_bit_counter + 1;
+                    adc_shift_reg <= adc_shift_reg(14 downto 0) & adc_dat;
                 end if;
             end if;
         end if;

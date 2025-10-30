@@ -1,57 +1,11 @@
 # vsim -f hds_args.tmp -no_autoacc -foreign "hdsInit /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll" -pli ""/sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll"" 
-# Start time: 11:00:35 on Oct 30,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Start time: 11:15:43 on Oct 30,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.i2c(struct)#1
-# Loading work.clock_div(div)#1
-# Loading work.grp_nr(grp07)#1
-# Loading work.i2c_init(init)#1
+# Loading work.audio_io(behavioral)#1
 # Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
-# 
-# stdin: <EOF>
-force -freeze sim:/i2c/c0 0 0, 1 {7 ns} -r 15
-force -freeze sim:/i2c/Reset 1 0
-run
-# 0
-# 
-add wave sim:/i2c/*
-force -freeze sim:/i2c/Reset 0 0
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-run
-# 0
-# 
-# Causality operation skipped due to absence of debug database file
-run
-# 0
-# 
-# End time: 11:03:12 on Oct 30,2025, Elapsed time: 0:02:37
+# End time: 11:15:48 on Oct 30,2025, Elapsed time: 0:00:05
 # Errors: 0, Warnings: 0
