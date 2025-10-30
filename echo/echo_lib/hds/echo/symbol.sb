@@ -67,7 +67,11 @@ decl (Decl
 n "audio_in_L"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 4
+=======
 o 3
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 199,0
 )
 )
@@ -80,7 +84,11 @@ decl (Decl
 n "audio_in_R"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 5
+=======
 o 4
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 200,0
 )
 )
@@ -93,7 +101,11 @@ m 1
 decl (Decl
 n "audio_in_ready"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 14
+=======
 o 13
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 201,0
 )
 )
@@ -105,7 +117,11 @@ lang 11
 decl (Decl
 n "audio_in_valid"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 6
+=======
 o 5
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 202,0
 )
 )
@@ -119,7 +135,11 @@ decl (Decl
 n "audio_out_L"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 15
+=======
 o 14
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 203,0
 )
 )
@@ -133,7 +153,11 @@ decl (Decl
 n "audio_out_R"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 16
+=======
 o 15
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 204,0
 )
 )
@@ -146,7 +170,11 @@ m 1
 decl (Decl
 n "audio_out_valid"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 17
+=======
 o 16
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 205,0
 )
 )
@@ -158,7 +186,11 @@ lang 11
 decl (Decl
 n "clk"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 7
+=======
 o 6
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 206,0
 )
 )
@@ -172,7 +204,11 @@ decl (Decl
 n "delay_samples"
 t "std_logic_vector"
 b "(18 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 18
+=======
 o 17
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 207,0
 )
 )
@@ -186,7 +222,11 @@ decl (Decl
 n "g_feedback_q15"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 19
+=======
 o 18
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 208,0
 )
 )
@@ -208,9 +248,27 @@ uid 4411,0
 port (LogicalPort
 lang 11
 decl (Decl
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+n "KB_SCAN_VALID"
+t "std_logic"
+o 2
+suid 210,0
+)
+)
+uid 4413,0
+)
+*26 (LogPort
+port (LogicalPort
+lang 11
+decl (Decl
+n "RESET_N"
+t "std_logic"
+o 3
+=======
 n "RESET_N"
 t "std_logic"
 o 2
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 211,0
 )
 )
@@ -224,7 +282,11 @@ decl (Decl
 n "SRAM_ADDR"
 t "std_logic_vector"
 b "(G_ADDR_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 8
+=======
 o 7
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 212,0
 )
 )
@@ -237,11 +299,17 @@ m 1
 decl (Decl
 n "SRAM_CE_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 9
+=======
 o 8
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 213,0
 )
 )
 uid 4419,0
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+=======
 )
 *28 (LogPort
 port (LogicalPort
@@ -256,12 +324,23 @@ suid 214,0
 )
 )
 uid 4421,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 *29 (LogPort
 port (LogicalPort
 lang 11
-m 1
+m 2
 decl (Decl
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+n "SRAM_DQ"
+t "std_logic_vector"
+b "(G_DATA_WIDTH-1 DOWNTO 0)"
+o 20
+suid 214,0
+)
+)
+uid 4421,0
+=======
 n "SRAM_LB_N"
 t "std_logic"
 o 9
@@ -269,6 +348,7 @@ suid 215,0
 )
 )
 uid 4423,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 *30 (LogPort
 port (LogicalPort
@@ -278,10 +358,17 @@ decl (Decl
 n "SRAM_OE_N"
 t "std_logic"
 o 10
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+suid 215,0
+)
+)
+uid 4423,0
+=======
 suid 216,0
 )
 )
 uid 4425,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 *31 (LogPort
 port (LogicalPort
@@ -291,19 +378,45 @@ decl (Decl
 n "SRAM_UB_N"
 t "std_logic"
 o 11
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+suid 216,0
+)
+)
+uid 4425,0
+=======
 suid 217,0
 )
 )
 uid 4427,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 *32 (LogPort
 port (LogicalPort
 lang 11
 m 1
 decl (Decl
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+n "SRAM_UB_N"
+t "std_logic"
+o 12
+suid 217,0
+)
+)
+uid 4427,0
+)
+*33 (LogPort
+port (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "SRAM_WE_N"
+t "std_logic"
+o 13
+=======
 n "SRAM_WE_N"
 t "std_logic"
 o 12
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 218,0
 )
 )
@@ -421,14 +534,70 @@ uid 4410,0
 )
 *48 (MRCItem
 litem &24
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+pos 10
+dimension 20
+uid 4412,0
+)
+*50 (MRCItem
+litem &25
+pos 11
+dimension 20
+uid 4414,0
+)
+*51 (MRCItem
+litem &26
+pos 12
+dimension 20
+uid 4416,0
+)
+*52 (MRCItem
+litem &27
+pos 13
+dimension 20
+uid 4418,0
+)
+*53 (MRCItem
+litem &28
+pos 14
+dimension 20
+uid 4420,0
+)
+*54 (MRCItem
+litem &29
+pos 15
+dimension 20
+uid 4422,0
+)
+*55 (MRCItem
+litem &30
+pos 16
+dimension 20
+uid 4424,0
+)
+*56 (MRCItem
+litem &31
+pos 17
+dimension 20
+uid 4426,0
+)
+*57 (MRCItem
+litem &32
+pos 18
+dimension 20
+uid 4428,0
+=======
 pos 18
 dimension 20
 uid 4412,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 *49 (MRCItem
 litem &25
 pos 10
 dimension 20
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+=======
 uid 4416,0
 )
 *50 (MRCItem
@@ -471,6 +640,7 @@ uid 4428,0
 litem &32
 pos 17
 dimension 20
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4430,0
 )
 ]
@@ -847,6 +1017,21 @@ value "/courses/TSTE12/proj/projgrp07/ProjectCode/echo/echo/echo_lib/hds/echo"
 )
 (vvPair
 variable "date"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+value "10/30/25"
+)
+(vvPair
+variable "day"
+value "Thu"
+)
+(vvPair
+variable "day_long"
+value "Thursday"
+)
+(vvPair
+variable "dd"
+value "30"
+=======
 value "10/28/25"
 )
 (vvPair
@@ -860,6 +1045,7 @@ value "Tuesday"
 (vvPair
 variable "dd"
 value "28"
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 (vvPair
 variable "entity_name"
@@ -887,7 +1073,11 @@ value "alfth698"
 )
 (vvPair
 variable "graphical_source_date"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+value "10/30/25"
+=======
 value "10/28/25"
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 (vvPair
 variable "graphical_source_group"
@@ -895,11 +1085,19 @@ value "student-liu.se"
 )
 (vvPair
 variable "graphical_source_host"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+value "muxen2-115.ad.liu.se"
+)
+(vvPair
+variable "graphical_source_time"
+value "11:41:27"
+=======
 value "muxen2-109.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
 value "17:23:54"
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 (vvPair
 variable "group"
@@ -907,7 +1105,11 @@ value "student-liu.se"
 )
 (vvPair
 variable "host"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+value "muxen2-115.ad.liu.se"
+=======
 value "muxen2-109.ad.liu.se"
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 (vvPair
 variable "language"
@@ -930,10 +1132,13 @@ variable "library_downstream_PrecisionSynthesisDataPrep"
 value "$HDS_PROJECT_DIR/echo_lib/ps"
 )
 (vvPair
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+=======
 variable "library_downstream_QuartusPrimeImport"
 value "$HDS_PROJECT_DIR/QuartusIPSimLibs"
 )
 (vvPair
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 variable "mm"
 value "10"
 )
@@ -1015,7 +1220,11 @@ value "symbol"
 )
 (vvPair
 variable "time"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+value "11:41:27"
+=======
 value "17:23:54"
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 (vvPair
 variable "unit"
@@ -1049,7 +1258,11 @@ optionalChildren [
 *103 (SymbolBody
 uid 8,0
 optionalChildren [
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*106 (CptPort
+=======
 *104 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4291,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1081,9 +1294,14 @@ uid 4295,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,4500,79000,5400"
+st "audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;"
+=======
 xt "44000,3600,79000,4500"
 st "audio_in_L      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1091,12 +1309,20 @@ decl (Decl
 n "audio_in_L"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 4
+=======
 o 3
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 199,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*107 (CptPort
+=======
 *105 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4296,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1128,9 +1354,14 @@ uid 4300,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,5400,79000,6300"
+st "audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;"
+=======
 xt "44000,4500,79000,5400"
 st "audio_in_R      : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1138,12 +1369,20 @@ decl (Decl
 n "audio_in_R"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 5
+=======
 o 4
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 200,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*108 (CptPort
+=======
 *106 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4301,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1176,9 +1415,14 @@ uid 4305,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,13500,63000,14400"
+st "audio_in_ready  : OUT    std_logic  ;"
+=======
 xt "44000,12600,63000,13500"
 st "audio_in_ready  : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1186,12 +1430,20 @@ m 1
 decl (Decl
 n "audio_in_ready"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 14
+=======
 o 13
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 201,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*109 (CptPort
+=======
 *107 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4306,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1223,21 +1475,34 @@ uid 4310,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,6300,63000,7200"
+st "audio_in_valid  : IN     std_logic  ;"
+=======
 xt "44000,5400,63000,6300"
 st "audio_in_valid  : IN     std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "audio_in_valid"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 6
+=======
 o 5
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 202,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*110 (CptPort
+=======
 *108 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4311,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1270,9 +1535,14 @@ uid 4315,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,14400,79000,15300"
+st "audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;"
+=======
 xt "44000,13500,79000,14400"
 st "audio_out_L     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1281,12 +1551,20 @@ decl (Decl
 n "audio_out_L"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 15
+=======
 o 14
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 203,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*111 (CptPort
+=======
 *109 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4316,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1319,9 +1597,14 @@ uid 4320,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,15300,79000,16200"
+st "audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;"
+=======
 xt "44000,14400,79000,15300"
 st "audio_out_R     : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1330,12 +1613,20 @@ decl (Decl
 n "audio_out_R"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 16
+=======
 o 15
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 204,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*112 (CptPort
+=======
 *110 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4321,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1368,9 +1659,14 @@ uid 4325,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,16200,63000,17100"
+st "audio_out_valid : OUT    std_logic  ;"
+=======
 xt "44000,15300,63000,16200"
 st "audio_out_valid : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1378,12 +1674,20 @@ m 1
 decl (Decl
 n "audio_out_valid"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 17
+=======
 o 16
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 205,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*113 (CptPort
+=======
 *111 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4326,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1415,21 +1719,34 @@ uid 4330,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,7200,63000,8100"
+st "clk             : IN     std_logic  ;"
+=======
 xt "44000,6300,63000,7200"
 st "clk             : IN     std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "clk"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 7
+=======
 o 6
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 206,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*114 (CptPort
+=======
 *112 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4331,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1462,9 +1779,14 @@ uid 4335,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,17100,73000,18000"
+st "delay_samples   : OUT    std_logic_vector (18 DOWNTO 0) ;"
+=======
 xt "44000,16200,73000,17100"
 st "delay_samples   : OUT    std_logic_vector (18 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1473,12 +1795,20 @@ decl (Decl
 n "delay_samples"
 t "std_logic_vector"
 b "(18 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 18
+=======
 o 17
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 207,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*115 (CptPort
+=======
 *113 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4336,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1511,9 +1841,14 @@ uid 4340,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,18000,73000,18900"
+st "g_feedback_q15  : OUT    std_logic_vector (15 DOWNTO 0) ;"
+=======
 xt "44000,17100,73000,18000"
 st "g_feedback_q15  : OUT    std_logic_vector (15 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1522,12 +1857,20 @@ decl (Decl
 n "g_feedback_q15"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 19
+=======
 o 18
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 208,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*116 (CptPort
+=======
 *114 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4341,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1559,9 +1902,14 @@ uid 4345,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,1800,63000,2700"
+st "KB_SCAN_CODE    : IN     std_logic  ;"
+=======
 xt "44000,1800,72500,2700"
 st "KB_SCAN_CODE    : IN     std_logic_vector (7 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 decl (Decl
@@ -1573,11 +1921,19 @@ suid 209,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*117 (CptPort
+uid 4346,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 4347,0
+=======
 *115 (CptPort
 uid 4351,0
 ps "OnEdgeStrategy"
 shape (Triangle
 uid 4352,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 ro 90
 va (VaSet
 vasetType 1
@@ -1586,11 +1942,19 @@ fg "0,65535,0"
 xt "14250,12625,15000,13375"
 )
 tg (CPTG
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+uid 4348,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 4349,0
+=======
 uid 4353,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
 uid 4354,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 va (VaSet
 font "courier,8,0"
 )
@@ -1601,25 +1965,86 @@ tm "CptPortNameMgr"
 )
 )
 dt (MLText
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+uid 4350,0
+=======
 uid 4355,0
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 va (VaSet
 font "courier,8,0"
 )
 xt "44000,2700,63000,3600"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+st "KB_SCAN_VALID   : IN     std_logic  ;"
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "KB_SCAN_VALID"
+t "std_logic"
+o 2
+suid 210,0
+)
+)
+)
+*118 (CptPort
+uid 4351,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 4352,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "14250,7625,15000,8375"
+)
+tg (CPTG
+uid 4353,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 4354,0
+va (VaSet
+font "courier,8,0"
+)
+xt "16000,7550,19500,8450"
+st "RESET_N"
+blo "16000,8250"
+tm "CptPortNameMgr"
+)
+)
+dt (MLText
+uid 4355,0
+va (VaSet
+font "courier,8,0"
+)
+xt "44000,3600,63000,4500"
+st "RESET_N         : IN     std_logic  ;"
+=======
 st "RESET_N         : IN     std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
 decl (Decl
 n "RESET_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 3
+=======
 o 2
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 211,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*119 (CptPort
+=======
 *116 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4356,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1652,9 +2077,14 @@ uid 4360,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,8100,79000,9000"
+st "SRAM_ADDR       : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0) ;"
+=======
 xt "44000,7200,79000,8100"
 st "SRAM_ADDR       : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0) ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1663,12 +2093,20 @@ decl (Decl
 n "SRAM_ADDR"
 t "std_logic_vector"
 b "(G_ADDR_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 8
+=======
 o 7
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 212,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*120 (CptPort
+=======
 *117 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4361,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1701,9 +2139,14 @@ uid 4365,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,9000,63000,9900"
+st "SRAM_CE_N       : OUT    std_logic  ;"
+=======
 xt "44000,8100,63000,9000"
 st "SRAM_CE_N       : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1711,15 +2154,27 @@ m 1
 decl (Decl
 n "SRAM_CE_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 9
+=======
 o 8
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 213,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*121 (CptPort
+uid 4366,0
+ps "OnEdgeStrategy"
+shape (Diamond
+uid 4367,0
+=======
 *118 (CptPort
 uid 4366,0
 ps "OnEdgeStrategy"
 shape (Diamond
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 ro 90
 va (VaSet
 vasetType 1
@@ -1748,9 +2203,14 @@ uid 4370,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,18900,78000,19800"
+st "SRAM_DQ         : INOUT  std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0)"
+=======
 xt "44000,18000,78000,18900"
 st "SRAM_DQ         : INOUT  std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0)
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1759,12 +2219,20 @@ decl (Decl
 n "SRAM_DQ"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 20
+=======
 o 19
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 214,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*122 (CptPort
+=======
 *119 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4371,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1797,9 +2265,14 @@ uid 4375,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,9900,63000,10800"
+st "SRAM_LB_N       : OUT    std_logic  ;"
+=======
 xt "44000,9000,63000,9900"
 st "SRAM_LB_N       : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1807,12 +2280,20 @@ m 1
 decl (Decl
 n "SRAM_LB_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 10
+=======
 o 9
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 215,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*123 (CptPort
+=======
 *120 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4376,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1845,9 +2326,14 @@ uid 4380,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,10800,63000,11700"
+st "SRAM_OE_N       : OUT    std_logic  ;"
+=======
 xt "44000,9900,63000,10800"
 st "SRAM_OE_N       : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1855,12 +2341,20 @@ m 1
 decl (Decl
 n "SRAM_OE_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 11
+=======
 o 10
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 216,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*124 (CptPort
+=======
 *121 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4381,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1893,9 +2387,14 @@ uid 4385,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,11700,63000,12600"
+st "SRAM_UB_N       : OUT    std_logic  ;"
+=======
 xt "44000,10800,63000,11700"
 st "SRAM_UB_N       : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1903,12 +2402,20 @@ m 1
 decl (Decl
 n "SRAM_UB_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 12
+=======
 o 11
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 217,0
 )
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+*125 (CptPort
+=======
 *122 (CptPort
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 uid 4386,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1941,9 +2448,14 @@ uid 4390,0
 va (VaSet
 font "courier,8,0"
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+xt "44000,12600,63000,13500"
+st "SRAM_WE_N       : OUT    std_logic  ;"
+=======
 xt "44000,11700,63000,12600"
 st "SRAM_WE_N       : OUT    std_logic  ;
 "
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 )
 thePort (LogicalPort
 lang 11
@@ -1951,7 +2463,11 @@ m 1
 decl (Decl
 n "SRAM_WE_N"
 t "std_logic"
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+o 13
+=======
 o 12
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 suid 218,0
 )
 )
@@ -2716,8 +3232,12 @@ xt "42000,0,42000,0"
 tm "SyDeclarativeTextMgr"
 )
 )
+<<<<<<< HEAD:echo/echo_lib/hds/echo/interface
+lastUid 4568,0
+=======
 lastUid 4683,0
 okToSyncOnLoad 1
 OkToSyncGenericsOnLoad 1
+>>>>>>> origin/main:echo/echo_lib/hds/echo/symbol.sb
 activeModelName "Symbol:CDM"
 )

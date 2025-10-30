@@ -27,8 +27,8 @@ architecture sim of tb_echo_system is
   constant TAIL_NS         : time := 2 ms;        -- Nachlauf für Echos
 
   -- Echo-Parameter
-  constant DELAY_NS        : time := 2000 ns;     -- Delay-Zeit
-  constant G_Q15           : std_logic_vector(15 downto 0) := x"4000"; -- 0.5
+  constant DELAY_NS        : time := 4000 ns;     -- Delay-Zeit
+  constant G_Q15           : std_logic_vector(15 downto 0) := x"4400"; -- 0.5
 
   -- ===== Takt/Reset =====
   signal clk     : std_logic := '0';
