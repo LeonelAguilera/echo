@@ -237,19 +237,19 @@ value "/courses/TSTE12/proj/projgrp07/ProjectCode/echo/echo/echo_lib/hds/top"
 )
 (vvPair
 variable "date"
-value "10/29/25"
+value "10/30/25"
 )
 (vvPair
 variable "day"
-value "Wed"
+value "Thu"
 )
 (vvPair
 variable "day_long"
-value "Wednesday"
+value "Thursday"
 )
 (vvPair
 variable "dd"
-value "29"
+value "30"
 )
 (vvPair
 variable "entity_name"
@@ -273,11 +273,11 @@ value "struct"
 )
 (vvPair
 variable "graphical_source_author"
-value "alfth698"
+value "leoag319"
 )
 (vvPair
 variable "graphical_source_date"
-value "10/29/25"
+value "10/30/25"
 )
 (vvPair
 variable "graphical_source_group"
@@ -289,7 +289,7 @@ value "muxen2-116.ad.liu.se"
 )
 (vvPair
 variable "graphical_source_time"
-value "19:09:47"
+value "11:03:24"
 )
 (vvPair
 variable "group"
@@ -405,7 +405,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "19:09:47"
+value "11:03:24"
 )
 (vvPair
 variable "unit"
@@ -413,7 +413,7 @@ value "top"
 )
 (vvPair
 variable "user"
-value "alfth698"
+value "leoag319"
 )
 (vvPair
 variable "version"
@@ -2760,7 +2760,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-22200,220200,-21300"
-st "fpga_clk           : STD_LOGIC := '0'"
+st "fpga_clk           : STD_LOGIC := '0'
+"
 )
 )
 *73 (Net
@@ -2769,7 +2770,7 @@ lang 11
 decl (Decl
 n "fpga_reset"
 t "std_logic"
-o 6
+o 45
 suid 59,0
 )
 declText (MLText
@@ -2778,7 +2779,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,66900,220000,67800"
-st "SIGNAL fpga_reset         : std_logic"
+st "SIGNAL fpga_reset         : std_logic
+"
 )
 )
 *74 (Net
@@ -2786,7 +2788,7 @@ uid 2070,0
 decl (Decl
 n "c0"
 t "STD_LOGIC"
-o 36
+o 41
 suid 61,0
 )
 declText (MLText
@@ -2795,7 +2797,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,63300,220000,64200"
-st "SIGNAL c0                 : STD_LOGIC"
+st "SIGNAL c0                 : STD_LOGIC
+"
 )
 )
 *75 (Net
@@ -2805,7 +2808,7 @@ decl (Decl
 n "scan_code"
 t "std_logic_vector"
 b "(7 downto 0)"
-o 44
+o 24
 suid 63,0
 )
 declText (MLText
@@ -2814,7 +2817,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-5100,226000,-4200"
-st "scan_code          : std_logic_vector(7 downto 0)"
+st "scan_code          : std_logic_vector(7 downto 0)
+"
 )
 )
 *76 (PortIoOut
@@ -2969,7 +2973,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-23100,216500,-22200"
-st "AUD_XCK            : std_logic"
+st "AUD_XCK            : std_logic
+"
 )
 )
 *80 (Net
@@ -2986,7 +2991,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-24900,216500,-24000"
-st "AUD_BCLK           : std_logic"
+st "AUD_BCLK           : std_logic
+"
 )
 )
 *81 (Net
@@ -3003,7 +3009,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-17700,216500,-16800"
-st "AUD_DACDAT         : std_logic"
+st "AUD_DACDAT         : std_logic
+"
 )
 )
 *82 (Net
@@ -3020,7 +3027,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-24000,216500,-23100"
-st "AUD_DACLRCK        : std_logic"
+st "AUD_DACLRCK        : std_logic
+"
 )
 )
 *83 (Net
@@ -3037,7 +3045,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-25800,216500,-24900"
-st "AUD_ADCDAT         : std_logic"
+st "AUD_ADCDAT         : std_logic
+"
 )
 )
 *84 (Net
@@ -3054,7 +3063,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-18600,216500,-17700"
-st "AUD_ADCLRCK        : std_logic"
+st "AUD_ADCLRCK        : std_logic
+"
 )
 )
 *85 (Net
@@ -3062,7 +3072,7 @@ uid 2331,0
 decl (Decl
 n "data_valid"
 t "std_logic"
-o 37
+o 42
 suid 77,0
 )
 declText (MLText
@@ -3071,7 +3081,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,64200,220000,65100"
-st "SIGNAL data_valid         : std_logic"
+st "SIGNAL data_valid         : std_logic
+"
 )
 )
 *86 (Net
@@ -3080,7 +3091,7 @@ decl (Decl
 n "right_in"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 43
+o 51
 suid 78,0
 )
 declText (MLText
@@ -3089,7 +3100,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,72300,230000,73200"
-st "SIGNAL right_in           : std_logic_vector(15 downto 0)"
+st "SIGNAL right_in           : std_logic_vector(15 downto 0)
+"
 )
 )
 *87 (Net
@@ -3098,7 +3110,7 @@ decl (Decl
 n "left_in"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 41
+o 48
 suid 79,0
 )
 declText (MLText
@@ -3107,7 +3119,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,69600,230000,70500"
-st "SIGNAL left_in            : std_logic_vector(15 downto 0)"
+st "SIGNAL left_in            : std_logic_vector(15 downto 0)
+"
 )
 )
 *88 (PortIoOut
@@ -3476,7 +3489,7 @@ lang 11
 decl (Decl
 n "vga_clk"
 t "std_logic"
-o 23
+o 27
 suid 83,0
 )
 declText (MLText
@@ -3485,7 +3498,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-2400,216500,-1500"
-st "vga_clk            : std_logic"
+st "vga_clk            : std_logic
+"
 )
 )
 *97 (Net
@@ -3494,7 +3508,7 @@ lang 11
 decl (Decl
 n "vga_sync"
 t "std_logic"
-o 27
+o 31
 suid 84,0
 )
 declText (MLText
@@ -3503,7 +3517,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,1200,216500,2100"
-st "vga_sync           : std_logic"
+st "vga_sync           : std_logic
+"
 )
 )
 *98 (Net
@@ -3512,7 +3527,7 @@ lang 11
 decl (Decl
 n "vga_blank_n"
 t "std_logic"
-o 22
+o 26
 suid 85,0
 )
 declText (MLText
@@ -3521,7 +3536,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-3300,216500,-2400"
-st "vga_blank_n        : std_logic"
+st "vga_blank_n        : std_logic
+"
 )
 )
 *99 (Net
@@ -3530,7 +3546,7 @@ lang 11
 decl (Decl
 n "vga_hsync_n"
 t "std_logic"
-o 25
+o 29
 suid 86,0
 )
 declText (MLText
@@ -3539,7 +3555,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-600,216500,300"
-st "vga_hsync_n        : std_logic"
+st "vga_hsync_n        : std_logic
+"
 )
 )
 *100 (Net
@@ -3548,7 +3565,7 @@ lang 11
 decl (Decl
 n "vga_vsync_n"
 t "std_logic"
-o 28
+o 32
 suid 87,0
 )
 declText (MLText
@@ -3557,7 +3574,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,2100,216500,3000"
-st "vga_vsync_n        : std_logic"
+st "vga_vsync_n        : std_logic
+"
 )
 )
 *101 (Net
@@ -3567,7 +3585,7 @@ decl (Decl
 n "vga_r"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 26
+o 30
 suid 88,0
 )
 declText (MLText
@@ -3576,7 +3594,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,300,226000,1200"
-st "vga_r              : std_logic_vector(7 DOWNTO 0)"
+st "vga_r              : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *102 (Net
@@ -3586,7 +3605,7 @@ decl (Decl
 n "vga_g"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 24
+o 28
 suid 89,0
 )
 declText (MLText
@@ -3595,7 +3614,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-1500,226000,-600"
-st "vga_g              : std_logic_vector(7 DOWNTO 0)"
+st "vga_g              : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *103 (Net
@@ -3605,7 +3625,7 @@ decl (Decl
 n "vga_b"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 21
+o 25
 suid 90,0
 )
 declText (MLText
@@ -3614,7 +3634,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-4200,226000,-3300"
-st "vga_b              : std_logic_vector(7 DOWNTO 0)"
+st "vga_b              : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *104 (PortIoIn
@@ -3724,7 +3745,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-20400,216500,-19500"
-st "kb_clk             : std_logic"
+st "kb_clk             : std_logic
+"
 )
 )
 *107 (Net
@@ -3742,7 +3764,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-19500,216500,-18600"
-st "kb_data            : std_logic"
+st "kb_data            : std_logic
+"
 )
 )
 *108 (PortIoOut
@@ -4074,7 +4097,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-13200,232500,-12300"
-st "SRAM_ADDR          : std_logic_vector(G_ADDR_WIDTH-1 DOWNTO 0)"
+st "SRAM_ADDR          : std_logic_vector(G_ADDR_WIDTH-1 DOWNTO 0)
+"
 )
 )
 *116 (Net
@@ -4092,7 +4116,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-12300,216500,-11400"
-st "SRAM_CE_N          : std_logic"
+st "SRAM_CE_N          : std_logic
+"
 )
 )
 *117 (Net
@@ -4110,7 +4135,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-10500,216500,-9600"
-st "SRAM_OE_N          : std_logic"
+st "SRAM_OE_N          : std_logic
+"
 )
 )
 *118 (Net
@@ -4128,7 +4154,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-11400,216500,-10500"
-st "SRAM_LB_N          : std_logic"
+st "SRAM_LB_N          : std_logic
+"
 )
 )
 *119 (Net
@@ -4138,7 +4165,7 @@ decl (Decl
 n "SRAM_DQ"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
-o 29
+o 33
 suid 101,0
 )
 declText (MLText
@@ -4147,7 +4174,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,3000,232500,3900"
-st "SRAM_DQ            : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
+st "SRAM_DQ            : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
+"
 )
 )
 *120 (Net
@@ -4165,7 +4193,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-9600,216500,-8700"
-st "SRAM_UB_N          : std_logic"
+st "SRAM_UB_N          : std_logic
+"
 )
 )
 *121 (Net
@@ -4183,7 +4212,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-8700,216500,-7800"
-st "SRAM_WE_N          : std_logic"
+st "SRAM_WE_N          : std_logic
+"
 )
 )
 *122 (PortIoIn
@@ -4390,7 +4420,7 @@ decl (Decl
 n "dout"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 45
+o 49
 )
 )
 )
@@ -4585,7 +4615,7 @@ decl (Decl
 n "dout"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 46
+o 40
 )
 )
 )
@@ -4780,7 +4810,7 @@ decl (Decl
 n "dout"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 47
+o 50
 )
 )
 )
@@ -4975,7 +5005,7 @@ decl (Decl
 n "dout"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 48
+o 47
 )
 )
 )
@@ -5111,7 +5141,7 @@ decl (Decl
 n "master_volume_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 45
+o 49
 suid 116,0
 )
 declText (MLText
@@ -5120,7 +5150,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,70500,225500,71400"
-st "SIGNAL master_volume_d    : unsigned(7 DOWNTO 0)"
+st "SIGNAL master_volume_d    : unsigned(7 DOWNTO 0)
+"
 )
 )
 *158 (Net
@@ -5130,7 +5161,7 @@ decl (Decl
 n "balance_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 46
+o 40
 suid 117,0
 )
 declText (MLText
@@ -5139,7 +5170,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,62400,225500,63300"
-st "SIGNAL balance_d          : unsigned(7 DOWNTO 0)"
+st "SIGNAL balance_d          : unsigned(7 DOWNTO 0)
+"
 )
 )
 *159 (Net
@@ -5149,7 +5181,7 @@ decl (Decl
 n "right_ear_volume_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 47
+o 50
 suid 118,0
 )
 declText (MLText
@@ -5158,7 +5190,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,71400,225500,72300"
-st "SIGNAL right_ear_volume_d : unsigned(7 DOWNTO 0)"
+st "SIGNAL right_ear_volume_d : unsigned(7 DOWNTO 0)
+"
 )
 )
 *160 (Net
@@ -5168,7 +5201,7 @@ decl (Decl
 n "left_ear_volume_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 48
+o 47
 suid 119,0
 )
 declText (MLText
@@ -5177,7 +5210,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,68700,225500,69600"
-st "SIGNAL left_ear_volume_d  : unsigned(7 DOWNTO 0)"
+st "SIGNAL left_ear_volume_d  : unsigned(7 DOWNTO 0)
+"
 )
 )
 *161 (MWC
@@ -5245,7 +5279,7 @@ decl (Decl
 n "din"
 t "std_logic_vector"
 b "(18 DOWNTO 0)"
-o 47
+o 43
 suid 1,0
 )
 )
@@ -5311,7 +5345,7 @@ decl (Decl
 n "dout"
 t "unsigned"
 b "(18 DOWNTO 0)"
-o 48
+o 52
 suid 2,0
 )
 )
@@ -5478,7 +5512,7 @@ decl (Decl
 n "delay_samples"
 t "std_logic_vector"
 b "(18 DOWNTO 0)"
-o 47
+o 43
 suid 121,0
 )
 declText (MLText
@@ -5487,7 +5521,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,65100,230000,66000"
-st "SIGNAL delay_samples      : std_logic_vector(18 DOWNTO 0)"
+st "SIGNAL delay_samples      : std_logic_vector(18 DOWNTO 0)
+"
 )
 )
 *173 (MWC
@@ -5555,7 +5590,7 @@ decl (Decl
 n "din"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 49
+o 46
 )
 )
 )
@@ -5620,7 +5655,7 @@ decl (Decl
 n "dout"
 t "unsigned"
 b "(15 DOWNTO 0)"
-o 50
+o 53
 )
 )
 )
@@ -5786,7 +5821,7 @@ decl (Decl
 n "g_feedback_q16"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 49
+o 46
 suid 123,0
 )
 declText (MLText
@@ -5795,7 +5830,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,67800,230000,68700"
-st "SIGNAL g_feedback_q16     : std_logic_vector(15 DOWNTO 0)"
+st "SIGNAL g_feedback_q16     : std_logic_vector(15 DOWNTO 0)
+"
 )
 )
 *185 (Net
@@ -5805,7 +5841,7 @@ decl (Decl
 n "u_delay_samples"
 t "unsigned"
 b "(18 DOWNTO 0)"
-o 48
+o 52
 suid 125,0
 )
 declText (MLText
@@ -5814,7 +5850,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,73200,226000,74100"
-st "SIGNAL u_delay_samples    : unsigned(18 DOWNTO 0)"
+st "SIGNAL u_delay_samples    : unsigned(18 DOWNTO 0)
+"
 )
 )
 *186 (Net
@@ -5824,7 +5861,7 @@ decl (Decl
 n "u_g_feedback_q16"
 t "unsigned"
 b "(15 DOWNTO 0)"
-o 50
+o 53
 suid 126,0
 )
 declText (MLText
@@ -5833,7 +5870,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,74100,226000,75000"
-st "SIGNAL u_g_feedback_q16   : unsigned(15 DOWNTO 0)"
+st "SIGNAL u_g_feedback_q16   : unsigned(15 DOWNTO 0)
+"
 )
 )
 *187 (SaComponent
@@ -6401,7 +6439,7 @@ lang 11
 decl (Decl
 n "din"
 t "std_logic"
-o 6
+o 45
 )
 )
 )
@@ -6466,7 +6504,7 @@ m 1
 decl (Decl
 n "dout"
 t "std_logic"
-o 49
+o 23
 )
 )
 )
@@ -6631,7 +6669,7 @@ lang 11
 decl (Decl
 n "reset_led"
 t "std_logic"
-o 49
+o 23
 suid 138,0
 )
 declText (MLText
@@ -6640,7 +6678,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-6000,216500,-5100"
-st "reset_led          : std_logic"
+st "reset_led          : std_logic
+"
 )
 )
 *214 (Blk
@@ -6775,7 +6814,7 @@ lang 11
 decl (Decl
 n "reduced_clock"
 t "std_logic"
-o 51
+o 22
 suid 142,0
 )
 declText (MLText
@@ -6784,7 +6823,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-6900,216500,-6000"
-st "reduced_clock      : std_logic"
+st "reduced_clock      : std_logic
+"
 )
 )
 *220 (PortIoOut
@@ -6837,7 +6877,7 @@ uid 4515,0
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 51
+o 6
 suid 144,0
 i "'0'"
 )
@@ -6847,7 +6887,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-21300,220200,-20400"
-st "fpga_reset_n       : std_logic := '0'"
+st "fpga_reset_n       : std_logic := '0'
+"
 )
 )
 *222 (MWC
@@ -6910,7 +6951,7 @@ thePort (LogicalPort
 decl (Decl
 n "din"
 t "std_logic"
-o 51
+o 6
 suid 1,0
 i "'0'"
 )
@@ -6986,7 +7027,7 @@ m 1
 decl (Decl
 n "dout"
 t "std_logic"
-o 52
+o 44
 suid 2,0
 i "'0'"
 )
@@ -7103,7 +7144,7 @@ uid 4543,0
 decl (Decl
 n "dout"
 t "std_logic"
-o 52
+o 44
 suid 145,0
 i "'0'"
 )
@@ -7113,7 +7154,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,66000,223700,66900"
-st "SIGNAL dout               : std_logic := '0'"
+st "SIGNAL dout               : std_logic := '0'
+"
 )
 )
 *233 (MWC
@@ -7178,7 +7220,7 @@ decl (Decl
 n "din"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 43
+o 51
 )
 )
 )
@@ -7244,7 +7286,7 @@ decl (Decl
 n "dout"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 53
+o 21
 )
 )
 )
@@ -7410,7 +7452,7 @@ decl (Decl
 n "audio_out_R"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
-o 47
+o 38
 suid 147,0
 )
 declText (MLText
@@ -7419,7 +7461,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,60600,236000,61500"
-st "SIGNAL audio_out_R        : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
+st "SIGNAL audio_out_R        : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
+"
 )
 )
 *245 (Net
@@ -7429,7 +7472,7 @@ decl (Decl
 n "audio_out_L"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
-o 48
+o 37
 suid 148,0
 )
 declText (MLText
@@ -7438,7 +7481,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,59700,236000,60600"
-st "SIGNAL audio_out_L        : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)"
+st "SIGNAL audio_out_L        : std_logic_vector(G_DATA_WIDTH-1 DOWNTO 0)
+"
 )
 )
 *246 (Net
@@ -7447,7 +7491,7 @@ lang 11
 decl (Decl
 n "audio_out_valid"
 t "std_logic"
-o 49
+o 39
 suid 149,0
 )
 declText (MLText
@@ -7456,7 +7500,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,61500,220000,62400"
-st "SIGNAL audio_out_valid    : std_logic"
+st "SIGNAL audio_out_valid    : std_logic
+"
 )
 )
 *247 (PortIoOut
@@ -7568,7 +7613,7 @@ decl (Decl
 n "dout"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 51
+o 36
 suid 1,0
 )
 )
@@ -7762,7 +7807,7 @@ decl (Decl
 n "dout"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 52
+o 35
 suid 1,0
 )
 )
@@ -7954,7 +7999,7 @@ m 1
 decl (Decl
 n "dout"
 t "std_logic"
-o 53
+o 34
 suid 1,0
 )
 )
@@ -8091,7 +8136,7 @@ decl (Decl
 n "Right_Audio"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 51
+o 36
 suid 154,0
 )
 declText (MLText
@@ -8100,7 +8145,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,58800,230000,59700"
-st "SIGNAL Right_Audio        : std_logic_vector(15 DOWNTO 0)"
+st "SIGNAL Right_Audio        : std_logic_vector(15 DOWNTO 0)
+"
 )
 )
 *273 (Net
@@ -8110,7 +8156,7 @@ decl (Decl
 n "Left_Audio"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 52
+o 35
 suid 155,0
 )
 declText (MLText
@@ -8119,7 +8165,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,57900,230000,58800"
-st "SIGNAL Left_Audio         : std_logic_vector(15 DOWNTO 0)"
+st "SIGNAL Left_Audio         : std_logic_vector(15 DOWNTO 0)
+"
 )
 )
 *274 (Net
@@ -8128,7 +8175,7 @@ lang 11
 decl (Decl
 n "Enable"
 t "std_logic"
-o 53
+o 34
 suid 156,0
 )
 declText (MLText
@@ -8137,7 +8184,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,57000,220000,57900"
-st "SIGNAL Enable             : std_logic"
+st "SIGNAL Enable             : std_logic
+"
 )
 )
 *275 (Net
@@ -8146,7 +8194,7 @@ decl (Decl
 n "audio_debug"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 53
+o 21
 suid 158,0
 )
 declText (MLText
@@ -8155,7 +8203,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-7800,226000,-6900"
-st "audio_debug        : std_logic_vector(7 DOWNTO 0)"
+st "audio_debug        : std_logic_vector(7 DOWNTO 0)
+"
 )
 )
 *276 (SaComponent
@@ -8659,7 +8708,7 @@ lang 11
 decl (Decl
 n "SDA"
 t "std_logic"
-o 50
+o 14
 suid 159,0
 )
 declText (MLText
@@ -8668,7 +8717,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-14100,216500,-13200"
-st "SDA                : std_logic"
+st "SDA                : std_logic
+"
 )
 )
 *291 (Net
@@ -8677,7 +8727,7 @@ lang 11
 decl (Decl
 n "SCL"
 t "std_logic"
-o 51
+o 13
 suid 160,0
 )
 declText (MLText
@@ -8686,7 +8736,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-15000,216500,-14100"
-st "SCL                : std_logic"
+st "SCL                : std_logic
+"
 )
 )
 *292 (Net
@@ -8696,7 +8747,7 @@ decl (Decl
 n "HEX6"
 t "std_logic_vector"
 b "(0 to 6)"
-o 52
+o 11
 suid 161,0
 )
 declText (MLText
@@ -8705,7 +8756,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-16800,224000,-15900"
-st "HEX6               : std_logic_vector(0 to 6)"
+st "HEX6               : std_logic_vector(0 to 6)
+"
 )
 )
 *293 (Net
@@ -8715,7 +8767,7 @@ decl (Decl
 n "HEX7"
 t "std_logic_vector"
 b "(0 to 6)"
-o 53
+o 12
 suid 162,0
 )
 declText (MLText
@@ -8724,7 +8776,8 @@ va (VaSet
 font "courier,8,0"
 )
 xt "201000,-15900,224000,-15000"
-st "HEX7               : std_logic_vector(0 to 6)"
+st "HEX7               : std_logic_vector(0 to 6)
+"
 )
 )
 *294 (Wire
@@ -11629,11 +11682,11 @@ tm "BdCompilerDirectivesTextMgr"
 associable 1
 )
 windowSize "-8,41,1928,1170"
-viewArea "51551,30787,176916,102947"
+viewArea "26277,30800,144474,98834"
 cachedDiagramExtent "0,-27600,577000,102000"
 hasePageBreakOrigin 1
-pageBreakOrigin "0,0"
-lastUid 5097,0
+pageBreakOrigin "0,-51000"
+lastUid 5184,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -12806,7 +12859,7 @@ m 4
 decl (Decl
 n "fpga_reset"
 t "std_logic"
-o 6
+o 45
 suid 59,0
 )
 )
@@ -12818,7 +12871,7 @@ m 4
 decl (Decl
 n "c0"
 t "STD_LOGIC"
-o 36
+o 41
 suid 61,0
 )
 )
@@ -12832,7 +12885,7 @@ decl (Decl
 n "scan_code"
 t "std_logic_vector"
 b "(7 downto 0)"
-o 44
+o 24
 suid 63,0
 )
 )
@@ -12912,7 +12965,7 @@ m 4
 decl (Decl
 n "data_valid"
 t "std_logic"
-o 37
+o 42
 suid 77,0
 )
 )
@@ -12925,7 +12978,7 @@ decl (Decl
 n "right_in"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 43
+o 51
 suid 78,0
 )
 )
@@ -12938,7 +12991,7 @@ decl (Decl
 n "left_in"
 t "std_logic_vector"
 b "(15 downto 0)"
-o 41
+o 48
 suid 79,0
 )
 )
@@ -12951,7 +13004,7 @@ m 1
 decl (Decl
 n "vga_clk"
 t "std_logic"
-o 23
+o 27
 suid 83,0
 )
 )
@@ -12964,7 +13017,7 @@ m 1
 decl (Decl
 n "vga_sync"
 t "std_logic"
-o 27
+o 31
 suid 84,0
 )
 )
@@ -12977,7 +13030,7 @@ m 1
 decl (Decl
 n "vga_blank_n"
 t "std_logic"
-o 22
+o 26
 suid 85,0
 )
 )
@@ -12990,7 +13043,7 @@ m 1
 decl (Decl
 n "vga_hsync_n"
 t "std_logic"
-o 25
+o 29
 suid 86,0
 )
 )
@@ -13003,7 +13056,7 @@ m 1
 decl (Decl
 n "vga_vsync_n"
 t "std_logic"
-o 28
+o 32
 suid 87,0
 )
 )
@@ -13017,7 +13070,7 @@ decl (Decl
 n "vga_r"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 26
+o 30
 suid 88,0
 )
 )
@@ -13031,7 +13084,7 @@ decl (Decl
 n "vga_g"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 24
+o 28
 suid 89,0
 )
 )
@@ -13045,7 +13098,7 @@ decl (Decl
 n "vga_b"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 21
+o 25
 suid 90,0
 )
 )
@@ -13136,7 +13189,7 @@ decl (Decl
 n "SRAM_DQ"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
-o 29
+o 33
 suid 101,0
 )
 )
@@ -13176,7 +13229,7 @@ decl (Decl
 n "master_volume_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 45
+o 49
 suid 116,0
 )
 )
@@ -13190,7 +13243,7 @@ decl (Decl
 n "balance_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 46
+o 40
 suid 117,0
 )
 )
@@ -13204,7 +13257,7 @@ decl (Decl
 n "right_ear_volume_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 47
+o 50
 suid 118,0
 )
 )
@@ -13218,7 +13271,7 @@ decl (Decl
 n "left_ear_volume_d"
 t "unsigned"
 b "(7 DOWNTO 0)"
-o 48
+o 47
 suid 119,0
 )
 )
@@ -13232,7 +13285,7 @@ decl (Decl
 n "delay_samples"
 t "std_logic_vector"
 b "(18 DOWNTO 0)"
-o 47
+o 43
 suid 121,0
 )
 )
@@ -13246,7 +13299,7 @@ decl (Decl
 n "g_feedback_q16"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 49
+o 46
 suid 123,0
 )
 )
@@ -13260,7 +13313,7 @@ decl (Decl
 n "u_delay_samples"
 t "unsigned"
 b "(18 DOWNTO 0)"
-o 48
+o 52
 suid 125,0
 )
 )
@@ -13274,7 +13327,7 @@ decl (Decl
 n "u_g_feedback_q16"
 t "unsigned"
 b "(15 DOWNTO 0)"
-o 50
+o 53
 suid 126,0
 )
 )
@@ -13287,7 +13340,7 @@ m 1
 decl (Decl
 n "reset_led"
 t "std_logic"
-o 49
+o 23
 suid 138,0
 )
 )
@@ -13300,7 +13353,7 @@ m 1
 decl (Decl
 n "reduced_clock"
 t "std_logic"
-o 51
+o 22
 suid 142,0
 )
 )
@@ -13311,7 +13364,7 @@ port (LogicalPort
 decl (Decl
 n "fpga_reset_n"
 t "std_logic"
-o 51
+o 6
 suid 144,0
 i "'0'"
 )
@@ -13324,7 +13377,7 @@ m 4
 decl (Decl
 n "dout"
 t "std_logic"
-o 52
+o 44
 suid 145,0
 i "'0'"
 )
@@ -13339,7 +13392,7 @@ decl (Decl
 n "audio_out_R"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
-o 47
+o 38
 suid 147,0
 )
 )
@@ -13353,7 +13406,7 @@ decl (Decl
 n "audio_out_L"
 t "std_logic_vector"
 b "(G_DATA_WIDTH-1 DOWNTO 0)"
-o 48
+o 37
 suid 148,0
 )
 )
@@ -13366,7 +13419,7 @@ m 4
 decl (Decl
 n "audio_out_valid"
 t "std_logic"
-o 49
+o 39
 suid 149,0
 )
 )
@@ -13380,7 +13433,7 @@ decl (Decl
 n "Right_Audio"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 51
+o 36
 suid 154,0
 )
 )
@@ -13394,7 +13447,7 @@ decl (Decl
 n "Left_Audio"
 t "std_logic_vector"
 b "(15 DOWNTO 0)"
-o 52
+o 35
 suid 155,0
 )
 )
@@ -13407,7 +13460,7 @@ m 4
 decl (Decl
 n "Enable"
 t "std_logic"
-o 53
+o 34
 suid 156,0
 )
 )
@@ -13420,7 +13473,7 @@ decl (Decl
 n "audio_debug"
 t "std_logic_vector"
 b "(7 DOWNTO 0)"
-o 53
+o 21
 suid 158,0
 )
 )
@@ -13433,7 +13486,7 @@ m 1
 decl (Decl
 n "SDA"
 t "std_logic"
-o 50
+o 14
 suid 159,0
 )
 )
@@ -13446,7 +13499,7 @@ m 1
 decl (Decl
 n "SCL"
 t "std_logic"
-o 51
+o 13
 suid 160,0
 )
 )
@@ -13460,7 +13513,7 @@ decl (Decl
 n "HEX6"
 t "std_logic_vector"
 b "(0 to 6)"
-o 52
+o 11
 suid 161,0
 )
 )
@@ -13474,7 +13527,7 @@ decl (Decl
 n "HEX7"
 t "std_logic_vector"
 b "(0 to 6)"
-o 53
+o 12
 suid 162,0
 )
 )
@@ -13538,313 +13591,313 @@ uid 2057,0
 )
 *472 (MRCItem
 litem &414
-pos 1
+pos 33
 dimension 20
 uid 2059,0
 )
 *473 (MRCItem
 litem &415
-pos 25
+pos 34
 dimension 20
 uid 2079,0
 )
 *474 (MRCItem
 litem &416
-pos 26
+pos 24
 dimension 20
 uid 2143,0
 )
 *475 (MRCItem
 litem &417
-pos 2
+pos 1
 dimension 20
 uid 2255,0
 )
 *476 (MRCItem
 litem &418
-pos 3
+pos 2
 dimension 20
 uid 2257,0
 )
 *477 (MRCItem
 litem &419
-pos 4
+pos 3
 dimension 20
 uid 2259,0
 )
 *478 (MRCItem
 litem &420
-pos 5
+pos 4
 dimension 20
 uid 2261,0
 )
 *479 (MRCItem
 litem &421
-pos 6
+pos 5
 dimension 20
 uid 2263,0
 )
 *480 (MRCItem
 litem &422
-pos 7
+pos 6
 dimension 20
 uid 2265,0
 )
 *481 (MRCItem
 litem &423
-pos 27
+pos 35
 dimension 20
 uid 2368,0
 )
 *482 (MRCItem
 litem &424
-pos 28
+pos 36
 dimension 20
 uid 2370,0
 )
 *483 (MRCItem
 litem &425
-pos 29
+pos 37
 dimension 20
 uid 2372,0
 )
 *484 (MRCItem
 litem &426
-pos 8
+pos 7
 dimension 20
 uid 2476,0
 )
 *485 (MRCItem
 litem &427
-pos 9
+pos 8
 dimension 20
 uid 2478,0
 )
 *486 (MRCItem
 litem &428
-pos 10
+pos 9
 dimension 20
 uid 2480,0
 )
 *487 (MRCItem
 litem &429
-pos 11
+pos 10
 dimension 20
 uid 2482,0
 )
 *488 (MRCItem
 litem &430
-pos 12
+pos 11
 dimension 20
 uid 2484,0
 )
 *489 (MRCItem
 litem &431
-pos 13
+pos 12
 dimension 20
 uid 2486,0
 )
 *490 (MRCItem
 litem &432
-pos 14
+pos 13
 dimension 20
 uid 2488,0
 )
 *491 (MRCItem
 litem &433
-pos 15
+pos 14
 dimension 20
 uid 2490,0
 )
 *492 (MRCItem
 litem &434
-pos 16
+pos 15
 dimension 20
 uid 2586,0
 )
 *493 (MRCItem
 litem &435
-pos 17
+pos 16
 dimension 20
 uid 2588,0
 )
 *494 (MRCItem
 litem &436
-pos 18
+pos 17
 dimension 20
 uid 2696,0
 )
 *495 (MRCItem
 litem &437
-pos 19
+pos 18
 dimension 20
 uid 2698,0
 )
 *496 (MRCItem
 litem &438
-pos 20
+pos 19
 dimension 20
 uid 2700,0
 )
 *497 (MRCItem
 litem &439
-pos 21
+pos 20
 dimension 20
 uid 2702,0
 )
 *498 (MRCItem
 litem &440
-pos 22
+pos 21
 dimension 20
 uid 2704,0
 )
 *499 (MRCItem
 litem &441
-pos 23
+pos 22
 dimension 20
 uid 2706,0
 )
 *500 (MRCItem
 litem &442
-pos 24
+pos 23
 dimension 20
 uid 2708,0
 )
 *501 (MRCItem
 litem &443
-pos 30
+pos 38
 dimension 20
 uid 3423,0
 )
 *502 (MRCItem
 litem &444
-pos 31
+pos 39
 dimension 20
 uid 3425,0
 )
 *503 (MRCItem
 litem &445
-pos 32
+pos 40
 dimension 20
 uid 3427,0
 )
 *504 (MRCItem
 litem &446
-pos 33
+pos 41
 dimension 20
 uid 3429,0
 )
 *505 (MRCItem
 litem &447
-pos 34
+pos 42
 dimension 20
 uid 3791,0
 )
 *506 (MRCItem
 litem &448
-pos 35
+pos 43
 dimension 20
 uid 3894,0
 )
 *507 (MRCItem
 litem &449
-pos 36
+pos 44
 dimension 20
 uid 3900,0
 )
 *508 (MRCItem
 litem &450
-pos 37
+pos 45
 dimension 20
 uid 3904,0
 )
 *509 (MRCItem
 litem &451
-pos 38
+pos 25
 dimension 20
 uid 4426,0
 )
 *510 (MRCItem
 litem &452
-pos 39
+pos 26
 dimension 20
 uid 4496,0
 )
 *511 (MRCItem
 litem &453
-pos 40
+pos 27
 dimension 20
 uid 4518,0
 )
 *512 (MRCItem
 litem &454
-pos 41
+pos 46
 dimension 20
 uid 4550,0
 )
 *513 (MRCItem
 litem &455
-pos 42
+pos 47
 dimension 20
 uid 4652,0
 )
 *514 (MRCItem
 litem &456
-pos 43
+pos 48
 dimension 20
 uid 4654,0
 )
 *515 (MRCItem
 litem &457
-pos 44
+pos 49
 dimension 20
 uid 4656,0
 )
 *516 (MRCItem
 litem &458
-pos 45
+pos 50
 dimension 20
 uid 4771,0
 )
 *517 (MRCItem
 litem &459
-pos 46
+pos 51
 dimension 20
 uid 4773,0
 )
 *518 (MRCItem
 litem &460
-pos 47
+pos 52
 dimension 20
 uid 4775,0
 )
 *519 (MRCItem
 litem &461
-pos 48
+pos 28
 dimension 20
 uid 4791,0
 )
 *520 (MRCItem
 litem &462
-pos 49
+pos 29
 dimension 20
 uid 5091,0
 )
 *521 (MRCItem
 litem &463
-pos 50
+pos 30
 dimension 20
 uid 5093,0
 )
 *522 (MRCItem
 litem &464
-pos 51
+pos 31
 dimension 20
 uid 5095,0
 )
 *523 (MRCItem
 litem &465
-pos 52
+pos 32
 dimension 20
 uid 5097,0
 )
