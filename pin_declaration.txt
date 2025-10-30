@@ -1,0 +1,50 @@
+type exemplar_string_array is array (natural range <>, natural range <>) of character;
+attribute pin_number : string;
+attribute array_pin_number : exemplar_string_array;
+
+-- VGA
+attribute pin_number of fpga_clk : signal is "Y2";
+attribute pin_number of fpga_reset: signal is "M23";
+attribute pin_number of vga_clk: signal is "A12";
+attribute pin_number of vga_sync: signal is "C10";
+attribute pin_number of vga_blank_n: signal is "F11";
+attribute pin_number of vga_hsync_n: signal is "G13";
+attribute pin_number of vga_vsync_n: signal is "C13";
+attribute array_pin_number of vga_r : signal is ("H10", "H8 ", "J12", "G10", "F12", "D10", "E11", "E12");
+attribute array_pin_number of vga_g : signal is ("C9 ", "F10", "B8 ", "C8 ", "H12", "F8 ", "G11", "G8 ");
+attribute array_pin_number of vga_b : signal is ("D12", "D11", "C12", "A11", "B11", "C11", "A10", "B10");
+
+-- Switches
+-- attribute array_pin_number of left_ear_volume_d : signal is ("AB28", "AC28", "AC27");
+-- attribute array_pin_number of right_ear_volume_d : signal is ("AD27", "AB27", "AC26");
+-- attribute array_pin_number of balance_d : signal is ("AD26", "AB26", "AC25");
+-- attribute array_pin_number of master_volume_d : signal is ("AB25", "AC24", "AB24");
+-- attribute array_pin_number of echo_intensity_d : signal is ("AB23", "AA24", "AA23");
+-- attribute array_pin_number of echo_duration_d : signal is ("AA22", "Y24 ", "Y23 ");
+
+-- SRAM
+attribute array_pin_number of SRAM_ADDR : signal is ("T8  ","AB8 ","AB9 ","AC11","AB11","AA4 ","AC3 ","AB4 ","AD3 ","AF2 ","T7  ","AF5 ","AC5 ","AB5 ", "AE6 ","AB6 ", "AC7 ", "AE7 ","AD7 ","AB7 ");
+attribute array_pin_number of SRAM_DQ : signal is ("AG3 ","AF3 ","AE4 ","AE3 ","AE1 ","AE2 ","AD2 ","AD1 ","AF7 ","AH6 ","AG6 ","AF6 ","AH4 ","AG4 ","AF4 ","AH3 ");
+attribute pin_number of SRAM_CE_N : signal is "AF8";
+attribute pin_number of SRAM_UB_N : signal is "AC4";
+attribute pin_number of SRAM_LB_N : signal is "AD4";
+attribute pin_number of SRAM_OE_N : signal is "AD5";
+attribute pin_number of SRAM_WE_N : signal is "AE8";
+
+-- Audio Codec
+attribute pin_number of AUD_ADCLRCK : signal is "C2";
+attribute pin_number of AUD_ADCDAT: signal is "D2";
+attribute pin_number of AUD_DACLRCK: signal is "E3";
+attribute pin_number of AUD_DACDAT: signal is "D1";
+attribute pin_number of AUD_XCK: signal is "E1";
+attribute pin_number of AUD_BCLK: signal is "F2";
+attribute pin_number of I2C_SCLK: signal is "B7";
+attribute pin_number of I2C_SDAT: signal is "A8";
+
+-- Keyboard
+attribute pin_number of kb_clk : signal is "G6";
+attribute pin_number of kb_data : signal is "G6";
+
+-- Seven egment Display
+attribute array_pin_number of hex6 : signal is ("AC17", "AA15", "AB15", "AB17", "AA16", "AB16", "AA17");
+attribute array_pin_number of hex7 : signal is ("AA14", "AG18", "AF17", "AH17", "AG17", "AE17", "AD17");

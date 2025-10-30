@@ -1,36 +1,37 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+LIBRARY echo_lib;
+USE echo_lib.keyboard_package.ALL;
 
-entity sram_ctrl is
-  generic (
-    G_ADDR_WIDTH : natural := 20;
-    G_DATA_WIDTH : natural := 16
-  );
-  port (
-    -- User IF
-    clk       : in  std_logic;
-    RESET_N   : in  std_logic;
 
-    wr_en     : in  std_logic;
-    wr_addr   : in  std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    wr_data   : in  std_logic_vector(G_DATA_WIDTH-1 downto 0);
+ENTITY sram_ctrl IS
+   GENERIC( 
+      G_ADDR_WIDTH : natural := 20;
+      G_DATA_WIDTH : natural := 16
+   );
+   PORT( 
+      rd_valid  : OUT    std_logic;
+      SRAM_ADDR : OUT    std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      SRAM_DQ   : INOUT  std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      SRAM_CE_N : OUT    std_logic;
+      SRAM_OE_N : OUT    std_logic;
+      SRAM_WE_N : OUT    std_logic;
+      SRAM_UB_N : OUT    std_logic;
+      SRAM_LB_N : OUT    std_logic;
+      rd_addr   : IN     std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      rd_en     : IN     std_logic;
+      wr_en     : IN     std_logic;
+      clk       : IN     std_logic;
+      wr_data   : IN     std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      wr_addr   : IN     std_logic_vector (G_ADDR_WIDTH-1 DOWNTO 0);
+      rd_data   : OUT    std_logic_vector (G_DATA_WIDTH-1 DOWNTO 0);
+      RESET_N   : IN     std_logic
+   );
 
-    rd_en     : in  std_logic;
-    rd_addr   : in  std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    rd_data   : out std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    rd_valid  : out std_logic;
+-- Declarations
 
-    -- SRAM IF (16-bit asynchron)
-    SRAM_ADDR : out std_logic_vector(G_ADDR_WIDTH-1 downto 0);
-    SRAM_DQ   : inout std_logic_vector(G_DATA_WIDTH-1 downto 0);
-    SRAM_CE_N : out std_logic;
-    SRAM_OE_N : out std_logic;
-    SRAM_WE_N : out std_logic;
-    SRAM_UB_N : out std_logic;
-    SRAM_LB_N : out std_logic
-  );
-end entity;
+END sram_ctrl ;
 
 architecture behav of sram_ctrl is
   type state_t is (IDLE, W_SETUP, WRITE, W_HOLD, R_SETUP, READ, R_HOLD);

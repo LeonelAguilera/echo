@@ -1,0 +1,46 @@
+# vsim -f hds_args.tmp -no_autoacc -foreign "hdsInit /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll" -pli ""/sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll"" 
+# Start time: 22:17:33 on Oct 30,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.dithered_clk_divider(behav)#1
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+add wave sim:/dithered_clk_divider/*
+# hds_restart
+restart -force
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.dithered_clk_divider(behav)#1
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+force -freeze sim:/dithered_clk_divider/c0 0 0, 1 {7 ns} -r 15
+force -freeze sim:/dithered_clk_divider/fpga_reset 0 0
+run
+force -freeze sim:/dithered_clk_divider/fpga_reset 1 0
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+# End time: 22:18:48 on Oct 30,2025, Elapsed time: 0:01:15
+# Errors: 0, Warnings: 0
