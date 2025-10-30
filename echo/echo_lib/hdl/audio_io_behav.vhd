@@ -22,7 +22,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity audio_io is
+entity WM8731_I2S_Interface is
     Port (
         -- System Clock and Reset
         clk         : in  std_logic;        -- Main system clock (e.g., 12.288MHz)
@@ -42,34 +42,24 @@ entity audio_io is
         right_channel_in  : out std_logic_vector(15 downto 0);  -- Parallel data from ADC
         data_ready        : out std_logic   -- New ADC data available
     );
-end audio_io;
+end WM8731_I2S_Interface;
 
-architecture Behavioral of audio_io is
+architecture Behavioral of WM8731_I2S_Interface is
 
-    ------------------------------------------------------------------------
-    -- Internal signals
-    ------------------------------------------------------------------------
     -- DAC Transmission signals
     signal dac_shift_reg      : std_logic_vector(15 downto 0) := (others => '0');
-    signal dac_bit_counter    : integer range 0 to 16 := 0; -- FIXED range (allow 0?16)
+    signal dac_bit_counter    : integer range 0 to 16 := 0;
     signal prev_dac_lrc       : std_logic := '0';
-    signal current_dac_channel: std_logic := '0'; -- 0=left, 1=right
     
     -- ADC Reception signals  
     signal adc_shift_reg      : std_logic_vector(15 downto 0) := (others => '0');
-    signal adc_bit_counter    : integer range 0 to 16 := 0; -- FIXED range (allow 0?16)
+    signal adc_bit_counter    : integer range 0 to 16 := 0;
     signal prev_adc_lrc       : std_logic := '0';
-    signal current_adc_channel: std_logic := '0'; -- 0=left, 1=right
-    
-    -- Data ready generation
-    signal data_ready_pulse   : std_logic := '0';
 
 begin
 
-   
-                                                                                                  -- DAC Parallel-to-Serial Conversion Process
-    
-   
+    -- DAC Parallel-to-Serial Conversion Process
+    -- Converts parallel audio data to I2S serial format for transmission to codec
     dac_parallel_to_serial : process(bclk, reset_n)
     begin
         if reset_n = '0' then
@@ -77,44 +67,40 @@ begin
             dac_shift_reg <= (others => '0');
             dac_bit_counter <= 0;
             prev_dac_lrc <= '0';
-            current_dac_channel <= '0';
             
         elsif falling_edge(bclk) then
-                                                                                                   -- I2S data changes on falling edge of BCLK
-            
-            
+            -- Detect DAC LRC (frame sync) transition
             if dac_lrc /= prev_dac_lrc then
                 prev_dac_lrc <= dac_lrc;
                 dac_bit_counter <= 0;
-                current_dac_channel <= dac_lrc;
                 
-                                                                                     -- Load new parallel data into shift register based on channel
+                -- Load new parallel data based on channel
                 if dac_lrc = '0' then
                     dac_shift_reg <= left_channel_out;
+                    dac_dat <= left_channel_out(15);  -- Output MSB of NEW data
                 else
                     dac_shift_reg <= right_channel_out;
+                    dac_dat <= right_channel_out(15);  -- Output MSB of NEW data
                 end if;
                 
-                dac_dat <= dac_shift_reg(15);  -- Output MSB first (I2S)
-                
             else
-                
+                -- Continue shifting out data
                 if dac_bit_counter < 15 then
                     dac_bit_counter <= dac_bit_counter + 1;
+                    -- Shift and output next bit
                     dac_shift_reg <= dac_shift_reg(14 downto 0) & '0';
-                    dac_dat <= dac_shift_reg(14);
+                    dac_dat <= dac_shift_reg(15);  -- Output MSB after shift
                 else
-                    dac_bit_counter <= 16;  -- hold at max
+                    -- All 16 bits transmitted
+                    dac_bit_counter <= dac_bit_counter + 1;
                     dac_dat <= '0';
                 end if;
             end if;
         end if;
     end process;
 
-    
-                                                                                               -- ADC Serial-to-Parallel Conversion Process
-    
-   
+    -- ADC Serial-to-Parallel Conversion Process
+    -- Converts I2S serial data from codec to parallel audio data
     adc_serial_to_parallel : process(bclk, reset_n)
     begin
         if reset_n = '0' then
@@ -123,51 +109,42 @@ begin
             adc_shift_reg <= (others => '0');
             adc_bit_counter <= 0;
             prev_adc_lrc <= '0';
-            current_adc_channel <= '0';
-            data_ready_pulse <= '0';
             data_ready <= '0';
             
         elsif rising_edge(bclk) then
-            data_ready <= '0'; -- clear pulse each cycle
+            data_ready <= '0';  -- Default: clear pulse
             
-                                                                                                      -- Detect ADC LRC (frame sync) transition
+            -- Detect ADC LRC (frame sync) transition
             if adc_lrc /= prev_adc_lrc then
                 prev_adc_lrc <= adc_lrc;
                 
-                
+                -- Store completed word from previous frame
                 if adc_bit_counter = 16 then
-                    if current_adc_channel = '0' then
+                    if prev_adc_lrc = '0' then
+                        -- Just finished left channel
                         left_channel_in <= adc_shift_reg;
                     else
+                        -- Just finished right channel
                         right_channel_in <= adc_shift_reg;
-                        data_ready <= '1';  -- pulse when right channel done
+                        data_ready <= '1';  -- Both channels complete
                     end if;
                 end if;
                 
-                                                                                                                            -- Start new frame
+                -- Start new channel
                 adc_bit_counter <= 0;
-                current_adc_channel <= adc_lrc;
                 adc_shift_reg <= (others => '0');
                 
             else
-                                                                                                                   -- Shift in new bit (MSB first)
+                -- Shift in data bits
                 if adc_bit_counter < 16 then
                     adc_bit_counter <= adc_bit_counter + 1;
                     adc_shift_reg <= adc_shift_reg(14 downto 0) & adc_dat;
-                else
-                    adc_bit_counter <= 16;                                                                     -- saturate at 16 to prevent overflow
                 end if;
             end if;
         end if;
     end process;
 
 end Behavioral;
-
-
-
-
-
-
 
 
 
