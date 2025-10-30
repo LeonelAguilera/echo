@@ -13,8 +13,7 @@ USE ieee.numeric_std.all;
 
 ENTITY clock_view IS
    PORT( 
-      c0            : IN     STD_LOGIC;
-      reduced_clock : OUT    std_logic
+      c0 : IN     STD_LOGIC
    );
 
 -- Declarations

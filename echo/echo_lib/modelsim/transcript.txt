@@ -1,11 +1,117 @@
 # vsim -f hds_args.tmp -no_autoacc -foreign "hdsInit /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll" -pli ""/sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll"" 
-# Start time: 11:15:43 on Oct 30,2025
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Start time: 14:45:17 on Oct 30,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
 # Loading work.audio_io(behavioral)#1
 # Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
-# End time: 11:15:48 on Oct 30,2025, Elapsed time: 0:00:05
-# Errors: 0, Warnings: 0
+add wave -position insertpoint  \
+sim:/audio_io/clk \
+sim:/audio_io/reset_n \
+sim:/audio_io/bclk \
+sim:/audio_io/dac_lrc \
+sim:/audio_io/dac_dat \
+sim:/audio_io/left_channel_out \
+sim:/audio_io/right_channel_out
+add wave -position insertpoint  \
+sim:/audio_io/dac_shift_reg
+force -freeze sim:/audio_io/clk 1 0, 0 {7 ns} -r {15 ns}
+force -freeze sim:/audio_io/reset_n 0 0
+force -freeze sim:/audio_io/bclk 0 0, 1 {162 ns} -r {325 ns}
+force -freeze sim:/audio_io/dac_lrc 1 0, 0 {10416 ns} -r {20833 ns}
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+force -freeze sim:/audio_io/clk 1 0, 0 {7 ns} -r {15 ns}
+force -freeze sim:/audio_io/reset_n 0 0
+force -freeze sim:/audio_io/bclk 1 0, 0 {162 ns} -r {325 ns}
+force -freeze sim:/audio_io/dac_lrc 1 0, 0 {10416 ns} -r {20833 ns}
+force -freeze sim:/audio_io/left_channel_out 16'hAAAA 0
+force -freeze sim:/audio_io/right_channel_out 16'h5555 0
+run
+force -freeze sim:/audio_io/reset_n 0 0
+force -freeze sim:/audio_io/reset_n 1 0
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+run
+# 0
+# 
+# Causality operation skipped due to absence of debug database file
+run
+# 0
+# 
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+add wave -position insertpoint  \
+sim:/audio_io/prev_adc_lrc
+do /courses/TSTE12/proj/projgrp07/ProjectCode/echo/dofiles/audio_io_tester.do
+run
+add wave -position insertpoint  \
+sim:/audio_io/prev_dac_lrc
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+do /courses/TSTE12/proj/projgrp07/ProjectCode/echo/dofiles/audio_io_tester.do
+run
+run
+# 0
+# 
+run
+# 0
+# 
+add wave -position insertpoint  \
+sim:/audio_io/dac_bit_counter \
+sim:/audio_io/dac_data_active
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+do /courses/TSTE12/proj/projgrp07/ProjectCode/echo/dofiles/audio_io_tester.do
+run
+run
+# 0
+# 
+add wave -position insertpoint  \
+sim:/audio_io/data_valid
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+do /courses/TSTE12/proj/projgrp07/ProjectCode/echo/dofiles/audio_io_tester.do
+run
+# hds_restart
+restart -force
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.audio_io(behavioral)#1
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+do /courses/TSTE12/proj/projgrp07/ProjectCode/echo/dofiles/audio_io_tester.do
+run
+# hds_restart
+restart -force
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.audio_io(behavioral)#1
+# Loading /sw/mentor/hds_2024.1/resources/downstream/modelsim/ModelSim_64Bit.dll
+do /courses/TSTE12/proj/projgrp07/ProjectCode/echo/dofiles/audio_io_tester.do
+run

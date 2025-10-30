@@ -27,6 +27,11 @@ ENTITY gen_kb_dec IS
 
 -- Declarations
 
+type exemplar_string_array is array (natural range <>, natural range <>) of character;
+attribute pin_number : string;
+attribute array_pin_number : exemplar_string_array;
+attribute pin_number of invalid_led : signal is "G21";
+
 END gen_kb_dec ;
 
 ARCHITECTURE behav OF gen_kb_dec IS

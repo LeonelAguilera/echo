@@ -33,7 +33,7 @@ BEGIN
   process(c0)
   begin
     if rising_edge(c0) then
-      if Reset = '1' then
+      if Reset = '0' then
         count_100k   <= 0;
         clk_100k_int <= '0';
       else
@@ -53,7 +53,7 @@ BEGIN
   process(c0)
   begin
     if rising_edge(c0) then
-      if Reset = '1' then
+      if Reset = '0' then
         count_200k   <= 0;
         clk_200k_int <= '0';
         toggle_sel   <= '0';
