@@ -22,7 +22,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity WM8731_I2S_Interface is
+entity audio_io is
     Port (
         -- System Clock and Reset
         clk         : in  std_logic;        -- Main system clock (e.g., 12.288MHz)
@@ -42,9 +42,9 @@ entity WM8731_I2S_Interface is
         right_channel_in  : out std_logic_vector(15 downto 0);  -- Parallel data from ADC
         data_ready        : out std_logic   -- New ADC data available
     );
-end WM8731_I2S_Interface;
+end audio_io;
 
-architecture Behavioral of WM8731_I2S_Interface is
+architecture Behavioral of audio_io is
 
     -- DAC Transmission signals
     signal dac_shift_reg      : std_logic_vector(15 downto 0) := (others => '0');
